@@ -1,0 +1,25 @@
+﻿[*.cs]
+
+# IDE0058: Значение выражения никогда не используется
+csharp_style_unused_value_expression_statement_preference = discard_variable:none
+
+# CA2100: Проверка запросов SQL на уязвимости безопасности
+dotnet_diagnostic.CA2100.severity = none
+
+# CA1307: Укажите StringComparison
+dotnet_diagnostic.CA1307.severity = silent
+
+# CA1031: Не перехватывать исключения общих типов
+dotnet_diagnostic.CA1031.severity = silent
+
+# CA1303: Не передавать литералы в качестве локализованных параметров
+dotnet_diagnostic.CA1303.severity = silent
+
+# IDE1006: Стили именования
+dotnet_diagnostic.IDE1006.severity = silent
+
+# CA2000: Ликвидировать объекты перед потерей области
+dotnet_diagnostic.CA2000.severity = silent
+
+# CA1707: Удалите символы подчеркивания из имени сборки TRPO_Project.
+dotnet_diagnostic.CA1707.severity = suggestion
