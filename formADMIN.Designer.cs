@@ -242,7 +242,7 @@
             this.pictureBoxProfile1.TabIndex = 2;
             this.pictureBoxProfile1.TabStop = false;
             this.pictureBoxProfile1.Zoom = 5;
-            this.pictureBoxProfile1.Click += new System.EventHandler(this.pictureBoxProfile1_Click);
+            this.pictureBoxProfile1.Click += new System.EventHandler(this.pictureBoxProfile_Click);
             // 
             // labelCPU
             // 
@@ -268,7 +268,7 @@
             this.pictureBoxProductBIN1.TabIndex = 3;
             this.pictureBoxProductBIN1.TabStop = false;
             this.pictureBoxProductBIN1.Zoom = 5;
-            this.pictureBoxProductBIN1.Click += new System.EventHandler(this.pictureBoxProductBIN1_Click);
+            this.pictureBoxProductBIN1.Click += new System.EventHandler(this.pictureBoxProductBIN_Click);
             // 
             // metroComboBoxCPUsort
             // 
@@ -385,7 +385,7 @@
             this.bunifuImageButtonEXIT.TabIndex = 2;
             this.bunifuImageButtonEXIT.TabStop = false;
             this.bunifuImageButtonEXIT.Zoom = 10;
-            this.bunifuImageButtonEXIT.Click += new System.EventHandler(this.bunifuImageButtonEXIT_Click_1);
+            this.bunifuImageButtonEXIT.Click += new System.EventHandler(this.bunifuImageButtonEXIT_Click);
             // 
             // formADMIN
             // 

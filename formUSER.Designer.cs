@@ -380,7 +380,6 @@
             this.Style = MetroFramework.MetroColorStyle.Red;
             this.Theme = MetroFramework.MetroThemeStyle.Dark;
             this.TransparencyKey = System.Drawing.Color.Empty;
-            this.Load += new System.EventHandler(this.formUSER_Load);
             this.groupBoxHEAD.ResumeLayout(false);
             this.groupBoxHEAD.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.button_backToLoginForm)).EndInit();

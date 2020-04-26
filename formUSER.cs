@@ -25,7 +25,8 @@ namespace TRPO_Project
         private SQLiteCommand sql_cmd;
         private static bool isMINUS = true;
         private static List<PCinfo> OBJects = new List<PCinfo>(); // объекты главной формы
-        internal static List<int> BINid = new List<int>(); //лист корзины юзера
+        private static List<PC> AllPCList = new List<PC>();
+        public static List<int> BINid = new List<int>(); //лист корзины юзера
         private int userID;
         #endregion
 
@@ -37,6 +38,7 @@ namespace TRPO_Project
             userID = id;
             GetInfoIntoComboBoxes();
             SetPictureProfile();
+            FillPC();
             metroComboBoxTYPEofPC.SelectedIndex = 0;
             metroComboBoxCPUsort.SelectedIndex = 0;
             metroComboBoxGPUsort.SelectedIndex = 0;
@@ -60,270 +62,11 @@ namespace TRPO_Project
         #endregion
 
         #region buttonsClick
-
-        private void bunifuThinButtonSORT_Click(object sender, EventArgs e)
-        {
-            xuiCircleProgressBar1.Visible = true;
-
-            #region ParseInputPrice
-            string[] PriceReaderSTR = textBox_PRICE.Text.Split('$', '-');
-
-            int[] PriceReaderINT = Array.Empty<int>();
-            if (PriceReaderSTR.Length == 2)
-            {
-                PriceReaderINT = new int[PriceReaderSTR.Length];
-                PriceReaderINT[1] = Convert.ToInt32(PriceReaderSTR[1]);
-            }
-            else if (PriceReaderSTR.Length == 3)
-            {
-                PriceReaderINT = new int[PriceReaderSTR.Length - 1];
-            }
-
-            for (int i = 1; i < PriceReaderSTR.Length; i++)
-            {
-                PriceReaderINT[i - 1] = Convert.ToInt32(PriceReaderSTR[i]);
-            }
-            if (PriceReaderINT.Length > 1)
-            {
-                if (PriceReaderINT[1] < PriceReaderINT[0])
-                {
-                    MessageBox.Show("Второе число фильтра по цене больше первого!", "ОШИБКА", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                    textBox_PRICE.Focus();
-                    xuiCircleProgressBar1.percentage = 0;
-                    xuiCircleProgressBar1.Visible = false;
-                }
-            }
-            #endregion
-
-            List<int> IDs = new List<int>();
-            using (sql_con = new SQLiteConnection("Data Source=TRPO.db"))
-            {
-                sql_con.Open();
-                using (sql_cmd = new SQLiteCommand(sql_con))
-                {                  
-                    string TYPEind = metroComboBoxTYPEofPC.Text,
-                           CPUind = metroComboBoxCPUsort.Text,
-                           GPUind = metroComboBoxGPUsort.Text,
-                           RAMind = metroComboBoxRAM.Text.Trim(' ', 'G', 'B');
-                    SQLiteDataReader reader;
-                    int CountID = 0;
-                    #region CheckComboBOXES
-                    //0000
-                    if (TYPEind == "<не выбрано>" && CPUind == "<не выбрано>" && GPUind == "<не выбрано>" && RAMind == "<не выбрано>")
-                    {
-                        sql_cmd.CommandText = $"select id from PCdb where PRICE BETWEEN {PriceReaderINT[0]} AND {PriceReaderINT[1]} ORDER BY PRICE DESC";
-                        reader = sql_cmd.ExecuteReader();
-                        while (reader.Read())
-                        {
-                            IDs.Add(reader.GetInt32(0));
-                            CountID++;
-                        }
-                    }
-                    //0001
-                    else if (RAMind != "<не выбрано>" && CPUind == "<не выбрано>" && GPUind == "<не выбрано>" && TYPEind == "<не выбрано>")
-                    {
-                        sql_cmd.CommandText = "select id from PCdb where RAM='" + RAMind + $"' and PRICE BETWEEN {PriceReaderINT[0]} AND {PriceReaderINT[1]} ORDER BY PRICE DESC;";
-                        reader = sql_cmd.ExecuteReader();
-                        while (reader.Read())
-                        {
-                            IDs.Add(reader.GetInt32(0));
-                            CountID++;
-                        }
-                    }
-                    //0010
-                    else if (GPUind != "<не выбрано>" && TYPEind == "<не выбрано>" && CPUind == "<не выбрано>" && RAMind == "<не выбрано>")
-                    {
-                        sql_cmd.CommandText = "select id from PCdb where GPU='" + metroComboBoxGPUsort.Text + $"' and PRICE BETWEEN {PriceReaderINT[0]} AND {PriceReaderINT[1]} ORDER BY PRICE DESC;";
-                        reader = sql_cmd.ExecuteReader();
-                        while (reader.Read())
-                        {
-                            IDs.Add(reader.GetInt32(0));
-                            CountID++;
-                        }                      
-                    }
-                    //0011
-                    else if (GPUind != "<не выбрано>" && TYPEind == "<не выбрано>" && CPUind == "<не выбрано>" && RAMind != "<не выбрано>")
-                    {
-                        sql_cmd.CommandText = "select id from PCdb where GPU='" + metroComboBoxGPUsort.Text + "' and RAM='" + RAMind + $"' and PRICE BETWEEN {PriceReaderINT[0]} AND {PriceReaderINT[1]} ORDER BY PRICE DESC;";
-                        reader = sql_cmd.ExecuteReader();
-                        while (reader.Read())
-                        {
-                            IDs.Add(reader.GetInt32(0));
-                            CountID++;
-                        }
-                        
-                    }
-                    //0100
-                    else if (GPUind == "<не выбрано>" && TYPEind == "<не выбрано>" && CPUind != "<не выбрано>" && RAMind == "<не выбрано>")
-                    {
-                        sql_cmd.CommandText = "select id from PCdb where CPU='" + metroComboBoxCPUsort.Text + $"' and PRICE BETWEEN {PriceReaderINT[0]} AND {PriceReaderINT[1]} ORDER BY PRICE DESC;";
-                        reader = sql_cmd.ExecuteReader();
-                        while (reader.Read())
-                        {
-                            IDs.Add(reader.GetInt32(0));
-                            CountID++;
-                        }
-                        
-                    }
-                    //0101
-                    else if (GPUind == "<не выбрано>" && TYPEind == "<не выбрано>" && CPUind != "<не выбрано>" && RAMind != "<не выбрано>")
-                    {
-                        sql_cmd.CommandText = "select id from PCdb where CPU='" + metroComboBoxCPUsort.Text + "' and RAM='" + RAMind + $"' and PRICE BETWEEN {PriceReaderINT[0]} AND {PriceReaderINT[1]} ORDER BY PRICE DESC;";
-                        reader = sql_cmd.ExecuteReader();
-                        while (reader.Read())
-                        {
-                            IDs.Add(reader.GetInt32(0));
-                            CountID++;
-                        }
-                        
-                    }
-                    //0110
-                    else if (GPUind != "<не выбрано>" && TYPEind == "<не выбрано>" && CPUind != "<не выбрано>" && RAMind == "<не выбрано>")
-                    {
-                        sql_cmd.CommandText = "select id from PCdb where CPU='" + metroComboBoxCPUsort.Text + "' and GPU='" + metroComboBoxGPUsort.Text + $"' and PRICE BETWEEN {PriceReaderINT[0]} AND {PriceReaderINT[1]} ORDER BY PRICE DESC;";
-                        reader = sql_cmd.ExecuteReader();
-                        while (reader.Read())
-                        {
-                            IDs.Add(reader.GetInt32(0));
-                            CountID++;
-                        }
-                        
-                    }
-                    //0111
-                    else if (GPUind != "<не выбрано>" && TYPEind == "<не выбрано>" && CPUind != "<не выбрано>" && RAMind != "<не выбрано>")
-                    {
-                        sql_cmd.CommandText = "select id from PCdb where CPU='" + metroComboBoxCPUsort.Text + "' and GPU='" + metroComboBoxGPUsort.Text + "' and RAM='" + RAMind + $"' and PRICE BETWEEN {PriceReaderINT[0]} AND {PriceReaderINT[1]} ORDER BY PRICE DESC;";
-                        reader = sql_cmd.ExecuteReader();
-                        while (reader.Read())
-                        {
-                            IDs.Add(reader.GetInt32(0));
-                            CountID++;
-                        }
-                        
-                    }
-                    //1000
-                    else if (GPUind == "<не выбрано>" && TYPEind != "<не выбрано>" && CPUind == "<не выбрано>" && RAMind == "<не выбрано>")
-                    {
-                        sql_cmd.CommandText = "select id from PCdb where typeOfPC='" + metroComboBoxTYPEofPC.Text + $"' and PRICE BETWEEN {PriceReaderINT[0]} AND {PriceReaderINT[1]} ORDER BY PRICE DESC;";
-                        reader = sql_cmd.ExecuteReader();
-                        while (reader.Read())
-                        {
-                            IDs.Add(reader.GetInt32(0));
-                            CountID++;
-                        }
-                        
-                    }
-                    //1001
-                    else if (GPUind == "<не выбрано>" && TYPEind != "<не выбрано>" && CPUind == "<не выбрано>" && RAMind != "<не выбрано>")
-                    {
-                        sql_cmd.CommandText = "select id from PCdb where typeOfPC='" + metroComboBoxTYPEofPC.Text + "'and RAM='" + RAMind + $"' and PRICE BETWEEN {PriceReaderINT[0]} AND {PriceReaderINT[1]} ORDER BY PRICE DESC;";
-                        reader = sql_cmd.ExecuteReader();
-                        while (reader.Read())
-                        {
-                            IDs.Add(reader.GetInt32(0));
-                            CountID++;
-                        }
-                        
-                    }
-                    //1010
-                    else if (GPUind != "<не выбрано>" && TYPEind != "<не выбрано>" && CPUind == "<не выбрано>" && RAMind == "<не выбрано>")
-                    {
-                        sql_cmd.CommandText = "select id from PCdb where typeOfPC='" + metroComboBoxTYPEofPC.Text + "' and GPU='" + metroComboBoxGPUsort.Text + $"' and PRICE BETWEEN {PriceReaderINT[0]} AND {PriceReaderINT[1]} ORDER BY PRICE DESC;";
-                        reader = sql_cmd.ExecuteReader();
-                        while (reader.Read())
-                        {
-                            IDs.Add(reader.GetInt32(0));
-                            CountID++;
-                        }
-                        
-                    }
-                    //1011
-                    else if (GPUind != "<не выбрано>" && TYPEind != "<не выбрано>" && CPUind == "<не выбрано>" && RAMind != "<не выбрано>")
-                    {
-                        sql_cmd.CommandText = "select id from PCdb where typeOfPC='" + metroComboBoxTYPEofPC.Text + "' and GPU='" + metroComboBoxGPUsort.Text + "' and RAM='" + RAMind + $"' and PRICE BETWEEN {PriceReaderINT[0]} AND {PriceReaderINT[1]} ORDER BY PRICE DESC;";
-                        reader = sql_cmd.ExecuteReader();
-                        while (reader.Read())
-                        {
-                            IDs.Add(reader.GetInt32(0));
-                            CountID++;
-                        }
-                        
-                    }
-                    //1100
-                    else if (GPUind == "<не выбрано>" && TYPEind != "<не выбрано>" && CPUind != "<не выбрано>" && RAMind == "<не выбрано>")
-                    {
-                        sql_cmd.CommandText = "select id from PCdb where typeOfPC='" + metroComboBoxTYPEofPC.Text + "' and CPU='" + metroComboBoxCPUsort.Text + $"' and PRICE BETWEEN {PriceReaderINT[0]} AND {PriceReaderINT[1]} ORDER BY PRICE DESC;";
-                        reader = sql_cmd.ExecuteReader();
-                        while (reader.Read())
-                        {
-                            IDs.Add(reader.GetInt32(0));
-                            CountID++;
-                        }
-                        
-                    }
-                    //1101
-                    else if (GPUind == "<не выбрано>" && TYPEind != "<не выбрано>" && CPUind != "<не выбрано>" && RAMind != "<не выбрано>")
-                    {
-                        sql_cmd.CommandText = "select id from PCdb where typeOfPC='" + metroComboBoxTYPEofPC.Text + "' and CPU='" + metroComboBoxCPUsort.Text + "' and RAM='" + RAMind + $"' and PRICE BETWEEN {PriceReaderINT[0]} AND {PriceReaderINT[1]} ORDER BY PRICE DESC;";
-                        reader = sql_cmd.ExecuteReader();
-                        while (reader.Read())
-                        {
-                            IDs.Add(reader.GetInt32(0));
-                            CountID++;
-                        }
-                        
-                    }
-                    //1110
-                    else if (GPUind != "<не выбрано>" && TYPEind != "<не выбрано>" && CPUind != "<не выбрано>" && RAMind == "<не выбрано>")
-                    {
-                        sql_cmd.CommandText = "select id from PCdb where typeOfPC='" + metroComboBoxTYPEofPC.Text + "' and GPU='" + metroComboBoxGPUsort.Text + "' and CPU='" + metroComboBoxCPUsort.Text + $"' and PRICE BETWEEN {PriceReaderINT[0]} AND {PriceReaderINT[1]} ORDER BY PRICE DESC;";
-                        reader = sql_cmd.ExecuteReader();
-                        while (reader.Read())
-                        {
-                            IDs.Add(reader.GetInt32(0));
-                            CountID++;
-                        }
-                        
-                    }
-                    //1111
-                    else if (GPUind != "<не выбрано>" && TYPEind != "<не выбрано>" && CPUind != "<не выбрано>" && RAMind != "<не выбрано>")
-                    {
-                        sql_cmd.CommandText = "select id from PCdb where typeOfPC='" + metroComboBoxTYPEofPC.Text + "' and GPU='" + metroComboBoxGPUsort.Text + "' and CPU='" + metroComboBoxCPUsort.Text + "' and RAM='" + RAMind + $"' and PRICE BETWEEN {PriceReaderINT[0]} AND {PriceReaderINT[1]} ORDER BY PRICE DESC;";
-                        reader = sql_cmd.ExecuteReader();
-                        while (reader.Read())
-                        {
-                            IDs.Add(reader.GetInt32(0));
-                            CountID++;
-                        }
-                        
-                    }
-                    #endregion
-                    if (CountID == 0)
-                    {
-                        xuiCircleProgressBar1.Visible = false;
-                        MessageBox.Show("Нет подходящих компудахтеров");
-                        if (OBJects.Count > 0)
-                        {
-                            for (int j = OBJects.Count - 1; j > -1; j--)
-                            {
-                                ControlRemoveOBJ(j);
-                                xuiCircleProgressBar1.percentage = 0;
-                                xuiCircleProgressBar1.Visible = false;
-                            }
-                        }
-                    }
-                    else
-                    {
-                        CreateObject(IDs);
-                    }
-                }
-            }
-        }
-
         private void bunifuImageButtonEXIT_Click(object sender, EventArgs e)
         {     
             Application.Exit();
         }
+
         #endregion
 
         #region PriceBOXfunctions
@@ -385,87 +128,106 @@ namespace TRPO_Project
         }
         #endregion
 
-        #region Create&DeleteOBJECTS
-        private void ControlRemoveOBJ(int j)
-        {  
-            this.Controls.Remove(OBJects[j]);
-            OBJects[j].Dispose();
-        }
-        
-        private async void CreateObject(List<int> IDs)
+        #region Display List
+        private void bunifuImageButtonSORT_Click(object sender, EventArgs e)
         {
-            int Final = 100 / IDs.Count;
-            int Y = 110;
-            using (sql_con = new SQLiteConnection("Data Source=TRPO.db"))
+            bunifuImageButtonSORT.Focus();
+            xuiCircleProgressBar1.Visible = true;
+
+            #region ParseInputPrice
+            string[] PriceReaderSTR = textBox_PRICE.Text.Split('$', '-');
+
+            int[] PriceReaderINT = Array.Empty<int>();
+            if (PriceReaderSTR.Length == 2)
             {
-                this.Refresh();
-                this.Enabled = false;
-                sql_con.Open();
-                xuiCircleProgressBar1.percentage = 0;
-                if (OBJects.Count > 0)
-                {
-                    for (int j = OBJects.Count - 1; j > -1; j--)
-                    {
-                        ControlRemoveOBJ(j);
-                    }
-                    OBJects.Clear();
-                }
-                for (int j = 0; j < IDs.Count; j++)
-                {
-                    int P = 0;
-                    await Task.Delay(60).ConfigureAwait(true);
-                    using (sql_cmd = new SQLiteCommand($"SELECT * FROM PCdb WHERE id={IDs[j]}", sql_con))
-                    {
-                        xuiCircleProgressBar1.Enabled = true;
-                        while (P != Final)
-                        {
-                            xuiCircleProgressBar1.Percentage++;
-                            P++;
-                        }
-                        if (j == IDs.Count - 1 && xuiCircleProgressBar1.percentage != 100)
-                        {
-                            xuiCircleProgressBar1.percentage += (100 - xuiCircleProgressBar1.percentage);
-                        }
-                        #region FindCPU&GPU&RAMstringLABELS
-                        int IDofPC = 0;
-                        string TYPE = string.Empty;
-                        string CPU = string.Empty;
-                        string GPU = string.Empty;
-                        int RAM = 0;
-                        int COST = 0;
-                        string PATHtoIMG = string.Empty;
-                        using (var reader = sql_cmd.ExecuteReader())
-                        {
-                            while (reader.Read())
-                            {
-                                IDofPC = reader.GetInt32(0);
-                                TYPE = reader.GetString(1);
-                                COST = reader.GetInt32(2);
-                                CPU = reader.GetString(3);
-                                GPU = reader.GetString(4);
-                                RAM = reader.GetInt32(5);
-                                PATHtoIMG = reader.GetString(6);
-                            }
-                        }
-                        Image IMG;
-                        using (FileStream fs = new FileStream(PATHtoIMG, FileMode.Open))
-                        {
-                            IMG = Image.FromStream(fs);
-                        }
-                        PCinfo OBJ = new PCinfo(TYPE, IDofPC, CPU, GPU, RAM, COST, IMG) { isAdmin = false };
-                        OBJects.Add(OBJ);
-                        OBJ.Location = new Point(0, Y);
-                        Y += 270;
-                        this.Controls.Add(OBJ);
-                        #endregion
-                    }
-                }
-                this.Enabled = true;
-                xuiCircleProgressBar1.Enabled = false;
-                xuiCircleProgressBar1.Visible = false;
+                PriceReaderINT = new int[PriceReaderSTR.Length];
+                PriceReaderINT[1] = Convert.ToInt32(PriceReaderSTR[1]);
             }
+            else if (PriceReaderSTR.Length == 3)
+            {
+                PriceReaderINT = new int[PriceReaderSTR.Length - 1];
+            }
+
+            for (int i = 1; i < PriceReaderSTR.Length; i++)
+            {
+                PriceReaderINT[i - 1] = Convert.ToInt32(PriceReaderSTR[i]);
+            }
+            if (PriceReaderINT.Length > 1)
+            {
+                if (PriceReaderINT[1] < PriceReaderINT[0])
+                {
+                    MessageBox.Show("Второе число фильтра по цене больше первого!", "ОШИБКА", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    textBox_PRICE.Focus();
+                    xuiCircleProgressBar1.percentage = 0;
+                    xuiCircleProgressBar1.Visible = false;
+                    return;
+                }
+            }
+            #endregion
+
+            var ToDisplay = new List<PC>(AllPCList.Where(x => x.COST >= PriceReaderINT[0] && x.COST <= PriceReaderINT[1]));
+
+            if (metroComboBoxTYPEofPC.Text != "<не выбрано>")
+            {
+                ToDisplay = ToDisplay.Where(x => x.TYPE == metroComboBoxTYPEofPC.Text).ToList();
+            }
+            if (metroComboBoxCPUsort.Text != "<не выбрано>")
+            {
+                ToDisplay = ToDisplay.Where(x => x.CPU == metroComboBoxCPUsort.Text).ToList();
+            }
+            if (metroComboBoxGPUsort.Text != "<не выбрано>")
+            {
+                ToDisplay = ToDisplay.Where(x => x.GPU == metroComboBoxGPUsort.Text).ToList();
+            }
+            if (metroComboBoxRAM.Text.Trim(' ', 'G', 'B') != "<не выбрано>")
+            {
+                ToDisplay = ToDisplay.Where(x => x.RAM == Convert.ToInt32(metroComboBoxRAM.Text.Trim(' ', 'G', 'B'))).ToList();
+            }
+
+            if (ToDisplay.Count == 0)
+            {
+                xuiCircleProgressBar1.Visible = false;
+                MetroMessageBox.Show(this, "NO PC MATCHES", "ERROR!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+            DisplayListAsync(ToDisplay);
         }
-        #endregion
+
+        private async Task DisplayListAsync(List<PC> Listed)
+        {
+            if (OBJects.Count > 0)
+            {
+                foreach (var elem in OBJects)
+                {
+                    this.Controls.Remove(elem);
+                    elem.Dispose();
+                }
+                OBJects.Clear();
+            }
+            int Y = 110;
+            this.Refresh();
+            xuiCircleProgressBar1.percentage = 0;
+            xuiCircleProgressBar1.Enabled = true;
+            int Final = 100 / Listed.Count;
+            foreach (var pc in Listed)
+            {
+                int P = 0;
+                await Task.Delay(30).ConfigureAwait(true);
+                while (P != Final)
+                {
+                    xuiCircleProgressBar1.Percentage++;
+                    P++;
+                }
+                PCinfo OBJ = new PCinfo(pc.TYPE, pc.ID, pc.CPU, pc.GPU, pc.RAM, pc.COST, pc.IMG) { isAdmin = true };
+                OBJects.Add(OBJ);
+                OBJ.Location = new Point(0, Y);
+                Y += 270;
+                this.Controls.Add(OBJ);
+            }
+            xuiCircleProgressBar1.Enabled = false;
+            xuiCircleProgressBar1.Visible = false;
+        }
+        #endregion 
 
         #region ComboBOXfill&textCHANGES
         private void GetInfoIntoComboBoxes()
@@ -614,259 +376,31 @@ namespace TRPO_Project
         }
         #endregion
 
-
-        private void bunifuImageButtonSORT_Click(object sender, EventArgs e)
+        #region FillingOBJECTS
+        private void FillPC()
         {
-            bunifuImageButtonSORT.Focus();
-            xuiCircleProgressBar1.Visible = true;
-
-            #region ParseInputPrice
-            string[] PriceReaderSTR = textBox_PRICE.Text.Split('$', '-');
-
-            int[] PriceReaderINT = Array.Empty<int>();
-            if (PriceReaderSTR.Length == 2)
-            {
-                PriceReaderINT = new int[PriceReaderSTR.Length];
-                PriceReaderINT[1] = Convert.ToInt32(PriceReaderSTR[1]);
-            }
-            else if (PriceReaderSTR.Length == 3)
-            {
-                PriceReaderINT = new int[PriceReaderSTR.Length - 1];
-            }
-
-            for (int i = 1; i < PriceReaderSTR.Length; i++)
-            {
-                PriceReaderINT[i - 1] = Convert.ToInt32(PriceReaderSTR[i]);
-            }
-            if (PriceReaderINT.Length > 1)
-            {
-                if (PriceReaderINT[1] < PriceReaderINT[0])
-                {
-                    MessageBox.Show("Второе число фильтра по цене больше первого!", "ОШИБКА", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                    textBox_PRICE.Focus();
-                    xuiCircleProgressBar1.percentage = 0;
-                    xuiCircleProgressBar1.Visible = false;
-                    return;
-                }
-            }
-            #endregion
-
-            List<int> IDs = new List<int>();
             using (sql_con = new SQLiteConnection("Data Source=TRPO.db"))
             {
                 sql_con.Open();
-                using (sql_cmd = new SQLiteCommand(sql_con))
+                using (sql_cmd = new SQLiteCommand("SELECT * FROM PCdb", sql_con))
                 {
-                    string TYPEind = metroComboBoxTYPEofPC.Text,
-                           CPUind = metroComboBoxCPUsort.Text,
-                           GPUind = metroComboBoxGPUsort.Text,
-                           RAMind = metroComboBoxRAM.Text.Trim(' ', 'G', 'B');
-                    SQLiteDataReader reader;
-                    int CountID = 0;
-                    #region CheckComboBOXES
-                    //0000
-                    if (TYPEind == "<не выбрано>" && CPUind == "<не выбрано>" && GPUind == "<не выбрано>" && RAMind == "<не выбрано>")
+                    using (var reader = sql_cmd.ExecuteReader())
                     {
-                        sql_cmd.CommandText = $"select id from PCdb where PRICE BETWEEN {PriceReaderINT[0]} AND {PriceReaderINT[1]} ORDER BY PRICE DESC";
-                        reader = sql_cmd.ExecuteReader();
                         while (reader.Read())
                         {
-                            IDs.Add(reader.GetInt32(0));
-                            CountID++;
+                            Image img;
+                            using (var IMGstream = new FileStream(reader.GetString(6), FileMode.Open))
+                            {
+                                img = Image.FromStream(IMGstream);
+                            }
+                            PC OBJ = new PC(reader.GetString(1), reader.GetInt32(0), reader.GetString(3), reader.GetString(4), reader.GetInt32(5), reader.GetInt32(2), img);
+                            AllPCList.Add(OBJ);
                         }
-                    }
-                    //0001
-                    else if (RAMind != "<не выбрано>" && CPUind == "<не выбрано>" && GPUind == "<не выбрано>" && TYPEind == "<не выбрано>")
-                    {
-                        sql_cmd.CommandText = "select id from PCdb where RAM='" + RAMind + $"' and PRICE BETWEEN {PriceReaderINT[0]} AND {PriceReaderINT[1]} ORDER BY PRICE DESC;";
-                        reader = sql_cmd.ExecuteReader();
-                        while (reader.Read())
-                        {
-                            IDs.Add(reader.GetInt32(0));
-                            CountID++;
-                        }
-                    }
-                    //0010
-                    else if (GPUind != "<не выбрано>" && TYPEind == "<не выбрано>" && CPUind == "<не выбрано>" && RAMind == "<не выбрано>")
-                    {
-                        sql_cmd.CommandText = "select id from PCdb where GPU='" + metroComboBoxGPUsort.Text + $"' and PRICE BETWEEN {PriceReaderINT[0]} AND {PriceReaderINT[1]} ORDER BY PRICE DESC;";
-                        reader = sql_cmd.ExecuteReader();
-                        while (reader.Read())
-                        {
-                            IDs.Add(reader.GetInt32(0));
-                            CountID++;
-                        }
-                    }
-                    //0011
-                    else if (GPUind != "<не выбрано>" && TYPEind == "<не выбрано>" && CPUind == "<не выбрано>" && RAMind != "<не выбрано>")
-                    {
-                        sql_cmd.CommandText = "select id from PCdb where GPU='" + metroComboBoxGPUsort.Text + "' and RAM='" + RAMind + $"' and PRICE BETWEEN {PriceReaderINT[0]} AND {PriceReaderINT[1]} ORDER BY PRICE DESC;";
-                        reader = sql_cmd.ExecuteReader();
-                        while (reader.Read())
-                        {
-                            IDs.Add(reader.GetInt32(0));
-                            CountID++;
-                        }
-
-                    }
-                    //0100
-                    else if (GPUind == "<не выбрано>" && TYPEind == "<не выбрано>" && CPUind != "<не выбрано>" && RAMind == "<не выбрано>")
-                    {
-                        sql_cmd.CommandText = "select id from PCdb where CPU='" + metroComboBoxCPUsort.Text + $"' and PRICE BETWEEN {PriceReaderINT[0]} AND {PriceReaderINT[1]} ORDER BY PRICE DESC;";
-                        reader = sql_cmd.ExecuteReader();
-                        while (reader.Read())
-                        {
-                            IDs.Add(reader.GetInt32(0));
-                            CountID++;
-                        }
-
-                    }
-                    //0101
-                    else if (GPUind == "<не выбрано>" && TYPEind == "<не выбрано>" && CPUind != "<не выбрано>" && RAMind != "<не выбрано>")
-                    {
-                        sql_cmd.CommandText = "select id from PCdb where CPU='" + metroComboBoxCPUsort.Text + "' and RAM='" + RAMind + $"' and PRICE BETWEEN {PriceReaderINT[0]} AND {PriceReaderINT[1]} ORDER BY PRICE DESC;";
-                        reader = sql_cmd.ExecuteReader();
-                        while (reader.Read())
-                        {
-                            IDs.Add(reader.GetInt32(0));
-                            CountID++;
-                        }
-
-                    }
-                    //0110
-                    else if (GPUind != "<не выбрано>" && TYPEind == "<не выбрано>" && CPUind != "<не выбрано>" && RAMind == "<не выбрано>")
-                    {
-                        sql_cmd.CommandText = "select id from PCdb where CPU='" + metroComboBoxCPUsort.Text + "' and GPU='" + metroComboBoxGPUsort.Text + $"' and PRICE BETWEEN {PriceReaderINT[0]} AND {PriceReaderINT[1]} ORDER BY PRICE DESC;";
-                        reader = sql_cmd.ExecuteReader();
-                        while (reader.Read())
-                        {
-                            IDs.Add(reader.GetInt32(0));
-                            CountID++;
-                        }
-
-                    }
-                    //0111
-                    else if (GPUind != "<не выбрано>" && TYPEind == "<не выбрано>" && CPUind != "<не выбрано>" && RAMind != "<не выбрано>")
-                    {
-                        sql_cmd.CommandText = "select id from PCdb where CPU='" + metroComboBoxCPUsort.Text + "' and GPU='" + metroComboBoxGPUsort.Text + "' and RAM='" + RAMind + $"' and PRICE BETWEEN {PriceReaderINT[0]} AND {PriceReaderINT[1]} ORDER BY PRICE DESC;";
-                        reader = sql_cmd.ExecuteReader();
-                        while (reader.Read())
-                        {
-                            IDs.Add(reader.GetInt32(0));
-                            CountID++;
-                        }
-
-                    }
-                    //1000
-                    else if (GPUind == "<не выбрано>" && TYPEind != "<не выбрано>" && CPUind == "<не выбрано>" && RAMind == "<не выбрано>")
-                    {
-                        sql_cmd.CommandText = "select id from PCdb where typeOfPC='" + metroComboBoxTYPEofPC.Text + $"' and PRICE BETWEEN {PriceReaderINT[0]} AND {PriceReaderINT[1]} ORDER BY PRICE DESC;";
-                        reader = sql_cmd.ExecuteReader();
-                        while (reader.Read())
-                        {
-                            IDs.Add(reader.GetInt32(0));
-                            CountID++;
-                        }
-
-                    }
-                    //1001
-                    else if (GPUind == "<не выбрано>" && TYPEind != "<не выбрано>" && CPUind == "<не выбрано>" && RAMind != "<не выбрано>")
-                    {
-                        sql_cmd.CommandText = "select id from PCdb where typeOfPC='" + metroComboBoxTYPEofPC.Text + "'and RAM='" + RAMind + $"' and PRICE BETWEEN {PriceReaderINT[0]} AND {PriceReaderINT[1]} ORDER BY PRICE DESC;";
-                        reader = sql_cmd.ExecuteReader();
-                        while (reader.Read())
-                        {
-                            IDs.Add(reader.GetInt32(0));
-                            CountID++;
-                        }
-
-                    }
-                    //1010
-                    else if (GPUind != "<не выбрано>" && TYPEind != "<не выбрано>" && CPUind == "<не выбрано>" && RAMind == "<не выбрано>")
-                    {
-                        sql_cmd.CommandText = "select id from PCdb where typeOfPC='" + metroComboBoxTYPEofPC.Text + "' and GPU='" + metroComboBoxGPUsort.Text + $"' and PRICE BETWEEN {PriceReaderINT[0]} AND {PriceReaderINT[1]} ORDER BY PRICE DESC;";
-                        reader = sql_cmd.ExecuteReader();
-                        while (reader.Read())
-                        {
-                            IDs.Add(reader.GetInt32(0));
-                            CountID++;
-                        }
-
-                    }
-                    //1011
-                    else if (GPUind != "<не выбрано>" && TYPEind != "<не выбрано>" && CPUind == "<не выбрано>" && RAMind != "<не выбрано>")
-                    {
-                        sql_cmd.CommandText = "select id from PCdb where typeOfPC='" + metroComboBoxTYPEofPC.Text + "' and GPU='" + metroComboBoxGPUsort.Text + "' and RAM='" + RAMind + $"' and PRICE BETWEEN {PriceReaderINT[0]} AND {PriceReaderINT[1]} ORDER BY PRICE DESC;";
-                        reader = sql_cmd.ExecuteReader();
-                        while (reader.Read())
-                        {
-                            IDs.Add(reader.GetInt32(0));
-                            CountID++;
-                        }
-
-                    }
-                    //1100
-                    else if (GPUind == "<не выбрано>" && TYPEind != "<не выбрано>" && CPUind != "<не выбрано>" && RAMind == "<не выбрано>")
-                    {
-                        sql_cmd.CommandText = "select id from PCdb where typeOfPC='" + metroComboBoxTYPEofPC.Text + "' and CPU='" + metroComboBoxCPUsort.Text + $"' and PRICE BETWEEN {PriceReaderINT[0]} AND {PriceReaderINT[1]} ORDER BY PRICE DESC;";
-                        reader = sql_cmd.ExecuteReader();
-                        while (reader.Read())
-                        {
-                            IDs.Add(reader.GetInt32(0));
-                            CountID++;
-                        }
-
-                    }
-                    //1101
-                    else if (GPUind == "<не выбрано>" && TYPEind != "<не выбрано>" && CPUind != "<не выбрано>" && RAMind != "<не выбрано>")
-                    {
-                        sql_cmd.CommandText = "select id from PCdb where typeOfPC='" + metroComboBoxTYPEofPC.Text + "' and CPU='" + metroComboBoxCPUsort.Text + "' and RAM='" + RAMind + $"' and PRICE BETWEEN {PriceReaderINT[0]} AND {PriceReaderINT[1]} ORDER BY PRICE DESC;";
-                        reader = sql_cmd.ExecuteReader();
-                        while (reader.Read())
-                        {
-                            IDs.Add(reader.GetInt32(0));
-                            CountID++;
-                        }
-
-                    }
-                    //1110
-                    else if (GPUind != "<не выбрано>" && TYPEind != "<не выбрано>" && CPUind != "<не выбрано>" && RAMind == "<не выбрано>")
-                    {
-                        sql_cmd.CommandText = "select id from PCdb where typeOfPC='" + metroComboBoxTYPEofPC.Text + "' and GPU='" + metroComboBoxGPUsort.Text + "' and CPU='" + metroComboBoxCPUsort.Text + $"' and PRICE BETWEEN {PriceReaderINT[0]} AND {PriceReaderINT[1]} ORDER BY PRICE DESC;";
-                        reader = sql_cmd.ExecuteReader();
-                        while (reader.Read())
-                        {
-                            IDs.Add(reader.GetInt32(0));
-                            CountID++;
-                        }
-
-                    }
-                    //1111
-                    else if (GPUind != "<не выбрано>" && TYPEind != "<не выбрано>" && CPUind != "<не выбрано>" && RAMind != "<не выбрано>")
-                    {
-                        sql_cmd.CommandText = "select id from PCdb where typeOfPC='" + metroComboBoxTYPEofPC.Text + "' and GPU='" + metroComboBoxGPUsort.Text + "' and CPU='" + metroComboBoxCPUsort.Text + "' and RAM='" + RAMind + $"' and PRICE BETWEEN {PriceReaderINT[0]} AND {PriceReaderINT[1]} ORDER BY PRICE DESC;";
-                        reader = sql_cmd.ExecuteReader();
-                        while (reader.Read())
-                        {
-                            IDs.Add(reader.GetInt32(0));
-                            CountID++;
-                        }
-
-                    }
-                    #endregion
-                    if (CountID == 0)
-                    {
-                        xuiCircleProgressBar1.Visible = false;
-                        MetroMessageBox.Show(this, "NO PC MATCHES", "ERROR!", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                        return;
-                    }
-                    else
-                    {
-                        CreateObject(IDs);
                     }
                 }
             }
         }
+        #endregion
 
         private void button_backToLoginForm_Click(object sender, EventArgs e)
         {
@@ -878,11 +412,6 @@ namespace TRPO_Project
                 //formLogIn logIn = new formLogIn();
                 //logIn.Show();
             }
-        }
-
-        private void formUSER_Load(object sender, EventArgs e)
-        {
-
         }
 
         private void bunifuImageButtonHIDE_Click(object sender, EventArgs e)

@@ -196,6 +196,7 @@
     <Compile Include="formUSER.Designer.cs">
       <DependentUpon>formUSER.cs</DependentUpon>
     </Compile>
+    <Compile Include="PC.cs" />
     <Compile Include="PCinfo.cs">
       <SubType>UserControl</SubType>
     </Compile>
