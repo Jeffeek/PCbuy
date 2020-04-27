@@ -24,12 +24,13 @@ namespace TRPO_Project
         #region variables&collections
         private SQLiteConnection sql_con; // connection
         private SQLiteCommand sql_cmd;
-        private static bool isMINUS = true;
         private static List<PCinfo> OBJects = new List<PCinfo>(); // объекты главной формы
         private static List<PC> AllPCList = new List<PC>();
         public static List<int> BINid = new List<int>(); //лист корзины юзера
         private int userID;
         #endregion
+
+        #region Constructor
         public formADMIN(int id)
         {
             InitializeComponent();
@@ -44,6 +45,8 @@ namespace TRPO_Project
             metroComboBoxRAM.SelectedIndex = 0;
 
         }
+
+        #endregion
 
         #region FillingOBJECTS
         private void FillPC()
@@ -188,17 +191,6 @@ namespace TRPO_Project
         #endregion      
 
         #region PriceBOXfunctions
-        private void textBox_PRICE_OnValueChanged(object sender, EventArgs e)
-        {
-            if (textBox_PRICE.Text.Contains("-"))
-            {
-                isMINUS = true;
-            }
-            else
-            {
-                isMINUS = false;
-            }
-        }
 
         private void textBox_PRICE_Leave(object sender, EventArgs e)
         {
@@ -223,7 +215,6 @@ namespace TRPO_Project
 
         private void textBox_PRICE_Enter(object sender, EventArgs e)
         {
-            isMINUS = true;
             textBox_PRICE.Text = string.Empty;
             textBox_PRICE.Text += ("$");
             textBox_PRICE.ForeColor = Color.Black;
@@ -233,7 +224,7 @@ namespace TRPO_Project
         {
             if (!Char.IsNumber(e.KeyChar) && !Char.IsControl(e.KeyChar))
             {
-                if (e.KeyChar == 45 && !isMINUS)
+                if (e.KeyChar == 45 && !textBox_PRICE.Text.Contains("-"))
                 {
                     e.Handled = false;
                 }
@@ -411,6 +402,5 @@ namespace TRPO_Project
             }
         }
         #endregion
-
     }
 }

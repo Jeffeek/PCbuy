@@ -67,7 +67,7 @@
             this.xuiCircleProgressBar1.FilledThickness = 40;
             this.xuiCircleProgressBar1.Font = new System.Drawing.Font("Modern No. 20", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.xuiCircleProgressBar1.IsAnimated = false;
-            this.xuiCircleProgressBar1.Location = new System.Drawing.Point(566, 240);
+            this.xuiCircleProgressBar1.Location = new System.Drawing.Point(540, 240);
             this.xuiCircleProgressBar1.Name = "xuiCircleProgressBar1";
             this.xuiCircleProgressBar1.Percentage = 0;
             this.xuiCircleProgressBar1.RightToLeft = System.Windows.Forms.RightToLeft.No;
@@ -187,7 +187,6 @@
             this.textBox_PRICE.TabStop = false;
             this.textBox_PRICE.Text = "$0-9999";
             this.textBox_PRICE.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
-            this.textBox_PRICE.OnValueChanged += new System.EventHandler(this.textBox_PRICE_OnValueChanged);
             this.textBox_PRICE.Enter += new System.EventHandler(this.textBox_PRICE_Enter);
             this.textBox_PRICE.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textBox_PRICE_KeyPress);
             this.textBox_PRICE.Leave += new System.EventHandler(this.textBox_PRICE_Leave);
@@ -289,14 +288,13 @@
             this.metroComboBoxCPUsort.UseCustomBackColor = true;
             this.metroComboBoxCPUsort.UseCustomForeColor = true;
             this.metroComboBoxCPUsort.UseSelectable = true;
-            this.metroComboBoxCPUsort.UseStyleColors = true;
             // 
             // metroComboBoxTYPEofPC
             // 
             this.metroComboBoxTYPEofPC.BackColor = System.Drawing.Color.LightCyan;
             this.metroComboBoxTYPEofPC.Cursor = System.Windows.Forms.Cursors.Hand;
             this.metroComboBoxTYPEofPC.DropDownWidth = 140;
-            this.metroComboBoxTYPEofPC.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.metroComboBoxTYPEofPC.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.metroComboBoxTYPEofPC.FontSize = MetroFramework.MetroComboBoxSize.Small;
             this.metroComboBoxTYPEofPC.ForeColor = System.Drawing.Color.Aquamarine;
             this.metroComboBoxTYPEofPC.FormattingEnabled = true;
@@ -312,7 +310,6 @@
             this.metroComboBoxTYPEofPC.UseCustomBackColor = true;
             this.metroComboBoxTYPEofPC.UseCustomForeColor = true;
             this.metroComboBoxTYPEofPC.UseSelectable = true;
-            this.metroComboBoxTYPEofPC.UseStyleColors = true;
             // 
             // labelTYPEofPC
             // 
@@ -330,6 +327,7 @@
             this.metroComboBoxGPUsort.BackColor = System.Drawing.Color.Azure;
             this.metroComboBoxGPUsort.Cursor = System.Windows.Forms.Cursors.Hand;
             this.metroComboBoxGPUsort.DropDownWidth = 140;
+            this.metroComboBoxGPUsort.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.metroComboBoxGPUsort.FontSize = MetroFramework.MetroComboBoxSize.Small;
             this.metroComboBoxGPUsort.ForeColor = System.Drawing.Color.SkyBlue;
             this.metroComboBoxGPUsort.FormattingEnabled = true;
@@ -345,13 +343,13 @@
             this.metroComboBoxGPUsort.UseCustomBackColor = true;
             this.metroComboBoxGPUsort.UseCustomForeColor = true;
             this.metroComboBoxGPUsort.UseSelectable = true;
-            this.metroComboBoxGPUsort.UseStyleColors = true;
             // 
             // metroComboBoxRAM
             // 
             this.metroComboBoxRAM.BackColor = System.Drawing.Color.LightCyan;
             this.metroComboBoxRAM.Cursor = System.Windows.Forms.Cursors.Hand;
             this.metroComboBoxRAM.DropDownWidth = 140;
+            this.metroComboBoxRAM.FlatStyle = System.Windows.Forms.FlatStyle.System;
             this.metroComboBoxRAM.FontSize = MetroFramework.MetroComboBoxSize.Small;
             this.metroComboBoxRAM.FontWeight = MetroFramework.MetroComboBoxWeight.Light;
             this.metroComboBoxRAM.ForeColor = System.Drawing.Color.SkyBlue;
@@ -368,7 +366,6 @@
             this.metroComboBoxRAM.UseCustomBackColor = true;
             this.metroComboBoxRAM.UseCustomForeColor = true;
             this.metroComboBoxRAM.UseSelectable = true;
-            this.metroComboBoxRAM.UseStyleColors = true;
             // 
             // bunifuImageButtonEXIT
             // 
@@ -397,8 +394,8 @@
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
             this.ClientSize = new System.Drawing.Size(796, 470);
             this.ControlBox = false;
-            this.Controls.Add(this.groupBoxHEAD);
             this.Controls.Add(this.xuiCircleProgressBar1);
+            this.Controls.Add(this.groupBoxHEAD);
             this.Controls.Add(this.bunifuImageButtonEXIT);
             this.DoubleBuffered = false;
             this.Font = new System.Drawing.Font("Unispace", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));

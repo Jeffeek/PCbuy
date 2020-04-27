@@ -23,7 +23,6 @@ namespace TRPO_Project
         #region variables&collections
         private SQLiteConnection sql_con; // connection
         private SQLiteCommand sql_cmd;
-        private static bool isMINUS = true;
         private static List<PCinfo> OBJects = new List<PCinfo>(); // объекты главной формы
         private static List<PC> AllPCList = new List<PC>();
         public static List<int> BINid = new List<int>(); //лист корзины юзера
@@ -47,13 +46,13 @@ namespace TRPO_Project
         #endregion
 
         #region PictureBOXclick
-        private void pictureBoxProductBIN1_Click(object sender, EventArgs e)
+        private void pictureBoxProductBIN_Click(object sender, EventArgs e)
         {
             Form BIN = new BIN(false, userID);           
             BIN.ShowDialog(this);
         }
 
-        private void pictureBoxProfile1_Click(object sender, EventArgs e)
+        private void pictureBoxProfile_Click(object sender, EventArgs e)
         {
             formProfile FP = new formProfile(this, userID);
             FP.ShowDialog(this);
@@ -61,27 +60,7 @@ namespace TRPO_Project
 
         #endregion
 
-        #region buttonsClick
-        private void bunifuImageButtonEXIT_Click(object sender, EventArgs e)
-        {     
-            Application.Exit();
-        }
-
-        #endregion
-
         #region PriceBOXfunctions
-
-        private void textBox_PRICE_OnValueChanged(object sender, EventArgs e)
-        {
-            if (textBox_PRICE.Text.Contains("-"))
-            {
-                isMINUS = true;
-            }
-            else
-            {
-                isMINUS = false;
-            }
-        }
 
         private void textBox_PRICE_Leave(object sender, EventArgs e)
         {
@@ -108,7 +87,7 @@ namespace TRPO_Project
         {
             if (!Char.IsNumber(e.KeyChar) && !Char.IsControl(e.KeyChar))
             {
-                if (e.KeyChar == 45 && !isMINUS)
+                if (e.KeyChar == 45 && !textBox_PRICE.Text.Contains("-"))
                 {
                     e.Handled = false;
                 }
@@ -121,7 +100,6 @@ namespace TRPO_Project
 
         private void textBox_PRICE_Enter(object sender, EventArgs e)
         {
-            isMINUS = true;
             textBox_PRICE.Text = string.Empty;
             textBox_PRICE.Text += ("$");
             textBox_PRICE.ForeColor = Color.Black;
@@ -364,15 +342,15 @@ namespace TRPO_Project
                 {
                     using (FileStream fs = new FileStream(sql_cmd.ExecuteScalar().ToString(), FileMode.Open))
                     {
-                        pictureBoxProfile1.Image = Image.FromStream(fs);
+                        pictureBoxProfile.Image = Image.FromStream(fs);
                     }
                 }
             }
         }
         public void SetNewProfilePicture(Image IMG)
         {
-            pictureBoxProfile1.Image = IMG;
-            pictureBoxProfile1.Update();           
+            pictureBoxProfile.Image = IMG;
+            pictureBoxProfile.Update();           
         }
         #endregion
 
@@ -402,6 +380,7 @@ namespace TRPO_Project
         }
         #endregion
 
+        #region ControlButtons
         private void button_backToLoginForm_Click(object sender, EventArgs e)
         {
             var result = MetroMessageBox.Show(this, "ARE YOU SURE THAT YOU WANT TO EXIT?", "EXIT", MessageBoxButtons.YesNo, MessageBoxIcon.Exclamation, MessageBoxDefaultButton.Button1);
@@ -418,5 +397,12 @@ namespace TRPO_Project
         {
             this.WindowState = FormWindowState.Minimized;
         }
+
+        private void bunifuImageButtonEXIT_Click(object sender, EventArgs e)
+        {
+            Application.Exit();
+        }
+
+        #endregion
     }
 }
