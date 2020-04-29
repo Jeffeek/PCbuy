@@ -24,8 +24,8 @@ namespace TRPO_Project
         #region variables&collections
         private SQLiteConnection sql_con; // connection
         private SQLiteCommand sql_cmd;
-        private static List<PCinfo> OBJects = new List<PCinfo>(); // объекты главной формы
-        private static List<PC> AllPCList = new List<PC>();
+        private List<PCinfo> OBJects = new List<PCinfo>(); // объекты главной формы
+        private List<PC> AllPCList = new List<PC>();
         public static List<int> BINid = new List<int>(); //лист корзины юзера
         private int userID;
         #endregion
@@ -51,7 +51,7 @@ namespace TRPO_Project
         #region FillingOBJECTS
         private void FillPC()
         {
-            using (sql_con = new SQLiteConnection("Data Source=TRPO.db"))
+            using (sql_con = new SQLiteConnection($"Data Source={Directory.GetCurrentDirectory()}\\TRPO.db"))
             {
                 sql_con.Open();
                 using (sql_cmd = new SQLiteCommand("SELECT * FROM PCdb",sql_con))
@@ -165,7 +165,7 @@ namespace TRPO_Project
                 }
                 OBJects.Clear();
             }
-            int Y = 110;
+            int Y = 88;
             this.Refresh();
             xuiCircleProgressBar1.percentage = 0;
             xuiCircleProgressBar1.Enabled = true;
@@ -182,7 +182,7 @@ namespace TRPO_Project
                 PCinfo OBJ = new PCinfo(pc.TYPE, pc.ID, pc.CPU, pc.GPU, pc.RAM, pc.COST, pc.IMG) { isAdmin = true };
                 OBJects.Add(OBJ);
                 OBJ.Location = new Point(0, Y);
-                Y += 270;
+                Y += 230;
                 this.Controls.Add(OBJ);
             }
             xuiCircleProgressBar1.Enabled = false;
@@ -239,7 +239,7 @@ namespace TRPO_Project
         #region ComboBOXfill&textCHANGES
         private void GetInfoIntoComboBoxes()
         {
-            using (sql_con = new SQLiteConnection("Data Source=TRPO.db"))
+            using (sql_con = new SQLiteConnection($"Data Source={Directory.GetCurrentDirectory()}\\TRPO.db"))
             {
                 sql_con.Open();
                 using (sql_cmd = new SQLiteCommand("SELECT DISTINCT CPU from PCdb", sql_con))
@@ -364,7 +364,7 @@ namespace TRPO_Project
         #region SetPicture
         public void SetPictureProfile()
         {
-            using (sql_con = new SQLiteConnection("Data Source=TRPO.db"))
+            using (sql_con = new SQLiteConnection($"Data Source={Directory.GetCurrentDirectory()}\\TRPO.db"))
             {
                 sql_con.Open();
                 using (sql_cmd = new SQLiteCommand($"SELECT ProfilePicture FROM LOGin WHERE id={userID}", sql_con))

@@ -73,7 +73,7 @@
             // 
             // pictureBoxPROFILE
             // 
-            this.pictureBoxPROFILE.ErrorImage = global::TRPO_Project.Properties.Resources.profile_png_1;
+            this.pictureBoxPROFILE.ErrorImage = global::TRPO_Project.Properties.Resources.profile_default;
             this.pictureBoxPROFILE.Image = ((System.Drawing.Image)(resources.GetObject("pictureBoxPROFILE.Image")));
             this.pictureBoxPROFILE.Location = new System.Drawing.Point(98, 15);
             this.pictureBoxPROFILE.Name = "pictureBoxPROFILE";
@@ -100,9 +100,9 @@
             // bunifuImageButtonEXIT
             // 
             this.bunifuImageButtonEXIT.BackColor = System.Drawing.Color.DarkRed;
-            this.bunifuImageButtonEXIT.Image = global::TRPO_Project.Properties.Resources.unnamed;
+            this.bunifuImageButtonEXIT.Image = global::TRPO_Project.Properties.Resources.X;
             this.bunifuImageButtonEXIT.ImageActive = null;
-            this.bunifuImageButtonEXIT.InitialImage = global::TRPO_Project.Properties.Resources.unnamed;
+            this.bunifuImageButtonEXIT.InitialImage = global::TRPO_Project.Properties.Resources.X;
             this.bunifuImageButtonEXIT.Location = new System.Drawing.Point(292, 8);
             this.bunifuImageButtonEXIT.Name = "bunifuImageButtonEXIT";
             this.bunifuImageButtonEXIT.Size = new System.Drawing.Size(18, 20);

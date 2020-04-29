@@ -159,7 +159,7 @@
             this.Controls.Add(this.buttonBUY);
             this.Controls.Add(this.PCimg);
             this.Name = "PCinfo";
-            this.Size = new System.Drawing.Size(782, 266);
+            this.Size = new System.Drawing.Size(782, 230);
             this.Load += new System.EventHandler(this.PCinfo_Load);
             ((System.ComponentModel.ISupportInitialize)(this.buttonBUY)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.PCimg)).EndInit();

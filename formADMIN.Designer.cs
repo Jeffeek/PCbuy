@@ -50,6 +50,7 @@
             this.metroComboBoxGPUsort = new MetroFramework.Controls.MetroComboBox();
             this.metroComboBoxRAM = new MetroFramework.Controls.MetroComboBox();
             this.bunifuImageButtonEXIT = new Bunifu.Framework.UI.BunifuImageButton();
+            this.panel1 = new System.Windows.Forms.Panel();
             ((System.ComponentModel.ISupportInitialize)(this.button_backToLoginForm)).BeginInit();
             this.groupBoxHEAD.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.bunifuImageButtonSORT)).BeginInit();
@@ -232,7 +233,7 @@
             // 
             this.pictureBoxProfile1.BackColor = System.Drawing.Color.Transparent;
             this.pictureBoxProfile1.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.pictureBoxProfile1.Image = global::TRPO_Project.Properties.Resources.profile_png_1;
+            this.pictureBoxProfile1.Image = global::TRPO_Project.Properties.Resources.profile_default;
             this.pictureBoxProfile1.ImageActive = null;
             this.pictureBoxProfile1.Location = new System.Drawing.Point(654, 11);
             this.pictureBoxProfile1.Name = "pictureBoxProfile1";
@@ -258,7 +259,7 @@
             // 
             this.pictureBoxProductBIN1.BackColor = System.Drawing.Color.Transparent;
             this.pictureBoxProductBIN1.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.pictureBoxProductBIN1.Image = global::TRPO_Project.Properties.Resources.shopping_cart_PNG38;
+            this.pictureBoxProductBIN1.Image = global::TRPO_Project.Properties.Resources.shopping_cart;
             this.pictureBoxProductBIN1.ImageActive = null;
             this.pictureBoxProductBIN1.Location = new System.Drawing.Point(598, 11);
             this.pictureBoxProductBIN1.Name = "pictureBoxProductBIN1";
@@ -369,12 +370,12 @@
             // 
             // bunifuImageButtonEXIT
             // 
-            this.bunifuImageButtonEXIT.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.bunifuImageButtonEXIT.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.bunifuImageButtonEXIT.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
             this.bunifuImageButtonEXIT.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.bunifuImageButtonEXIT.Image = global::TRPO_Project.Properties.Resources.unnamed;
+            this.bunifuImageButtonEXIT.Image = global::TRPO_Project.Properties.Resources.X;
             this.bunifuImageButtonEXIT.ImageActive = null;
-            this.bunifuImageButtonEXIT.InitialImage = global::TRPO_Project.Properties.Resources.unnamed;
+            this.bunifuImageButtonEXIT.InitialImage = global::TRPO_Project.Properties.Resources.X;
             this.bunifuImageButtonEXIT.Location = new System.Drawing.Point(768, 8);
             this.bunifuImageButtonEXIT.Name = "bunifuImageButtonEXIT";
             this.bunifuImageButtonEXIT.Size = new System.Drawing.Size(20, 20);
@@ -383,6 +384,14 @@
             this.bunifuImageButtonEXIT.TabStop = false;
             this.bunifuImageButtonEXIT.Zoom = 10;
             this.bunifuImageButtonEXIT.Click += new System.EventHandler(this.bunifuImageButtonEXIT_Click);
+            // 
+            // panel1
+            // 
+            this.panel1.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.panel1.Location = new System.Drawing.Point(0, 5);
+            this.panel1.Name = "panel1";
+            this.panel1.Size = new System.Drawing.Size(796, 28);
+            this.panel1.TabIndex = 16;
             // 
             // formADMIN
             // 
@@ -394,9 +403,10 @@
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
             this.ClientSize = new System.Drawing.Size(796, 470);
             this.ControlBox = false;
+            this.Controls.Add(this.bunifuImageButtonEXIT);
+            this.Controls.Add(this.panel1);
             this.Controls.Add(this.xuiCircleProgressBar1);
             this.Controls.Add(this.groupBoxHEAD);
-            this.Controls.Add(this.bunifuImageButtonEXIT);
             this.DoubleBuffered = false;
             this.Font = new System.Drawing.Font("Unispace", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.ForeColor = System.Drawing.Color.Cyan;
@@ -452,5 +462,6 @@
         private Bunifu.Framework.UI.BunifuImageButton bunifuImageButtonSORT;
         private Bunifu.Framework.UI.BunifuImageButton button_backToLoginForm;
         protected System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Panel panel1;
     }
 }

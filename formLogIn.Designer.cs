@@ -175,7 +175,7 @@ namespace TRPO_Project
             // bunifuImageButtonBACK
             // 
             this.bunifuImageButtonBACK.BackColor = System.Drawing.Color.Transparent;
-            this.bunifuImageButtonBACK.Image = global::TRPO_Project.Properties.Resources.back;
+            this.bunifuImageButtonBACK.Image = ((System.Drawing.Image)(resources.GetObject("bunifuImageButtonBACK.Image")));
             this.bunifuImageButtonBACK.ImageActive = null;
             this.bunifuImageButtonBACK.Location = new System.Drawing.Point(199, 203);
             this.bunifuImageButtonBACK.Name = "bunifuImageButtonBACK";
@@ -188,7 +188,7 @@ namespace TRPO_Project
             // bunifuImageButtonAPPLYforgotPassword
             // 
             this.bunifuImageButtonAPPLYforgotPassword.BackColor = System.Drawing.Color.SlateGray;
-            this.bunifuImageButtonAPPLYforgotPassword.Image = global::TRPO_Project.Properties.Resources.X;
+            this.bunifuImageButtonAPPLYforgotPassword.Image = ((System.Drawing.Image)(resources.GetObject("bunifuImageButtonAPPLYforgotPassword.Image")));
             this.bunifuImageButtonAPPLYforgotPassword.ImageActive = null;
             this.bunifuImageButtonAPPLYforgotPassword.ImeMode = System.Windows.Forms.ImeMode.NoControl;
             this.bunifuImageButtonAPPLYforgotPassword.Location = new System.Drawing.Point(23, 136);
@@ -285,7 +285,7 @@ namespace TRPO_Project
             // ButtonREGISTER
             // 
             this.ButtonREGISTER.BackColor = System.Drawing.Color.SlateGray;
-            this.ButtonREGISTER.Image = global::TRPO_Project.Properties.Resources.X;
+            this.ButtonREGISTER.Image = ((System.Drawing.Image)(resources.GetObject("ButtonREGISTER.Image")));
             this.ButtonREGISTER.ImageActive = null;
             this.ButtonREGISTER.Location = new System.Drawing.Point(101, 190);
             this.ButtonREGISTER.Name = "ButtonREGISTER";
@@ -379,7 +379,7 @@ namespace TRPO_Project
             // bunifuImageButtonBACK_Reg
             // 
             this.bunifuImageButtonBACK_Reg.BackColor = System.Drawing.Color.Transparent;
-            this.bunifuImageButtonBACK_Reg.Image = global::TRPO_Project.Properties.Resources.back;
+            this.bunifuImageButtonBACK_Reg.Image = ((System.Drawing.Image)(resources.GetObject("bunifuImageButtonBACK_Reg.Image")));
             this.bunifuImageButtonBACK_Reg.ImageActive = null;
             this.bunifuImageButtonBACK_Reg.Location = new System.Drawing.Point(304, 206);
             this.bunifuImageButtonBACK_Reg.Name = "bunifuImageButtonBACK_Reg";
@@ -392,9 +392,8 @@ namespace TRPO_Project
             // bunifuImageButtonEXIT
             // 
             this.bunifuImageButtonEXIT.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            this.bunifuImageButtonEXIT.Image = global::TRPO_Project.Properties.Resources.unnamed;
+            this.bunifuImageButtonEXIT.Image = global::TRPO_Project.Properties.Resources.X;
             this.bunifuImageButtonEXIT.ImageActive = null;
-            this.bunifuImageButtonEXIT.InitialImage = global::TRPO_Project.Properties.Resources.unnamed;
             this.bunifuImageButtonEXIT.Location = new System.Drawing.Point(370, 8);
             this.bunifuImageButtonEXIT.Name = "bunifuImageButtonEXIT";
             this.bunifuImageButtonEXIT.Size = new System.Drawing.Size(20, 20);
@@ -410,7 +409,7 @@ namespace TRPO_Project
             | System.Windows.Forms.AnchorStyles.Right)));
             this.ImageButtonAPPLYlogin.BackColor = System.Drawing.Color.Gray;
             this.ImageButtonAPPLYlogin.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.ImageButtonAPPLYlogin.Image = global::TRPO_Project.Properties.Resources.X;
+            this.ImageButtonAPPLYlogin.Image = ((System.Drawing.Image)(resources.GetObject("ImageButtonAPPLYlogin.Image")));
             this.ImageButtonAPPLYlogin.ImageActive = null;
             this.ImageButtonAPPLYlogin.Location = new System.Drawing.Point(52, 132);
             this.ImageButtonAPPLYlogin.Name = "ImageButtonAPPLYlogin";

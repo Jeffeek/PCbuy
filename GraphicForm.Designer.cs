@@ -73,9 +73,9 @@
             // bunifuImageButtonEXIT
             // 
             this.bunifuImageButtonEXIT.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            this.bunifuImageButtonEXIT.Image = global::TRPO_Project.Properties.Resources.unnamed;
+            this.bunifuImageButtonEXIT.Image = global::TRPO_Project.Properties.Resources.X;
             this.bunifuImageButtonEXIT.ImageActive = null;
-            this.bunifuImageButtonEXIT.InitialImage = global::TRPO_Project.Properties.Resources.unnamed;
+            this.bunifuImageButtonEXIT.InitialImage = global::TRPO_Project.Properties.Resources.X;
             this.bunifuImageButtonEXIT.Location = new System.Drawing.Point(756, 11);
             this.bunifuImageButtonEXIT.Name = "bunifuImageButtonEXIT";
             this.bunifuImageButtonEXIT.Size = new System.Drawing.Size(20, 20);
@@ -94,7 +94,7 @@
             this.bunifuImageButtonHIDE.BackColor = System.Drawing.Color.DeepSkyBlue;
             this.bunifuImageButtonHIDE.Image = global::TRPO_Project.Properties.Resources.minus;
             this.bunifuImageButtonHIDE.ImageActive = null;
-            this.bunifuImageButtonHIDE.InitialImage = global::TRPO_Project.Properties.Resources.unnamed;
+            this.bunifuImageButtonHIDE.InitialImage = global::TRPO_Project.Properties.Resources.X;
             this.bunifuImageButtonHIDE.Location = new System.Drawing.Point(730, 11);
             this.bunifuImageButtonHIDE.Name = "bunifuImageButtonHIDE";
             this.bunifuImageButtonHIDE.Size = new System.Drawing.Size(20, 20);

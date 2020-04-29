@@ -79,7 +79,7 @@ namespace TRPO_Project
             string NEWgpu = bunifuMetroTextboxADDprodGPU.Text;
             string NEWram = bunifuMetroTextboxADDprodRAM.Text;
             string NEWprice = bunifuMetroTextboxADDprodPRICE.Text;
-            using (sql_con = new SQLiteConnection("Data Source=TRPO.db"))
+            using (sql_con = new SQLiteConnection($"Data Source={Directory.GetCurrentDirectory()}\\TRPO.db"))
             {
                 sql_con.Open();
                 using (sql_cmd = new SQLiteCommand($@"INSERT INTO PCdb (typeOfPC, CPU, GPU, RAM, PRICE, IMAGEpc) VALUES('{NEWtypeOFpc}', '{NEWcpu}', '{NEWgpu}', {NEWram}, {NEWprice}, 'PCsIMAGES\id{LASTid}.png')", sql_con))
@@ -137,7 +137,7 @@ namespace TRPO_Project
             var result = openFileDialogADDproduct.ShowDialog();
             if (result == DialogResult.OK && bunifuMetroTextboxADDprodCPU.Text.Length > 0 && bunifuMetroTextboxADDprodGPU.Text.Length > 0 && bunifuMetroTextboxADDprodRAM.Text.Length > 0 && bunifuMetroTextboxADDprodType.Text.Length > 0)
             {
-                using (sql_con = new SQLiteConnection("Data Source=TRPO.db"))
+                using (sql_con = new SQLiteConnection($"Data Source={Directory.GetCurrentDirectory()}\\TRPO.db"))
                 {
                     sql_con.Open();
                     using (sql_cmd = new SQLiteCommand("SELECT MAX(id) FROM PCdb", sql_con))
@@ -171,7 +171,7 @@ namespace TRPO_Project
             {
                 bunifuCustomDataGridVIEWinfoAboutONEprod.Rows.Add();
             }
-            using (sql_con = new SQLiteConnection("Data Source=TRPO.db"))
+            using (sql_con = new SQLiteConnection($"Data Source={Directory.GetCurrentDirectory()}\\TRPO.db"))
             {
                 sql_con.Open();
                 SQLiteDataAdapter adapter = new SQLiteDataAdapter($"SELECT * FROM PCdb WHERE id={comboBoxSELECT_id_product.selectedValue}", sql_con);
@@ -189,7 +189,7 @@ namespace TRPO_Project
         {
             if (comboBoxCHANGEVALUE_byid_product.selectedValue != "IMAGE")
             {
-                using (sql_con = new SQLiteConnection("Data Source=TRPO.db"))
+                using (sql_con = new SQLiteConnection($"Data Source={Directory.GetCurrentDirectory()}\\TRPO.db"))
                 {
                     sql_con.Open();
                     using (sql_cmd = new SQLiteCommand($"UPDATE PCdb SET {comboBoxCHANGEVALUE_byid_product.selectedValue}='{gunaLineTextBoxNEWvalue.Text}' WHERE id={bunifuCustomDataGridVIEWinfoAboutONEprod[0, 0].Value}", sql_con))
@@ -319,7 +319,7 @@ namespace TRPO_Project
             var result = MetroMessageBox.Show(this, "DELETE?", "ARE YOU SURE THAT YOU WANT TO REMOVE THIS PRODUCT FROM DATABASE?", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
             if (result == DialogResult.Yes)
             {
-                using (sql_con = new SQLiteConnection("Data Source=PCdb.db"))
+                using (sql_con = new SQLiteConnection($"Data Source={Directory.GetCurrentDirectory()}\\TRPO.db"))
                 {
                     sql_con.Open();
                     using (sql_cmd = new SQLiteCommand($"DELETE FROM PCdb WHERE id={comboBoxSELECT_id_product.selectedValue}",sql_con))
@@ -334,7 +334,7 @@ namespace TRPO_Project
 
         private void AdminPanelForm_Load(object sender, EventArgs e)
         {
-            using (sql_con = new SQLiteConnection("Data Source=TRPO.db"))
+            using (sql_con = new SQLiteConnection($"Data Source={Directory.GetCurrentDirectory()}\\TRPO.db"))
             {
                 sql_con.Open();
                 FillUsersDataGrid();

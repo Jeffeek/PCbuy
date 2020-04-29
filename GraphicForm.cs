@@ -41,7 +41,7 @@ namespace TRPO_Project
 
         private void FillGraphic()
         {
-            using (SQLiteConnection sql_con = new SQLiteConnection("Data Source=TRPO.db"))
+            using (SQLiteConnection sql_con = new SQLiteConnection($"Data Source={Directory.GetCurrentDirectory()}TRPO.db"))
             {
                 sql_con.Open();
                 using (var sql_cmd = new SQLiteCommand("SELECT PRICEall FROM Orders",sql_con))

@@ -61,7 +61,7 @@ namespace TRPO_Project
         #region RequestForEmail&Pass
         private string takeAlogin()
         {
-            using (sql_con = new SQLiteConnection("Data Source=TRPO.db"))
+            using (sql_con = new SQLiteConnection($"Data Source={Directory.GetCurrentDirectory()}\\TRPO.db"))
             {
                 sql_con.Open();
                 using (sql_cmd = new SQLiteCommand($"SELECT email from LOGin where id={userID}", sql_con))
@@ -73,7 +73,7 @@ namespace TRPO_Project
         }
         private string takeApassword()
         {
-            using (sql_con = new SQLiteConnection("Data Source=TRPO.db"))
+            using (sql_con = new SQLiteConnection($"Data Source={Directory.GetCurrentDirectory()}\\TRPO.db"))
             {
                 sql_con.Open();
                 using (sql_cmd = new SQLiteCommand($"SELECT password from LOGin where id={userID}", sql_con))
@@ -85,7 +85,7 @@ namespace TRPO_Project
         }
         private void takeANimg()
         {
-            using (sql_con = new SQLiteConnection("Data Source=TRPO.db"))
+            using (sql_con = new SQLiteConnection($"Data Source={Directory.GetCurrentDirectory()}\\TRPO.db"))
             {
                 sql_con.Open();
                 using (sql_cmd = new SQLiteCommand($"SELECT ProfilePicture from LOGin where id={userID}", sql_con))
@@ -148,7 +148,7 @@ namespace TRPO_Project
                 result = MetroMessageBox.Show(this, "ARE YOU SURE SURE?! DON'T IGNORE IT", "DELETE PROFILE", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
                 if (result == DialogResult.Yes)
                 {
-                    using (sql_con = new SQLiteConnection("Data Source=TRPO.db"))
+                    using (sql_con = new SQLiteConnection($"Data Source={Directory.GetCurrentDirectory()}\\TRPO.db"))
                     {
                         sql_con.Open();
                         using (sql_cmd = new SQLiteCommand($"DELETE FROM LOGin WHERE id={userID}", sql_con))
@@ -247,7 +247,7 @@ namespace TRPO_Project
         private void bunifuImageButtonApplyNewPassword_Click(object sender, EventArgs e)
         {
             string oldPASS;
-            using (sql_con = new SQLiteConnection("Data Source=TRPO.db"))
+            using (sql_con = new SQLiteConnection($"Data Source={Directory.GetCurrentDirectory()}\\TRPO.db"))
             {
                 sql_con.Open();
                 using (sql_cmd = new SQLiteCommand($"SELECT password FROM LOGin WHERE id={userID}", sql_con))
@@ -271,7 +271,7 @@ namespace TRPO_Project
                 }
                 else
                 {
-                    using (sql_con = new SQLiteConnection("Data Source=TRPO.db"))
+                    using (sql_con = new SQLiteConnection($"Data Source={Directory.GetCurrentDirectory()}\\TRPO.db"))
                     {
                         sql_con.Open();
                         using (sql_cmd = new SQLiteCommand($"UPDATE LOGin SET password='{bunifuMetroTextboxNewPassFirst.Text}' WHERE id={userID}", sql_con))

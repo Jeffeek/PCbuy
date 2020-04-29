@@ -128,7 +128,7 @@ namespace TRPO_Project
         }
         private bool CheckFORadmin()
         {
-            using (sql_con = new SQLiteConnection("Data Source=TRPO.db"))
+            using (sql_con = new SQLiteConnection($"Data Source={Directory.GetCurrentDirectory()}\\TRPO.db"))
             {
                 using (sql_cmd = new SQLiteCommand($"SELECT isAdmin FROM LOGin WHERE email='{LOGIN}';", sql_con))
                 {
@@ -151,7 +151,7 @@ namespace TRPO_Project
         }
         private int GetUserID()
         {
-            using (sql_con = new SQLiteConnection("Data Source=TRPO.db"))
+            using (sql_con = new SQLiteConnection($"Data Source={Directory.GetCurrentDirectory()}\\TRPO.db"))
             {
                 sql_con.Open();
                 using (sql_cmd = new SQLiteCommand("SELECT id FROM LOGin WHERE email='" + LOGIN + "';", sql_con))
@@ -531,7 +531,7 @@ namespace TRPO_Project
             {
                 if (isRepeatPASScorrect && isPASScorrect && isLOGINcorrect)
                 {
-                    using (sql_con = new SQLiteConnection("Data Source=TRPO.db"))
+                    using (sql_con = new SQLiteConnection($"Data Source={Directory.GetCurrentDirectory()}\\TRPO.db"))
                     {
                         sql_con.Open();
                         sql_cmd = new SQLiteCommand("SELECT MAX(id) FROM LOGin", sql_con);

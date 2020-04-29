@@ -218,7 +218,7 @@
             this.bunifuImageButtonAPPLYnewPROD.ImageActive = null;
             this.bunifuImageButtonAPPLYnewPROD.Location = new System.Drawing.Point(788, 246);
             this.bunifuImageButtonAPPLYnewPROD.Name = "bunifuImageButtonAPPLYnewPROD";
-            this.bunifuImageButtonAPPLYnewPROD.Size = new System.Drawing.Size(116, 69);
+            this.bunifuImageButtonAPPLYnewPROD.Size = new System.Drawing.Size(116, 47);
             this.bunifuImageButtonAPPLYnewPROD.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.bunifuImageButtonAPPLYnewPROD.TabIndex = 27;
             this.bunifuImageButtonAPPLYnewPROD.TabStop = false;
@@ -758,9 +758,9 @@
             // bunifuImageButtonEXIT
             // 
             this.bunifuImageButtonEXIT.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            this.bunifuImageButtonEXIT.Image = global::TRPO_Project.Properties.Resources.unnamed;
+            this.bunifuImageButtonEXIT.Image = global::TRPO_Project.Properties.Resources.X;
             this.bunifuImageButtonEXIT.ImageActive = null;
-            this.bunifuImageButtonEXIT.InitialImage = global::TRPO_Project.Properties.Resources.unnamed;
+            this.bunifuImageButtonEXIT.InitialImage = global::TRPO_Project.Properties.Resources.X;
             this.bunifuImageButtonEXIT.Location = new System.Drawing.Point(899, 8);
             this.bunifuImageButtonEXIT.Name = "bunifuImageButtonEXIT";
             this.bunifuImageButtonEXIT.Size = new System.Drawing.Size(20, 20);
@@ -864,7 +864,7 @@
             this.metroTabControl1.Controls.Add(this.metroTabPage4);
             this.metroTabControl1.Location = new System.Drawing.Point(1, 38);
             this.metroTabControl1.Name = "metroTabControl1";
-            this.metroTabControl1.SelectedIndex = 3;
+            this.metroTabControl1.SelectedIndex = 4;
             this.metroTabControl1.Size = new System.Drawing.Size(925, 348);
             this.metroTabControl1.TabIndex = 4;
             this.metroTabControl1.Theme = MetroFramework.MetroThemeStyle.Dark;
@@ -1197,7 +1197,7 @@
             this.bunifuImageButtonHIDE.BackColor = System.Drawing.Color.DeepSkyBlue;
             this.bunifuImageButtonHIDE.Image = global::TRPO_Project.Properties.Resources.minus;
             this.bunifuImageButtonHIDE.ImageActive = null;
-            this.bunifuImageButtonHIDE.InitialImage = global::TRPO_Project.Properties.Resources.unnamed;
+            this.bunifuImageButtonHIDE.InitialImage = global::TRPO_Project.Properties.Resources.X;
             this.bunifuImageButtonHIDE.Location = new System.Drawing.Point(873, 8);
             this.bunifuImageButtonHIDE.Name = "bunifuImageButtonHIDE";
             this.bunifuImageButtonHIDE.Size = new System.Drawing.Size(20, 20);

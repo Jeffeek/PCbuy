@@ -15,6 +15,7 @@ using Bunifu.Framework.UI;
 using TRPO_Project.Properties;
 using Guna.UI.WinForms;
 using Guna.UI.Lib;
+using System.IO;
 
 namespace TRPO_Project
 {
@@ -52,7 +53,7 @@ namespace TRPO_Project
         {
             for (int i = 0; i < IDsOfPCinBIN.Count; i++)
             {
-                using (sql_con = new SQLiteConnection("Data Source=TRPO.db"))
+                using (sql_con = new SQLiteConnection($"Data Source={Directory.GetCurrentDirectory()}\\TRPO.db"))
                 {
                     sql_con.Open();
                     sql_cmd = new SQLiteCommand(sql_con);
@@ -163,7 +164,7 @@ namespace TRPO_Project
 
         private void imageButtonCONFIRMorder_Click(object sender, EventArgs e)
         {
-            using (sql_con = new SQLiteConnection("Data Source=TRPO.db"))
+            using (sql_con = new SQLiteConnection($"Data Source={Directory.GetCurrentDirectory()}\\TRPO.db"))
             {
                 sql_con.Open();
                 string IDs = string.Empty;
@@ -176,7 +177,7 @@ namespace TRPO_Project
                         SUMofOrder += Convert.ToInt32(sql_cmd.ExecuteScalar().ToString());
                     }
                 }
-                using (sql_con = new SQLiteConnection("Data Source=TRPO.db"))
+                using (sql_con = new SQLiteConnection($"Data Source={Directory.GetCurrentDirectory()}\\TRPO.db"))
                 {
                     sql_con.Open();
                     using (sql_cmd = new SQLiteCommand($"INSERT INTO Orders(userID, pcIDs, PRICEall, Date) VALUES({userID}, '{IDs}', {SUMofOrder},'{DateTime.Now}')", sql_con))
