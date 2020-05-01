@@ -59,6 +59,7 @@ namespace TRPO_Project
             this.ImageButtonAPPLYlogin = new Bunifu.Framework.UI.BunifuImageButton();
             this.textboxPASSlogin = new Bunifu.Framework.UI.BunifuTextbox();
             this.textboxEMAILlogin = new Bunifu.Framework.UI.BunifuTextbox();
+            this.panelHead = new System.Windows.Forms.Panel();
             this.xuiSlidingPanelForgotPass.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.bunifuImageButtonBACK)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.bunifuImageButtonAPPLYforgotPassword)).BeginInit();
@@ -74,7 +75,7 @@ namespace TRPO_Project
             this.metroLinkRegister.BackColor = System.Drawing.Color.Transparent;
             this.metroLinkRegister.Cursor = System.Windows.Forms.Cursors.Hand;
             this.metroLinkRegister.ForeColor = System.Drawing.Color.Aqua;
-            this.metroLinkRegister.Location = new System.Drawing.Point(266, 184);
+            this.metroLinkRegister.Location = new System.Drawing.Point(266, 209);
             this.metroLinkRegister.Name = "metroLinkRegister";
             this.metroLinkRegister.Size = new System.Drawing.Size(75, 23);
             this.metroLinkRegister.TabIndex = 8;
@@ -88,7 +89,7 @@ namespace TRPO_Project
             // 
             this.metroLinkForgotPassword.Cursor = System.Windows.Forms.Cursors.Hand;
             this.metroLinkForgotPassword.ForeColor = System.Drawing.Color.Aqua;
-            this.metroLinkForgotPassword.Location = new System.Drawing.Point(52, 184);
+            this.metroLinkForgotPassword.Location = new System.Drawing.Point(52, 209);
             this.metroLinkForgotPassword.Name = "metroLinkForgotPassword";
             this.metroLinkForgotPassword.Size = new System.Drawing.Size(106, 23);
             this.metroLinkForgotPassword.TabIndex = 9;
@@ -107,7 +108,7 @@ namespace TRPO_Project
             this.EMAILlabel.FontSize = MetroFramework.MetroLabelSize.Tall;
             this.EMAILlabel.FontWeight = MetroFramework.MetroLabelWeight.Bold;
             this.EMAILlabel.ForeColor = System.Drawing.Color.HotPink;
-            this.EMAILlabel.Location = new System.Drawing.Point(165, 11);
+            this.EMAILlabel.Location = new System.Drawing.Point(165, 36);
             this.EMAILlabel.Name = "EMAILlabel";
             this.EMAILlabel.Size = new System.Drawing.Size(67, 25);
             this.EMAILlabel.Style = MetroFramework.MetroColorStyle.Teal;
@@ -126,7 +127,7 @@ namespace TRPO_Project
             this.PASSlabel.FontSize = MetroFramework.MetroLabelSize.Tall;
             this.PASSlabel.FontWeight = MetroFramework.MetroLabelWeight.Bold;
             this.PASSlabel.ForeColor = System.Drawing.Color.HotPink;
-            this.PASSlabel.Location = new System.Drawing.Point(144, 70);
+            this.PASSlabel.Location = new System.Drawing.Point(144, 95);
             this.PASSlabel.Name = "PASSlabel";
             this.PASSlabel.Size = new System.Drawing.Size(112, 25);
             this.PASSlabel.TabIndex = 13;
@@ -411,7 +412,7 @@ namespace TRPO_Project
             this.ImageButtonAPPLYlogin.Cursor = System.Windows.Forms.Cursors.Hand;
             this.ImageButtonAPPLYlogin.Image = ((System.Drawing.Image)(resources.GetObject("ImageButtonAPPLYlogin.Image")));
             this.ImageButtonAPPLYlogin.ImageActive = null;
-            this.ImageButtonAPPLYlogin.Location = new System.Drawing.Point(52, 132);
+            this.ImageButtonAPPLYlogin.Location = new System.Drawing.Point(52, 157);
             this.ImageButtonAPPLYlogin.Name = "ImageButtonAPPLYlogin";
             this.ImageButtonAPPLYlogin.Size = new System.Drawing.Size(290, 52);
             this.ImageButtonAPPLYlogin.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
@@ -432,7 +433,7 @@ namespace TRPO_Project
             this.textboxPASSlogin.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.textboxPASSlogin.ForeColor = System.Drawing.Color.SpringGreen;
             this.textboxPASSlogin.Icon = ((System.Drawing.Image)(resources.GetObject("textboxPASSlogin.Icon")));
-            this.textboxPASSlogin.Location = new System.Drawing.Point(52, 98);
+            this.textboxPASSlogin.Location = new System.Drawing.Point(52, 123);
             this.textboxPASSlogin.Name = "textboxPASSlogin";
             this.textboxPASSlogin.Size = new System.Drawing.Size(290, 28);
             this.textboxPASSlogin.TabIndex = 11;
@@ -450,12 +451,21 @@ namespace TRPO_Project
             this.textboxEMAILlogin.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F);
             this.textboxEMAILlogin.ForeColor = System.Drawing.Color.SpringGreen;
             this.textboxEMAILlogin.Icon = ((System.Drawing.Image)(resources.GetObject("textboxEMAILlogin.Icon")));
-            this.textboxEMAILlogin.Location = new System.Drawing.Point(52, 39);
+            this.textboxEMAILlogin.Location = new System.Drawing.Point(52, 64);
             this.textboxEMAILlogin.Name = "textboxEMAILlogin";
             this.textboxEMAILlogin.Size = new System.Drawing.Size(290, 28);
             this.textboxEMAILlogin.TabIndex = 10;
             this.textboxEMAILlogin.text = "";
             this.textboxEMAILlogin.OnTextChange += new System.EventHandler(this.bunifuTextboxEMAIL_OnTextChange);
+            // 
+            // panelHead
+            // 
+            this.panelHead.Location = new System.Drawing.Point(0, 5);
+            this.panelHead.Name = "panelHead";
+            this.panelHead.Size = new System.Drawing.Size(394, 26);
+            this.panelHead.TabIndex = 25;
+            this.panelHead.MouseDown += new System.Windows.Forms.MouseEventHandler(this.panelHead_MouseDown);
+            this.panelHead.MouseMove += new System.Windows.Forms.MouseEventHandler(this.panelHead_MouseMove);
             // 
             // formLogIn
             // 
@@ -464,9 +474,10 @@ namespace TRPO_Project
             this.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.ClientSize = new System.Drawing.Size(394, 247);
             this.ControlBox = false;
+            this.Controls.Add(this.bunifuImageButtonEXIT);
+            this.Controls.Add(this.panelHead);
             this.Controls.Add(this.xuiSlidingPanelREGISTRATION);
             this.Controls.Add(this.xuiSlidingPanelForgotPass);
-            this.Controls.Add(this.bunifuImageButtonEXIT);
             this.Controls.Add(this.ImageButtonAPPLYlogin);
             this.Controls.Add(this.PASSlabel);
             this.Controls.Add(this.EMAILlabel);
@@ -527,6 +538,7 @@ namespace TRPO_Project
         private Guna.UI.WinForms.GunaLabel gunaLabel2;
         private Guna.UI.WinForms.GunaLabel gunaLabel4;
         private Bunifu.Framework.UI.BunifuCustomLabel bunifuCustomLabel1;
+        private System.Windows.Forms.Panel panelHead;
     }
 }
 

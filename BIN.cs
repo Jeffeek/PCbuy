@@ -25,7 +25,7 @@ namespace TRPO_Project
         private SQLiteCommand sql_cmd;
         private bool IsAdmin;
         private int userID;
-        private int CounterForDeleting;
+        //private int CounterForDeleting;
         private List<int> IDsOfPCinBIN = new List<int>();
 
         public BIN(bool isAdmin, int userID)

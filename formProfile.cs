@@ -29,8 +29,9 @@ namespace TRPO_Project
         private SQLiteConnection sql_con; // connection
         private SQLiteCommand sql_cmd;
         private bool isADMIN;
+        private Point lastPoint;
 
-        
+
         #endregion
 
         #region Constructor
@@ -286,6 +287,22 @@ namespace TRPO_Project
         }
         #endregion
 
+        #endregion
+
+        #region MovingForm
+        private void panelHead_MouseDown(object sender, MouseEventArgs e)
+        {
+            lastPoint = e.Location;
+        }
+
+        private void panelHead_MouseMove(object sender, MouseEventArgs e)
+        {
+            if (e.Button == MouseButtons.Left)
+            {
+                Left += e.X - lastPoint.X;
+                Top += e.Y - lastPoint.Y;
+            }
+        }
         #endregion
     }
 }

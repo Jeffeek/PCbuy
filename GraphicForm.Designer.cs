@@ -35,6 +35,7 @@
             this.bunifuImageButtonEXIT = new Bunifu.Framework.UI.BunifuImageButton();
             this.FormFadeTransition = new Bunifu.Framework.UI.BunifuFormFadeTransition(this.components);
             this.bunifuImageButtonHIDE = new Bunifu.Framework.UI.BunifuImageButton();
+            this.panelHead = new System.Windows.Forms.Panel();
             ((System.ComponentModel.ISupportInitialize)(this.bunifuImageButtonEXIT)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.bunifuImageButtonHIDE)).BeginInit();
             this.SuspendLayout();
@@ -57,14 +58,14 @@
             this.Graphic.GraphTitleColor = System.Drawing.Color.Black;
             this.Graphic.Items = ((System.Collections.Generic.List<int>)(resources.GetObject("Graphic.Items")));
             this.Graphic.LineColor = System.Drawing.Color.Orchid;
-            this.Graphic.Location = new System.Drawing.Point(0, 34);
+            this.Graphic.Location = new System.Drawing.Point(0, 37);
             this.Graphic.Name = "Graphic";
             this.Graphic.PointSize = 10;
             this.Graphic.ShowBorder = false;
             this.Graphic.ShowPoints = true;
             this.Graphic.ShowTitle = false;
             this.Graphic.ShowVerticalLines = true;
-            this.Graphic.Size = new System.Drawing.Size(780, 418);
+            this.Graphic.Size = new System.Drawing.Size(780, 415);
             this.Graphic.TabIndex = 0;
             this.Graphic.Text = "xuiLineGraph1";
             this.Graphic.TitleAlignment = System.Drawing.StringAlignment.Center;
@@ -72,6 +73,7 @@
             // 
             // bunifuImageButtonEXIT
             // 
+            this.bunifuImageButtonEXIT.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.bunifuImageButtonEXIT.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
             this.bunifuImageButtonEXIT.Image = global::TRPO_Project.Properties.Resources.X;
             this.bunifuImageButtonEXIT.ImageActive = null;
@@ -91,6 +93,7 @@
             // 
             // bunifuImageButtonHIDE
             // 
+            this.bunifuImageButtonHIDE.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.bunifuImageButtonHIDE.BackColor = System.Drawing.Color.DeepSkyBlue;
             this.bunifuImageButtonHIDE.Image = global::TRPO_Project.Properties.Resources.minus;
             this.bunifuImageButtonHIDE.ImageActive = null;
@@ -104,6 +107,16 @@
             this.bunifuImageButtonHIDE.Zoom = 10;
             this.bunifuImageButtonHIDE.Click += new System.EventHandler(this.bunifuImageButtonHIDE_Click);
             // 
+            // panelHead
+            // 
+            this.panelHead.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.panelHead.Location = new System.Drawing.Point(0, 5);
+            this.panelHead.Name = "panelHead";
+            this.panelHead.Size = new System.Drawing.Size(780, 32);
+            this.panelHead.TabIndex = 7;
+            this.panelHead.MouseDown += new System.Windows.Forms.MouseEventHandler(this.panelHead_MouseDown);
+            this.panelHead.MouseMove += new System.Windows.Forms.MouseEventHandler(this.panelHead_MouseMove);
+            // 
             // GraphicForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -112,6 +125,7 @@
             this.ControlBox = false;
             this.Controls.Add(this.bunifuImageButtonHIDE);
             this.Controls.Add(this.bunifuImageButtonEXIT);
+            this.Controls.Add(this.panelHead);
             this.Controls.Add(this.Graphic);
             this.MaximizeBox = false;
             this.MinimizeBox = false;
@@ -134,5 +148,6 @@
         protected Bunifu.Framework.UI.BunifuImageButton bunifuImageButtonEXIT;
         private Bunifu.Framework.UI.BunifuFormFadeTransition FormFadeTransition;
         protected Bunifu.Framework.UI.BunifuImageButton bunifuImageButtonHIDE;
+        private System.Windows.Forms.Panel panelHead;
     }
 }

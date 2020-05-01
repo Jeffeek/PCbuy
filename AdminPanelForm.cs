@@ -30,11 +30,12 @@ namespace TRPO_Project
         private SQLiteConnection sql_con; // connection
         private SQLiteCommand sql_cmd;
         private SQLiteDataAdapter dataAdapter;
-        private SQLiteCommandBuilder commandBuilder;
-        private DataSet dataSet;
-        private object LOL;
-        private bool PCDataGridFilled = false;
+        //private SQLiteCommandBuilder commandBuilder;
+        //private DataSet dataSet;
+        //private object LOL;
+        //private bool PCDataGridFilled = false;
         int LASTid = 0;
+        private Point lastPoint;
         #endregion
         public AdminPanelForm()
         {
@@ -405,5 +406,21 @@ namespace TRPO_Project
         {
             this.WindowState = FormWindowState.Minimized;
         }
+
+        #region MovingForm
+        private void panelHead_MouseDown(object sender, MouseEventArgs e)
+        {
+            lastPoint = e.Location;
+        }
+
+        private void panelHead_MouseMove(object sender, MouseEventArgs e)
+        {
+            if (e.Button == MouseButtons.Left)
+            {
+                Left += e.X - lastPoint.X;
+                Top += e.Y - lastPoint.Y;
+            }
+        }
+        #endregion
     }
 }

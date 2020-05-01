@@ -380,6 +380,7 @@ namespace TRPO_Project
         private bool isPASScorrect = false;
         private bool isRepeatPASScorrect = false;
         private bool isLOGINcorrect = false;
+        private Point lastPoint;
         #region CHECKcorrectionEMAIL&password
         private bool CheckEmailRegistration(string email)
         {
@@ -578,5 +579,21 @@ namespace TRPO_Project
                 xuiSlidingPanelForgotPass.Visible = true;
             }
         }
+
+        #region MovingForm
+        private void panelHead_MouseDown(object sender, MouseEventArgs e)
+        {
+            lastPoint = e.Location;
+        }
+
+        private void panelHead_MouseMove(object sender, MouseEventArgs e)
+        {
+            if (e.Button == MouseButtons.Left)
+            {
+                Left += e.X - lastPoint.X;
+                Top += e.Y - lastPoint.Y;
+            }
+        }
+        #endregion
     }
 }

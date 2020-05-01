@@ -45,6 +45,7 @@
             this.PASSlabel = new MetroFramework.Controls.MetroLabel();
             this.EMAILlabel = new MetroFramework.Controls.MetroLabel();
             this.EllipseForm = new XanderUI.XUIObjectEllipse();
+            this.panelHead = new System.Windows.Forms.Panel();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxPROFILE)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxCHANGEpassVisibility)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.bunifuImageButtonEXIT)).BeginInit();
@@ -61,7 +62,7 @@
             this.linkLabelCHANGEprofilePIC.BackColor = System.Drawing.SystemColors.InfoText;
             this.linkLabelCHANGEprofilePIC.Cursor = System.Windows.Forms.Cursors.Hand;
             this.linkLabelCHANGEprofilePIC.ForeColor = System.Drawing.Color.Gray;
-            this.linkLabelCHANGEprofilePIC.Location = new System.Drawing.Point(118, 120);
+            this.linkLabelCHANGEprofilePIC.Location = new System.Drawing.Point(119, 138);
             this.linkLabelCHANGEprofilePIC.Name = "linkLabelCHANGEprofilePIC";
             this.linkLabelCHANGEprofilePIC.Size = new System.Drawing.Size(104, 17);
             this.linkLabelCHANGEprofilePIC.TabIndex = 17;
@@ -75,7 +76,7 @@
             // 
             this.pictureBoxPROFILE.ErrorImage = global::TRPO_Project.Properties.Resources.profile_default;
             this.pictureBoxPROFILE.Image = ((System.Drawing.Image)(resources.GetObject("pictureBoxPROFILE.Image")));
-            this.pictureBoxPROFILE.Location = new System.Drawing.Point(98, 15);
+            this.pictureBoxPROFILE.Location = new System.Drawing.Point(100, 33);
             this.pictureBoxPROFILE.Name = "pictureBoxPROFILE";
             this.pictureBoxPROFILE.Size = new System.Drawing.Size(124, 122);
             this.pictureBoxPROFILE.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
@@ -88,7 +89,7 @@
             this.pictureBoxCHANGEpassVisibility.Cursor = System.Windows.Forms.Cursors.Hand;
             this.pictureBoxCHANGEpassVisibility.Image = global::TRPO_Project.Properties.Resources.eye_hide;
             this.pictureBoxCHANGEpassVisibility.ImageActive = null;
-            this.pictureBoxCHANGEpassVisibility.Location = new System.Drawing.Point(241, 213);
+            this.pictureBoxCHANGEpassVisibility.Location = new System.Drawing.Point(241, 233);
             this.pictureBoxCHANGEpassVisibility.Name = "pictureBoxCHANGEpassVisibility";
             this.pictureBoxCHANGEpassVisibility.Size = new System.Drawing.Size(25, 20);
             this.pictureBoxCHANGEpassVisibility.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
@@ -103,7 +104,7 @@
             this.bunifuImageButtonEXIT.Image = global::TRPO_Project.Properties.Resources.X;
             this.bunifuImageButtonEXIT.ImageActive = null;
             this.bunifuImageButtonEXIT.InitialImage = global::TRPO_Project.Properties.Resources.X;
-            this.bunifuImageButtonEXIT.Location = new System.Drawing.Point(292, 8);
+            this.bunifuImageButtonEXIT.Location = new System.Drawing.Point(289, 7);
             this.bunifuImageButtonEXIT.Name = "bunifuImageButtonEXIT";
             this.bunifuImageButtonEXIT.Size = new System.Drawing.Size(18, 20);
             this.bunifuImageButtonEXIT.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
@@ -126,7 +127,7 @@
             this.bunifuMaterialTextboxEMAIL.LineIdleColor = System.Drawing.Color.LimeGreen;
             this.bunifuMaterialTextboxEMAIL.LineMouseHoverColor = System.Drawing.Color.DeepSkyBlue;
             this.bunifuMaterialTextboxEMAIL.LineThickness = 3;
-            this.bunifuMaterialTextboxEMAIL.Location = new System.Drawing.Point(76, 162);
+            this.bunifuMaterialTextboxEMAIL.Location = new System.Drawing.Point(77, 181);
             this.bunifuMaterialTextboxEMAIL.Margin = new System.Windows.Forms.Padding(4);
             this.bunifuMaterialTextboxEMAIL.Name = "bunifuMaterialTextboxEMAIL";
             this.bunifuMaterialTextboxEMAIL.Size = new System.Drawing.Size(158, 22);
@@ -147,7 +148,7 @@
             this.bunifuMaterialTextboxPASS.LineIdleColor = System.Drawing.Color.LimeGreen;
             this.bunifuMaterialTextboxPASS.LineMouseHoverColor = System.Drawing.Color.DeepSkyBlue;
             this.bunifuMaterialTextboxPASS.LineThickness = 3;
-            this.bunifuMaterialTextboxPASS.Location = new System.Drawing.Point(76, 213);
+            this.bunifuMaterialTextboxPASS.Location = new System.Drawing.Point(77, 231);
             this.bunifuMaterialTextboxPASS.Margin = new System.Windows.Forms.Padding(4);
             this.bunifuMaterialTextboxPASS.Name = "bunifuMaterialTextboxPASS";
             this.bunifuMaterialTextboxPASS.Size = new System.Drawing.Size(158, 22);
@@ -165,7 +166,7 @@
             this.xuiSlidingPanel1.Controls.Add(this.bunifuMetroTextboxNewPassSecond);
             this.xuiSlidingPanel1.Controls.Add(this.bunifuMetroTextboxNewPassFirst);
             this.xuiSlidingPanel1.HideControls = false;
-            this.xuiSlidingPanel1.Location = new System.Drawing.Point(2, 151);
+            this.xuiSlidingPanel1.Location = new System.Drawing.Point(2, 161);
             this.xuiSlidingPanel1.Name = "xuiSlidingPanel1";
             this.xuiSlidingPanel1.PanelWidthCollapsed = 0;
             this.xuiSlidingPanel1.PanelWidthExpanded = 310;
@@ -181,7 +182,7 @@
             this.linkLabelCHANGEpass.BackColor = System.Drawing.Color.Transparent;
             this.linkLabelCHANGEpass.Cursor = System.Windows.Forms.Cursors.Hand;
             this.linkLabelCHANGEpass.ForeColor = System.Drawing.Color.SpringGreen;
-            this.linkLabelCHANGEpass.Location = new System.Drawing.Point(2, 240);
+            this.linkLabelCHANGEpass.Location = new System.Drawing.Point(0, 268);
             this.linkLabelCHANGEpass.Name = "linkLabelCHANGEpass";
             this.linkLabelCHANGEpass.Size = new System.Drawing.Size(136, 23);
             this.linkLabelCHANGEpass.TabIndex = 27;
@@ -255,7 +256,7 @@
             this.linkLabelDELETEprofile.BackColor = System.Drawing.Color.Transparent;
             this.linkLabelDELETEprofile.Cursor = System.Windows.Forms.Cursors.Hand;
             this.linkLabelDELETEprofile.ForeColor = System.Drawing.Color.Maroon;
-            this.linkLabelDELETEprofile.Location = new System.Drawing.Point(208, 240);
+            this.linkLabelDELETEprofile.Location = new System.Drawing.Point(216, 268);
             this.linkLabelDELETEprofile.Name = "linkLabelDELETEprofile";
             this.linkLabelDELETEprofile.Size = new System.Drawing.Size(99, 23);
             this.linkLabelDELETEprofile.TabIndex = 28;
@@ -271,7 +272,7 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.PASSlabel.AutoSize = true;
             this.PASSlabel.BackColor = System.Drawing.Color.LightSeaGreen;
-            this.PASSlabel.Location = new System.Drawing.Point(118, 194);
+            this.PASSlabel.Location = new System.Drawing.Point(120, 205);
             this.PASSlabel.Name = "PASSlabel";
             this.PASSlabel.Size = new System.Drawing.Size(79, 19);
             this.PASSlabel.Style = MetroFramework.MetroColorStyle.Purple;
@@ -288,7 +289,7 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.EMAILlabel.AutoSize = true;
             this.EMAILlabel.BackColor = System.Drawing.Color.LightSeaGreen;
-            this.EMAILlabel.Location = new System.Drawing.Point(136, 140);
+            this.EMAILlabel.Location = new System.Drawing.Point(138, 158);
             this.EMAILlabel.Name = "EMAILlabel";
             this.EMAILlabel.Size = new System.Drawing.Size(46, 19);
             this.EMAILlabel.Style = MetroFramework.MetroColorStyle.Teal;
@@ -304,12 +305,23 @@
             this.EllipseForm.EffectedControl = this;
             this.EllipseForm.EffectedForm = this;
             // 
+            // panelHead
+            // 
+            this.panelHead.Location = new System.Drawing.Point(0, 5);
+            this.panelHead.Name = "panelHead";
+            this.panelHead.Size = new System.Drawing.Size(313, 23);
+            this.panelHead.TabIndex = 31;
+            this.panelHead.MouseDown += new System.Windows.Forms.MouseEventHandler(this.panelHead_MouseDown);
+            this.panelHead.MouseMove += new System.Windows.Forms.MouseEventHandler(this.panelHead_MouseMove);
+            // 
             // formProfile
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(313, 268);
+            this.ClientSize = new System.Drawing.Size(313, 288);
             this.ControlBox = false;
+            this.Controls.Add(this.bunifuImageButtonEXIT);
+            this.Controls.Add(this.panelHead);
             this.Controls.Add(this.xuiSlidingPanel1);
             this.Controls.Add(this.PASSlabel);
             this.Controls.Add(this.EMAILlabel);
@@ -318,10 +330,10 @@
             this.Controls.Add(this.bunifuMaterialTextboxPASS);
             this.Controls.Add(this.bunifuMaterialTextboxEMAIL);
             this.Controls.Add(this.pictureBoxCHANGEpassVisibility);
-            this.Controls.Add(this.bunifuImageButtonEXIT);
             this.Controls.Add(this.linkLabelCHANGEprofilePIC);
             this.Controls.Add(this.pictureBoxPROFILE);
             this.MaximizeBox = false;
+            this.Movable = false;
             this.Name = "formProfile";
             this.SizeGripStyle = System.Windows.Forms.SizeGripStyle.Hide;
             this.Style = MetroFramework.MetroColorStyle.Purple;
@@ -353,5 +365,6 @@
         private MetroFramework.Controls.MetroLabel PASSlabel;
         private MetroFramework.Controls.MetroLabel EMAILlabel;
         private XanderUI.XUIObjectEllipse EllipseForm;
+        private System.Windows.Forms.Panel panelHead;
     }
 }

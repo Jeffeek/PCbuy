@@ -23,6 +23,7 @@ namespace TRPO_Project
         #region variables&collections
         private SQLiteConnection sql_con; // connection
         private SQLiteCommand sql_cmd;
+        private Point lastPoint;
         private List<PCinfo> OBJects = new List<PCinfo>(); // объекты главной формы
         private List<PC> AllPCList = new List<PC>();
         public static List<int> BINid = new List<int>(); //лист корзины юзера
@@ -403,6 +404,22 @@ namespace TRPO_Project
             Application.Exit();
         }
 
+        #endregion
+
+        #region MovingForm
+        private void panelHead_MouseDown(object sender, MouseEventArgs e)
+        {
+            lastPoint = e.Location;
+        }
+
+        private void panelHead_MouseMove(object sender, MouseEventArgs e)
+        {
+            if (e.Button == MouseButtons.Left)
+            {
+                Left += e.X - lastPoint.X;
+                Top += e.Y - lastPoint.Y;
+            }
+        }
         #endregion
     }
 }

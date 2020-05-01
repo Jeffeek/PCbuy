@@ -50,7 +50,7 @@
             this.metroComboBoxGPUsort = new MetroFramework.Controls.MetroComboBox();
             this.metroComboBoxRAM = new MetroFramework.Controls.MetroComboBox();
             this.bunifuImageButtonEXIT = new Bunifu.Framework.UI.BunifuImageButton();
-            this.panel1 = new System.Windows.Forms.Panel();
+            this.panelHead = new System.Windows.Forms.Panel();
             ((System.ComponentModel.ISupportInitialize)(this.button_backToLoginForm)).BeginInit();
             this.groupBoxHEAD.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.bunifuImageButtonSORT)).BeginInit();
@@ -385,13 +385,15 @@
             this.bunifuImageButtonEXIT.Zoom = 10;
             this.bunifuImageButtonEXIT.Click += new System.EventHandler(this.bunifuImageButtonEXIT_Click);
             // 
-            // panel1
+            // panelHead
             // 
-            this.panel1.Anchor = System.Windows.Forms.AnchorStyles.Top;
-            this.panel1.Location = new System.Drawing.Point(0, 5);
-            this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(796, 28);
-            this.panel1.TabIndex = 16;
+            this.panelHead.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.panelHead.Location = new System.Drawing.Point(0, 5);
+            this.panelHead.Name = "panelHead";
+            this.panelHead.Size = new System.Drawing.Size(796, 28);
+            this.panelHead.TabIndex = 16;
+            this.panelHead.MouseDown += new System.Windows.Forms.MouseEventHandler(this.panelHead_MouseDown);
+            this.panelHead.MouseMove += new System.Windows.Forms.MouseEventHandler(this.panelHead_MouseMove);
             // 
             // formADMIN
             // 
@@ -404,7 +406,7 @@
             this.ClientSize = new System.Drawing.Size(796, 470);
             this.ControlBox = false;
             this.Controls.Add(this.bunifuImageButtonEXIT);
-            this.Controls.Add(this.panel1);
+            this.Controls.Add(this.panelHead);
             this.Controls.Add(this.xuiCircleProgressBar1);
             this.Controls.Add(this.groupBoxHEAD);
             this.DoubleBuffered = false;
@@ -462,6 +464,6 @@
         private Bunifu.Framework.UI.BunifuImageButton bunifuImageButtonSORT;
         private Bunifu.Framework.UI.BunifuImageButton button_backToLoginForm;
         protected System.Windows.Forms.Label label1;
-        private System.Windows.Forms.Panel panel1;
+        private System.Windows.Forms.Panel panelHead;
     }
 }

@@ -26,6 +26,8 @@ namespace TRPO_Project
     public partial class GraphicForm : MetroForm
     {
         private List<int> GRAPH_NODE = new List<int>();
+        private Point lastPoint;
+
         public GraphicForm()
         {
             InitializeComponent();
@@ -63,5 +65,21 @@ namespace TRPO_Project
         {
             this.WindowState = FormWindowState.Minimized;
         }
+
+        #region MovingForm
+        private void panelHead_MouseDown(object sender, MouseEventArgs e)
+        {
+            lastPoint = e.Location;
+        }
+
+        private void panelHead_MouseMove(object sender, MouseEventArgs e)
+        {
+            if (e.Button == MouseButtons.Left)
+            {
+                Left += e.X - lastPoint.X;
+                Top += e.Y - lastPoint.Y;
+            }
+        }
+        #endregion
     }
 }

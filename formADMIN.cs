@@ -28,6 +28,7 @@ namespace TRPO_Project
         private List<PC> AllPCList = new List<PC>();
         public static List<int> BINid = new List<int>(); //лист корзины юзера
         private int userID;
+        private Point lastPoint;
         #endregion
 
         #region Constructor
@@ -399,6 +400,22 @@ namespace TRPO_Project
             if (result == DialogResult.Yes)
             {
                 Application.Restart();
+            }
+        }
+        #endregion
+
+        #region MovingForm
+        private void panelHead_MouseDown(object sender, MouseEventArgs e)
+        {
+            lastPoint = e.Location;
+        }
+
+        private void panelHead_MouseMove(object sender, MouseEventArgs e)
+        {
+            if (e.Button == MouseButtons.Left)
+            {
+                Left += e.X - lastPoint.X;
+                Top += e.Y - lastPoint.Y;
             }
         }
         #endregion
