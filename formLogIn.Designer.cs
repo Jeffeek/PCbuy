@@ -108,7 +108,7 @@ namespace TRPO_Project
             this.EMAILlabel.FontSize = MetroFramework.MetroLabelSize.Tall;
             this.EMAILlabel.FontWeight = MetroFramework.MetroLabelWeight.Bold;
             this.EMAILlabel.ForeColor = System.Drawing.Color.HotPink;
-            this.EMAILlabel.Location = new System.Drawing.Point(165, 36);
+            this.EMAILlabel.Location = new System.Drawing.Point(164, 36);
             this.EMAILlabel.Name = "EMAILlabel";
             this.EMAILlabel.Size = new System.Drawing.Size(67, 25);
             this.EMAILlabel.Style = MetroFramework.MetroColorStyle.Teal;
@@ -127,7 +127,7 @@ namespace TRPO_Project
             this.PASSlabel.FontSize = MetroFramework.MetroLabelSize.Tall;
             this.PASSlabel.FontWeight = MetroFramework.MetroLabelWeight.Bold;
             this.PASSlabel.ForeColor = System.Drawing.Color.HotPink;
-            this.PASSlabel.Location = new System.Drawing.Point(144, 95);
+            this.PASSlabel.Location = new System.Drawing.Point(141, 95);
             this.PASSlabel.Name = "PASSlabel";
             this.PASSlabel.Size = new System.Drawing.Size(112, 25);
             this.PASSlabel.TabIndex = 13;
@@ -395,7 +395,7 @@ namespace TRPO_Project
             this.bunifuImageButtonEXIT.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
             this.bunifuImageButtonEXIT.Image = global::TRPO_Project.Properties.Resources.X;
             this.bunifuImageButtonEXIT.ImageActive = null;
-            this.bunifuImageButtonEXIT.Location = new System.Drawing.Point(370, 8);
+            this.bunifuImageButtonEXIT.Location = new System.Drawing.Point(370, 7);
             this.bunifuImageButtonEXIT.Name = "bunifuImageButtonEXIT";
             this.bunifuImageButtonEXIT.Size = new System.Drawing.Size(20, 20);
             this.bunifuImageButtonEXIT.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
@@ -460,9 +460,11 @@ namespace TRPO_Project
             // 
             // panelHead
             // 
-            this.panelHead.Location = new System.Drawing.Point(0, 5);
+            this.panelHead.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.panelHead.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.panelHead.Location = new System.Drawing.Point(-1, 5);
             this.panelHead.Name = "panelHead";
-            this.panelHead.Size = new System.Drawing.Size(394, 26);
+            this.panelHead.Size = new System.Drawing.Size(395, 26);
             this.panelHead.TabIndex = 25;
             this.panelHead.MouseDown += new System.Windows.Forms.MouseEventHandler(this.panelHead_MouseDown);
             this.panelHead.MouseMove += new System.Windows.Forms.MouseEventHandler(this.panelHead_MouseMove);

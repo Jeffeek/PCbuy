@@ -43,11 +43,11 @@ namespace TRPO_Project
         {
             if (isAdmin)
             {
-                formADMIN.BINid.Add(ID);
+                formADMIN.BINid.Add(this);
             }
             else
             {
-                formUSER.BINid.Add(ID);
+                formUSER.BINid.Add(this);
             }
         }
 

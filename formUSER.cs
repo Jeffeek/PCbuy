@@ -26,7 +26,7 @@ namespace TRPO_Project
         private Point lastPoint;
         private List<PCinfo> OBJects = new List<PCinfo>(); // объекты главной формы
         private List<PC> AllPCList = new List<PC>();
-        public static List<int> BINid = new List<int>(); //лист корзины юзера
+        public static List<PCinfo> BINid = new List<PCinfo>(); //лист корзины юзера
         private int userID;
         #endregion
 

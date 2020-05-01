@@ -348,7 +348,7 @@
             this.bunifuImageButtonEXIT.Image = global::TRPO_Project.Properties.Resources.X;
             this.bunifuImageButtonEXIT.ImageActive = null;
             this.bunifuImageButtonEXIT.InitialImage = global::TRPO_Project.Properties.Resources.X;
-            this.bunifuImageButtonEXIT.Location = new System.Drawing.Point(771, 3);
+            this.bunifuImageButtonEXIT.Location = new System.Drawing.Point(770, 3);
             this.bunifuImageButtonEXIT.Name = "bunifuImageButtonEXIT";
             this.bunifuImageButtonEXIT.Size = new System.Drawing.Size(20, 20);
             this.bunifuImageButtonEXIT.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
@@ -360,6 +360,7 @@
             // panelHead
             // 
             this.panelHead.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.panelHead.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.panelHead.Controls.Add(this.bunifuImageButtonEXIT);
             this.panelHead.Location = new System.Drawing.Point(0, 5);
             this.panelHead.Name = "panelHead";

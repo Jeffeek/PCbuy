@@ -388,6 +388,7 @@
             // panelHead
             // 
             this.panelHead.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.panelHead.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.panelHead.Location = new System.Drawing.Point(0, 5);
             this.panelHead.Name = "panelHead";
             this.panelHead.Size = new System.Drawing.Size(796, 28);

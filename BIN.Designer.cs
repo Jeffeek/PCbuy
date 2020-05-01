@@ -45,7 +45,7 @@
             this.label1.AutoSize = true;
             this.label1.BackColor = System.Drawing.Color.MediumVioletRed;
             this.label1.Font = new System.Drawing.Font("Unispace", 24F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(123, 21);
+            this.label1.Location = new System.Drawing.Point(123, 18);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(237, 39);
             this.label1.TabIndex = 0;
