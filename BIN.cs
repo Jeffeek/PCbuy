@@ -16,24 +16,29 @@ using TRPO_Project.Properties;
 using Guna.UI.WinForms;
 using Guna.UI.Lib;
 using System.IO;
+using System.Runtime.Serialization.Json;
 
 namespace TRPO_Project
 {
-    public partial class BIN : MetroForm
+    public partial class BIN : MetroForm, IThemeChange
     {
+        #region variables
         private SQLiteConnection sql_con; // connection
         private SQLiteCommand sql_cmd;
         private bool IsAdmin;
         private int userID;
-        //private int CounterForDeleting;
+        private string THEME = "Dark";
         private List<PCinfo> IDsOfPCinBIN = new List<PCinfo>();
+        #endregion
 
+        #region constructor
         public BIN(bool isAdmin, int userID)
         {
             InitializeComponent();
+            this.userID = userID;
+            ReadTheme();
             FormStartTransition.ShowAsyc(this);
             IsAdmin = isAdmin;
-            this.userID = userID;
             metroLabelID.Text += userID;
             if (isAdmin)
                 IDsOfPCinBIN = formADMIN.BINid;
@@ -49,12 +54,14 @@ namespace TRPO_Project
             }
         }
 
+        #endregion
+
+        #region CreateList
         private void CreateListOfProducts()
         {
             for (int i = 0; i < IDsOfPCinBIN.Count; i++)
             {
                 string CPU, GPU, RAM, COST;
-                Image IMG;
                 GunaLabel CPU_label = new GunaLabel();
                 GunaLabel GPU_label = new GunaLabel();
                 GunaLabel RAM_label = new GunaLabel();
@@ -136,6 +143,9 @@ namespace TRPO_Project
             }
         }
 
+        #endregion
+
+        #region ButtonsClick
         private void bunifuImageButtonEXIT_Click(object sender, EventArgs e)
         {
             if (IsAdmin)
@@ -180,5 +190,42 @@ namespace TRPO_Project
             }
             Close();
         }
+        #endregion
+
+        public void ChangeMetroControls(string theme)
+        {
+            Theme = theme == "Light" ? MetroThemeStyle.Light : MetroThemeStyle.Dark;
+            tabControlPRODUCTs.Theme = THEME == "Dark" ? MetroThemeStyle.Dark : MetroThemeStyle.Light;
+            metroLabelID.ForeColor = theme == "Light" ? Color.Aquamarine : Color.Magenta;
+        }
+
+        public void ChangeNonMetroControls(string theme)
+        {
+            labelYourOrder.BackColor = theme == "Light" ? Color.AliceBlue : Color.MediumVioletRed;
+        }
+
+        public void ReadTheme()
+        {
+            List<ProgramTheme> themes = new List<ProgramTheme>();
+
+            using (FileStream file = new FileStream("ThemeSettings.json", FileMode.OpenOrCreate))
+            {
+                DataContractJsonSerializer jsonSerializer = new DataContractJsonSerializer(typeof(List<ProgramTheme>));
+                themes = jsonSerializer.ReadObject(file) as List<ProgramTheme>;
+            }
+
+            if (themes.Count(x => x.UserID == userID) > 0)
+            {
+                THEME = themes.Find(x => x.UserID == userID).Theme;
+                Parallel.Invoke
+                    (
+                        () => ChangeNonMetroControls(THEME),
+                        () => ChangeMetroControls(THEME)
+                    );
+                Refresh();
+            }
+            return;
+        }
+
     }
 }

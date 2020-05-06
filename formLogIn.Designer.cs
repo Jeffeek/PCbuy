@@ -410,7 +410,7 @@ namespace TRPO_Project
             | System.Windows.Forms.AnchorStyles.Right)));
             this.ImageButtonAPPLYlogin.BackColor = System.Drawing.Color.Gray;
             this.ImageButtonAPPLYlogin.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.ImageButtonAPPLYlogin.Image = ((System.Drawing.Image)(resources.GetObject("ImageButtonAPPLYlogin.Image")));
+            this.ImageButtonAPPLYlogin.Image = global::TRPO_Project.Properties.Resources.X;
             this.ImageButtonAPPLYlogin.ImageActive = null;
             this.ImageButtonAPPLYlogin.Location = new System.Drawing.Point(52, 157);
             this.ImageButtonAPPLYlogin.Name = "ImageButtonAPPLYlogin";
@@ -462,9 +462,9 @@ namespace TRPO_Project
             // 
             this.panelHead.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.panelHead.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.panelHead.Location = new System.Drawing.Point(-1, 5);
+            this.panelHead.Location = new System.Drawing.Point(-2, 5);
             this.panelHead.Name = "panelHead";
-            this.panelHead.Size = new System.Drawing.Size(395, 26);
+            this.panelHead.Size = new System.Drawing.Size(400, 26);
             this.panelHead.TabIndex = 25;
             this.panelHead.MouseDown += new System.Windows.Forms.MouseEventHandler(this.panelHead_MouseDown);
             this.panelHead.MouseMove += new System.Windows.Forms.MouseEventHandler(this.panelHead_MouseMove);

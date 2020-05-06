@@ -46,6 +46,8 @@
             this.EMAILlabel = new MetroFramework.Controls.MetroLabel();
             this.EllipseForm = new XanderUI.XUIObjectEllipse();
             this.panelHead = new System.Windows.Forms.Panel();
+            this.labelChangeTheme = new Guna.UI.WinForms.GunaLabel();
+            this.switchTheme = new Guna.UI.WinForms.GunaWinSwitch();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxPROFILE)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxCHANGEpassVisibility)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.bunifuImageButtonEXIT)).BeginInit();
@@ -59,7 +61,7 @@
             // 
             // linkLabelCHANGEprofilePIC
             // 
-            this.linkLabelCHANGEprofilePIC.BackColor = System.Drawing.SystemColors.InfoText;
+            this.linkLabelCHANGEprofilePIC.BackColor = System.Drawing.Color.Black;
             this.linkLabelCHANGEprofilePIC.Cursor = System.Windows.Forms.Cursors.Hand;
             this.linkLabelCHANGEprofilePIC.ForeColor = System.Drawing.Color.Gray;
             this.linkLabelCHANGEprofilePIC.Location = new System.Drawing.Point(119, 138);
@@ -67,7 +69,7 @@
             this.linkLabelCHANGEprofilePIC.Size = new System.Drawing.Size(104, 17);
             this.linkLabelCHANGEprofilePIC.TabIndex = 17;
             this.linkLabelCHANGEprofilePIC.Text = "ChangeProfilePic";
-            this.linkLabelCHANGEprofilePIC.UseCustomBackColor = true;
+            this.linkLabelCHANGEprofilePIC.Theme = MetroFramework.MetroThemeStyle.Dark;
             this.linkLabelCHANGEprofilePIC.UseCustomForeColor = true;
             this.linkLabelCHANGEprofilePIC.UseSelectable = true;
             this.linkLabelCHANGEprofilePIC.Click += new System.EventHandler(this.linkLabelCHANGEprofilePIC_Click);
@@ -104,9 +106,9 @@
             this.bunifuImageButtonEXIT.Image = global::TRPO_Project.Properties.Resources.X;
             this.bunifuImageButtonEXIT.ImageActive = null;
             this.bunifuImageButtonEXIT.InitialImage = global::TRPO_Project.Properties.Resources.X;
-            this.bunifuImageButtonEXIT.Location = new System.Drawing.Point(289, 7);
+            this.bunifuImageButtonEXIT.Location = new System.Drawing.Point(287, 7);
             this.bunifuImageButtonEXIT.Name = "bunifuImageButtonEXIT";
-            this.bunifuImageButtonEXIT.Size = new System.Drawing.Size(18, 20);
+            this.bunifuImageButtonEXIT.Size = new System.Drawing.Size(20, 20);
             this.bunifuImageButtonEXIT.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.bunifuImageButtonEXIT.TabIndex = 21;
             this.bunifuImageButtonEXIT.TabStop = false;
@@ -307,12 +309,38 @@
             // 
             // panelHead
             // 
-            this.panelHead.Location = new System.Drawing.Point(0, 5);
+            this.panelHead.BackColor = System.Drawing.Color.Transparent;
+            this.panelHead.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.panelHead.Location = new System.Drawing.Point(-2, 5);
             this.panelHead.Name = "panelHead";
-            this.panelHead.Size = new System.Drawing.Size(313, 23);
+            this.panelHead.Size = new System.Drawing.Size(320, 25);
             this.panelHead.TabIndex = 31;
             this.panelHead.MouseDown += new System.Windows.Forms.MouseEventHandler(this.panelHead_MouseDown);
             this.panelHead.MouseMove += new System.Windows.Forms.MouseEventHandler(this.panelHead_MouseMove);
+            // 
+            // labelChangeTheme
+            // 
+            this.labelChangeTheme.AutoSize = true;
+            this.labelChangeTheme.Font = new System.Drawing.Font("Segoe UI", 9F);
+            this.labelChangeTheme.ForeColor = System.Drawing.Color.White;
+            this.labelChangeTheme.Location = new System.Drawing.Point(230, 43);
+            this.labelChangeTheme.Name = "labelChangeTheme";
+            this.labelChangeTheme.Size = new System.Drawing.Size(80, 15);
+            this.labelChangeTheme.TabIndex = 34;
+            this.labelChangeTheme.Text = "Светлая тема";
+            // 
+            // switchTheme
+            // 
+            this.switchTheme.BackColor = System.Drawing.Color.Transparent;
+            this.switchTheme.BaseColor = System.Drawing.SystemColors.Control;
+            this.switchTheme.CheckedOffColor = System.Drawing.Color.DarkGray;
+            this.switchTheme.CheckedOnColor = System.Drawing.Color.SpringGreen;
+            this.switchTheme.FillColor = System.Drawing.Color.White;
+            this.switchTheme.Location = new System.Drawing.Point(250, 63);
+            this.switchTheme.Name = "switchTheme";
+            this.switchTheme.Size = new System.Drawing.Size(40, 22);
+            this.switchTheme.TabIndex = 33;
+            this.switchTheme.CheckedChanged += new System.EventHandler(this.switchTheme_CheckedChanged);
             // 
             // formProfile
             // 
@@ -320,6 +348,8 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(313, 288);
             this.ControlBox = false;
+            this.Controls.Add(this.labelChangeTheme);
+            this.Controls.Add(this.switchTheme);
             this.Controls.Add(this.bunifuImageButtonEXIT);
             this.Controls.Add(this.panelHead);
             this.Controls.Add(this.xuiSlidingPanel1);
@@ -366,5 +396,7 @@
         private MetroFramework.Controls.MetroLabel EMAILlabel;
         private XanderUI.XUIObjectEllipse EllipseForm;
         private System.Windows.Forms.Panel panelHead;
+        private Guna.UI.WinForms.GunaLabel labelChangeTheme;
+        private Guna.UI.WinForms.GunaWinSwitch switchTheme;
     }
 }

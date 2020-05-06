@@ -16,10 +16,11 @@ using MetroFramework.Forms;
 using MetroFramework.Components;
 using System.Threading;
 using TRPO_Project.Properties;
+using System.Runtime.Serialization.Json;
 
 namespace TRPO_Project
 {
-    public partial class formADMIN : MetroForm
+    public partial class formADMIN : MetroForm, IThemeChange
     {
         #region variables&collections
         private SQLiteConnection sql_con; // connection
@@ -27,6 +28,7 @@ namespace TRPO_Project
         private List<PCinfo> OBJects = new List<PCinfo>(); // объекты главной формы
         private List<PC> AllPCList = new List<PC>();
         public static List<PCinfo> BINid = new List<PCinfo>(); //лист корзины юзера
+        private string THEME = "Dark";
         private int userID;
         private Point lastPoint;
         #endregion
@@ -35,8 +37,9 @@ namespace TRPO_Project
         public formADMIN(int id)
         {
             InitializeComponent();
-            FormStartTransition.ShowAsyc(this);
             userID = id;
+            ReadTheme();
+            FormStartTransition.ShowAsyc(this);
             GetInfoIntoComboBoxes();
             SetPictureProfile();
             FillPC();
@@ -184,6 +187,8 @@ namespace TRPO_Project
                 OBJects.Add(OBJ);
                 OBJ.Location = new Point(0, Y);
                 Y += 230;
+                //
+                OBJ.BackColor = THEME == "Dark" ? Color.FromArgb(17, 17, 17) : Color.White;
                 this.Controls.Add(OBJ);
             }
             xuiCircleProgressBar1.Enabled = false;
@@ -391,7 +396,7 @@ namespace TRPO_Project
         }
         private void bunifuImageButtonADMINPANEL_Click(object sender, EventArgs e)
         {
-            AdminPanelForm adminPanel = new AdminPanelForm();
+            AdminPanelForm adminPanel = new AdminPanelForm(userID);
             adminPanel.ShowDialog(this);
         }
         private void button_backToLoginForm_Click(object sender, EventArgs e)
@@ -405,10 +410,7 @@ namespace TRPO_Project
         #endregion
 
         #region MovingForm
-        private void panelHead_MouseDown(object sender, MouseEventArgs e)
-        {
-            lastPoint = e.Location;
-        }
+        private void panelHead_MouseDown(object sender, MouseEventArgs e) => lastPoint = e.Location;
 
         private void panelHead_MouseMove(object sender, MouseEventArgs e)
         {
@@ -418,6 +420,41 @@ namespace TRPO_Project
                 Top += e.Y - lastPoint.Y;
             }
         }
+
         #endregion
+
+        public void ChangeMetroControls(string theme)
+        {
+            Theme = theme == "Light" ? MetroThemeStyle.Light : MetroThemeStyle.Dark;           
+        }
+
+        public void ChangeNonMetroControls(string theme)
+        {
+            
+        }
+
+        public void ReadTheme()
+        {
+            List<ProgramTheme> themes = new List<ProgramTheme>();
+
+            using (FileStream file = new FileStream("ThemeSettings.json", FileMode.OpenOrCreate))
+            {
+                DataContractJsonSerializer jsonSerializer = new DataContractJsonSerializer(typeof(List<ProgramTheme>));
+                themes = jsonSerializer.ReadObject(file) as List<ProgramTheme>;
+            }
+
+            if (themes.Count(x => x.UserID == userID) > 0)
+            {
+                THEME = themes.Find(x => x.UserID == userID).Theme;
+                Parallel.Invoke
+                    (
+                        () => ChangeNonMetroControls(THEME),
+                        () => ChangeMetroControls(THEME)
+                    );
+                Refresh();
+            }
+            return;
+        }
+
     }
 }

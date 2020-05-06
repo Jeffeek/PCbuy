@@ -29,7 +29,7 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            this.label1 = new System.Windows.Forms.Label();
+            this.labelYourOrder = new System.Windows.Forms.Label();
             this.tabControlPRODUCTs = new MetroFramework.Controls.MetroTabControl();
             this.bunifuElipse1 = new Bunifu.Framework.UI.BunifuElipse(this.components);
             this.FormStartTransition = new Bunifu.Framework.UI.BunifuFormFadeTransition(this.components);
@@ -40,16 +40,16 @@
             ((System.ComponentModel.ISupportInitialize)(this.bunifuImageButtonEXIT)).BeginInit();
             this.SuspendLayout();
             // 
-            // label1
+            // labelYourOrder
             // 
-            this.label1.AutoSize = true;
-            this.label1.BackColor = System.Drawing.Color.MediumVioletRed;
-            this.label1.Font = new System.Drawing.Font("Unispace", 24F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(123, 18);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(237, 39);
-            this.label1.TabIndex = 0;
-            this.label1.Text = "YOUR ORDER:";
+            this.labelYourOrder.AutoSize = true;
+            this.labelYourOrder.BackColor = System.Drawing.Color.MediumVioletRed;
+            this.labelYourOrder.Font = new System.Drawing.Font("Unispace", 24F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelYourOrder.Location = new System.Drawing.Point(123, 18);
+            this.labelYourOrder.Name = "labelYourOrder";
+            this.labelYourOrder.Size = new System.Drawing.Size(237, 39);
+            this.labelYourOrder.TabIndex = 0;
+            this.labelYourOrder.Text = "YOUR ORDER:";
             // 
             // tabControlPRODUCTs
             // 
@@ -127,7 +127,7 @@
             this.Controls.Add(this.bunifuImageButtonEXIT);
             this.Controls.Add(this.imageButtonCONFIRMorder);
             this.Controls.Add(this.tabControlPRODUCTs);
-            this.Controls.Add(this.label1);
+            this.Controls.Add(this.labelYourOrder);
             this.Name = "BIN";
             this.SizeGripStyle = System.Windows.Forms.SizeGripStyle.Hide;
             this.Style = MetroFramework.MetroColorStyle.Magenta;
@@ -141,7 +141,7 @@
 
         #endregion
 
-        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Label labelYourOrder;
         private MetroFramework.Controls.MetroTabControl tabControlPRODUCTs;
         private Bunifu.Framework.UI.BunifuElipse bunifuElipse1;
         private Bunifu.Framework.UI.BunifuFormFadeTransition FormStartTransition;

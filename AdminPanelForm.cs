@@ -21,15 +21,20 @@ using Bunifu.Framework.Lib;
 using Bunifu;
 using BunifuAnimatorNS;
 using TRPO_Project.Properties;
+using System.Runtime.Serialization.Json;
+using MetroFramework.Controls;
+using Guna.UI.WinForms;
 
 namespace TRPO_Project
 {
-    public partial class AdminPanelForm : MetroForm
+    public partial class AdminPanelForm : MetroForm, IThemeChange
     {
         #region variables&collections
         private SQLiteConnection sql_con; // connection
         private SQLiteCommand sql_cmd;
         private SQLiteDataAdapter dataAdapter;
+        private string THEME = "Dark";
+        private int userID;
         //private SQLiteCommandBuilder commandBuilder;
         //private DataSet dataSet;
         //private object LOL;
@@ -37,12 +42,19 @@ namespace TRPO_Project
         int LASTid = 0;
         private Point lastPoint;
         #endregion
-        public AdminPanelForm()
+
+        #region constructor
+        public AdminPanelForm(int UserID)
         {
             InitializeComponent();
+            userID = UserID;
+            ReadTheme();
             FormTransition.ShowAsyc(this);
         }
 
+        #endregion
+
+        #region FillGrids
         private void FillPcDataGrid()
         {
             using (dataAdapter = new SQLiteDataAdapter("SELECT * FROM PCdb", sql_con))
@@ -73,6 +85,9 @@ namespace TRPO_Project
             }
         }
 
+        #endregion
+
+        #region ButtonsClick
         private void bunifuImageButtonAPPLYnewPROD_Click(object sender, EventArgs e)
         {
             string NEWtypeOFpc = bunifuMetroTextboxADDprodType.Text;
@@ -97,41 +112,7 @@ namespace TRPO_Project
             }
         }
 
-        private void bunifuMetroTextboxADDprodPRICE_KeyPress(object sender, KeyPressEventArgs e)
-        {
-            if (!char.IsDigit(e.KeyChar) && !char.IsControl(e.KeyChar))
-            {
-                e.Handled = true;
-            }
-        }
-
-        private void bunifuMetroTextboxADDprodRAM_KeyPress(object sender, KeyPressEventArgs e)
-        {
-            if (!char.IsDigit(e.KeyChar) && !char.IsControl(e.KeyChar))
-            {
-                e.Handled = true;
-            }
-        }
-
-        private void bunifuImageButtonEXIT_Click(object sender, EventArgs e)
-        {
-            Close();
-        }
-
-        private void FillIdInComboBoxes()
-        {
-            comboBoxSELECT_id_product.Clear();
-            using (sql_cmd = new SQLiteCommand("SELECT id FROM PCdb", sql_con))
-            {
-                using (SQLiteDataReader reader = sql_cmd.ExecuteReader())
-                {
-                    while (reader.Read())
-                    {
-                        comboBoxSELECT_id_product.AddItem(Convert.ToString(reader.GetInt32(0)));
-                    }
-                }
-            }
-        }
+        private void bunifuImageButtonEXIT_Click(object sender, EventArgs e) => Close();
 
         private void bunifuImageButtonNEWpic_Click(object sender, EventArgs e)
         {
@@ -164,28 +145,6 @@ namespace TRPO_Project
             }
         }
 
-        private void comboBoxSELECT_id_product_onItemSelected(object sender, EventArgs e)
-        {
-            bunifuImageButton_DeleteProd.Enabled = true;
-            comboBoxCHANGEVALUE_byid_product.Enabled = true;
-            if (bunifuCustomDataGridVIEWinfoAboutONEprod.Rows.Count == 0)
-            {
-                bunifuCustomDataGridVIEWinfoAboutONEprod.Rows.Add();
-            }
-            using (sql_con = new SQLiteConnection($"Data Source={Directory.GetCurrentDirectory()}\\TRPO.db"))
-            {
-                sql_con.Open();
-                SQLiteDataAdapter adapter = new SQLiteDataAdapter($"SELECT * FROM PCdb WHERE id={comboBoxSELECT_id_product.selectedValue}", sql_con);
-                DataTable table = new DataTable();
-                adapter.Fill(table);
-                bunifuCustomDataGridVIEWinfoAboutONEprod.DataSource = table;
-                using (FileStream FS = new FileStream((string)bunifuCustomDataGridVIEWinfoAboutONEprod[6,0].Value, FileMode.Open))
-                {
-                    gunaCirclePictureBoxPC_ONE.Image = Image.FromStream(FS);
-                }
-            }
-        }
-
         private void bunifuImageButtonAPPLYchanges_Click(object sender, EventArgs e)
         {
             if (comboBoxCHANGEVALUE_byid_product.selectedValue != "IMAGE")
@@ -209,6 +168,63 @@ namespace TRPO_Project
             MetroMessageBox.Show(this, "INFORMATION WAS CHANGED", "SUCCESS", MessageBoxButtons.OK, MessageBoxIcon.Information);
         }
 
+        private void bunifuImageButtonNEWpcIMG_Click(object sender, EventArgs e)
+        {
+            var result = openFileDialogCHANGE_PIC.ShowDialog();
+            if (result == DialogResult.OK)
+            {
+                using (FileStream FS = new FileStream(openFileDialogCHANGE_PIC.FileName, FileMode.OpenOrCreate))
+                {
+                    bunifuImageButtonNEWpcIMG.Image = Image.FromStream(FS);
+                }
+            }
+        }
+
+        private void bunifuImageButton_DeleteProd_Click(object sender, EventArgs e)
+        {
+            var result = MetroMessageBox.Show(this, "DELETE?", "ARE YOU SURE THAT YOU WANT TO REMOVE THIS PRODUCT FROM DATABASE?", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
+            if (result == DialogResult.Yes)
+            {
+                using (sql_con = new SQLiteConnection($"Data Source={Directory.GetCurrentDirectory()}\\TRPO.db"))
+                {
+                    sql_con.Open();
+                    using (sql_cmd = new SQLiteCommand($"DELETE FROM PCdb WHERE id={comboBoxSELECT_id_product.selectedValue}", sql_con))
+                    {
+                        sql_cmd.ExecuteNonQuery();
+                        MetroMessageBox.Show(this, "SUCCESS!", "THE PRODUCT WAS DELETED!", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        rEFRESHToolStripMenuItem_Click(sender, e);
+                    }
+                }
+            }
+        }
+
+        private void buttonShowGraphic_Click(object sender, EventArgs e)
+        {
+            GraphicForm graphicFORM = new GraphicForm();
+            graphicFORM.Show(this);
+        }
+
+        private void bunifuImageButtonHIDE_Click(object sender, EventArgs e) => this.WindowState = FormWindowState.Minimized;
+
+        #endregion
+
+        #region KeyPress
+        private void bunifuMetroTextboxADDprodPRICE_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (!char.IsDigit(e.KeyChar) && !char.IsControl(e.KeyChar))
+            {
+                e.Handled = true;
+            }
+        }
+
+        private void bunifuMetroTextboxADDprodRAM_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (!char.IsDigit(e.KeyChar) && !char.IsControl(e.KeyChar))
+            {
+                e.Handled = true;
+            }
+        }
+
         private void gunaLineTextBoxNEWvalue_KeyPress(object sender, KeyPressEventArgs e)
         {
             if (comboBoxCHANGEVALUE_byid_product.selectedValue == "RAM")
@@ -219,6 +235,148 @@ namespace TRPO_Project
                 }
             }
         }
+
+        private void gunaLineTextBoxNEWvalue_TextChanged(object sender, EventArgs e)
+        {
+            if (gunaLineTextBoxNEWvalue.Text.Length > 0)
+            {
+                bunifuImageButtonAPPLYchanges.Enabled = true;
+                bunifuImageButtonAPPLYchanges.Image = Resources.ok;
+                bunifuImageButtonAPPLYchanges.BackColor = Color.SeaGreen;
+            }
+            else
+            {
+                bunifuImageButtonAPPLYchanges.Enabled = false;
+                bunifuImageButtonAPPLYchanges.Image = Resources.X;
+                bunifuImageButtonAPPLYchanges.BackColor = Color.Gray;
+            }
+        }
+
+        #endregion
+
+        #region ComboBoxMethods
+
+        private void FillIdInComboBoxes()
+        {
+            comboBoxSELECT_id_product.Clear();
+            using (sql_cmd = new SQLiteCommand("SELECT id FROM PCdb", sql_con))
+            {
+                using (SQLiteDataReader reader = sql_cmd.ExecuteReader())
+                {
+                    while (reader.Read())
+                    {
+                        comboBoxSELECT_id_product.AddItem(Convert.ToString(reader.GetInt32(0)));
+                    }
+                }
+            }
+        }
+        private void comboBoxSELECT_id_product_onItemSelected(object sender, EventArgs e)
+        {
+            bunifuImageButton_DeleteProd.Enabled = true;
+            comboBoxCHANGEVALUE_byid_product.Enabled = true;
+            if (bunifuCustomDataGridVIEWinfoAboutONEprod.Rows.Count == 0)
+            {
+                bunifuCustomDataGridVIEWinfoAboutONEprod.Rows.Add();
+            }
+            using (sql_con = new SQLiteConnection($"Data Source={Directory.GetCurrentDirectory()}\\TRPO.db"))
+            {
+                sql_con.Open();
+                SQLiteDataAdapter adapter = new SQLiteDataAdapter($"SELECT * FROM PCdb WHERE id={comboBoxSELECT_id_product.selectedValue}", sql_con);
+                DataTable table = new DataTable();
+                adapter.Fill(table);
+                bunifuCustomDataGridVIEWinfoAboutONEprod.DataSource = table;
+                using (FileStream FS = new FileStream((string)bunifuCustomDataGridVIEWinfoAboutONEprod[6,0].Value, FileMode.Open))
+                {
+                    gunaCirclePictureBoxPC_ONE.Image = Image.FromStream(FS);
+                }
+            }
+        }
+        private void comboBoxCHANGEVALUE_byid_product_onItemSelected(object sender, EventArgs e)
+        {
+            gunaLineTextBoxNEWvalue.Enabled = true;
+            if (comboBoxCHANGEVALUE_byid_product.selectedValue == "IMAGE")
+            {
+                gunaLabelNEWvalue.Visible = false;
+                gunaLineTextBoxNEWvalue.Visible = false;
+                bunifuImageButtonNEWpcIMG.Visible = true;
+                gunaLabelNEWpcPIC.Visible = true;
+                using (FileStream FS = new FileStream(Convert.ToString(bunifuCustomDataGridVIEWinfoAboutONEprod[6, 0].Value), FileMode.OpenOrCreate))
+                {
+                    bunifuImageButtonNEWpcIMG.Image = Image.FromStream(FS);
+                }
+            }
+            else
+            {
+                gunaLabelNEWvalue.Visible = true;
+                gunaLineTextBoxNEWvalue.Visible = true;
+                bunifuImageButtonNEWpcIMG.Visible = false;
+                gunaLabelNEWpcPIC.Visible = false;
+            }
+        }
+
+        #endregion
+
+        #region CellMouseClick
+
+        private void PCDataGrid_CellMouseEnter(object sender, DataGridViewCellEventArgs e)
+        {
+            if (e.RowIndex != -1)
+            {
+                using (FileStream FR = new FileStream(Convert.ToString(PCDataGrid[6, e.RowIndex].Value), FileMode.Open))
+                {
+                    gunaCirclePictureBoxPC.Image = Image.FromStream(FR);
+                }
+                if (PCDataGrid[3, e.RowIndex].Value.ToString().StartsWith("Intel"))
+                {
+                    gunaCirclePictureBoxGPU.Image = Resources.intel;
+                }
+                else if (PCDataGrid[3, e.RowIndex].Value.ToString().StartsWith("AMD"))
+                {
+                    gunaCirclePictureBoxGPU.Image = Resources.amd;
+                }
+
+                if (PCDataGrid[4, e.RowIndex].Value.ToString().StartsWith("Radeon"))
+                {
+                    gunaCirclePictureBoxCPU.Image = Resources.AMD_Radeon;
+                }
+                else if (PCDataGrid[4, e.RowIndex].Value.ToString().StartsWith("NVIDIA"))
+                {
+                    gunaCirclePictureBoxCPU.Image = Resources.nvidia;
+                }
+                else if (PCDataGrid[4, e.RowIndex].Value.ToString().StartsWith("NONE"))
+                {
+                    gunaCirclePictureBoxCPU.Image = Resources.delete2;
+                }
+
+            }
+        }
+
+        private void UsersDataGrid_CellMouseEnter(object sender, DataGridViewCellEventArgs e)
+        {
+            if (e.RowIndex != -1)
+            {
+                CirclePictureBoxUSER.Image = Image.FromFile(Convert.ToString(UsersDataGrid[4, e.RowIndex].Value));
+            }
+        }
+
+        #endregion
+
+        #region MovingForm
+        private void panelHead_MouseDown(object sender, MouseEventArgs e)
+        {
+            lastPoint = e.Location;
+        }
+
+        private void panelHead_MouseMove(object sender, MouseEventArgs e)
+        {
+            if (e.Button == MouseButtons.Left)
+            {
+                Left += e.X - lastPoint.X;
+                Top += e.Y - lastPoint.Y;
+            }
+        }
+
+        #endregion
 
         private void bunifuCustomDataGridVIEWinfoAboutONEprod_CellClick(object sender, DataGridViewCellEventArgs e)
         {
@@ -260,40 +418,6 @@ namespace TRPO_Project
                     }
             }
         }
-
-        private void PCDataGrid_CellMouseEnter(object sender, DataGridViewCellEventArgs e)
-        {
-            if (e.RowIndex != -1)
-            {
-                using (FileStream FR = new FileStream(Convert.ToString(PCDataGrid[6, e.RowIndex].Value), FileMode.Open))
-                {
-                    gunaCirclePictureBoxPC.Image = Image.FromStream(FR);
-                }
-                if (PCDataGrid[3, e.RowIndex].Value.ToString().StartsWith("Intel"))
-                {
-                    gunaCirclePictureBoxGPU.Image = Resources.intel;
-                }
-                else if (PCDataGrid[3, e.RowIndex].Value.ToString().StartsWith("AMD"))
-                {
-                    gunaCirclePictureBoxGPU.Image = Resources.amd;
-                }
-
-                if (PCDataGrid[4, e.RowIndex].Value.ToString().StartsWith("Radeon"))
-                {
-                    gunaCirclePictureBoxCPU.Image = Resources.AMD_Radeon;
-                }
-                else if (PCDataGrid[4, e.RowIndex].Value.ToString().StartsWith("NVIDIA"))
-                {
-                    gunaCirclePictureBoxCPU.Image = Resources.nvidia;
-                }
-                else if (PCDataGrid[4, e.RowIndex].Value.ToString().StartsWith("NONE"))
-                {
-                    gunaCirclePictureBoxCPU.Image = Resources.delete2;
-                }
-
-            }
-        }
-
         private void rEFRESHToolStripMenuItem_Click(object sender, EventArgs e)
         {
             using (sql_con = new SQLiteConnection("Data Source=TRPO.db"))
@@ -306,33 +430,6 @@ namespace TRPO_Project
             }
             comboBoxSELECT_id_product.selectedIndex = 0;
         }
-
-        private void UsersDataGrid_CellMouseEnter(object sender, DataGridViewCellEventArgs e)
-        {
-            if (e.RowIndex != -1)
-            {
-                CirclePictureBoxUSER.Image = Image.FromFile(Convert.ToString(UsersDataGrid[4, e.RowIndex].Value));               
-            }
-        }
-
-        private void bunifuImageButton_DeleteProd_Click(object sender, EventArgs e)
-        {
-            var result = MetroMessageBox.Show(this, "DELETE?", "ARE YOU SURE THAT YOU WANT TO REMOVE THIS PRODUCT FROM DATABASE?", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
-            if (result == DialogResult.Yes)
-            {
-                using (sql_con = new SQLiteConnection($"Data Source={Directory.GetCurrentDirectory()}\\TRPO.db"))
-                {
-                    sql_con.Open();
-                    using (sql_cmd = new SQLiteCommand($"DELETE FROM PCdb WHERE id={comboBoxSELECT_id_product.selectedValue}",sql_con))
-                    {
-                        sql_cmd.ExecuteNonQuery();
-                        MetroMessageBox.Show(this, "SUCCESS!", "THE PRODUCT WAS DELETED!", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                        rEFRESHToolStripMenuItem_Click(sender, e);
-                    }
-                }
-            }
-        }
-
         private void AdminPanelForm_Load(object sender, EventArgs e)
         {
             using (sql_con = new SQLiteConnection($"Data Source={Directory.GetCurrentDirectory()}\\TRPO.db"))
@@ -344,83 +441,61 @@ namespace TRPO_Project
                 FillIdInComboBoxes();
             }
         }
+        
 
-        private void comboBoxCHANGEVALUE_byid_product_onItemSelected(object sender, EventArgs e)
+
+        #region ThemeChange
+        public void ChangeMetroControls(string theme)
         {
-            gunaLineTextBoxNEWvalue.Enabled = true;
-            if (comboBoxCHANGEVALUE_byid_product.selectedValue == "IMAGE")
+            Theme = theme == "Light" ? MetroThemeStyle.Light : MetroThemeStyle.Dark;
+            tabControlAdmin.Theme = theme == "Light" ? MetroThemeStyle.Light : MetroThemeStyle.Dark;
+
+            foreach (var tab in tabControlAdmin.TabPages.OfType<MetroTabPage>())
             {
-                gunaLabelNEWvalue.Visible = false;
-                gunaLineTextBoxNEWvalue.Visible = false;
-                bunifuImageButtonNEWpcIMG.Visible = true;
-                gunaLabelNEWpcPIC.Visible = true;
-                using (FileStream FS = new FileStream(Convert.ToString(bunifuCustomDataGridVIEWinfoAboutONEprod[6, 0].Value), FileMode.OpenOrCreate))
-                {
-                    bunifuImageButtonNEWpcIMG.Image = Image.FromStream(FS);
-                }
-            }
-            else
-            {
-                gunaLabelNEWvalue.Visible = true;
-                gunaLineTextBoxNEWvalue.Visible = true;
-                bunifuImageButtonNEWpcIMG.Visible = false;
-                gunaLabelNEWpcPIC.Visible = false;
+                tab.BackColor = theme == "Light" ? Color.White : Color.Black;
             }
         }
 
-        private void bunifuImageButtonNEWpcIMG_Click(object sender, EventArgs e)
+        public void ChangeNonMetroControls(string theme)
         {
-            var result = openFileDialogCHANGE_PIC.ShowDialog();
-            if (result == DialogResult.OK)
+            bunifuCustomDataGridVIEWinfoAboutONEprod.BackgroundColor = theme == "Light" ? Color.WhiteSmoke : Color.FromArgb(17,17,17);
+            gunaLineTextBoxNEWvalue.BackColor = theme == "Light" ? Color.WhiteSmoke : Color.FromArgb(17, 17, 17);
+            UsersDataGrid.BackgroundColor = theme == "Light" ? Color.WhiteSmoke : Color.FromArgb(17, 17, 17);
+            PCDataGrid.BackgroundColor = theme == "Light" ? Color.WhiteSmoke : Color.FromArgb(17, 17, 17);
+            InquiryDataGrid.BackgroundColor = theme == "Light" ? Color.WhiteSmoke : Color.FromArgb(17, 17, 17);
+            buttonShowGraphic.BackColor = theme == "Light" ? Color.White : Color.Black;
+            bunifuImageButtonNEWpic.BackColor = theme == "Light" ? Color.LightGray : Color.DimGray;
+
+            foreach(var ctrl in tabControlAdmin.TabPages[1].Controls.OfType<GunaLabel>())
             {
-                using (FileStream FS = new FileStream(openFileDialogCHANGE_PIC.FileName, FileMode.OpenOrCreate))
-                {
-                    bunifuImageButtonNEWpcIMG.Image = Image.FromStream(FS);
-                }
+                ctrl.BackColor = theme == "Light" ? Color.WhiteSmoke : Color.FromArgb(17, 17, 17);
             }
+
+            gunaLineTextBoxNEWvalue.BackColor = theme == "Light" ? Color.WhiteSmoke : Color.FromArgb(17, 17, 17);
+            tabPage1.BackColor = THEME == "Light" ? Color.White : Color.Black;
         }
 
-        private void gunaLineTextBoxNEWvalue_TextChanged(object sender, EventArgs e)
+        public void ReadTheme()
         {
-            if (gunaLineTextBoxNEWvalue.Text.Length > 0)
+            List<ProgramTheme> themes = new List<ProgramTheme>();
+
+            using (FileStream file = new FileStream("ThemeSettings.json", FileMode.OpenOrCreate))
             {
-                bunifuImageButtonAPPLYchanges.Enabled = true;
-                bunifuImageButtonAPPLYchanges.Image = Resources.ok;
-                bunifuImageButtonAPPLYchanges.BackColor = Color.SeaGreen;
+                DataContractJsonSerializer jsonSerializer = new DataContractJsonSerializer(typeof(List<ProgramTheme>));
+                themes = jsonSerializer.ReadObject(file) as List<ProgramTheme>;
             }
-            else
+
+            if (themes.Count(x => x.UserID == userID) > 0)
             {
-                bunifuImageButtonAPPLYchanges.Enabled = false;
-                bunifuImageButtonAPPLYchanges.Image = Resources.X;
-                bunifuImageButtonAPPLYchanges.BackColor = Color.Gray;
+                THEME = themes.Find(x => x.UserID == userID).Theme;
+                ChangeNonMetroControls(THEME);
+                ChangeMetroControls(THEME);         
+                Refresh();
             }
+            return;
         }
 
-        private void buttonShowGraphic_Click(object sender, EventArgs e)
-        {
-            GraphicForm graphicFORM = new GraphicForm();
-            graphicFORM.Show(this);
-        }
-
-        private void bunifuImageButtonHIDE_Click(object sender, EventArgs e)
-        {
-            this.WindowState = FormWindowState.Minimized;
-        }
-
-        #region MovingForm
-        private void panelHead_MouseDown(object sender, MouseEventArgs e)
-        {
-            lastPoint = e.Location;
-        }
-
-        private void panelHead_MouseMove(object sender, MouseEventArgs e)
-        {
-            if (e.Button == MouseButtons.Left)
-            {
-                Left += e.X - lastPoint.X;
-                Top += e.Y - lastPoint.Y;
-            }
-        }
         #endregion
+
     }
 }

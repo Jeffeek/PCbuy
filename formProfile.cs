@@ -13,13 +13,17 @@ using TRPO_Project.Properties;
 using MetroFramework;
 using MetroFramework.Forms;
 using MetroFramework.Components;
+using MetroFramework.Controls;
+using MetroFramework.Drawing;
 using System.Threading;
 using XanderUI.Designers;
 using XanderUI;
+using System.Runtime.Serialization;
+using System.Runtime.Serialization.Json;
 
 namespace TRPO_Project
 {
-    public partial class formProfile : MetroForm
+    public partial class formProfile : MetroForm, IThemeChange
     {
         #region variables
         private bool isPASSvisible = false;
@@ -28,6 +32,7 @@ namespace TRPO_Project
         private formADMIN userA;
         private SQLiteConnection sql_con; // connection
         private SQLiteCommand sql_cmd;
+        private string THEME = "Dark";
         private bool isADMIN;
         private Point lastPoint;
 
@@ -39,6 +44,7 @@ namespace TRPO_Project
         {
             InitializeComponent();
             userID = ID;
+            ReadTheme();
             userU = formF;
             isADMIN = false;
             bunifuMaterialTextboxEMAIL.Text = takeAlogin();
@@ -50,6 +56,7 @@ namespace TRPO_Project
         {
             InitializeComponent();
             userID = ID;
+            ReadTheme();
             userA = formF;
             isADMIN = true;
             linkLabelDELETEprofile.Visible = false;
@@ -304,5 +311,73 @@ namespace TRPO_Project
             }
         }
         #endregion
+
+        private void switchTheme_CheckedChanged(object sender, EventArgs e)
+        {
+            switchTheme.Enabled = false;
+            List<ProgramTheme> themes = new List<ProgramTheme>();
+            string ChoosedTheme = switchTheme.Checked ? "Light" : "Dark";
+
+            using (FileStream file = new FileStream("ThemeSettings.json", FileMode.OpenOrCreate))
+            {
+                DataContractJsonSerializer jsonSerializer = new DataContractJsonSerializer(typeof(List<ProgramTheme>));
+                themes = jsonSerializer.ReadObject(file) as List<ProgramTheme>;
+            }
+
+            foreach(var ThemeID in themes)
+            {
+                if (ThemeID.UserID == userID)
+                {
+                    themes.Remove(ThemeID);
+                    break;
+                }
+            }
+
+            themes.Add(new ProgramTheme(ChoosedTheme, userID));
+
+            using (FileStream file = new FileStream("ThemeSettings.json", FileMode.OpenOrCreate))
+            {
+                DataContractJsonSerializer jsonSerializer = new DataContractJsonSerializer(typeof(List<ProgramTheme>));
+                jsonSerializer.WriteObject(file,themes);
+            }
+            switchTheme.Enabled = true;
+        }
+
+        public void ChangeMetroControls(string theme)
+        {
+            Theme = theme == "Light" ? MetroThemeStyle.Light : MetroThemeStyle.Dark;
+            linkLabelCHANGEprofilePIC.Theme = theme == "Light" ? MetroThemeStyle.Light : MetroThemeStyle.Dark;
+        }
+
+        public void ChangeNonMetroControls(string theme)
+        {
+            switchTheme.Checked = theme == "Light";
+            labelChangeTheme.ForeColor = theme == "Light" ? Color.Black : Color.White;
+            bunifuMaterialTextboxEMAIL.BackColor = theme == "Light" ? Color.White : Color.FromArgb(17,17,17);
+            bunifuMaterialTextboxPASS.BackColor = theme == "Light" ? Color.White : Color.FromArgb(17, 17, 17);
+        }
+
+        public void ReadTheme()
+        {
+            List<ProgramTheme> themes = new List<ProgramTheme>();
+
+            using (FileStream file = new FileStream("ThemeSettings.json", FileMode.OpenOrCreate))
+            {
+                DataContractJsonSerializer jsonSerializer = new DataContractJsonSerializer(typeof(List<ProgramTheme>));
+                themes = jsonSerializer.ReadObject(file) as List<ProgramTheme>;
+            }
+
+            if (themes.Count(x => x.UserID == userID) > 0)
+            {
+                THEME = themes.Find(x => x.UserID == userID).Theme;
+                Parallel.Invoke
+                    (
+                        () => ChangeNonMetroControls(THEME),
+                        () => ChangeMetroControls(THEME)
+                    );
+                Refresh();
+            }
+            return;
+        }
     }
 }

@@ -22,6 +22,7 @@ using Bunifu.Framework.Lib;
 using Bunifu;
 using BunifuAnimatorNS;
 using TRPO_Project.Properties;
+using System.Runtime.Serialization.Json;
 
 namespace TRPO_Project
 {
@@ -374,13 +375,21 @@ namespace TRPO_Project
 
         #endregion
 
+        private void metroLinkForgotPassword_Click(object sender, EventArgs e)
+        {
+            if (xuiSlidingPanelForgotPass.Collapsed)
+            {
+                xuiSlidingPanelForgotPass.Visible = true;
+            }
+        }
+
         #endregion
 
         #region Registration Slider
         private bool isPASScorrect = false;
         private bool isRepeatPASScorrect = false;
         private bool isLOGINcorrect = false;
-        private Point lastPoint;
+        
         #region CHECKcorrectionEMAIL&password
         private bool CheckEmailRegistration(string email)
         {
@@ -570,17 +579,10 @@ namespace TRPO_Project
 
         #endregion
 
-        #endregion
-
-        private void metroLinkForgotPassword_Click(object sender, EventArgs e)
-        {
-            if (xuiSlidingPanelForgotPass.Collapsed)
-            {
-                xuiSlidingPanelForgotPass.Visible = true;
-            }
-        }
+        #endregion      
 
         #region MovingForm
+        private Point lastPoint;
         private void panelHead_MouseDown(object sender, MouseEventArgs e)
         {
             lastPoint = e.Location;
@@ -594,6 +596,7 @@ namespace TRPO_Project
                 Top += e.Y - lastPoint.Y;
             }
         }
+
         #endregion
     }
 }

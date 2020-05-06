@@ -54,7 +54,6 @@
             this.label8 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
             this.gunaLabelIDofPC = new Guna.UI.WinForms.GunaLabel();
-            this.label3 = new System.Windows.Forms.Label();
             this.bunifuCustomDataGridVIEWinfoAboutONEprod = new Bunifu.Framework.UI.BunifuCustomDataGrid();
             this.dataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -64,7 +63,6 @@
             this.dataGridViewTextBoxColumn6 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn7 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.comboBoxSELECT_id_product = new Bunifu.Framework.UI.BunifuDropdown();
-            this.label2 = new System.Windows.Forms.Label();
             this.UsersDataGrid = new Bunifu.Framework.UI.BunifuCustomDataGrid();
             this.UsersID = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.UsersEMAIL = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -89,8 +87,10 @@
             this.gunaCirclePictureBoxCPU = new Guna.UI.WinForms.GunaCirclePictureBox();
             this.gunaCirclePictureBoxPC = new Guna.UI.WinForms.GunaCirclePictureBox();
             this.buttonShowGraphic = new Bunifu.Framework.UI.BunifuImageButton();
-            this.metroTabControl1 = new MetroFramework.Controls.MetroTabControl();
+            this.tabControlAdmin = new MetroFramework.Controls.MetroTabControl();
             this.metroTabPage1 = new MetroFramework.Controls.MetroTabPage();
+            this.gunaLabelDeleteProd = new Guna.UI.WinForms.GunaLabel();
+            this.gunaLabel1 = new Guna.UI.WinForms.GunaLabel();
             this.gunaCirclePictureBoxPC_ONE = new Guna.UI.WinForms.GunaCirclePictureBox();
             this.gunaLabelNEWpcPIC = new Guna.UI.WinForms.GunaLabel();
             this.bunifuImageButtonNEWpcIMG = new Bunifu.Framework.UI.BunifuImageButton();
@@ -127,7 +127,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.gunaCirclePictureBoxCPU)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gunaCirclePictureBoxPC)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.buttonShowGraphic)).BeginInit();
-            this.metroTabControl1.SuspendLayout();
+            this.tabControlAdmin.SuspendLayout();
             this.metroTabPage1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.gunaCirclePictureBoxPC_ONE)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.bunifuImageButtonNEWpcIMG)).BeginInit();
@@ -277,7 +277,7 @@
             // 
             // bunifuImageButtonNEWpic
             // 
-            this.bunifuImageButtonNEWpic.BackColor = System.Drawing.Color.Violet;
+            this.bunifuImageButtonNEWpic.BackColor = System.Drawing.Color.DimGray;
             this.bunifuImageButtonNEWpic.Image = global::TRPO_Project.Properties.Resources.image;
             this.bunifuImageButtonNEWpic.ImageActive = null;
             this.bunifuImageButtonNEWpic.Location = new System.Drawing.Point(498, 78);
@@ -364,17 +364,6 @@
             this.gunaLabelIDofPC.Size = new System.Drawing.Size(129, 25);
             this.gunaLabelIDofPC.TabIndex = 11;
             this.gunaLabelIDofPC.Text = "ID OF PC:";
-            // 
-            // label3
-            // 
-            this.label3.AutoSize = true;
-            this.label3.BackColor = System.Drawing.Color.Cyan;
-            this.label3.Font = new System.Drawing.Font("Unispace", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.Location = new System.Drawing.Point(715, 234);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(194, 25);
-            this.label3.TabIndex = 9;
-            this.label3.Text = "DELETE PRODUCT";
             // 
             // bunifuCustomDataGridVIEWinfoAboutONEprod
             // 
@@ -499,7 +488,7 @@
             // 
             // comboBoxSELECT_id_product
             // 
-            this.comboBoxSELECT_id_product.BackColor = System.Drawing.Color.Black;
+            this.comboBoxSELECT_id_product.BackColor = System.Drawing.Color.Transparent;
             this.comboBoxSELECT_id_product.BorderRadius = 5;
             this.comboBoxSELECT_id_product.ForeColor = System.Drawing.Color.White;
             this.comboBoxSELECT_id_product.Items = new string[0];
@@ -511,18 +500,6 @@
             this.comboBoxSELECT_id_product.Size = new System.Drawing.Size(141, 35);
             this.comboBoxSELECT_id_product.TabIndex = 2;
             this.comboBoxSELECT_id_product.onItemSelected += new System.EventHandler(this.comboBoxSELECT_id_product_onItemSelected);
-            // 
-            // label2
-            // 
-            this.label2.AutoSize = true;
-            this.label2.BackColor = System.Drawing.Color.Black;
-            this.label2.Font = new System.Drawing.Font("Unispace", 20.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.ForeColor = System.Drawing.Color.MediumPurple;
-            this.label2.Location = new System.Drawing.Point(62, 14);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(799, 33);
-            this.label2.TabIndex = 1;
-            this.label2.Text = "CHANGE INFORMATION ABOUT PRODUCT / DELETE PRODUCT";
             // 
             // UsersDataGrid
             // 
@@ -857,27 +834,29 @@
             this.buttonShowGraphic.Zoom = 10;
             this.buttonShowGraphic.Click += new System.EventHandler(this.buttonShowGraphic_Click);
             // 
-            // metroTabControl1
+            // tabControlAdmin
             // 
-            this.metroTabControl1.Controls.Add(this.tabPage1);
-            this.metroTabControl1.Controls.Add(this.metroTabPage1);
-            this.metroTabControl1.Controls.Add(this.metroTabPage2);
-            this.metroTabControl1.Controls.Add(this.metroTabPage3);
-            this.metroTabControl1.Controls.Add(this.metroTabPage4);
-            this.metroTabControl1.Location = new System.Drawing.Point(1, 38);
-            this.metroTabControl1.Name = "metroTabControl1";
-            this.metroTabControl1.SelectedIndex = 4;
-            this.metroTabControl1.Size = new System.Drawing.Size(925, 348);
-            this.metroTabControl1.TabIndex = 4;
-            this.metroTabControl1.Theme = MetroFramework.MetroThemeStyle.Dark;
-            this.metroTabControl1.UseSelectable = true;
+            this.tabControlAdmin.Controls.Add(this.tabPage1);
+            this.tabControlAdmin.Controls.Add(this.metroTabPage1);
+            this.tabControlAdmin.Controls.Add(this.metroTabPage2);
+            this.tabControlAdmin.Controls.Add(this.metroTabPage3);
+            this.tabControlAdmin.Controls.Add(this.metroTabPage4);
+            this.tabControlAdmin.Location = new System.Drawing.Point(1, 38);
+            this.tabControlAdmin.Name = "tabControlAdmin";
+            this.tabControlAdmin.SelectedIndex = 1;
+            this.tabControlAdmin.Size = new System.Drawing.Size(925, 348);
+            this.tabControlAdmin.TabIndex = 4;
+            this.tabControlAdmin.Theme = MetroFramework.MetroThemeStyle.Dark;
+            this.tabControlAdmin.UseSelectable = true;
             // 
             // metroTabPage1
             // 
+            this.metroTabPage1.BackColor = System.Drawing.Color.White;
+            this.metroTabPage1.Controls.Add(this.gunaLabelDeleteProd);
+            this.metroTabPage1.Controls.Add(this.gunaLabel1);
             this.metroTabPage1.Controls.Add(this.gunaCirclePictureBoxPC_ONE);
             this.metroTabPage1.Controls.Add(this.gunaLabelNEWpcPIC);
             this.metroTabPage1.Controls.Add(this.bunifuImageButtonNEWpcIMG);
-            this.metroTabPage1.Controls.Add(this.label3);
             this.metroTabPage1.Controls.Add(this.bunifuImageButton_DeleteProd);
             this.metroTabPage1.Controls.Add(this.gunaLabelCHANGE_prop);
             this.metroTabPage1.Controls.Add(this.gunaLabelNEWvalue);
@@ -885,7 +864,6 @@
             this.metroTabPage1.Controls.Add(this.gunaLabelIDofPC);
             this.metroTabPage1.Controls.Add(this.comboBoxCHANGEVALUE_byid_product);
             this.metroTabPage1.Controls.Add(this.bunifuImageButtonAPPLYchanges);
-            this.metroTabPage1.Controls.Add(this.label2);
             this.metroTabPage1.Controls.Add(this.comboBoxSELECT_id_product);
             this.metroTabPage1.Controls.Add(this.bunifuCustomDataGridVIEWinfoAboutONEprod);
             this.metroTabPage1.HorizontalScrollbarBarColor = true;
@@ -897,9 +875,34 @@
             this.metroTabPage1.TabIndex = 0;
             this.metroTabPage1.Text = "CHANGE INFO";
             this.metroTabPage1.Theme = MetroFramework.MetroThemeStyle.Dark;
-            this.metroTabPage1.VerticalScrollbarBarColor = true;
+            this.metroTabPage1.UseCustomBackColor = true;
+            this.metroTabPage1.VerticalScrollbarBarColor = false;
             this.metroTabPage1.VerticalScrollbarHighlightOnWheel = false;
             this.metroTabPage1.VerticalScrollbarSize = 10;
+            // 
+            // gunaLabelDeleteProd
+            // 
+            this.gunaLabelDeleteProd.AutoSize = true;
+            this.gunaLabelDeleteProd.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(17)))), ((int)(((byte)(17)))), ((int)(((byte)(17)))));
+            this.gunaLabelDeleteProd.Font = new System.Drawing.Font("Unispace", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.gunaLabelDeleteProd.ForeColor = System.Drawing.Color.Crimson;
+            this.gunaLabelDeleteProd.Location = new System.Drawing.Point(715, 235);
+            this.gunaLabelDeleteProd.Name = "gunaLabelDeleteProd";
+            this.gunaLabelDeleteProd.Size = new System.Drawing.Size(194, 25);
+            this.gunaLabelDeleteProd.TabIndex = 18;
+            this.gunaLabelDeleteProd.Text = "DELETE PRODUCT";
+            // 
+            // gunaLabel1
+            // 
+            this.gunaLabel1.AutoSize = true;
+            this.gunaLabel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(17)))), ((int)(((byte)(17)))), ((int)(((byte)(17)))));
+            this.gunaLabel1.Font = new System.Drawing.Font("Unispace", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.gunaLabel1.ForeColor = System.Drawing.Color.Aqua;
+            this.gunaLabel1.Location = new System.Drawing.Point(95, 12);
+            this.gunaLabel1.Name = "gunaLabel1";
+            this.gunaLabel1.Size = new System.Drawing.Size(748, 29);
+            this.gunaLabel1.TabIndex = 17;
+            this.gunaLabel1.Text = "CHANGE INFORMATION ABOUT PRODUCT / DELETE PRODUCT";
             // 
             // gunaCirclePictureBoxPC_ONE
             // 
@@ -983,7 +986,7 @@
             // 
             // comboBoxCHANGEVALUE_byid_product
             // 
-            this.comboBoxCHANGEVALUE_byid_product.BackColor = System.Drawing.Color.Black;
+            this.comboBoxCHANGEVALUE_byid_product.BackColor = System.Drawing.Color.Transparent;
             this.comboBoxCHANGEVALUE_byid_product.BorderRadius = 5;
             this.comboBoxCHANGEVALUE_byid_product.Enabled = false;
             this.comboBoxCHANGEVALUE_byid_product.ForeColor = System.Drawing.Color.White;
@@ -1022,6 +1025,7 @@
             // 
             // metroTabPage3
             // 
+            this.metroTabPage3.BackColor = System.Drawing.Color.Black;
             this.metroTabPage3.Controls.Add(this.PCDataGrid);
             this.metroTabPage3.Controls.Add(this.gunaCirclePictureBoxGPU);
             this.metroTabPage3.Controls.Add(this.gunaCirclePictureBoxCPU);
@@ -1035,6 +1039,7 @@
             this.metroTabPage3.TabIndex = 2;
             this.metroTabPage3.Text = "PC\'S INFO";
             this.metroTabPage3.Theme = MetroFramework.MetroThemeStyle.Dark;
+            this.metroTabPage3.UseCustomBackColor = true;
             this.metroTabPage3.VerticalScrollbarBarColor = true;
             this.metroTabPage3.VerticalScrollbarHighlightOnWheel = false;
             this.metroTabPage3.VerticalScrollbarSize = 10;
@@ -1174,6 +1179,7 @@
             // 
             // metroTabPage4
             // 
+            this.metroTabPage4.BackColor = System.Drawing.Color.Black;
             this.metroTabPage4.Controls.Add(this.buttonShowGraphic);
             this.metroTabPage4.Controls.Add(this.InquiryDataGrid);
             this.metroTabPage4.HorizontalScrollbarBarColor = true;
@@ -1185,6 +1191,7 @@
             this.metroTabPage4.TabIndex = 3;
             this.metroTabPage4.Text = "INQUIRY";
             this.metroTabPage4.Theme = MetroFramework.MetroThemeStyle.Dark;
+            this.metroTabPage4.UseCustomBackColor = true;
             this.metroTabPage4.VerticalScrollbarBarColor = true;
             this.metroTabPage4.VerticalScrollbarHighlightOnWheel = false;
             this.metroTabPage4.VerticalScrollbarSize = 10;
@@ -1213,6 +1220,7 @@
             // panelHead
             // 
             this.panelHead.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.panelHead.BackColor = System.Drawing.Color.Transparent;
             this.panelHead.Location = new System.Drawing.Point(1, 5);
             this.panelHead.Name = "panelHead";
             this.panelHead.Size = new System.Drawing.Size(921, 27);
@@ -1230,7 +1238,7 @@
             this.Controls.Add(this.bunifuImageButtonHIDE);
             this.Controls.Add(this.bunifuImageButtonEXIT);
             this.Controls.Add(this.panelHead);
-            this.Controls.Add(this.metroTabControl1);
+            this.Controls.Add(this.tabControlAdmin);
             this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.Movable = false;
@@ -1255,7 +1263,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.gunaCirclePictureBoxCPU)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.gunaCirclePictureBoxPC)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.buttonShowGraphic)).EndInit();
-            this.metroTabControl1.ResumeLayout(false);
+            this.tabControlAdmin.ResumeLayout(false);
             this.metroTabPage1.ResumeLayout(false);
             this.metroTabPage1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.gunaCirclePictureBoxPC_ONE)).EndInit();
@@ -1279,7 +1287,6 @@
         protected Bunifu.Framework.UI.BunifuImageButton bunifuImageButtonEXIT;
         private Bunifu.Framework.UI.BunifuCustomDataGrid bunifuCustomDataGridVIEWinfoAboutONEprod;
         private Bunifu.Framework.UI.BunifuDropdown comboBoxSELECT_id_product;
-        private System.Windows.Forms.Label label2;
         private Bunifu.Framework.UI.BunifuImageButton bunifuImageButtonAPPLYchanges;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn1;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn2;
@@ -1303,7 +1310,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn Date;
         private System.Windows.Forms.DataGridViewTextBoxColumn Order_PRICE;
         private Bunifu.Framework.UI.BunifuImageButton bunifuImageButton_DeleteProd;
-        private System.Windows.Forms.Label label3;
         private Guna.UI.WinForms.GunaLabel gunaLabelIDofPC;
         private Bunifu.Framework.UI.BunifuMaterialTextbox bunifuMetroTextboxADDprodPRICE;
         private Bunifu.Framework.UI.BunifuMaterialTextbox bunifuMetroTextboxADDprodRAM;
@@ -1317,7 +1323,7 @@
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.Label label8;
-        private MetroFramework.Controls.MetroTabControl metroTabControl1;
+        private MetroFramework.Controls.MetroTabControl tabControlAdmin;
         private MetroFramework.Controls.MetroTabPage metroTabPage1;
         private MetroFramework.Controls.MetroTabPage metroTabPage2;
         private MetroFramework.Controls.MetroTabPage metroTabPage3;
@@ -1346,5 +1352,7 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn14;
         protected Bunifu.Framework.UI.BunifuImageButton bunifuImageButtonHIDE;
         private System.Windows.Forms.Panel panelHead;
+        private Guna.UI.WinForms.GunaLabel gunaLabelDeleteProd;
+        private Guna.UI.WinForms.GunaLabel gunaLabel1;
     }
 }
