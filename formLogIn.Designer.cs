@@ -48,6 +48,8 @@ namespace TRPO_Project
             this.textBox_ForgotPass = new Guna.UI.WinForms.GunaLineTextBox();
             this.labelREGISTRATION = new System.Windows.Forms.Label();
             this.xuiSlidingPanelREGISTRATION = new XanderUI.XUISlidingPanel();
+            this.buttonProtectionCode_reg = new Bunifu.Framework.UI.BunifuImageButton();
+            this.textBoxProtectionCode_reg = new Bunifu.Framework.UI.BunifuMaterialTextbox();
             this.bunifuCustomLabel1 = new Bunifu.Framework.UI.BunifuCustomLabel();
             this.ButtonREGISTER = new Bunifu.Framework.UI.BunifuImageButton();
             this.textBoxREPEAT_PASS_reg = new Guna.UI.WinForms.GunaLineTextBox();
@@ -67,6 +69,7 @@ namespace TRPO_Project
             ((System.ComponentModel.ISupportInitialize)(this.bunifuImageButtonBACK)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.bunifuImageButtonAPPLYforgotPassword)).BeginInit();
             this.xuiSlidingPanelREGISTRATION.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.buttonProtectionCode_reg)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.ButtonREGISTER)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.bunifuImageButtonBACK_Reg)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.bunifuImageButtonEXIT)).BeginInit();
@@ -196,11 +199,11 @@ namespace TRPO_Project
             // gunaLineTextBoxCheckSendedNum
             // 
             this.gunaLineTextBoxCheckSendedNum.Animated = true;
-            this.gunaLineTextBoxCheckSendedNum.BackColor = System.Drawing.Color.Plum;
+            this.gunaLineTextBoxCheckSendedNum.BackColor = System.Drawing.Color.GhostWhite;
             this.gunaLineTextBoxCheckSendedNum.Cursor = System.Windows.Forms.Cursors.IBeam;
             this.gunaLineTextBoxCheckSendedNum.FocusedLineColor = System.Drawing.Color.FromArgb(((int)(((byte)(100)))), ((int)(((byte)(88)))), ((int)(((byte)(255)))));
             this.gunaLineTextBoxCheckSendedNum.Font = new System.Drawing.Font("Unispace", 8.999999F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.gunaLineTextBoxCheckSendedNum.ForeColor = System.Drawing.Color.Aqua;
+            this.gunaLineTextBoxCheckSendedNum.ForeColor = System.Drawing.Color.SeaGreen;
             this.gunaLineTextBoxCheckSendedNum.LineColor = System.Drawing.Color.DeepSkyBlue;
             this.gunaLineTextBoxCheckSendedNum.Location = new System.Drawing.Point(24, 182);
             this.gunaLineTextBoxCheckSendedNum.Name = "gunaLineTextBoxCheckSendedNum";
@@ -209,6 +212,7 @@ namespace TRPO_Project
             this.gunaLineTextBoxCheckSendedNum.TabIndex = 24;
             this.gunaLineTextBoxCheckSendedNum.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             this.gunaLineTextBoxCheckSendedNum.Visible = false;
+            this.gunaLineTextBoxCheckSendedNum.TextChanged += new System.EventHandler(this.gunaLineTextBoxCheckSendedNum_TextChanged);
             this.gunaLineTextBoxCheckSendedNum.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.gunaLineTextBoxCheckSendedNum_KeyPress);
             // 
             // bunifuImageButtonBACK
@@ -224,6 +228,7 @@ namespace TRPO_Project
             this.bunifuImageButtonBACK.TabIndex = 23;
             this.bunifuImageButtonBACK.TabStop = false;
             this.bunifuImageButtonBACK.Zoom = 10;
+            this.bunifuImageButtonBACK.Click += new System.EventHandler(this.bunifuImageButtonBACK_Click);
             // 
             // bunifuImageButtonAPPLYforgotPassword
             // 
@@ -257,7 +262,7 @@ namespace TRPO_Project
             // textBox_ForgotPass
             // 
             this.textBox_ForgotPass.Animated = true;
-            this.textBox_ForgotPass.BackColor = System.Drawing.Color.Plum;
+            this.textBox_ForgotPass.BackColor = System.Drawing.Color.GhostWhite;
             this.textBox_ForgotPass.Cursor = System.Windows.Forms.Cursors.IBeam;
             this.textBox_ForgotPass.FocusedLineColor = System.Drawing.Color.FromArgb(((int)(((byte)(100)))), ((int)(((byte)(88)))), ((int)(((byte)(255)))));
             this.textBox_ForgotPass.Font = new System.Drawing.Font("Unispace", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -292,7 +297,9 @@ namespace TRPO_Project
             this.xuiSlidingPanelREGISTRATION.BottomLeft = System.Drawing.Color.DeepSkyBlue;
             this.xuiSlidingPanelREGISTRATION.BottomRight = System.Drawing.Color.Fuchsia;
             this.xuiSlidingPanelREGISTRATION.CollapseControl = this.metroLinkRegister;
-            this.xuiSlidingPanelREGISTRATION.Collapsed = false;
+            this.xuiSlidingPanelREGISTRATION.Collapsed = true;
+            this.xuiSlidingPanelREGISTRATION.Controls.Add(this.buttonProtectionCode_reg);
+            this.xuiSlidingPanelREGISTRATION.Controls.Add(this.textBoxProtectionCode_reg);
             this.xuiSlidingPanelREGISTRATION.Controls.Add(this.bunifuCustomLabel1);
             this.xuiSlidingPanelREGISTRATION.Controls.Add(this.ButtonREGISTER);
             this.xuiSlidingPanelREGISTRATION.Controls.Add(this.textBoxREPEAT_PASS_reg);
@@ -302,17 +309,55 @@ namespace TRPO_Project
             this.xuiSlidingPanelREGISTRATION.Controls.Add(this.gunaLabel2);
             this.xuiSlidingPanelREGISTRATION.Controls.Add(this.gunaLabel4);
             this.xuiSlidingPanelREGISTRATION.Controls.Add(this.bunifuImageButtonBACK_Reg);
-            this.xuiSlidingPanelREGISTRATION.HideControls = true;
+            this.xuiSlidingPanelREGISTRATION.HideControls = false;
             this.xuiSlidingPanelREGISTRATION.Location = new System.Drawing.Point(25, 29);
             this.xuiSlidingPanelREGISTRATION.Name = "xuiSlidingPanelREGISTRATION";
             this.xuiSlidingPanelREGISTRATION.PanelWidthCollapsed = 0;
             this.xuiSlidingPanelREGISTRATION.PanelWidthExpanded = 345;
             this.xuiSlidingPanelREGISTRATION.PrimerColor = System.Drawing.Color.Black;
-            this.xuiSlidingPanelREGISTRATION.Size = new System.Drawing.Size(345, 217);
+            this.xuiSlidingPanelREGISTRATION.Size = new System.Drawing.Size(0, 217);
             this.xuiSlidingPanelREGISTRATION.Style = XanderUI.XUIGradientPanel.GradientStyle.Corners;
             this.xuiSlidingPanelREGISTRATION.TabIndex = 24;
             this.xuiSlidingPanelREGISTRATION.TopLeft = System.Drawing.Color.LightSeaGreen;
             this.xuiSlidingPanelREGISTRATION.TopRight = System.Drawing.Color.DarkGreen;
+            // 
+            // buttonProtectionCode_reg
+            // 
+            this.buttonProtectionCode_reg.BackColor = System.Drawing.Color.SlateGray;
+            this.buttonProtectionCode_reg.Image = global::TRPO_Project.Properties.Resources.delete2;
+            this.buttonProtectionCode_reg.ImageActive = null;
+            this.buttonProtectionCode_reg.Location = new System.Drawing.Point(268, 102);
+            this.buttonProtectionCode_reg.Name = "buttonProtectionCode_reg";
+            this.buttonProtectionCode_reg.Size = new System.Drawing.Size(58, 45);
+            this.buttonProtectionCode_reg.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.buttonProtectionCode_reg.TabIndex = 33;
+            this.buttonProtectionCode_reg.TabStop = false;
+            this.buttonProtectionCode_reg.Visible = false;
+            this.buttonProtectionCode_reg.Zoom = 10;
+            this.buttonProtectionCode_reg.Click += new System.EventHandler(this.buttonProtectionCode_reg_Click);
+            // 
+            // textBoxProtectionCode_reg
+            // 
+            this.textBoxProtectionCode_reg.BackColor = System.Drawing.Color.GhostWhite;
+            this.textBoxProtectionCode_reg.Cursor = System.Windows.Forms.Cursors.IBeam;
+            this.textBoxProtectionCode_reg.Font = new System.Drawing.Font("Unispace", 9.749999F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.textBoxProtectionCode_reg.ForeColor = System.Drawing.Color.SeaGreen;
+            this.textBoxProtectionCode_reg.HintForeColor = System.Drawing.Color.Empty;
+            this.textBoxProtectionCode_reg.HintText = "";
+            this.textBoxProtectionCode_reg.isPassword = false;
+            this.textBoxProtectionCode_reg.LineFocusedColor = System.Drawing.Color.Blue;
+            this.textBoxProtectionCode_reg.LineIdleColor = System.Drawing.Color.Gray;
+            this.textBoxProtectionCode_reg.LineMouseHoverColor = System.Drawing.Color.Blue;
+            this.textBoxProtectionCode_reg.LineThickness = 3;
+            this.textBoxProtectionCode_reg.Location = new System.Drawing.Point(268, 74);
+            this.textBoxProtectionCode_reg.Margin = new System.Windows.Forms.Padding(4);
+            this.textBoxProtectionCode_reg.Name = "textBoxProtectionCode_reg";
+            this.textBoxProtectionCode_reg.Size = new System.Drawing.Size(58, 24);
+            this.textBoxProtectionCode_reg.TabIndex = 32;
+            this.textBoxProtectionCode_reg.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.textBoxProtectionCode_reg.Visible = false;
+            this.textBoxProtectionCode_reg.OnValueChanged += new System.EventHandler(this.textBoxProtectionCode_reg_OnValueChanged);
+            this.textBoxProtectionCode_reg.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textBoxProtectionCode_reg_KeyPress);
             // 
             // bunifuCustomLabel1
             // 
@@ -342,12 +387,12 @@ namespace TRPO_Project
             // 
             // textBoxREPEAT_PASS_reg
             // 
-            this.textBoxREPEAT_PASS_reg.BackColor = System.Drawing.Color.RoyalBlue;
+            this.textBoxREPEAT_PASS_reg.BackColor = System.Drawing.Color.LightSkyBlue;
             this.textBoxREPEAT_PASS_reg.Cursor = System.Windows.Forms.Cursors.IBeam;
             this.textBoxREPEAT_PASS_reg.FocusedLineColor = System.Drawing.Color.FromArgb(((int)(((byte)(100)))), ((int)(((byte)(88)))), ((int)(((byte)(255)))));
             this.textBoxREPEAT_PASS_reg.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.textBoxREPEAT_PASS_reg.ForeColor = System.Drawing.Color.SpringGreen;
-            this.textBoxREPEAT_PASS_reg.LineColor = System.Drawing.Color.MintCream;
+            this.textBoxREPEAT_PASS_reg.LineColor = System.Drawing.Color.BlueViolet;
             this.textBoxREPEAT_PASS_reg.Location = new System.Drawing.Point(6, 149);
             this.textBoxREPEAT_PASS_reg.Name = "textBoxREPEAT_PASS_reg";
             this.textBoxREPEAT_PASS_reg.PasswordChar = '●';
@@ -358,12 +403,12 @@ namespace TRPO_Project
             // 
             // textBoxPASS_reg
             // 
-            this.textBoxPASS_reg.BackColor = System.Drawing.Color.RoyalBlue;
+            this.textBoxPASS_reg.BackColor = System.Drawing.Color.LightSkyBlue;
             this.textBoxPASS_reg.Cursor = System.Windows.Forms.Cursors.IBeam;
             this.textBoxPASS_reg.FocusedLineColor = System.Drawing.Color.FromArgb(((int)(((byte)(100)))), ((int)(((byte)(88)))), ((int)(((byte)(255)))));
             this.textBoxPASS_reg.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.textBoxPASS_reg.ForeColor = System.Drawing.Color.SpringGreen;
-            this.textBoxPASS_reg.LineColor = System.Drawing.Color.MintCream;
+            this.textBoxPASS_reg.LineColor = System.Drawing.Color.BlueViolet;
             this.textBoxPASS_reg.Location = new System.Drawing.Point(6, 100);
             this.textBoxPASS_reg.Name = "textBoxPASS_reg";
             this.textBoxPASS_reg.PasswordChar = '●';
@@ -374,12 +419,12 @@ namespace TRPO_Project
             // 
             // textBoxEMAIL_reg
             // 
-            this.textBoxEMAIL_reg.BackColor = System.Drawing.Color.RoyalBlue;
+            this.textBoxEMAIL_reg.BackColor = System.Drawing.Color.LightSkyBlue;
             this.textBoxEMAIL_reg.Cursor = System.Windows.Forms.Cursors.IBeam;
             this.textBoxEMAIL_reg.FocusedLineColor = System.Drawing.Color.FromArgb(((int)(((byte)(100)))), ((int)(((byte)(88)))), ((int)(((byte)(255)))));
             this.textBoxEMAIL_reg.Font = new System.Drawing.Font("Unispace", 9.749999F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.textBoxEMAIL_reg.ForeColor = System.Drawing.Color.SpringGreen;
-            this.textBoxEMAIL_reg.LineColor = System.Drawing.Color.MintCream;
+            this.textBoxEMAIL_reg.LineColor = System.Drawing.Color.BlueViolet;
             this.textBoxEMAIL_reg.Location = new System.Drawing.Point(6, 51);
             this.textBoxEMAIL_reg.Name = "textBoxEMAIL_reg";
             this.textBoxEMAIL_reg.PasswordChar = '\0';
@@ -432,6 +477,7 @@ namespace TRPO_Project
             this.bunifuImageButtonBACK_Reg.TabIndex = 23;
             this.bunifuImageButtonBACK_Reg.TabStop = false;
             this.bunifuImageButtonBACK_Reg.Zoom = 10;
+            this.bunifuImageButtonBACK_Reg.Click += new System.EventHandler(this.bunifuImageButtonBACK_Reg_Click);
             // 
             // bunifuImageButtonEXIT
             // 
@@ -547,6 +593,7 @@ namespace TRPO_Project
             ((System.ComponentModel.ISupportInitialize)(this.bunifuImageButtonAPPLYforgotPassword)).EndInit();
             this.xuiSlidingPanelREGISTRATION.ResumeLayout(false);
             this.xuiSlidingPanelREGISTRATION.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.buttonProtectionCode_reg)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.ButtonREGISTER)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.bunifuImageButtonBACK_Reg)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.bunifuImageButtonEXIT)).EndInit();
@@ -587,6 +634,8 @@ namespace TRPO_Project
         private System.Windows.Forms.Panel panelHead;
         private Bunifu.Framework.UI.BunifuImageButton imageButtonCheckNum;
         private Guna.UI.WinForms.GunaLineTextBox gunaLineTextBoxCheckSendedNum;
+        private Bunifu.Framework.UI.BunifuImageButton buttonProtectionCode_reg;
+        private Bunifu.Framework.UI.BunifuMaterialTextbox textBoxProtectionCode_reg;
     }
 }
 

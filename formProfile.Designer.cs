@@ -362,7 +362,7 @@
             // 
             // circlePictureBoxTR
             // 
-            this.circlePictureBoxTR.BackColor = System.Drawing.Color.Transparent;
+            this.circlePictureBoxTR.BackColor = System.Drawing.Color.MediumSlateBlue;
             this.circlePictureBoxTR.BaseColor = System.Drawing.Color.Transparent;
             this.circlePictureBoxTR.Cursor = System.Windows.Forms.Cursors.Hand;
             this.circlePictureBoxTR.Location = new System.Drawing.Point(189, 180);
@@ -375,7 +375,7 @@
             // 
             // circlePictureBoxTL
             // 
-            this.circlePictureBoxTL.BackColor = System.Drawing.Color.Transparent;
+            this.circlePictureBoxTL.BackColor = System.Drawing.Color.DarkOrchid;
             this.circlePictureBoxTL.BaseColor = System.Drawing.Color.Transparent;
             this.circlePictureBoxTL.Cursor = System.Windows.Forms.Cursors.Hand;
             this.circlePictureBoxTL.Location = new System.Drawing.Point(138, 180);
@@ -388,7 +388,7 @@
             // 
             // circlePictureBoxBR
             // 
-            this.circlePictureBoxBR.BackColor = System.Drawing.Color.Transparent;
+            this.circlePictureBoxBR.BackColor = System.Drawing.Color.MediumTurquoise;
             this.circlePictureBoxBR.BaseColor = System.Drawing.Color.Transparent;
             this.circlePictureBoxBR.Cursor = System.Windows.Forms.Cursors.Hand;
             this.circlePictureBoxBR.Location = new System.Drawing.Point(70, 180);
@@ -401,7 +401,7 @@
             // 
             // circlePictureBoxBL
             // 
-            this.circlePictureBoxBL.BackColor = System.Drawing.Color.Transparent;
+            this.circlePictureBoxBL.BackColor = System.Drawing.Color.Black;
             this.circlePictureBoxBL.BaseColor = System.Drawing.Color.Transparent;
             this.circlePictureBoxBL.Cursor = System.Windows.Forms.Cursors.Hand;
             this.circlePictureBoxBL.Location = new System.Drawing.Point(17, 180);

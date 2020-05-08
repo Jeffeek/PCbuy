@@ -24,6 +24,7 @@ namespace TRPO_Project
         private SQLiteConnection sql_con; // connection
         private SQLiteCommand sql_cmd;
         private static readonly Random randNum = new Random();
+        string SendNum = randNum.Next(1000, 9999).ToString();
         #endregion
 
         #region constructors
@@ -153,7 +154,7 @@ namespace TRPO_Project
             }
         }
         private void bunifuTextboxPASSlogin_OnTextChange(object sender, EventArgs e)
-        {
+      {
             if (CheckPasswordForCorrection(textboxPASSlogin.text))
             {
                 textboxPASSlogin.ForeColor = Color.SpringGreen;
@@ -181,6 +182,51 @@ namespace TRPO_Project
         }
         #endregion
 
+        #region EmailSend
+        //проверка высыланием рандомного номера на почту(для регистрации и для случая того, если пользователь забыл пароль)
+        private void SendMessage(string EmailTo)
+        {
+            string smtpEmail = "smtp.jeffeekpcbuy@gmail.com";
+            string smtpPassword = "9Pocan1337";
+            MailAddress SMTPfrom = new MailAddress(smtpEmail, "Jeffeek inc.");
+            MailAddress toUser = new MailAddress(EmailTo);
+            MailMessage Message = new MailMessage(SMTPfrom, toUser)
+            {
+                Subject = "Protection Code",
+                Body = $"<h1>{SendNum}</h1>",
+                IsBodyHtml = true
+            };
+            SmtpClient smtp = new SmtpClient("smtp.gmail.com", 587)
+            {
+                Credentials = new NetworkCredential(smtpEmail, smtpPassword),
+                EnableSsl = true
+            };
+            smtp.Send(Message);
+        }
+
+        //отсылка сообщения об успешной регистрации
+        private void SendMessage(string EmailTo, string password)
+        {
+            string smtpEmail = "smtp.jeffeekpcbuy@gmail.com";
+            string smtpPassword = "9Pocan1337";
+            MailAddress SMTPfrom = new MailAddress(smtpEmail, "Jeffeek inc.");
+            MailAddress toUser = new MailAddress(EmailTo);
+            MailMessage Message = new MailMessage(SMTPfrom, toUser)
+            {
+                Subject = "Successful registration",
+                Body = $"<h1>Успешная регистрация в приложении PCbuy</h1>\n<h2>Логин: {EmailTo}</h2>\n<h2>Пароль: {password}</h2>",
+                IsBodyHtml = true
+            };
+            SmtpClient smtp = new SmtpClient("smtp.gmail.com", 587)
+            {
+                Credentials = new NetworkCredential(smtpEmail, smtpPassword),
+                EnableSsl = true
+            };
+            smtp.Send(Message);
+        }
+
+        #endregion
+
         #region labelLINKclick
         ////при нажатии на ЗАБЫЛ ПАРОЛЬ
         private void metroLinkRegister_Click(object sender, EventArgs e)
@@ -188,14 +234,17 @@ namespace TRPO_Project
             textBoxPASS_reg.Text = string.Empty;
             textBoxREPEAT_PASS_reg.Text = string.Empty;
             textBoxEMAIL_reg.Text = string.Empty;
-            //if (xuiSlidingPanelREGISTRATION.Collapsed)
-            //{
-            //    xuiSlidingPanelREGISTRATION.Visible = true;
-            //}
-            //else
-            //{
-            //    xuiSlidingPanelREGISTRATION.Visible = false;
-            //}
+        }
+
+        private void metroLinkForgotPassword_Click(object sender, EventArgs e)
+        {
+            textboxPASSlogin.Enabled = false;
+            textboxEMAILlogin.Enabled = false;
+            metroLinkRegister.Enabled = false;
+            ImageButtonAPPLYlogin.Enabled = false;
+            textBox_ForgotPass.Text = string.Empty;
+            gunaLineTextBoxCheckSendedNum.Visible = false;
+            imageButtonCheckNum.Visible = false;
         }
         #endregion
 
@@ -210,6 +259,7 @@ namespace TRPO_Project
                 using (sql_cmd = new SQLiteCommand($"SELECT id FROM LOGin WHERE email='{email}' and password='{password}'", sql_con))
                 {
                     SQLiteDataReader reader = sql_cmd.ExecuteReader();
+                    reader.Read();
                     if (reader.HasRows)
                     {
                         reader.Close();
@@ -249,9 +299,7 @@ namespace TRPO_Project
         }
         #endregion
 
-        #region Forgost Password Slider 
-        
-        string SendNum = randNum.Next(1000, 9999).ToString();
+        #region Forgost Password Slider        
         private void bunifuImageButtonAPPLYforgotPassword_Click(object sender, EventArgs e)
         {
             try
@@ -289,7 +337,7 @@ namespace TRPO_Project
         {
             if (CheckEmailForCorrection(textBox_ForgotPass.Text))
             {
-                textBox_ForgotPass.ForeColor = Color.SpringGreen;
+                textBox_ForgotPass.ForeColor = Color.SeaGreen;
                 bunifuImageButtonAPPLYforgotPassword.Enabled = true;
                 bunifuImageButtonAPPLYforgotPassword.Image = Resources.ok;
                 bunifuImageButtonAPPLYforgotPassword.BackColor = Color.SeaGreen;
@@ -301,13 +349,7 @@ namespace TRPO_Project
                 bunifuImageButtonAPPLYforgotPassword.Image = Resources.X;
                 bunifuImageButtonAPPLYforgotPassword.BackColor = Color.SlateGray;
             }
-        }
-        private void metroLinkForgotPassword_Click(object sender, EventArgs e)
-        {
-            textBox_ForgotPass.Text = string.Empty;
-            gunaLineTextBoxCheckSendedNum.Visible = false;
-            imageButtonCheckNum.Visible = false;
-        }
+        }     
         private void imageButtonCheckNum_Click(object sender, EventArgs e)
         {
             if (gunaLineTextBoxCheckSendedNum.Text == SendNum)
@@ -337,32 +379,61 @@ namespace TRPO_Project
                     return sql_cmd.ExecuteScalar().ToString();
                 }
             }
-        }
-        private void SendMessage(string EmailTo)
+        }    
+        private void gunaLineTextBoxCheckSendedNum_KeyPress(object sender, KeyPressEventArgs e)
         {
-            string smtpEmail = "smtp.jeffeekpcbuy@gmail.com";
-            string smtpPassword = "9Pocan1337";
-            MailAddress SMTPfrom = new MailAddress(smtpEmail, "Jeffeek inc.");
-            MailAddress toUser = new MailAddress(EmailTo);
-            MailMessage Message = new MailMessage(SMTPfrom, toUser)
+            if (!char.IsDigit(e.KeyChar) && !char.IsControl(e.KeyChar) && gunaLineTextBoxCheckSendedNum.Text.Length == 3)
             {
-                Subject = "Protection Code",
-                Body = $"<h1>{SendNum}</h1>",
-                IsBodyHtml = true
-            };
-            SmtpClient smtp = new SmtpClient("smtp.gmail.com", 587)
+                e.Handled = true;
+            }
+            if (textBoxProtectionCode_reg.Text.Length == 3)
             {
-                Credentials = new NetworkCredential(smtpEmail, smtpPassword),
-                EnableSsl = true
-            };
-            smtp.Send(Message);
+                buttonProtectionCode_reg.Enabled = true;
+                buttonProtectionCode_reg.BackColor = Color.SeaGreen;
+                buttonProtectionCode_reg.Image = Resources.ok;
+            }
+            else if (textBoxProtectionCode_reg.Text.Length < 3)
+            {
+                buttonProtectionCode_reg.Enabled = false;
+                buttonProtectionCode_reg.BackColor = Color.SlateGray;
+                buttonProtectionCode_reg.Image = Resources.delete2;
+            }
         }
-        private void gunaLineTextBoxCheckSendedNum_KeyPress(object sender, KeyPressEventArgs e) => e.Handled = !char.IsDigit(e.KeyChar) && !char.IsControl(e.KeyChar) ? true : false;
+        private void gunaLineTextBoxCheckSendedNum_TextChanged(object sender, EventArgs e)
+        {
+            if (gunaLineTextBoxCheckSendedNum.Text.Length == 4)
+            {
+                imageButtonCheckNum.Enabled = true;
+                imageButtonCheckNum.BackColor = Color.SeaGreen;
+                imageButtonCheckNum.Image = Resources.ok;
+            }
+            else
+            {
+                if (gunaLineTextBoxCheckSendedNum.Text.Length < 4)
+                {
+                    imageButtonCheckNum.Enabled = false;
+                    imageButtonCheckNum.BackColor = Color.SlateGray;
+                    imageButtonCheckNum.Image = Resources.delete2;
+                }
+                else if (gunaLineTextBoxCheckSendedNum.Text.Length > 4)
+                {
+                    gunaLineTextBoxCheckSendedNum.Text = gunaLineTextBoxCheckSendedNum.Text.Remove(gunaLineTextBoxCheckSendedNum.Text.Length - 1);
+                    imageButtonCheckNum.Focus();
+                }
+            }
+        }
+        private void bunifuImageButtonBACK_Click(object sender, EventArgs e)
+        {
+            textboxPASSlogin.Enabled = true;
+            textboxEMAILlogin.Enabled = true;
+            metroLinkRegister.Enabled = true;
+            ImageButtonAPPLYlogin.Enabled = true;
+        }
 
         #endregion
 
         #region Registration Slider
-        
+
         #region CHECKcorrectionEMAIL&password
 
         private void textBoxEMAIL_TextChanged(object sender, EventArgs e)
@@ -440,6 +511,7 @@ namespace TRPO_Project
                 }
             }
         }
+
         #endregion
 
         #region tryingToApplyNewUSER
@@ -452,15 +524,23 @@ namespace TRPO_Project
                     using (sql_con = new SQLiteConnection($"Data Source={Directory.GetCurrentDirectory()}\\TRPO.db"))
                     {
                         sql_con.Open();
-                        sql_cmd = new SQLiteCommand("SELECT MAX(id) FROM LOGin", sql_con);
-                        int J = Convert.ToInt32(sql_cmd.ExecuteScalar().ToString());
-                        using (sql_cmd = new SQLiteCommand($@"INSERT INTO LOGin(email,password,isAdmin,ProfilePicture) VALUES('{textBoxEMAIL_reg.Text}', '{textBoxPASS_reg.Text}', 0, 'USERsPIC\id{++J}_USER.png');", sql_con))
+                        using (sql_cmd = new SQLiteCommand($"SELECT id FROM LOGin WHERE email='{textBoxEMAIL_reg.Text}'",sql_con))
                         {
-                            sql_cmd.ExecuteNonQuery();
-                            File.Copy(@"USERsPIC\idDEFAULT_USER.png", $@"USERsPIC\id{J}_USER.png");
-                            MetroMessageBox.Show(this, "Поздравляю!\nРегистрация успешно завершена!", "SUCCESS!", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
-                            textboxEMAILlogin.Text = textBoxEMAIL_reg.Text;
+                            if (sql_cmd.ExecuteScalar() != null)
+                            {
+                                MetroMessageBox.Show(this, "User with this email is already exists", "WARNING", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                                textBoxEMAIL_reg.Text = "";
+                                textBoxREPEAT_PASS_reg.Text = "";
+                                textBoxPASS_reg.Text = "";
+                                return;
+                            }
                         }
+
+                        SendNum = randNum.Next(1000, 9999).ToString();
+                        SendMessage(textBoxEMAIL_reg.Text);
+                        buttonProtectionCode_reg.Visible = true;
+                        textBoxProtectionCode_reg.Visible = true;
+                        MetroMessageBox.Show(this, "Protection Code was sended to your email. Paste it in the textbox at right and push the button", "Check email", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     }
                 }
                 else
@@ -477,7 +557,88 @@ namespace TRPO_Project
             }
         }
 
+        private void RegisterNewUser()
+        {
+            try
+            {
+                using (sql_con = new SQLiteConnection($"Data Source={Directory.GetCurrentDirectory()}\\TRPO.db"))
+                {
+                    sql_con.Open();
+                    int lastID;
+                    using (sql_cmd = new SQLiteCommand("SELECT COUNT(0) FROM LOGin", sql_con))
+                        lastID = Convert.ToInt32(sql_cmd.ExecuteScalar().ToString());
+                    lastID++;
+                    using (sql_cmd = new SQLiteCommand($@"INSERT INTO LOGin(email,password,isAdmin,ProfilePicture) VALUES('{textBoxEMAIL_reg.Text}', '{textBoxPASS_reg.Text}', 0, 'USERsPIC\id{lastID}_USER.png');", sql_con))
+                    {
+                        sql_cmd.ExecuteNonQuery();
+                        File.Copy($@"{Directory.GetCurrentDirectory()}\USERsPIC\idDEFAULT_USER.png", $@"{Directory.GetCurrentDirectory()}\USERsPIC\id{lastID}_USER.png");
+                        MetroMessageBox.Show(this, "Поздравляю!\nРегистрация успешно завершена!", "SUCCESS!", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                        SendMessage(textBoxEMAIL_reg.Text, textBoxPASS_reg.Text);
+                        textboxEMAILlogin.text = textBoxEMAIL_reg.Text;
+                        textBoxEMAIL_reg.Text = "";
+                        textBoxREPEAT_PASS_reg.Text = "";
+                        textBoxPASS_reg.Text = "";
+                        xuiSlidingPanelREGISTRATION.Collapsed = true;
+                    }
+                }
+            }
+            catch(Exception ex)
+            {
+                MetroMessageBox.Show(this, "ERROR \n" + ex.Message, "NOPE", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
         #endregion
+
+        private void textBoxProtectionCode_reg_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (!char.IsDigit(e.KeyChar) && !char.IsControl(e.KeyChar))
+            {
+                e.Handled = true;
+            }
+        }
+
+        private void bunifuImageButtonBACK_Reg_Click(object sender, EventArgs e)
+        {
+            buttonProtectionCode_reg.Visible = false;
+            textBoxProtectionCode_reg.Visible = false;
+        }
+
+        private void buttonProtectionCode_reg_Click(object sender, EventArgs e)
+        {
+            if (textBoxProtectionCode_reg.Text == SendNum)
+            {
+                RegisterNewUser();
+            }
+            else
+            {
+                MetroMessageBox.Show(this, "The num is incorrect!", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        private void textBoxProtectionCode_reg_OnValueChanged(object sender, EventArgs e)
+        {
+            if (textBoxProtectionCode_reg.Text.Length == 4)
+            {
+                buttonProtectionCode_reg.Enabled = true;
+                buttonProtectionCode_reg.BackColor = Color.SeaGreen;
+                buttonProtectionCode_reg.Image = Resources.ok;
+            }
+            else
+            {
+                if (textBoxProtectionCode_reg.Text.Length < 4)
+                {
+                    buttonProtectionCode_reg.Enabled = false;
+                    buttonProtectionCode_reg.BackColor = Color.SlateGray;
+                    buttonProtectionCode_reg.Image = Resources.delete2;
+                }
+                else if (textBoxProtectionCode_reg.Text.Length > 4)
+                {
+                    textBoxProtectionCode_reg.Text = textBoxProtectionCode_reg.Text.Remove(textBoxProtectionCode_reg.Text.Length - 1);
+                    buttonProtectionCode_reg.Focus();
+                }
+            }
+        }
 
         #endregion      
 
@@ -497,6 +658,7 @@ namespace TRPO_Project
             }
         }
 
-        #endregion
+        #endregion       
+        
     }
 }

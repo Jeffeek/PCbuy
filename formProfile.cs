@@ -452,16 +452,14 @@ namespace TRPO_Project
 
         private void imageButtonSettings_Click(object sender, EventArgs e)
         {
-            if (!xuiSlidingPanelSettings.Collapsed)
+            if (xuiSlidingPanelSettings.Collapsed)
             {
                 linkLabelDELETEprofile.Enabled = false;
-                switchTheme.Enabled = false;
                 pictureBoxCHANGEpassVisibility.Enabled = false;
             }
             else
             {
                 linkLabelDELETEprofile.Enabled = true;
-                switchTheme.Enabled = true;
                 pictureBoxCHANGEpassVisibility.Enabled = true;
             }
         }
