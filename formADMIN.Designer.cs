@@ -30,20 +30,20 @@
         {
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(formADMIN));
-            this.xuiCircleProgressBar1 = new XanderUI.XUICircleProgressBar();
+            this.ProgressBar = new XanderUI.XUICircleProgressBar();
             this.FormStartTransition = new Bunifu.Framework.UI.BunifuFormFadeTransition(this.components);
             this.EllipseForm = new XanderUI.XUIObjectEllipse();
             this.button_backToLoginForm = new Bunifu.Framework.UI.BunifuImageButton();
             this.groupBoxHEAD = new Bunifu.Framework.UI.BunifuGradientPanel();
-            this.label1 = new System.Windows.Forms.Label();
+            this.labelPRICE = new System.Windows.Forms.Label();
             this.bunifuImageButtonSORT = new Bunifu.Framework.UI.BunifuImageButton();
             this.textBox_PRICE = new Bunifu.Framework.UI.BunifuMaterialTextbox();
             this.bunifuImageButtonADMINPANEL = new Bunifu.Framework.UI.BunifuImageButton();
             this.labelRAM = new System.Windows.Forms.Label();
             this.labelGPU = new System.Windows.Forms.Label();
-            this.pictureBoxProfile1 = new Bunifu.Framework.UI.BunifuImageButton();
+            this.pictureBoxProfile = new Bunifu.Framework.UI.BunifuImageButton();
             this.labelCPU = new System.Windows.Forms.Label();
-            this.pictureBoxProductBIN1 = new Bunifu.Framework.UI.BunifuImageButton();
+            this.pictureBoxProductBIN = new Bunifu.Framework.UI.BunifuImageButton();
             this.metroComboBoxCPUsort = new MetroFramework.Controls.MetroComboBox();
             this.metroComboBoxTYPEofPC = new MetroFramework.Controls.MetroComboBox();
             this.labelTYPEofPC = new System.Windows.Forms.Label();
@@ -55,32 +55,32 @@
             this.groupBoxHEAD.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.bunifuImageButtonSORT)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.bunifuImageButtonADMINPANEL)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxProfile1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxProductBIN1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxProfile)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxProductBIN)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.bunifuImageButtonEXIT)).BeginInit();
             this.SuspendLayout();
             // 
-            // xuiCircleProgressBar1
+            // ProgressBar
             // 
-            this.xuiCircleProgressBar1.AnimationSpeed = 10;
-            this.xuiCircleProgressBar1.FilledColor = System.Drawing.Color.LightBlue;
-            this.xuiCircleProgressBar1.FilledColorAlpha = 90;
-            this.xuiCircleProgressBar1.FilledThickness = 40;
-            this.xuiCircleProgressBar1.Font = new System.Drawing.Font("Modern No. 20", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.xuiCircleProgressBar1.IsAnimated = false;
-            this.xuiCircleProgressBar1.Location = new System.Drawing.Point(540, 240);
-            this.xuiCircleProgressBar1.Name = "xuiCircleProgressBar1";
-            this.xuiCircleProgressBar1.Percentage = 0;
-            this.xuiCircleProgressBar1.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.xuiCircleProgressBar1.ShowText = true;
-            this.xuiCircleProgressBar1.Size = new System.Drawing.Size(225, 225);
-            this.xuiCircleProgressBar1.TabIndex = 2;
-            this.xuiCircleProgressBar1.TabStop = false;
-            this.xuiCircleProgressBar1.TextColor = System.Drawing.Color.LightSeaGreen;
-            this.xuiCircleProgressBar1.TextSize = 30;
-            this.xuiCircleProgressBar1.UnFilledColor = System.Drawing.Color.PaleGreen;
-            this.xuiCircleProgressBar1.UnfilledThickness = 24;
-            this.xuiCircleProgressBar1.Visible = false;
+            this.ProgressBar.AnimationSpeed = 10;
+            this.ProgressBar.FilledColor = System.Drawing.Color.LightBlue;
+            this.ProgressBar.FilledColorAlpha = 90;
+            this.ProgressBar.FilledThickness = 40;
+            this.ProgressBar.Font = new System.Drawing.Font("Modern No. 20", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.ProgressBar.IsAnimated = false;
+            this.ProgressBar.Location = new System.Drawing.Point(540, 240);
+            this.ProgressBar.Name = "ProgressBar";
+            this.ProgressBar.Percentage = 0;
+            this.ProgressBar.RightToLeft = System.Windows.Forms.RightToLeft.No;
+            this.ProgressBar.ShowText = true;
+            this.ProgressBar.Size = new System.Drawing.Size(225, 225);
+            this.ProgressBar.TabIndex = 2;
+            this.ProgressBar.TabStop = false;
+            this.ProgressBar.TextColor = System.Drawing.Color.LightSeaGreen;
+            this.ProgressBar.TextSize = 30;
+            this.ProgressBar.UnFilledColor = System.Drawing.Color.PaleGreen;
+            this.ProgressBar.UnfilledThickness = 24;
+            this.ProgressBar.Visible = false;
             // 
             // FormStartTransition
             // 
@@ -114,16 +114,16 @@
             this.groupBoxHEAD.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("groupBoxHEAD.BackgroundImage")));
             this.groupBoxHEAD.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.groupBoxHEAD.CausesValidation = false;
-            this.groupBoxHEAD.Controls.Add(this.label1);
+            this.groupBoxHEAD.Controls.Add(this.labelPRICE);
             this.groupBoxHEAD.Controls.Add(this.button_backToLoginForm);
             this.groupBoxHEAD.Controls.Add(this.bunifuImageButtonSORT);
             this.groupBoxHEAD.Controls.Add(this.textBox_PRICE);
             this.groupBoxHEAD.Controls.Add(this.bunifuImageButtonADMINPANEL);
             this.groupBoxHEAD.Controls.Add(this.labelRAM);
             this.groupBoxHEAD.Controls.Add(this.labelGPU);
-            this.groupBoxHEAD.Controls.Add(this.pictureBoxProfile1);
+            this.groupBoxHEAD.Controls.Add(this.pictureBoxProfile);
             this.groupBoxHEAD.Controls.Add(this.labelCPU);
-            this.groupBoxHEAD.Controls.Add(this.pictureBoxProductBIN1);
+            this.groupBoxHEAD.Controls.Add(this.pictureBoxProductBIN);
             this.groupBoxHEAD.Controls.Add(this.metroComboBoxCPUsort);
             this.groupBoxHEAD.Controls.Add(this.metroComboBoxTYPEofPC);
             this.groupBoxHEAD.Controls.Add(this.labelTYPEofPC);
@@ -140,16 +140,16 @@
             this.groupBoxHEAD.Size = new System.Drawing.Size(796, 56);
             this.groupBoxHEAD.TabIndex = 15;
             // 
-            // label1
+            // labelPRICE
             // 
-            this.label1.AutoSize = true;
-            this.label1.BackColor = System.Drawing.Color.Transparent;
-            this.label1.ForeColor = System.Drawing.Color.Cyan;
-            this.label1.Location = new System.Drawing.Point(29, 4);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(47, 15);
-            this.label1.TabIndex = 19;
-            this.label1.Text = "PRICE";
+            this.labelPRICE.AutoSize = true;
+            this.labelPRICE.BackColor = System.Drawing.Color.Transparent;
+            this.labelPRICE.ForeColor = System.Drawing.Color.Cyan;
+            this.labelPRICE.Location = new System.Drawing.Point(29, 4);
+            this.labelPRICE.Name = "labelPRICE";
+            this.labelPRICE.Size = new System.Drawing.Size(47, 15);
+            this.labelPRICE.TabIndex = 19;
+            this.labelPRICE.Text = "PRICE";
             // 
             // bunifuImageButtonSORT
             // 
@@ -229,20 +229,20 @@
             this.labelGPU.TabIndex = 9;
             this.labelGPU.Text = "GPU";
             // 
-            // pictureBoxProfile1
+            // pictureBoxProfile
             // 
-            this.pictureBoxProfile1.BackColor = System.Drawing.Color.Transparent;
-            this.pictureBoxProfile1.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.pictureBoxProfile1.Image = global::TRPO_Project.Properties.Resources.profile_default;
-            this.pictureBoxProfile1.ImageActive = null;
-            this.pictureBoxProfile1.Location = new System.Drawing.Point(654, 11);
-            this.pictureBoxProfile1.Name = "pictureBoxProfile1";
-            this.pictureBoxProfile1.Size = new System.Drawing.Size(40, 40);
-            this.pictureBoxProfile1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.pictureBoxProfile1.TabIndex = 2;
-            this.pictureBoxProfile1.TabStop = false;
-            this.pictureBoxProfile1.Zoom = 5;
-            this.pictureBoxProfile1.Click += new System.EventHandler(this.pictureBoxProfile_Click);
+            this.pictureBoxProfile.BackColor = System.Drawing.Color.Transparent;
+            this.pictureBoxProfile.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.pictureBoxProfile.Image = global::TRPO_Project.Properties.Resources.profile_default;
+            this.pictureBoxProfile.ImageActive = null;
+            this.pictureBoxProfile.Location = new System.Drawing.Point(654, 11);
+            this.pictureBoxProfile.Name = "pictureBoxProfile";
+            this.pictureBoxProfile.Size = new System.Drawing.Size(40, 40);
+            this.pictureBoxProfile.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pictureBoxProfile.TabIndex = 2;
+            this.pictureBoxProfile.TabStop = false;
+            this.pictureBoxProfile.Zoom = 5;
+            this.pictureBoxProfile.Click += new System.EventHandler(this.pictureBoxProfile_Click);
             // 
             // labelCPU
             // 
@@ -255,20 +255,20 @@
             this.labelCPU.TabIndex = 8;
             this.labelCPU.Text = "CPU";
             // 
-            // pictureBoxProductBIN1
+            // pictureBoxProductBIN
             // 
-            this.pictureBoxProductBIN1.BackColor = System.Drawing.Color.Transparent;
-            this.pictureBoxProductBIN1.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.pictureBoxProductBIN1.Image = global::TRPO_Project.Properties.Resources.shopping_cart;
-            this.pictureBoxProductBIN1.ImageActive = null;
-            this.pictureBoxProductBIN1.Location = new System.Drawing.Point(598, 11);
-            this.pictureBoxProductBIN1.Name = "pictureBoxProductBIN1";
-            this.pictureBoxProductBIN1.Size = new System.Drawing.Size(40, 40);
-            this.pictureBoxProductBIN1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.pictureBoxProductBIN1.TabIndex = 3;
-            this.pictureBoxProductBIN1.TabStop = false;
-            this.pictureBoxProductBIN1.Zoom = 5;
-            this.pictureBoxProductBIN1.Click += new System.EventHandler(this.pictureBoxProductBIN_Click);
+            this.pictureBoxProductBIN.BackColor = System.Drawing.Color.Transparent;
+            this.pictureBoxProductBIN.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.pictureBoxProductBIN.Image = global::TRPO_Project.Properties.Resources.shopping_cart;
+            this.pictureBoxProductBIN.ImageActive = null;
+            this.pictureBoxProductBIN.Location = new System.Drawing.Point(598, 11);
+            this.pictureBoxProductBIN.Name = "pictureBoxProductBIN";
+            this.pictureBoxProductBIN.Size = new System.Drawing.Size(40, 40);
+            this.pictureBoxProductBIN.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pictureBoxProductBIN.TabIndex = 3;
+            this.pictureBoxProductBIN.TabStop = false;
+            this.pictureBoxProductBIN.Zoom = 5;
+            this.pictureBoxProductBIN.Click += new System.EventHandler(this.pictureBoxProductBIN_Click);
             // 
             // metroComboBoxCPUsort
             // 
@@ -408,7 +408,7 @@
             this.ControlBox = false;
             this.Controls.Add(this.bunifuImageButtonEXIT);
             this.Controls.Add(this.panelHead);
-            this.Controls.Add(this.xuiCircleProgressBar1);
+            this.Controls.Add(this.ProgressBar);
             this.Controls.Add(this.groupBoxHEAD);
             this.DoubleBuffered = false;
             this.Font = new System.Drawing.Font("Unispace", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -426,45 +426,34 @@
             this.groupBoxHEAD.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.bunifuImageButtonSORT)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.bunifuImageButtonADMINPANEL)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxProfile1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxProductBIN1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxProfile)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxProductBIN)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.bunifuImageButtonEXIT)).EndInit();
             this.ResumeLayout(false);
 
         }
 
         #endregion
-        internal XanderUI.XUICircleProgressBar xuiCircleProgressBar1;
-        internal XanderUI.XUICircleProgressBar xuiCircleProgressBar2;
-        protected MetroFramework.Controls.MetroComboBox metroComboBox1;
-        protected Bunifu.Framework.UI.BunifuMetroTextbox bunifuMetroTextbox2;
-        protected System.Windows.Forms.Label label5;
-        protected System.Windows.Forms.Label label6;
-        protected System.Windows.Forms.Label label7;
-        protected System.Windows.Forms.Label label8;
-        protected MetroFramework.Controls.MetroComboBox metroComboBox2;
-        protected MetroFramework.Controls.MetroComboBox metroComboBox3;
-        protected MetroFramework.Controls.MetroComboBox metroComboBox4;
-        internal System.Windows.Forms.GroupBox groupBox1;
+        private XanderUI.XUICircleProgressBar ProgressBar;
         private Bunifu.Framework.UI.BunifuImageButton bunifuImageButtonADMINPANEL;
         private Bunifu.Framework.UI.BunifuFormFadeTransition FormStartTransition;
-        protected Bunifu.Framework.UI.BunifuImageButton bunifuImageButtonEXIT;
+        private Bunifu.Framework.UI.BunifuImageButton bunifuImageButtonEXIT;
         private Bunifu.Framework.UI.BunifuGradientPanel groupBoxHEAD;
-        protected System.Windows.Forms.Label labelRAM;
-        protected System.Windows.Forms.Label labelGPU;
-        protected Bunifu.Framework.UI.BunifuImageButton pictureBoxProfile1;
-        protected System.Windows.Forms.Label labelCPU;
-        protected Bunifu.Framework.UI.BunifuImageButton pictureBoxProductBIN1;
-        protected MetroFramework.Controls.MetroComboBox metroComboBoxCPUsort;
-        protected MetroFramework.Controls.MetroComboBox metroComboBoxTYPEofPC;
-        protected System.Windows.Forms.Label labelTYPEofPC;
-        protected MetroFramework.Controls.MetroComboBox metroComboBoxGPUsort;
-        protected MetroFramework.Controls.MetroComboBox metroComboBoxRAM;
+        private System.Windows.Forms.Label labelRAM;
+        private System.Windows.Forms.Label labelGPU;
+        private Bunifu.Framework.UI.BunifuImageButton pictureBoxProfile;
+        private System.Windows.Forms.Label labelCPU;
+        private Bunifu.Framework.UI.BunifuImageButton pictureBoxProductBIN;
+        private MetroFramework.Controls.MetroComboBox metroComboBoxCPUsort;
+        private MetroFramework.Controls.MetroComboBox metroComboBoxTYPEofPC;
+        private System.Windows.Forms.Label labelTYPEofPC;
+        private MetroFramework.Controls.MetroComboBox metroComboBoxGPUsort;
+        private MetroFramework.Controls.MetroComboBox metroComboBoxRAM;
         private XanderUI.XUIObjectEllipse EllipseForm;
         private Bunifu.Framework.UI.BunifuMaterialTextbox textBox_PRICE;
         private Bunifu.Framework.UI.BunifuImageButton bunifuImageButtonSORT;
         private Bunifu.Framework.UI.BunifuImageButton button_backToLoginForm;
-        protected System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Label labelPRICE;
         private System.Windows.Forms.Panel panelHead;
     }
 }

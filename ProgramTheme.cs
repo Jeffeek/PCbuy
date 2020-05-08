@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Drawing;
 using System.Runtime.Serialization;
 
 namespace TRPO_Project
@@ -11,6 +12,19 @@ namespace TRPO_Project
 
         [DataMember]
         public int UserID { get; set; }
+
+        [DataMember]
+        public Color BottomLeft { get; set; } = Color.Blue;
+
+        [DataMember]
+        public Color BottomRight { get; set; } = Color.Magenta;
+
+        [DataMember]
+        public Color TopLeft { get; set; } = Color.Plum;
+
+        [DataMember]
+        public Color TopRight { get; set; } = Color.Aqua;
+
         public ProgramTheme(string theme, int ID)
         {
             if (string.IsNullOrEmpty(theme) && theme != "Light" && theme != "Dark")
@@ -27,7 +41,7 @@ namespace TRPO_Project
 
         public override string ToString()
         {
-            return $"[{UserID}:{Theme}]";
+            return $"[{UserID}:{Theme}]\n[BottomRight:{BottomRight}, BottomLeft:{BottomLeft}, TopRight:{TopRight}, TopLeft:{TopLeft}]";
         }
     }
 }

@@ -15,10 +15,11 @@ using MetroFramework;
 using MetroFramework.Forms;
 using MetroFramework.Components;
 using System.Threading;
+using System.Runtime.Serialization.Json;
 
 namespace TRPO_Project
 {
-    public partial class formUSER : MetroForm
+    public partial class formUSER : MetroForm, IThemeChange
     {
         #region variables&collections
         private SQLiteConnection sql_con; // connection
@@ -34,8 +35,9 @@ namespace TRPO_Project
         public formUSER(int id)
         {
             InitializeComponent();
-            FormStartTransition.ShowAsyc(this);
             userID = id;
+            ReadTheme();
+            FormStartTransition.ShowAsyc(this);
             GetInfoIntoComboBoxes();
             SetPictureProfile();
             FillPC();
@@ -172,7 +174,7 @@ namespace TRPO_Project
             DisplayListAsync(ToDisplay);
         }
 
-        private async Task DisplayListAsync(List<PC> Listed)
+        private async void DisplayListAsync(List<PC> Listed)
         {
             if (OBJects.Count > 0)
             {
@@ -201,6 +203,7 @@ namespace TRPO_Project
                 OBJects.Add(OBJ);
                 OBJ.Location = new Point(0, Y);
                 Y += 230;
+                OBJ.BackColor = Theme == MetroThemeStyle.Dark ? Color.FromArgb(17, 17, 17) : Color.White;
                 this.Controls.Add(OBJ);
             }
             xuiCircleProgressBar1.Enabled = false;
@@ -420,6 +423,41 @@ namespace TRPO_Project
                 Top += e.Y - lastPoint.Y;
             }
         }
+
         #endregion
+
+        public void ChangeMetroControls(ProgramTheme OBJ)
+        {
+            Theme = OBJ.Theme == "Light" ? MetroThemeStyle.Light : MetroThemeStyle.Dark;
+        }
+
+        public void ChangeNonMetroControls(ProgramTheme OBJ)
+        {
+            groupBoxHEAD.GradientBottomLeft = OBJ.BottomLeft;
+            groupBoxHEAD.GradientBottomRight = OBJ.BottomRight;
+            groupBoxHEAD.GradientTopLeft = OBJ.TopLeft;
+            groupBoxHEAD.GradientTopRight = OBJ.TopRight;
+            groupBoxHEAD.Refresh();
+        }
+
+        public void ReadTheme()
+        {
+            List<ProgramTheme> themes = new List<ProgramTheme>();
+
+            using (FileStream file = new FileStream($"{Directory.GetCurrentDirectory()}\\ThemeSettings.json", FileMode.OpenOrCreate))
+            {
+                DataContractJsonSerializer jsonSerializer = new DataContractJsonSerializer(typeof(List<ProgramTheme>));
+                themes = jsonSerializer.ReadObject(file) as List<ProgramTheme>;
+            }
+
+            if (themes.Count(x => x.UserID == userID) > 0)
+            {
+                var ThemeOBJ = themes.Find(x => x.UserID == userID);
+                ChangeNonMetroControls(ThemeOBJ);
+                ChangeMetroControls(ThemeOBJ);
+                Refresh();
+            }
+        }
+
     }
 }

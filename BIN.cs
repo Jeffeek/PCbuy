@@ -27,7 +27,6 @@ namespace TRPO_Project
         private SQLiteCommand sql_cmd;
         private bool IsAdmin;
         private int userID;
-        private string THEME = "Dark";
         private List<PCinfo> IDsOfPCinBIN = new List<PCinfo>();
         #endregion
 
@@ -192,16 +191,16 @@ namespace TRPO_Project
         }
         #endregion
 
-        public void ChangeMetroControls(string theme)
+        public void ChangeMetroControls(ProgramTheme OBJ)
         {
-            Theme = theme == "Light" ? MetroThemeStyle.Light : MetroThemeStyle.Dark;
-            tabControlPRODUCTs.Theme = THEME == "Dark" ? MetroThemeStyle.Dark : MetroThemeStyle.Light;
-            metroLabelID.ForeColor = theme == "Light" ? Color.Aquamarine : Color.Magenta;
+            Theme = OBJ.Theme == "Light" ? MetroThemeStyle.Light : MetroThemeStyle.Dark;
+            tabControlPRODUCTs.Theme = OBJ.Theme == "Dark" ? MetroThemeStyle.Dark : MetroThemeStyle.Light;
+            metroLabelID.ForeColor = OBJ.Theme == "Light" ? Color.Aquamarine : Color.Magenta;
         }
 
-        public void ChangeNonMetroControls(string theme)
+        public void ChangeNonMetroControls(ProgramTheme OBJ)
         {
-            labelYourOrder.BackColor = theme == "Light" ? Color.AliceBlue : Color.MediumVioletRed;
+            labelYourOrder.BackColor = OBJ.Theme == "Light" ? Color.AliceBlue : Color.MediumVioletRed;
         }
 
         public void ReadTheme()
@@ -216,16 +215,11 @@ namespace TRPO_Project
 
             if (themes.Count(x => x.UserID == userID) > 0)
             {
-                THEME = themes.Find(x => x.UserID == userID).Theme;
-                Parallel.Invoke
-                    (
-                        () => ChangeNonMetroControls(THEME),
-                        () => ChangeMetroControls(THEME)
-                    );
+                ChangeNonMetroControls(themes.Find(x => x.UserID == userID));
+                ChangeMetroControls(themes.Find(x => x.UserID == userID));
                 Refresh();
             }
             return;
         }
-
     }
 }

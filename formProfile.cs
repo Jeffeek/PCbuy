@@ -20,6 +20,7 @@ using XanderUI.Designers;
 using XanderUI;
 using System.Runtime.Serialization;
 using System.Runtime.Serialization.Json;
+using Guna.UI.WinForms;
 
 namespace TRPO_Project
 {
@@ -32,10 +33,9 @@ namespace TRPO_Project
         private formADMIN userA;
         private SQLiteConnection sql_con; // connection
         private SQLiteCommand sql_cmd;
-        private string THEME = "Dark";
         private bool isADMIN;
         private Point lastPoint;
-
+        private GunaCirclePictureBox ChoosedPalette;
 
         #endregion
 
@@ -312,19 +312,60 @@ namespace TRPO_Project
         }
         #endregion
 
-        private void switchTheme_CheckedChanged(object sender, EventArgs e)
+        public void ChangeMetroControls(ProgramTheme OBJ)
         {
-            switchTheme.Enabled = false;
-            List<ProgramTheme> themes = new List<ProgramTheme>();
-            string ChoosedTheme = switchTheme.Checked ? "Light" : "Dark";
+            Theme = OBJ.Theme == "Light" ? MetroThemeStyle.Light : MetroThemeStyle.Dark;
+            linkLabelCHANGEprofilePIC.Theme = OBJ.Theme == "Light" ? MetroThemeStyle.Light : MetroThemeStyle.Dark;
+        }
 
-            using (FileStream file = new FileStream("ThemeSettings.json", FileMode.OpenOrCreate))
+        public void ChangeNonMetroControls(ProgramTheme OBJ)
+        {
+            switchTheme.Checked = OBJ.Theme == "Dark";
+            labelChangeTheme.ForeColor = OBJ.Theme == "Dark" ? Color.Black : Color.White;
+            labelChangeTheme.Text = OBJ.Theme == "Dark" ? "Dark theme" : "Light theme";
+            bunifuMaterialTextboxEMAIL.BackColor = OBJ.Theme == "Light" ? Color.White : Color.FromArgb(17,17,17);
+            bunifuMaterialTextboxPASS.BackColor = OBJ.Theme == "Light" ? Color.White : Color.FromArgb(17, 17, 17);
+            circlePictureBoxBL.BackColor = OBJ.BottomLeft;
+            circlePictureBoxTL.BackColor = OBJ.TopLeft;
+            circlePictureBoxBR.BackColor = OBJ.BottomRight;
+            circlePictureBoxTR.BackColor = OBJ.TopRight;
+        }
+
+        public void ReadTheme()
+        {
+            List<ProgramTheme> themes = new List<ProgramTheme>();
+
+            using (FileStream file = new FileStream($"{Directory.GetCurrentDirectory()}\\ThemeSettings.json", FileMode.OpenOrCreate))
             {
                 DataContractJsonSerializer jsonSerializer = new DataContractJsonSerializer(typeof(List<ProgramTheme>));
                 themes = jsonSerializer.ReadObject(file) as List<ProgramTheme>;
             }
 
-            foreach(var ThemeID in themes)
+            if (themes.Count(x => x.UserID == userID) > 0)
+            {
+                ChangeNonMetroControls(themes.Find(x => x.UserID == userID));
+                ChangeMetroControls(themes.Find(x => x.UserID == userID));
+                Refresh();
+            }
+            return;
+        }
+
+        private void gunaTileButtonApplySettings_Click(object sender, EventArgs e)
+        {
+            List<ProgramTheme> themes = new List<ProgramTheme>();
+            string ChoosedTheme = switchTheme.Checked ? "Dark" : "Light";
+            Color TR = circlePictureBoxTR.BackColor;
+            Color TL = circlePictureBoxTL.BackColor;
+            Color BR = circlePictureBoxBR.BackColor;
+            Color BL = circlePictureBoxBL.BackColor;
+
+            using (FileStream file = new FileStream($"{Directory.GetCurrentDirectory()}\\ThemeSettings.json", FileMode.OpenOrCreate))
+            {
+                DataContractJsonSerializer jsonSerializer = new DataContractJsonSerializer(typeof(List<ProgramTheme>));
+                themes = jsonSerializer.ReadObject(file) as List<ProgramTheme>;
+            }
+
+            foreach (var ThemeID in themes)
             {
                 if (ThemeID.UserID == userID)
                 {
@@ -333,51 +374,112 @@ namespace TRPO_Project
                 }
             }
 
-            themes.Add(new ProgramTheme(ChoosedTheme, userID));
+            themes.Add(new ProgramTheme(ChoosedTheme, userID) { BottomLeft = BL, BottomRight = BR, TopLeft = TL, TopRight = TR});
 
-            using (FileStream file = new FileStream("ThemeSettings.json", FileMode.OpenOrCreate))
+            using (FileStream file = new FileStream($"{Directory.GetCurrentDirectory()}\\ThemeSettings.json", FileMode.OpenOrCreate))
             {
                 DataContractJsonSerializer jsonSerializer = new DataContractJsonSerializer(typeof(List<ProgramTheme>));
-                jsonSerializer.WriteObject(file,themes);
+                jsonSerializer.WriteObject(file, themes);
             }
-            switchTheme.Enabled = true;
+            MetroMessageBox.Show(this, "The program will be reloaded", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            Application.Restart();
         }
 
-        public void ChangeMetroControls(string theme)
+        private void colorPalette_ColorChanged(object sender, EventArgs e)
         {
-            Theme = theme == "Light" ? MetroThemeStyle.Light : MetroThemeStyle.Dark;
-            linkLabelCHANGEprofilePIC.Theme = theme == "Light" ? MetroThemeStyle.Light : MetroThemeStyle.Dark;
-        }
-
-        public void ChangeNonMetroControls(string theme)
-        {
-            switchTheme.Checked = theme == "Light";
-            labelChangeTheme.ForeColor = theme == "Light" ? Color.Black : Color.White;
-            bunifuMaterialTextboxEMAIL.BackColor = theme == "Light" ? Color.White : Color.FromArgb(17,17,17);
-            bunifuMaterialTextboxPASS.BackColor = theme == "Light" ? Color.White : Color.FromArgb(17, 17, 17);
-        }
-
-        public void ReadTheme()
-        {
-            List<ProgramTheme> themes = new List<ProgramTheme>();
-
-            using (FileStream file = new FileStream("ThemeSettings.json", FileMode.OpenOrCreate))
+            if (ChoosedPalette != null)
             {
-                DataContractJsonSerializer jsonSerializer = new DataContractJsonSerializer(typeof(List<ProgramTheme>));
-                themes = jsonSerializer.ReadObject(file) as List<ProgramTheme>;
+                ChoosedPalette.BackColor = colorPalette.SelectedColor;
             }
-
-            if (themes.Count(x => x.UserID == userID) > 0)
+            else
             {
-                THEME = themes.Find(x => x.UserID == userID).Theme;
-                Parallel.Invoke
-                    (
-                        () => ChangeNonMetroControls(THEME),
-                        () => ChangeMetroControls(THEME)
-                    );
-                Refresh();
+                MetroMessageBox.Show(this, "Choose an aim for colorizing", "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
-            return;
+        }
+
+        private void formProfile_Load(object sender, EventArgs e)
+        {
+            switchTheme.CheckedChanged += (a, b) =>
+            {
+                labelChangeTheme.ForeColor = switchTheme.Checked ? Color.Black : Color.White;
+                labelChangeTheme.Text = switchTheme.Checked ? "Dark theme" : "Light theme";
+            };
+            circlePictureBoxBL.Click += (a, b) => 
+            {
+                ChoosedPalette = circlePictureBoxBL;
+                ChangeColorPalette_labels("BL");
+            };
+            circlePictureBoxTL.Click += (a, b) => 
+            { 
+                ChoosedPalette = circlePictureBoxTL;
+                ChangeColorPalette_labels("TL");
+            };
+            circlePictureBoxBR.Click += (a, b) => 
+            { 
+                ChoosedPalette = circlePictureBoxBR;
+                ChangeColorPalette_labels("BR");
+            };
+            circlePictureBoxTR.Click += (a, b) => 
+            { 
+                ChoosedPalette = circlePictureBoxTR;
+                ChangeColorPalette_labels("TR");
+            };
+        }
+
+        private void ChangeColorPalette_labels(string choosed)
+        {
+            labelPaletteBL.ForeColor = Color.MintCream;
+            labelPaletteTL.ForeColor = Color.MintCream;
+            labelPaletteBR.ForeColor = Color.MintCream;
+            labelPaletteTR.ForeColor = Color.MintCream;
+            if (choosed == "BL")
+            {
+                labelPaletteBL.ForeColor = Color.DeepPink;
+            }
+            else if (choosed == "TL")
+            {
+                labelPaletteTL.ForeColor = Color.DeepPink;
+            }
+            else if (choosed == "BR")
+            {
+                labelPaletteBR.ForeColor = Color.DeepPink;
+            }
+            else if (choosed == "TR")
+            {
+                labelPaletteTR.ForeColor = Color.DeepPink;
+            }
+        }
+
+        private void imageButtonSettings_Click(object sender, EventArgs e)
+        {
+            if (!xuiSlidingPanelSettings.Collapsed)
+            {
+                linkLabelDELETEprofile.Enabled = false;
+                switchTheme.Enabled = false;
+                pictureBoxCHANGEpassVisibility.Enabled = false;
+            }
+            else
+            {
+                linkLabelDELETEprofile.Enabled = true;
+                switchTheme.Enabled = true;
+                pictureBoxCHANGEpassVisibility.Enabled = true;
+            }
+        }
+
+        private void linkLabelCHANGEpass_Click(object sender, EventArgs e)
+        {
+            if (xuiSlidingPanelPassChange.Collapsed)
+            {
+                linkLabelCHANGEprofilePIC.Enabled = false;
+                linkLabelCHANGEprofilePIC.Enabled = false;
+                imageButtonSettings.Enabled = false;
+            }
+            else
+            {
+                linkLabelCHANGEprofilePIC.Enabled = true;
+                linkLabelDELETEprofile.Enabled = true;
+                imageButtonSettings.Enabled = true;
+            }
         }
     }
 }

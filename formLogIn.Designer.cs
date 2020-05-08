@@ -40,6 +40,8 @@ namespace TRPO_Project
             this.FormStartTransition = new Bunifu.Framework.UI.BunifuFormFadeTransition(this.components);
             this.EllipseForm = new XanderUI.XUIObjectEllipse();
             this.xuiSlidingPanelForgotPass = new XanderUI.XUISlidingPanel();
+            this.imageButtonCheckNum = new Bunifu.Framework.UI.BunifuImageButton();
+            this.gunaLineTextBoxCheckSendedNum = new Guna.UI.WinForms.GunaLineTextBox();
             this.bunifuImageButtonBACK = new Bunifu.Framework.UI.BunifuImageButton();
             this.bunifuImageButtonAPPLYforgotPassword = new Bunifu.Framework.UI.BunifuImageButton();
             this.gunaLabel1 = new Guna.UI.WinForms.GunaLabel();
@@ -61,6 +63,7 @@ namespace TRPO_Project
             this.textboxEMAILlogin = new Bunifu.Framework.UI.BunifuTextbox();
             this.panelHead = new System.Windows.Forms.Panel();
             this.xuiSlidingPanelForgotPass.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.imageButtonCheckNum)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.bunifuImageButtonBACK)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.bunifuImageButtonAPPLYforgotPassword)).BeginInit();
             this.xuiSlidingPanelREGISTRATION.SuspendLayout();
@@ -155,30 +158,66 @@ namespace TRPO_Project
             this.xuiSlidingPanelForgotPass.BottomRight = System.Drawing.Color.Aquamarine;
             this.xuiSlidingPanelForgotPass.CollapseControl = this.metroLinkForgotPassword;
             this.xuiSlidingPanelForgotPass.Collapsed = true;
+            this.xuiSlidingPanelForgotPass.Controls.Add(this.imageButtonCheckNum);
+            this.xuiSlidingPanelForgotPass.Controls.Add(this.gunaLineTextBoxCheckSendedNum);
             this.xuiSlidingPanelForgotPass.Controls.Add(this.bunifuImageButtonBACK);
             this.xuiSlidingPanelForgotPass.Controls.Add(this.bunifuImageButtonAPPLYforgotPassword);
             this.xuiSlidingPanelForgotPass.Controls.Add(this.gunaLabel1);
             this.xuiSlidingPanelForgotPass.Controls.Add(this.textBox_ForgotPass);
             this.xuiSlidingPanelForgotPass.Controls.Add(this.labelREGISTRATION);
-            this.xuiSlidingPanelForgotPass.HideControls = true;
-            this.xuiSlidingPanelForgotPass.Location = new System.Drawing.Point(0, 5);
+            this.xuiSlidingPanelForgotPass.HideControls = false;
+            this.xuiSlidingPanelForgotPass.Location = new System.Drawing.Point(0, 30);
             this.xuiSlidingPanelForgotPass.Name = "xuiSlidingPanelForgotPass";
             this.xuiSlidingPanelForgotPass.PanelWidthCollapsed = 0;
             this.xuiSlidingPanelForgotPass.PanelWidthExpanded = 240;
             this.xuiSlidingPanelForgotPass.PrimerColor = System.Drawing.Color.LightGreen;
-            this.xuiSlidingPanelForgotPass.Size = new System.Drawing.Size(0, 241);
+            this.xuiSlidingPanelForgotPass.Size = new System.Drawing.Size(0, 216);
             this.xuiSlidingPanelForgotPass.Style = XanderUI.XUIGradientPanel.GradientStyle.Corners;
             this.xuiSlidingPanelForgotPass.TabIndex = 16;
             this.xuiSlidingPanelForgotPass.TopLeft = System.Drawing.SystemColors.Highlight;
             this.xuiSlidingPanelForgotPass.TopRight = System.Drawing.Color.CornflowerBlue;
-            this.xuiSlidingPanelForgotPass.Visible = false;
+            // 
+            // imageButtonCheckNum
+            // 
+            this.imageButtonCheckNum.BackColor = System.Drawing.Color.SlateGray;
+            this.imageButtonCheckNum.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.imageButtonCheckNum.Image = global::TRPO_Project.Properties.Resources.cancel;
+            this.imageButtonCheckNum.ImageActive = null;
+            this.imageButtonCheckNum.Location = new System.Drawing.Point(101, 178);
+            this.imageButtonCheckNum.Name = "imageButtonCheckNum";
+            this.imageButtonCheckNum.Size = new System.Drawing.Size(92, 35);
+            this.imageButtonCheckNum.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.imageButtonCheckNum.TabIndex = 25;
+            this.imageButtonCheckNum.TabStop = false;
+            this.imageButtonCheckNum.Visible = false;
+            this.imageButtonCheckNum.Zoom = 10;
+            this.imageButtonCheckNum.Click += new System.EventHandler(this.imageButtonCheckNum_Click);
+            // 
+            // gunaLineTextBoxCheckSendedNum
+            // 
+            this.gunaLineTextBoxCheckSendedNum.Animated = true;
+            this.gunaLineTextBoxCheckSendedNum.BackColor = System.Drawing.Color.Plum;
+            this.gunaLineTextBoxCheckSendedNum.Cursor = System.Windows.Forms.Cursors.IBeam;
+            this.gunaLineTextBoxCheckSendedNum.FocusedLineColor = System.Drawing.Color.FromArgb(((int)(((byte)(100)))), ((int)(((byte)(88)))), ((int)(((byte)(255)))));
+            this.gunaLineTextBoxCheckSendedNum.Font = new System.Drawing.Font("Unispace", 8.999999F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.gunaLineTextBoxCheckSendedNum.ForeColor = System.Drawing.Color.Aqua;
+            this.gunaLineTextBoxCheckSendedNum.LineColor = System.Drawing.Color.DeepSkyBlue;
+            this.gunaLineTextBoxCheckSendedNum.Location = new System.Drawing.Point(24, 182);
+            this.gunaLineTextBoxCheckSendedNum.Name = "gunaLineTextBoxCheckSendedNum";
+            this.gunaLineTextBoxCheckSendedNum.PasswordChar = '\0';
+            this.gunaLineTextBoxCheckSendedNum.Size = new System.Drawing.Size(72, 25);
+            this.gunaLineTextBoxCheckSendedNum.TabIndex = 24;
+            this.gunaLineTextBoxCheckSendedNum.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.gunaLineTextBoxCheckSendedNum.Visible = false;
+            this.gunaLineTextBoxCheckSendedNum.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.gunaLineTextBoxCheckSendedNum_KeyPress);
             // 
             // bunifuImageButtonBACK
             // 
             this.bunifuImageButtonBACK.BackColor = System.Drawing.Color.Transparent;
-            this.bunifuImageButtonBACK.Image = ((System.Drawing.Image)(resources.GetObject("bunifuImageButtonBACK.Image")));
+            this.bunifuImageButtonBACK.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.bunifuImageButtonBACK.Image = global::TRPO_Project.Properties.Resources.back;
             this.bunifuImageButtonBACK.ImageActive = null;
-            this.bunifuImageButtonBACK.Location = new System.Drawing.Point(199, 203);
+            this.bunifuImageButtonBACK.Location = new System.Drawing.Point(199, 178);
             this.bunifuImageButtonBACK.Name = "bunifuImageButtonBACK";
             this.bunifuImageButtonBACK.Size = new System.Drawing.Size(38, 35);
             this.bunifuImageButtonBACK.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
@@ -189,12 +228,14 @@ namespace TRPO_Project
             // bunifuImageButtonAPPLYforgotPassword
             // 
             this.bunifuImageButtonAPPLYforgotPassword.BackColor = System.Drawing.Color.SlateGray;
-            this.bunifuImageButtonAPPLYforgotPassword.Image = ((System.Drawing.Image)(resources.GetObject("bunifuImageButtonAPPLYforgotPassword.Image")));
+            this.bunifuImageButtonAPPLYforgotPassword.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.bunifuImageButtonAPPLYforgotPassword.Enabled = false;
+            this.bunifuImageButtonAPPLYforgotPassword.Image = global::TRPO_Project.Properties.Resources.X;
             this.bunifuImageButtonAPPLYforgotPassword.ImageActive = null;
             this.bunifuImageButtonAPPLYforgotPassword.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.bunifuImageButtonAPPLYforgotPassword.Location = new System.Drawing.Point(23, 136);
+            this.bunifuImageButtonAPPLYforgotPassword.Location = new System.Drawing.Point(23, 110);
             this.bunifuImageButtonAPPLYforgotPassword.Name = "bunifuImageButtonAPPLYforgotPassword";
-            this.bunifuImageButtonAPPLYforgotPassword.Size = new System.Drawing.Size(202, 50);
+            this.bunifuImageButtonAPPLYforgotPassword.Size = new System.Drawing.Size(202, 40);
             this.bunifuImageButtonAPPLYforgotPassword.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.bunifuImageButtonAPPLYforgotPassword.TabIndex = 22;
             this.bunifuImageButtonAPPLYforgotPassword.TabStop = false;
@@ -207,7 +248,7 @@ namespace TRPO_Project
             this.gunaLabel1.BackColor = System.Drawing.Color.DeepSkyBlue;
             this.gunaLabel1.Font = new System.Drawing.Font("Unispace", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.gunaLabel1.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.gunaLabel1.Location = new System.Drawing.Point(89, 59);
+            this.gunaLabel1.Location = new System.Drawing.Point(89, 43);
             this.gunaLabel1.Name = "gunaLabel1";
             this.gunaLabel1.Size = new System.Drawing.Size(77, 25);
             this.gunaLabel1.TabIndex = 21;
@@ -215,13 +256,14 @@ namespace TRPO_Project
             // 
             // textBox_ForgotPass
             // 
-            this.textBox_ForgotPass.BackColor = System.Drawing.Color.DodgerBlue;
+            this.textBox_ForgotPass.Animated = true;
+            this.textBox_ForgotPass.BackColor = System.Drawing.Color.Plum;
             this.textBox_ForgotPass.Cursor = System.Windows.Forms.Cursors.IBeam;
             this.textBox_ForgotPass.FocusedLineColor = System.Drawing.Color.FromArgb(((int)(((byte)(100)))), ((int)(((byte)(88)))), ((int)(((byte)(255)))));
             this.textBox_ForgotPass.Font = new System.Drawing.Font("Unispace", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.textBox_ForgotPass.ForeColor = System.Drawing.SystemColors.Desktop;
             this.textBox_ForgotPass.LineColor = System.Drawing.Color.MediumSpringGreen;
-            this.textBox_ForgotPass.Location = new System.Drawing.Point(23, 93);
+            this.textBox_ForgotPass.Location = new System.Drawing.Point(23, 76);
             this.textBox_ForgotPass.Name = "textBox_ForgotPass";
             this.textBox_ForgotPass.PasswordChar = '\0';
             this.textBox_ForgotPass.Size = new System.Drawing.Size(202, 28);
@@ -236,7 +278,7 @@ namespace TRPO_Project
             this.labelREGISTRATION.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.labelREGISTRATION.Font = new System.Drawing.Font("Unispace", 15.75F, System.Drawing.FontStyle.Bold);
             this.labelREGISTRATION.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.labelREGISTRATION.Location = new System.Drawing.Point(18, 6);
+            this.labelREGISTRATION.Location = new System.Drawing.Point(19, 6);
             this.labelREGISTRATION.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.labelREGISTRATION.Name = "labelREGISTRATION";
             this.labelREGISTRATION.Size = new System.Drawing.Size(207, 25);
@@ -250,7 +292,7 @@ namespace TRPO_Project
             this.xuiSlidingPanelREGISTRATION.BottomLeft = System.Drawing.Color.DeepSkyBlue;
             this.xuiSlidingPanelREGISTRATION.BottomRight = System.Drawing.Color.Fuchsia;
             this.xuiSlidingPanelREGISTRATION.CollapseControl = this.metroLinkRegister;
-            this.xuiSlidingPanelREGISTRATION.Collapsed = true;
+            this.xuiSlidingPanelREGISTRATION.Collapsed = false;
             this.xuiSlidingPanelREGISTRATION.Controls.Add(this.bunifuCustomLabel1);
             this.xuiSlidingPanelREGISTRATION.Controls.Add(this.ButtonREGISTER);
             this.xuiSlidingPanelREGISTRATION.Controls.Add(this.textBoxREPEAT_PASS_reg);
@@ -261,12 +303,12 @@ namespace TRPO_Project
             this.xuiSlidingPanelREGISTRATION.Controls.Add(this.gunaLabel4);
             this.xuiSlidingPanelREGISTRATION.Controls.Add(this.bunifuImageButtonBACK_Reg);
             this.xuiSlidingPanelREGISTRATION.HideControls = true;
-            this.xuiSlidingPanelREGISTRATION.Location = new System.Drawing.Point(0, 5);
+            this.xuiSlidingPanelREGISTRATION.Location = new System.Drawing.Point(25, 29);
             this.xuiSlidingPanelREGISTRATION.Name = "xuiSlidingPanelREGISTRATION";
             this.xuiSlidingPanelREGISTRATION.PanelWidthCollapsed = 0;
             this.xuiSlidingPanelREGISTRATION.PanelWidthExpanded = 345;
             this.xuiSlidingPanelREGISTRATION.PrimerColor = System.Drawing.Color.Black;
-            this.xuiSlidingPanelREGISTRATION.Size = new System.Drawing.Size(0, 241);
+            this.xuiSlidingPanelREGISTRATION.Size = new System.Drawing.Size(345, 217);
             this.xuiSlidingPanelREGISTRATION.Style = XanderUI.XUIGradientPanel.GradientStyle.Corners;
             this.xuiSlidingPanelREGISTRATION.TabIndex = 24;
             this.xuiSlidingPanelREGISTRATION.TopLeft = System.Drawing.Color.LightSeaGreen;
@@ -276,21 +318,22 @@ namespace TRPO_Project
             // 
             this.bunifuCustomLabel1.AutoSize = true;
             this.bunifuCustomLabel1.BackColor = System.Drawing.Color.Transparent;
-            this.bunifuCustomLabel1.Font = new System.Drawing.Font("Unispace", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.bunifuCustomLabel1.Location = new System.Drawing.Point(85, 3);
+            this.bunifuCustomLabel1.Font = new System.Drawing.Font("Unispace", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.bunifuCustomLabel1.Location = new System.Drawing.Point(39, 3);
             this.bunifuCustomLabel1.Name = "bunifuCustomLabel1";
-            this.bunifuCustomLabel1.Size = new System.Drawing.Size(193, 29);
+            this.bunifuCustomLabel1.Size = new System.Drawing.Size(168, 25);
             this.bunifuCustomLabel1.TabIndex = 24;
             this.bunifuCustomLabel1.Text = "REGISTRATION";
             // 
             // ButtonREGISTER
             // 
             this.ButtonREGISTER.BackColor = System.Drawing.Color.SlateGray;
-            this.ButtonREGISTER.Image = ((System.Drawing.Image)(resources.GetObject("ButtonREGISTER.Image")));
+            this.ButtonREGISTER.Enabled = false;
+            this.ButtonREGISTER.Image = global::TRPO_Project.Properties.Resources.X;
             this.ButtonREGISTER.ImageActive = null;
-            this.ButtonREGISTER.Location = new System.Drawing.Point(101, 190);
+            this.ButtonREGISTER.Location = new System.Drawing.Point(38, 177);
             this.ButtonREGISTER.Name = "ButtonREGISTER";
-            this.ButtonREGISTER.Size = new System.Drawing.Size(155, 40);
+            this.ButtonREGISTER.Size = new System.Drawing.Size(155, 37);
             this.ButtonREGISTER.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.ButtonREGISTER.TabIndex = 31;
             this.ButtonREGISTER.TabStop = false;
@@ -305,7 +348,7 @@ namespace TRPO_Project
             this.textBoxREPEAT_PASS_reg.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.textBoxREPEAT_PASS_reg.ForeColor = System.Drawing.Color.SpringGreen;
             this.textBoxREPEAT_PASS_reg.LineColor = System.Drawing.Color.MintCream;
-            this.textBoxREPEAT_PASS_reg.Location = new System.Drawing.Point(69, 158);
+            this.textBoxREPEAT_PASS_reg.Location = new System.Drawing.Point(6, 149);
             this.textBoxREPEAT_PASS_reg.Name = "textBoxREPEAT_PASS_reg";
             this.textBoxREPEAT_PASS_reg.PasswordChar = '●';
             this.textBoxREPEAT_PASS_reg.Size = new System.Drawing.Size(220, 26);
@@ -321,7 +364,7 @@ namespace TRPO_Project
             this.textBoxPASS_reg.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.textBoxPASS_reg.ForeColor = System.Drawing.Color.SpringGreen;
             this.textBoxPASS_reg.LineColor = System.Drawing.Color.MintCream;
-            this.textBoxPASS_reg.Location = new System.Drawing.Point(69, 107);
+            this.textBoxPASS_reg.Location = new System.Drawing.Point(6, 100);
             this.textBoxPASS_reg.Name = "textBoxPASS_reg";
             this.textBoxPASS_reg.PasswordChar = '●';
             this.textBoxPASS_reg.Size = new System.Drawing.Size(220, 26);
@@ -337,7 +380,7 @@ namespace TRPO_Project
             this.textBoxEMAIL_reg.Font = new System.Drawing.Font("Unispace", 9.749999F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.textBoxEMAIL_reg.ForeColor = System.Drawing.Color.SpringGreen;
             this.textBoxEMAIL_reg.LineColor = System.Drawing.Color.MintCream;
-            this.textBoxEMAIL_reg.Location = new System.Drawing.Point(69, 56);
+            this.textBoxEMAIL_reg.Location = new System.Drawing.Point(6, 51);
             this.textBoxEMAIL_reg.Name = "textBoxEMAIL_reg";
             this.textBoxEMAIL_reg.PasswordChar = '\0';
             this.textBoxEMAIL_reg.Size = new System.Drawing.Size(220, 26);
@@ -349,7 +392,7 @@ namespace TRPO_Project
             this.gunaLabel3.AutoSize = true;
             this.gunaLabel3.BackColor = System.Drawing.Color.MediumSpringGreen;
             this.gunaLabel3.Font = new System.Drawing.Font("Unispace", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.gunaLabel3.Location = new System.Drawing.Point(97, 136);
+            this.gunaLabel3.Location = new System.Drawing.Point(34, 128);
             this.gunaLabel3.Name = "gunaLabel3";
             this.gunaLabel3.Size = new System.Drawing.Size(159, 19);
             this.gunaLabel3.TabIndex = 27;
@@ -360,7 +403,7 @@ namespace TRPO_Project
             this.gunaLabel2.AutoSize = true;
             this.gunaLabel2.BackColor = System.Drawing.Color.MediumSpringGreen;
             this.gunaLabel2.Font = new System.Drawing.Font("Unispace", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.gunaLabel2.Location = new System.Drawing.Point(134, 85);
+            this.gunaLabel2.Location = new System.Drawing.Point(71, 79);
             this.gunaLabel2.Name = "gunaLabel2";
             this.gunaLabel2.Size = new System.Drawing.Size(89, 19);
             this.gunaLabel2.TabIndex = 26;
@@ -371,7 +414,7 @@ namespace TRPO_Project
             this.gunaLabel4.AutoSize = true;
             this.gunaLabel4.BackColor = System.Drawing.Color.MediumSpringGreen;
             this.gunaLabel4.Font = new System.Drawing.Font("Unispace", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.gunaLabel4.Location = new System.Drawing.Point(151, 34);
+            this.gunaLabel4.Location = new System.Drawing.Point(88, 30);
             this.gunaLabel4.Name = "gunaLabel4";
             this.gunaLabel4.Size = new System.Drawing.Size(59, 19);
             this.gunaLabel4.TabIndex = 25;
@@ -380,9 +423,9 @@ namespace TRPO_Project
             // bunifuImageButtonBACK_Reg
             // 
             this.bunifuImageButtonBACK_Reg.BackColor = System.Drawing.Color.Transparent;
-            this.bunifuImageButtonBACK_Reg.Image = ((System.Drawing.Image)(resources.GetObject("bunifuImageButtonBACK_Reg.Image")));
+            this.bunifuImageButtonBACK_Reg.Image = global::TRPO_Project.Properties.Resources.back;
             this.bunifuImageButtonBACK_Reg.ImageActive = null;
-            this.bunifuImageButtonBACK_Reg.Location = new System.Drawing.Point(304, 206);
+            this.bunifuImageButtonBACK_Reg.Location = new System.Drawing.Point(304, 179);
             this.bunifuImageButtonBACK_Reg.Name = "bunifuImageButtonBACK_Reg";
             this.bunifuImageButtonBACK_Reg.Size = new System.Drawing.Size(38, 35);
             this.bunifuImageButtonBACK_Reg.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
@@ -410,6 +453,7 @@ namespace TRPO_Project
             | System.Windows.Forms.AnchorStyles.Right)));
             this.ImageButtonAPPLYlogin.BackColor = System.Drawing.Color.Gray;
             this.ImageButtonAPPLYlogin.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.ImageButtonAPPLYlogin.Enabled = false;
             this.ImageButtonAPPLYlogin.Image = global::TRPO_Project.Properties.Resources.X;
             this.ImageButtonAPPLYlogin.ImageActive = null;
             this.ImageButtonAPPLYlogin.Location = new System.Drawing.Point(52, 157);
@@ -419,7 +463,6 @@ namespace TRPO_Project
             this.ImageButtonAPPLYlogin.TabIndex = 14;
             this.ImageButtonAPPLYlogin.TabStop = false;
             this.ImageButtonAPPLYlogin.Zoom = 10;
-            this.ImageButtonAPPLYlogin.EnabledChanged += new System.EventHandler(this.bunifuImageButtonAPPLYlogin_EnabledChanged);
             this.ImageButtonAPPLYlogin.Click += new System.EventHandler(this.bunifuImageButtonAPPLYlogin_Click);
             // 
             // textboxPASSlogin
@@ -438,7 +481,7 @@ namespace TRPO_Project
             this.textboxPASSlogin.Size = new System.Drawing.Size(290, 28);
             this.textboxPASSlogin.TabIndex = 11;
             this.textboxPASSlogin.text = "";
-            this.textboxPASSlogin.OnTextChange += new System.EventHandler(this.bunifuTextboxPASS_OnTextChange);
+            this.textboxPASSlogin.OnTextChange += new System.EventHandler(this.bunifuTextboxPASSlogin_OnTextChange);
             // 
             // textboxEMAILlogin
             // 
@@ -456,7 +499,7 @@ namespace TRPO_Project
             this.textboxEMAILlogin.Size = new System.Drawing.Size(290, 28);
             this.textboxEMAILlogin.TabIndex = 10;
             this.textboxEMAILlogin.text = "";
-            this.textboxEMAILlogin.OnTextChange += new System.EventHandler(this.bunifuTextboxEMAIL_OnTextChange);
+            this.textboxEMAILlogin.OnTextChange += new System.EventHandler(this.bunifuTextboxEMAILlogin_OnTextChange);
             // 
             // panelHead
             // 
@@ -499,6 +542,7 @@ namespace TRPO_Project
             this.Load += new System.EventHandler(this.formLogIn_Load);
             this.xuiSlidingPanelForgotPass.ResumeLayout(false);
             this.xuiSlidingPanelForgotPass.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.imageButtonCheckNum)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.bunifuImageButtonBACK)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.bunifuImageButtonAPPLYforgotPassword)).EndInit();
             this.xuiSlidingPanelREGISTRATION.ResumeLayout(false);
@@ -541,6 +585,8 @@ namespace TRPO_Project
         private Guna.UI.WinForms.GunaLabel gunaLabel4;
         private Bunifu.Framework.UI.BunifuCustomLabel bunifuCustomLabel1;
         private System.Windows.Forms.Panel panelHead;
+        private Bunifu.Framework.UI.BunifuImageButton imageButtonCheckNum;
+        private Guna.UI.WinForms.GunaLineTextBox gunaLineTextBoxCheckSendedNum;
     }
 }
 

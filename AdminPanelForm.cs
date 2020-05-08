@@ -33,12 +33,7 @@ namespace TRPO_Project
         private SQLiteConnection sql_con; // connection
         private SQLiteCommand sql_cmd;
         private SQLiteDataAdapter dataAdapter;
-        private string THEME = "Dark";
         private int userID;
-        //private SQLiteCommandBuilder commandBuilder;
-        //private DataSet dataSet;
-        //private object LOL;
-        //private bool PCDataGridFilled = false;
         int LASTid = 0;
         private Point lastPoint;
         #endregion
@@ -355,7 +350,8 @@ namespace TRPO_Project
         {
             if (e.RowIndex != -1)
             {
-                CirclePictureBoxUSER.Image = Image.FromFile(Convert.ToString(UsersDataGrid[4, e.RowIndex].Value));
+                using (var IMGstream = new FileStream(Convert.ToString(UsersDataGrid[4, e.RowIndex].Value), FileMode.Open))
+                    CirclePictureBoxUSER.Image = Image.FromStream(IMGstream);
             }
         }
 
@@ -445,41 +441,41 @@ namespace TRPO_Project
 
 
         #region ThemeChange
-        public void ChangeMetroControls(string theme)
+        public void ChangeMetroControls(ProgramTheme OBJ)
         {
-            Theme = theme == "Light" ? MetroThemeStyle.Light : MetroThemeStyle.Dark;
-            tabControlAdmin.Theme = theme == "Light" ? MetroThemeStyle.Light : MetroThemeStyle.Dark;
+            Theme = OBJ.Theme == "Light" ? MetroThemeStyle.Light : MetroThemeStyle.Dark;
+            tabControlAdmin.Theme = OBJ.Theme == "Light" ? MetroThemeStyle.Light : MetroThemeStyle.Dark;
 
             foreach (var tab in tabControlAdmin.TabPages.OfType<MetroTabPage>())
             {
-                tab.BackColor = theme == "Light" ? Color.White : Color.Black;
+                tab.BackColor = OBJ.Theme == "Light" ? Color.White : Color.Black;
             }
         }
 
-        public void ChangeNonMetroControls(string theme)
+        public void ChangeNonMetroControls(ProgramTheme OBJ)
         {
-            bunifuCustomDataGridVIEWinfoAboutONEprod.BackgroundColor = theme == "Light" ? Color.WhiteSmoke : Color.FromArgb(17,17,17);
-            gunaLineTextBoxNEWvalue.BackColor = theme == "Light" ? Color.WhiteSmoke : Color.FromArgb(17, 17, 17);
-            UsersDataGrid.BackgroundColor = theme == "Light" ? Color.WhiteSmoke : Color.FromArgb(17, 17, 17);
-            PCDataGrid.BackgroundColor = theme == "Light" ? Color.WhiteSmoke : Color.FromArgb(17, 17, 17);
-            InquiryDataGrid.BackgroundColor = theme == "Light" ? Color.WhiteSmoke : Color.FromArgb(17, 17, 17);
-            buttonShowGraphic.BackColor = theme == "Light" ? Color.White : Color.Black;
-            bunifuImageButtonNEWpic.BackColor = theme == "Light" ? Color.LightGray : Color.DimGray;
+            bunifuCustomDataGridVIEWinfoAboutONEprod.BackgroundColor = OBJ.Theme == "Light" ? Color.WhiteSmoke : Color.FromArgb(17,17,17);
+            gunaLineTextBoxNEWvalue.BackColor = OBJ.Theme == "Light" ? Color.WhiteSmoke : Color.FromArgb(17, 17, 17);
+            UsersDataGrid.BackgroundColor = OBJ.Theme == "Light" ? Color.WhiteSmoke : Color.FromArgb(17, 17, 17);
+            PCDataGrid.BackgroundColor = OBJ.Theme == "Light" ? Color.WhiteSmoke : Color.FromArgb(17, 17, 17);
+            InquiryDataGrid.BackgroundColor = OBJ.Theme == "Light" ? Color.WhiteSmoke : Color.FromArgb(17, 17, 17);
+            buttonShowGraphic.BackColor = OBJ.Theme == "Light" ? Color.White : Color.Black;
+            bunifuImageButtonNEWpic.BackColor = OBJ.Theme == "Light" ? Color.LightGray : Color.DimGray;
 
             foreach(var ctrl in tabControlAdmin.TabPages[1].Controls.OfType<GunaLabel>())
             {
-                ctrl.BackColor = theme == "Light" ? Color.WhiteSmoke : Color.FromArgb(17, 17, 17);
+                ctrl.BackColor = OBJ.Theme == "Light" ? Color.WhiteSmoke : Color.FromArgb(17, 17, 17);
             }
 
-            gunaLineTextBoxNEWvalue.BackColor = theme == "Light" ? Color.WhiteSmoke : Color.FromArgb(17, 17, 17);
-            tabPage1.BackColor = THEME == "Light" ? Color.White : Color.Black;
+            gunaLineTextBoxNEWvalue.BackColor = OBJ.Theme == "Light" ? Color.WhiteSmoke : Color.FromArgb(17, 17, 17);
+            tabPage1.BackColor = OBJ.Theme == "Light" ? Color.White : Color.Black;
         }
 
         public void ReadTheme()
         {
             List<ProgramTheme> themes = new List<ProgramTheme>();
 
-            using (FileStream file = new FileStream("ThemeSettings.json", FileMode.OpenOrCreate))
+            using (FileStream file = new FileStream($"{Directory.GetCurrentDirectory()}\\ThemeSettings.json", FileMode.OpenOrCreate))
             {
                 DataContractJsonSerializer jsonSerializer = new DataContractJsonSerializer(typeof(List<ProgramTheme>));
                 themes = jsonSerializer.ReadObject(file) as List<ProgramTheme>;
@@ -487,12 +483,10 @@ namespace TRPO_Project
 
             if (themes.Count(x => x.UserID == userID) > 0)
             {
-                THEME = themes.Find(x => x.UserID == userID).Theme;
-                ChangeNonMetroControls(THEME);
-                ChangeMetroControls(THEME);         
+                ChangeNonMetroControls(themes.Find(x => x.UserID == userID));
+                ChangeMetroControls(themes.Find(x => x.UserID == userID));         
                 Refresh();
             }
-            return;
         }
 
         #endregion

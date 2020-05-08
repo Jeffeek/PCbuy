@@ -8,39 +8,28 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.IO;
-using System.Diagnostics;
 using System.Data.SQLite;
-using System.Data.Sql;
 using MetroFramework;
-using System.Resources;
 using MetroFramework.Forms;
-using MetroFramework.Components;
-using System.Threading;
-using Bunifu.Framework.UI;
-using Bunifu.Framework;
-using Bunifu.Framework.Lib;
-using Bunifu;
-using BunifuAnimatorNS;
 using TRPO_Project.Properties;
-using System.Runtime.Serialization.Json;
+using System.Net.Mail;
+using System.Net;
 
 namespace TRPO_Project
 {
+    
     public partial class formLogIn : MetroForm
     {
         #region variables&collections
         private SQLiteConnection sql_con; // connection
         private SQLiteCommand sql_cmd;
-        private string LOGIN;
-        internal static bool isADMIN = new bool();
-        private string PASS;
+        private static readonly Random randNum = new Random();
         #endregion
 
         #region constructors
         public formLogIn()
         {
             InitializeComponent();
-            ImageButtonAPPLYlogin.Enabled = false;
             FormStartTransition.ShowAsyc(this);
             //TODO: убери автолог
             textboxEMAILlogin.text = "mishamine26@gmail.com";
@@ -51,83 +40,53 @@ namespace TRPO_Project
         {
             InitializeComponent();
             textboxEMAILlogin.text = emailPASTE;
-            ImageButtonAPPLYlogin.Enabled = false;
         }
         #endregion
 
-        #region CHECKemail&passCORRECTON&isADMIN_FP
+        #region CHECKemail&passCORRECTON
 
-        private bool CheckEmail(string email)
+        private bool CheckEmailForCorrection(string email)
         {
             if (string.IsNullOrEmpty(email))
             {
-                textboxEMAILlogin.ForeColor = Color.Crimson;
-                ImageButtonAPPLYlogin.Enabled = false;
                 return false;
             }
             if (email.IndexOf(".") == -1 || (email.Length - 3) < email.IndexOf("."))
             {
-                textboxEMAILlogin.ForeColor = Color.Crimson;
-                ImageButtonAPPLYlogin.Enabled = false;
                 return false;
-
             }
             if ((email.IndexOf(",") >= 0) || (email.IndexOf(";") >= 0) || (email.IndexOf(" ") >= 0))
             {
-                textboxEMAILlogin.ForeColor = Color.Crimson;
-                ImageButtonAPPLYlogin.Enabled = false;
                 return false;
-
             }
             int dog = email.IndexOf("@");
             if (dog == -1)
             {
-                textboxEMAILlogin.ForeColor = Color.Crimson;
-                ImageButtonAPPLYlogin.Enabled = false;
                 return false;
-
             }
             if ((dog < 1) || (dog > email.Length - 5))
             {
-                textboxEMAILlogin.ForeColor = Color.Crimson;
-                ImageButtonAPPLYlogin.Enabled = false;
                 return false;
-
             }
             if ((email.ElementAt(dog - 1) == '.') || (email.ElementAt(dog + 1) == '.'))
             {
-                textboxEMAILlogin.ForeColor = Color.Crimson;
-                ImageButtonAPPLYlogin.Enabled = false;
                 return false;
             }
-            else
+            return true;
+        }
+        private bool CheckPasswordForCorrection(string pass)
+        {
+            if (pass.Length > 5 && pass.Length < 25)
             {
-                if (textboxPASSlogin.text.Length > 5)
-                {
-                    ImageButtonAPPLYlogin.Enabled = true;
-                }
-                textboxEMAILlogin.ForeColor = Color.LimeGreen;
                 return true;
             }
+            return false;
         }
-        private void CheckPASS()
-        {
-            if (textboxPASSlogin.text.Length > 5 && textboxPASSlogin.text.Length < 25)
-            {
-                if (textboxPASSlogin.text.Length > 5)
-                {
-                    ImageButtonAPPLYlogin.Enabled = true;
-                }
-                textboxPASSlogin.ForeColor = Color.LimeGreen;
-            }
-            else
-            {
-                ImageButtonAPPLYlogin.Enabled = false;
-                textboxPASSlogin.ForeColor = Color.Crimson;
-            }
 
-        }
-        private bool CheckFORadmin()
+        #endregion
+
+        #region CheckForAdmin&GetUserID
+        private bool CheckFORadmin(string LOGIN)
         {
             using (sql_con = new SQLiteConnection($"Data Source={Directory.GetCurrentDirectory()}\\TRPO.db"))
             {
@@ -150,42 +109,74 @@ namespace TRPO_Project
                 }
             }
         }
-        private int GetUserID()
+
+        private int GetUserID(string LOGIN)
         {
             using (sql_con = new SQLiteConnection($"Data Source={Directory.GetCurrentDirectory()}\\TRPO.db"))
             {
                 sql_con.Open();
-                using (sql_cmd = new SQLiteCommand("SELECT id FROM LOGin WHERE email='" + LOGIN + "';", sql_con))
+                using (sql_cmd = new SQLiteCommand($"SELECT id FROM LOGin WHERE email='{LOGIN}';", sql_con))
                 {
-                    int n = Convert.ToInt32(sql_cmd.ExecuteScalar().ToString());
-                    sql_con.Close();
-                    return n;
+                    return Convert.ToInt32(sql_cmd.ExecuteScalar().ToString());
                 }
             }
         }
+
         #endregion
 
         #region textBOXchanges
-        private void bunifuTextboxEMAIL_OnTextChange(object sender, EventArgs e)
+        private void bunifuTextboxEMAILlogin_OnTextChange(object sender, EventArgs e)
         {
-            string email = textboxEMAILlogin.text;
-            CheckEmail(email);
-        }
-        private void bunifuTextboxPASS_OnTextChange(object sender, EventArgs e)
-        {
-            CheckPASS();
-        }
-        private void bunifuImageButtonAPPLYlogin_EnabledChanged(object sender, EventArgs e)
-        {
-            if (CheckEmail(textboxEMAILlogin.text) && textboxPASSlogin.text.Length > 5)
+            if (CheckEmailForCorrection(textboxEMAILlogin.text))
             {
-                ImageButtonAPPLYlogin.Image = Properties.Resources.ok;
-                ImageButtonAPPLYlogin.BackColor = Color.SeaGreen;
+                textboxEMAILlogin.ForeColor = Color.SpringGreen;
+                if (CheckPasswordForCorrection(textboxPASSlogin.text))
+                {
+                    textboxPASSlogin.ForeColor = Color.SpringGreen;
+                    ImageButtonAPPLYlogin.Enabled = true;
+                    ImageButtonAPPLYlogin.Image = Resources.ok;
+                    ImageButtonAPPLYlogin.BackColor = Color.SeaGreen;
+                }
+                else
+                {
+                    ImageButtonAPPLYlogin.Enabled = false;
+                    ImageButtonAPPLYlogin.Image = Resources.X;
+                    ImageButtonAPPLYlogin.BackColor = Color.SlateGray;
+                }
             }
             else
             {
-                ImageButtonAPPLYlogin.Image = Properties.Resources.X;
-                ImageButtonAPPLYlogin.BackColor = Color.Gray;
+                textboxEMAILlogin.ForeColor = Color.Crimson;
+                ImageButtonAPPLYlogin.Enabled = false;
+                ImageButtonAPPLYlogin.Image = Resources.X;
+                ImageButtonAPPLYlogin.BackColor = Color.SlateGray;
+            }
+        }
+        private void bunifuTextboxPASSlogin_OnTextChange(object sender, EventArgs e)
+        {
+            if (CheckPasswordForCorrection(textboxPASSlogin.text))
+            {
+                textboxPASSlogin.ForeColor = Color.SpringGreen;
+                if (CheckEmailForCorrection(textboxEMAILlogin.text))
+                {
+                    textboxEMAILlogin.ForeColor = Color.SpringGreen;
+                    ImageButtonAPPLYlogin.Enabled = true;
+                    ImageButtonAPPLYlogin.Image = Resources.ok;
+                    ImageButtonAPPLYlogin.BackColor = Color.SeaGreen;
+                }
+                else
+                {
+                    ImageButtonAPPLYlogin.Enabled = false;
+                    ImageButtonAPPLYlogin.Image = Resources.X;
+                    ImageButtonAPPLYlogin.BackColor = Color.SlateGray;
+                }
+            }
+            else
+            {
+                textboxPASSlogin.ForeColor = Color.Crimson;
+                ImageButtonAPPLYlogin.Enabled = false;
+                ImageButtonAPPLYlogin.Image = Resources.X;
+                ImageButtonAPPLYlogin.BackColor = Color.SlateGray;
             }
         }
         #endregion
@@ -194,14 +185,17 @@ namespace TRPO_Project
         ////при нажатии на ЗАБЫЛ ПАРОЛЬ
         private void metroLinkRegister_Click(object sender, EventArgs e)
         {
-            if (xuiSlidingPanelREGISTRATION.Collapsed)
-            {
-                xuiSlidingPanelREGISTRATION.Visible = true;
-            }
-            else
-            {
-                xuiSlidingPanelREGISTRATION.Visible = false;
-            }
+            textBoxPASS_reg.Text = string.Empty;
+            textBoxREPEAT_PASS_reg.Text = string.Empty;
+            textBoxEMAIL_reg.Text = string.Empty;
+            //if (xuiSlidingPanelREGISTRATION.Collapsed)
+            //{
+            //    xuiSlidingPanelREGISTRATION.Visible = true;
+            //}
+            //else
+            //{
+            //    xuiSlidingPanelREGISTRATION.Visible = false;
+            //}
         }
         #endregion
 
@@ -212,24 +206,22 @@ namespace TRPO_Project
             using (sql_con = new SQLiteConnection($"Data Source={Directory.GetCurrentDirectory()}\\TRPO.db"))
             {
                 string email = textboxEMAILlogin.text, password = textboxPASSlogin.text;
-                LOGIN = email;
                 sql_con.Open();
-                using (sql_cmd = new SQLiteCommand("SELECT id FROM LOGin WHERE email='" + email + "' and password='" + password + "';", sql_con))
+                using (sql_cmd = new SQLiteCommand($"SELECT id FROM LOGin WHERE email='{email}' and password='{password}'", sql_con))
                 {
                     SQLiteDataReader reader = sql_cmd.ExecuteReader();
                     if (reader.HasRows)
                     {
                         reader.Close();
-                        isADMIN = CheckFORadmin();
                         MetroMessageBox.Show(this, "WELL DONE! LOGGED IN", "SUCCESS!", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                        if (isADMIN)
+                        if (CheckFORadmin(email))
                         {
-                            formADMIN MainForm = new formADMIN(GetUserID());
+                            formADMIN MainForm = new formADMIN(GetUserID(email));
                             MainForm.Show();
                         }
                         else
                         {
-                            formUSER MainForm = new formUSER(GetUserID());
+                            formUSER MainForm = new formUSER(GetUserID(email));
                             MainForm.Show();
                         }
                         this.Hide();
@@ -253,109 +245,36 @@ namespace TRPO_Project
 
         private void bunifuImageButtonEXIT_Click(object sender, EventArgs e)
         {
-            this.Close();
+            Application.Exit();
         }
         #endregion
 
-        #region Forgost Password Slider
-
-        #region CHECKmailINbd
-        private bool CheckEmailForgotPassword(string email)
-        {
-            if (string.IsNullOrWhiteSpace(email) || string.IsNullOrEmpty(email))
-            {
-                textBox_ForgotPass.ForeColor = Color.FromArgb(255, 0, 0);
-                bunifuImageButtonAPPLYforgotPassword.Enabled = false;
-                bunifuImageButtonAPPLYforgotPassword.Image = Resources.X;
-                bunifuImageButtonAPPLYforgotPassword.BackColor = Color.SlateGray;
-                return false;
-            }
-            if (email.IndexOf(".") == -1 || (email.Length - 3) < email.IndexOf("."))
-            {
-                textBox_ForgotPass.ForeColor = Color.FromArgb(255, 0, 0);
-                bunifuImageButtonAPPLYforgotPassword.Enabled = false;
-                bunifuImageButtonAPPLYforgotPassword.BackColor = Color.SlateGray;
-                bunifuImageButtonAPPLYforgotPassword.Image = Resources.X;
-                return false;
-            }
-            if ((email.IndexOf(",") >= 0) || (email.IndexOf(";") >= 0) || (email.IndexOf(" ") >= 0))
-            {
-                textBox_ForgotPass.ForeColor = Color.FromArgb(255, 0, 0);
-                bunifuImageButtonAPPLYforgotPassword.Enabled = false;
-                bunifuImageButtonAPPLYforgotPassword.Image = Resources.X;
-                bunifuImageButtonAPPLYforgotPassword.BackColor = Color.SlateGray;
-                return false;
-            }
-            int dog = email.IndexOf("@");
-            if (dog == -1)
-            {
-                textBox_ForgotPass.ForeColor = Color.FromArgb(255, 0, 0);
-                bunifuImageButtonAPPLYforgotPassword.Enabled = false;
-                bunifuImageButtonAPPLYforgotPassword.Image = Resources.X;
-                bunifuImageButtonAPPLYforgotPassword.BackColor = Color.SlateGray;
-                return false;
-
-            }
-            if ((dog < 1) || (dog > email.Length - 5))
-            {
-                textBox_ForgotPass.ForeColor = Color.FromArgb(255, 0, 0);
-                bunifuImageButtonAPPLYforgotPassword.Enabled = false;
-                bunifuImageButtonAPPLYforgotPassword.Image = Resources.X;
-                bunifuImageButtonAPPLYforgotPassword.BackColor = Color.SlateGray;
-                return false;
-
-            }
-            if ((email.ElementAt(dog - 1) == '.') || (email.ElementAt(dog + 1) == '.'))
-            {
-                textBox_ForgotPass.ForeColor = Color.FromArgb(255, 0, 0);
-                bunifuImageButtonAPPLYforgotPassword.Enabled = false;
-                bunifuImageButtonAPPLYforgotPassword.Image = Resources.X;
-                bunifuImageButtonAPPLYforgotPassword.BackColor = Color.SlateGray;
-                return false;
-
-            }
-            if (email.Length >= 30)
-            {
-                textBox_ForgotPass.ForeColor = Color.FromArgb(255, 0, 0);
-                bunifuImageButtonAPPLYforgotPassword.Enabled = false;
-                bunifuImageButtonAPPLYforgotPassword.Image = Resources.X;
-                bunifuImageButtonAPPLYforgotPassword.BackColor = Color.SlateGray;
-                return false;
-            }
-            else
-            {
-                textBox_ForgotPass.ForeColor = Color.FromArgb(0, 255, 0);
-                bunifuImageButtonAPPLYforgotPassword.Enabled = true;
-                bunifuImageButtonAPPLYforgotPassword.Image = Resources.ok;
-                bunifuImageButtonAPPLYforgotPassword.BackColor = Color.SeaGreen;
-                return true;
-            }
-        }
-
+        #region Forgost Password Slider 
+        
+        string SendNum = randNum.Next(1000, 9999).ToString();
         private void bunifuImageButtonAPPLYforgotPassword_Click(object sender, EventArgs e)
         {
-            string checkEMAIL = textBox_ForgotPass.Text;
             try
             {
-                using (sql_con = new SQLiteConnection("TRPO.db"))
+                using (sql_con = new SQLiteConnection($"Data Source={Directory.GetCurrentDirectory()}\\TRPO.db"))
                 {
                     sql_con.Open();
-                    using (sql_cmd = new SQLiteCommand("SELECT password FROM LOGin WHERE email='" + checkEMAIL + "';", sql_con))
+                    using (sql_cmd = new SQLiteCommand($"SELECT password FROM LOGin WHERE email='{textBox_ForgotPass.Text}';", sql_con))
                     {
                         using (SQLiteDataReader reader = sql_cmd.ExecuteReader())
                         {
-                            while (reader.Read())
+                            reader.Read();
+                            if (reader.HasRows)
                             {
-                                if (reader.HasRows)
-                                {
-                                    MetroMessageBox.Show(this, "Found your account! \nPassword: " + reader.GetString(0), "SUCCESS", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                                    textBox_ForgotPass.Text = string.Empty;
-                                }
-                                else
-                                {
-                                    MetroMessageBox.Show(this, "DO NOT find your account!", "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                                    textBox_ForgotPass.Text = string.Empty;
-                                }
+                                gunaLineTextBoxCheckSendedNum.Visible = true;
+                                imageButtonCheckNum.Visible = true;
+                                MetroMessageBox.Show(this, "Found your account! Check your email for protectcode. Paste it in textbox below!", "SUCCESS", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                                SendMessage(textBox_ForgotPass.Text);
+                            }
+                            else
+                            {
+                                MetroMessageBox.Show(this, "WE DO NOT find your account!", "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                                textBox_ForgotPass.Text = string.Empty;
                             }
                         }
                     }
@@ -366,118 +285,112 @@ namespace TRPO_Project
                 MessageBox.Show(ex.Message);
             }
         }
-        //поиск по базе
         private void textBox_ForgotPass_TextChanged(object sender, EventArgs e)
         {
-            string EMAIL = textBox_ForgotPass.Text;
-            CheckEmailForgotPassword(EMAIL);
-        }
-
-        #endregion
-
-        private void metroLinkForgotPassword_Click(object sender, EventArgs e)
-        {
-            if (xuiSlidingPanelForgotPass.Collapsed)
+            if (CheckEmailForCorrection(textBox_ForgotPass.Text))
             {
-                xuiSlidingPanelForgotPass.Visible = true;
+                textBox_ForgotPass.ForeColor = Color.SpringGreen;
+                bunifuImageButtonAPPLYforgotPassword.Enabled = true;
+                bunifuImageButtonAPPLYforgotPassword.Image = Resources.ok;
+                bunifuImageButtonAPPLYforgotPassword.BackColor = Color.SeaGreen;
+            }
+            else
+            {              
+                textBox_ForgotPass.ForeColor = Color.Crimson;
+                bunifuImageButtonAPPLYforgotPassword.Enabled = false;
+                bunifuImageButtonAPPLYforgotPassword.Image = Resources.X;
+                bunifuImageButtonAPPLYforgotPassword.BackColor = Color.SlateGray;
             }
         }
+        private void metroLinkForgotPassword_Click(object sender, EventArgs e)
+        {
+            textBox_ForgotPass.Text = string.Empty;
+            gunaLineTextBoxCheckSendedNum.Visible = false;
+            imageButtonCheckNum.Visible = false;
+        }
+        private void imageButtonCheckNum_Click(object sender, EventArgs e)
+        {
+            if (gunaLineTextBoxCheckSendedNum.Text == SendNum)
+            {
+                MetroMessageBox.Show(this, $"Yeah, here is your password: {GetForgotedPassword(textBox_ForgotPass.Text)}");
+            }
+            else
+            {
+                if (MetroMessageBox.Show(this, "The protection number is wrong! We can send it again, should we?", "ERROR", MessageBoxButtons.RetryCancel, MessageBoxIcon.Error) == DialogResult.Retry)
+                {
+                    SendNum = randNum.Next(1000, 9999).ToString();
+                    textBox_ForgotPass.Text = textBox_ForgotPass.Text;
+                    bunifuImageButtonAPPLYforgotPassword_Click(null, null);
+                }
+            }
+            xuiSlidingPanelForgotPass.Collapsed = true;
+            gunaLineTextBoxCheckSendedNum.Visible = false;
+            imageButtonCheckNum.Visible = false;
+        }
+        private string GetForgotedPassword(string FPemail)
+        {
+            using (sql_con = new SQLiteConnection($"Data Source={Directory.GetCurrentDirectory()}\\TRPO.db"))
+            {
+                sql_con.Open();
+                using (sql_cmd = new SQLiteCommand($"SELECT password FROM LOGin WHERE email='{FPemail}'", sql_con))
+                {
+                    return sql_cmd.ExecuteScalar().ToString();
+                }
+            }
+        }
+        private void SendMessage(string EmailTo)
+        {
+            string smtpEmail = "smtp.jeffeekpcbuy@gmail.com";
+            string smtpPassword = "9Pocan1337";
+            MailAddress SMTPfrom = new MailAddress(smtpEmail, "Jeffeek inc.");
+            MailAddress toUser = new MailAddress(EmailTo);
+            MailMessage Message = new MailMessage(SMTPfrom, toUser)
+            {
+                Subject = "Protection Code",
+                Body = $"<h1>{SendNum}</h1>",
+                IsBodyHtml = true
+            };
+            SmtpClient smtp = new SmtpClient("smtp.gmail.com", 587)
+            {
+                Credentials = new NetworkCredential(smtpEmail, smtpPassword),
+                EnableSsl = true
+            };
+            smtp.Send(Message);
+        }
+        private void gunaLineTextBoxCheckSendedNum_KeyPress(object sender, KeyPressEventArgs e) => e.Handled = !char.IsDigit(e.KeyChar) && !char.IsControl(e.KeyChar) ? true : false;
 
         #endregion
 
         #region Registration Slider
-        private bool isPASScorrect = false;
-        private bool isRepeatPASScorrect = false;
-        private bool isLOGINcorrect = false;
         
         #region CHECKcorrectionEMAIL&password
-        private bool CheckEmailRegistration(string email)
+
+        private void textBoxEMAIL_TextChanged(object sender, EventArgs e)
         {
-            if (email.Length == 0)
+            if (CheckEmailForCorrection(textBoxEMAIL_reg.Text))
             {
-                textBoxEMAIL_reg.ForeColor = Color.FromArgb(255, 0, 0);
-                isLOGINcorrect = false;
-                ButtonREGISTER.Image = Resources.X;
-                ButtonREGISTER.BackColor = Color.SlateGray;
-                ButtonREGISTER.Enabled = false;
-                return false;
-            }
-            if (email.IndexOf(".") == -1 || (email.Length - 3) < email.IndexOf("."))
-            {
-                isLOGINcorrect = false;
-                textBoxEMAIL_reg.ForeColor = Color.FromArgb(255, 0, 0);
-                ButtonREGISTER.Image = Resources.X;
-                ButtonREGISTER.BackColor = Color.SlateGray;
-                ButtonREGISTER.Enabled = false;
-                return false;
-            }
-            if ((email.IndexOf(",") >= 0) || (email.IndexOf(";") >= 0) || (email.IndexOf(" ") >= 0))
-            {
-                isLOGINcorrect = false;
-                textBoxEMAIL_reg.ForeColor = Color.FromArgb(255, 0, 0);
-                ButtonREGISTER.Image = Resources.X;
-                ButtonREGISTER.BackColor = Color.SlateGray;
-                ButtonREGISTER.Enabled = false;
-                return false;
-
-            }
-            int dog = email.IndexOf("@");
-            if (dog == -1)
-            {
-                isLOGINcorrect = false;
-                textBoxEMAIL_reg.ForeColor = Color.FromArgb(255, 0, 0);
-                ButtonREGISTER.Image = Resources.X;
-                ButtonREGISTER.BackColor = Color.SlateGray;
-                ButtonREGISTER.Enabled = false;
-                return false;
-
-            }
-            if ((dog < 1) || (dog > email.Length - 5))
-            {
-                isLOGINcorrect = false;
-                textBoxEMAIL_reg.ForeColor = Color.FromArgb(255, 0, 0);
-                ButtonREGISTER.Image = Resources.X;
-                ButtonREGISTER.BackColor = Color.SlateGray;
-                ButtonREGISTER.Enabled = false;
-                return false;
-
-            }
-            if ((email.ElementAt(dog - 1) == '.') || (email.ElementAt(dog + 1) == '.'))
-            {
-                isLOGINcorrect = false;
-                textBoxEMAIL_reg.ForeColor = Color.FromArgb(255, 0, 0);
-                ButtonREGISTER.Image = Resources.X;
-                ButtonREGISTER.BackColor = Color.SlateGray;
-                ButtonREGISTER.Enabled = false;
-                return false;
-
-            }
-            else
-            {
-                isLOGINcorrect = true;
                 textBoxEMAIL_reg.ForeColor = Color.SpringGreen;
-                if (isPASScorrect && isRepeatPASScorrect)
+                if (CheckPasswordForCorrection(textBoxPASS_reg.Text) && textBoxREPEAT_PASS_reg.Text == textBoxPASS_reg.Text)
                 {
                     ButtonREGISTER.Image = Resources.ok;
                     ButtonREGISTER.BackColor = Color.SeaGreen;
                     ButtonREGISTER.Enabled = true;
                 }
-                return true;
             }
-        }
-
-        private void textBoxEMAIL_TextChanged(object sender, EventArgs e)
-        {
-            string e_mail = textBoxEMAIL_reg.Text;
-            CheckEmailRegistration(e_mail);
+            else
+            {
+                textBoxEMAIL_reg.ForeColor = Color.Crimson;
+                ButtonREGISTER.Image = Resources.X;
+                ButtonREGISTER.BackColor = Color.SlateGray;
+                ButtonREGISTER.Enabled = false;
+            }
         }
         private void textBoxREPEAT_PASS_TextChanged(object sender, EventArgs e)
         {
             if (textBoxREPEAT_PASS_reg.Text == textBoxPASS_reg.Text)
             {
                 textBoxREPEAT_PASS_reg.ForeColor = Color.SpringGreen;
-                isRepeatPASScorrect = true;
-                if (CheckEmailRegistration(textBoxEMAIL_reg.Text))
+                if (CheckEmailForCorrection(textBoxEMAIL_reg.Text))
                 {
                     ButtonREGISTER.Image = Resources.ok;
                     ButtonREGISTER.BackColor = Color.SeaGreen;
@@ -494,20 +407,17 @@ namespace TRPO_Project
         }
         private void textBoxPASS_TextChanged(object sender, EventArgs e)
         {
-            PASS = textBoxPASS_reg.Text;
-            if (PASS.Length < 6)
+            if (!CheckPasswordForCorrection(textBoxPASS_reg.Text))
             {
                 textBoxPASS_reg.ForeColor = Color.Red;
                 ButtonREGISTER.Enabled = false;
                 ButtonREGISTER.Image = Resources.X;
                 ButtonREGISTER.BackColor = Color.SlateGray;
-                isPASScorrect = false;
             }
             else
             {
-                isPASScorrect = true;
                 textBoxPASS_reg.ForeColor = Color.SpringGreen;
-                if (textBoxREPEAT_PASS_reg.Text == textBoxPASS_reg.Text && CheckEmailRegistration(textBoxEMAIL_reg.Text))
+                if (textBoxREPEAT_PASS_reg.Text == textBoxPASS_reg.Text && CheckEmailForCorrection(textBoxEMAIL_reg.Text))
                 {
                     ButtonREGISTER.Image = Resources.ok;
                     ButtonREGISTER.BackColor = Color.SeaGreen;
@@ -519,12 +429,10 @@ namespace TRPO_Project
                     if (textBoxREPEAT_PASS_reg.Text != textBoxPASS_reg.Text)
                     {
                         textBoxREPEAT_PASS_reg.ForeColor = Color.Red;
-                        isRepeatPASScorrect = false;
                     }
                     else if (textBoxREPEAT_PASS_reg.Text == textBoxPASS_reg.Text)
                     {
                         textBoxREPEAT_PASS_reg.ForeColor = Color.SpringGreen;
-                        isRepeatPASScorrect = true;
                     }
                     ButtonREGISTER.Enabled = false;
                     ButtonREGISTER.Image = Resources.X;
@@ -539,7 +447,7 @@ namespace TRPO_Project
         {
             try
             {
-                if (isRepeatPASScorrect && isPASScorrect && isLOGINcorrect)
+                if (textBoxREPEAT_PASS_reg.Text == textBoxREPEAT_PASS_reg.Text && CheckPasswordForCorrection(textBoxPASS_reg.Text) && CheckEmailForCorrection(textBoxEMAIL_reg.Text))
                 {
                     using (sql_con = new SQLiteConnection($"Data Source={Directory.GetCurrentDirectory()}\\TRPO.db"))
                     {
@@ -558,17 +466,9 @@ namespace TRPO_Project
                 else
                 {
                     MetroMessageBox.Show(this, "ERROR", "NOPE", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                    if (!isLOGINcorrect)
-                    {
-                        textBoxEMAIL_reg.Text = "";
-                        textBoxREPEAT_PASS_reg.Text = "";
-                        textBoxPASS_reg.Text = "";
-                    }
-                    else if ((!isPASScorrect || !isRepeatPASScorrect) && isLOGINcorrect)
-                    {
-                        textBoxREPEAT_PASS_reg.Text = "";
-                        textBoxPASS_reg.Text = "";
-                    }
+                    textBoxEMAIL_reg.Text = "";
+                    textBoxREPEAT_PASS_reg.Text = "";
+                    textBoxPASS_reg.Text = "";
                 }
             }
             catch (Exception ex)

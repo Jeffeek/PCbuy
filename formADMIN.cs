@@ -28,7 +28,6 @@ namespace TRPO_Project
         private List<PCinfo> OBJects = new List<PCinfo>(); // объекты главной формы
         private List<PC> AllPCList = new List<PC>();
         public static List<PCinfo> BINid = new List<PCinfo>(); //лист корзины юзера
-        private string THEME = "Dark";
         private int userID;
         private Point lastPoint;
         #endregion
@@ -47,7 +46,6 @@ namespace TRPO_Project
             metroComboBoxCPUsort.SelectedIndex = 0;
             metroComboBoxGPUsort.SelectedIndex = 0;
             metroComboBoxRAM.SelectedIndex = 0;
-
         }
 
         #endregion
@@ -97,7 +95,7 @@ namespace TRPO_Project
         private void bunifuImageButtonSORT_Click(object sender, EventArgs e)
         {
             bunifuImageButtonSORT.Focus();
-            xuiCircleProgressBar1.Visible = true;
+            ProgressBar.Visible = true;
 
             #region ParseInputPrice
             string[] PriceReaderSTR = textBox_PRICE.Text.Split('$', '-');
@@ -123,8 +121,8 @@ namespace TRPO_Project
                 {
                     MessageBox.Show("Второе число фильтра по цене больше первого!", "ОШИБКА", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                     textBox_PRICE.Focus();
-                    xuiCircleProgressBar1.percentage = 0;
-                    xuiCircleProgressBar1.Visible = false;
+                    ProgressBar.percentage = 0;
+                    ProgressBar.Visible = false;
                     return;
                 }
             }
@@ -151,7 +149,7 @@ namespace TRPO_Project
 
             if (ToDisplay.Count == 0)
             {
-                xuiCircleProgressBar1.Visible = false;
+                ProgressBar.Visible = false;
                 MetroMessageBox.Show(this, "NO PC MATCHES", "ERROR!", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
@@ -171,8 +169,8 @@ namespace TRPO_Project
             }
             int Y = 88;
             this.Refresh();
-            xuiCircleProgressBar1.percentage = 0;
-            xuiCircleProgressBar1.Enabled = true;
+            ProgressBar.percentage = 0;
+            ProgressBar.Enabled = true;
             int Final = 100 / Listed.Count;
             foreach (var pc in Listed)
             {
@@ -180,19 +178,18 @@ namespace TRPO_Project
                 await Task.Delay(30).ConfigureAwait(true);
                 while (P != Final)
                 {
-                    xuiCircleProgressBar1.Percentage++;
+                    ProgressBar.Percentage++;
                     P++;
                 }
                 PCinfo OBJ = new PCinfo(pc.TYPE, pc.ID, pc.CPU, pc.GPU, pc.RAM, pc.COST, pc.IMG) { isAdmin = true };
                 OBJects.Add(OBJ);
                 OBJ.Location = new Point(0, Y);
                 Y += 230;
-                //
-                OBJ.BackColor = THEME == "Dark" ? Color.FromArgb(17, 17, 17) : Color.White;
+                OBJ.BackColor = Theme == MetroThemeStyle.Dark ? Color.FromArgb(17, 17, 17) : Color.White;
                 this.Controls.Add(OBJ);
             }
-            xuiCircleProgressBar1.Enabled = false;
-            xuiCircleProgressBar1.Visible = false;
+            ProgressBar.Enabled = false;
+            ProgressBar.Visible = false;
         }
         #endregion      
 
@@ -377,15 +374,15 @@ namespace TRPO_Project
                 {
                     using (FileStream fs = new FileStream(sql_cmd.ExecuteScalar().ToString(), FileMode.Open))
                     {
-                        pictureBoxProfile1.Image = Image.FromStream(fs);
+                        pictureBoxProfile.Image = Image.FromStream(fs);
                     }
                 }
             }
         }
         public void SetNewProfilePicture(Image IMG)
         {
-            pictureBoxProfile1.Image = IMG;
-            pictureBoxProfile1.Update();
+            pictureBoxProfile.Image = IMG;
+            pictureBoxProfile.Update();
         }
         #endregion
 
@@ -404,6 +401,7 @@ namespace TRPO_Project
             var result = MetroMessageBox.Show(this, "ARE YOU SURE THAT YOU WANT TO EXIT?", "EXIT", MessageBoxButtons.YesNo, MessageBoxIcon.Exclamation, MessageBoxDefaultButton.Button1);
             if (result == DialogResult.Yes)
             {
+                Close();
                 Application.Restart();
             }
         }
@@ -423,21 +421,25 @@ namespace TRPO_Project
 
         #endregion
 
-        public void ChangeMetroControls(string theme)
+        public void ChangeMetroControls(ProgramTheme OBJ)
         {
-            Theme = theme == "Light" ? MetroThemeStyle.Light : MetroThemeStyle.Dark;           
+            Theme = OBJ.Theme == "Light" ? MetroThemeStyle.Light : MetroThemeStyle.Dark;           
         }
 
-        public void ChangeNonMetroControls(string theme)
+        public void ChangeNonMetroControls(ProgramTheme OBJ)
         {
-            
+            groupBoxHEAD.GradientBottomLeft = OBJ.BottomLeft;
+            groupBoxHEAD.GradientBottomRight = OBJ.BottomRight;
+            groupBoxHEAD.GradientTopLeft = OBJ.TopLeft;
+            groupBoxHEAD.GradientTopRight = OBJ.TopRight;
+            groupBoxHEAD.Refresh();
         }
 
         public void ReadTheme()
         {
             List<ProgramTheme> themes = new List<ProgramTheme>();
 
-            using (FileStream file = new FileStream("ThemeSettings.json", FileMode.OpenOrCreate))
+            using (FileStream file = new FileStream($"{Directory.GetCurrentDirectory()}\\ThemeSettings.json", FileMode.OpenOrCreate))
             {
                 DataContractJsonSerializer jsonSerializer = new DataContractJsonSerializer(typeof(List<ProgramTheme>));
                 themes = jsonSerializer.ReadObject(file) as List<ProgramTheme>;
@@ -445,15 +447,11 @@ namespace TRPO_Project
 
             if (themes.Count(x => x.UserID == userID) > 0)
             {
-                THEME = themes.Find(x => x.UserID == userID).Theme;
-                Parallel.Invoke
-                    (
-                        () => ChangeNonMetroControls(THEME),
-                        () => ChangeMetroControls(THEME)
-                    );
+                var ThemeOBJ = themes.Find(x => x.UserID == userID);
+                ChangeNonMetroControls(ThemeOBJ);
+                ChangeMetroControls(ThemeOBJ);
                 Refresh();
             }
-            return;
         }
 
     }
