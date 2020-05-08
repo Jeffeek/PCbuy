@@ -17,6 +17,8 @@ using Guna.UI.WinForms;
 using Guna.UI.Lib;
 using System.IO;
 using System.Runtime.Serialization.Json;
+using System.Net.Mail;
+using System.Text.RegularExpressions;
 
 namespace TRPO_Project
 {
@@ -26,6 +28,7 @@ namespace TRPO_Project
         private SQLiteConnection sql_con; // connection
         private SQLiteCommand sql_cmd;
         private bool IsAdmin;
+        private string EmailMessage = "";
         private int userID;
         private List<PCinfo> IDsOfPCinBIN = new List<PCinfo>();
         #endregion
@@ -162,6 +165,7 @@ namespace TRPO_Project
         {
             string IDs = string.Empty;
             int SUMofOrder = 0;
+            string OrderNum;
             foreach (var PC in IDsOfPCinBIN)
             {
                 IDs += PC.ID + " | ";
@@ -173,7 +177,13 @@ namespace TRPO_Project
                 using (sql_cmd = new SQLiteCommand($"INSERT INTO Orders(userID, pcIDs, PRICEall, Date) VALUES({userID}, '{IDs}', {SUMofOrder},'{DateTime.Now}')", sql_con))
                 {
                     sql_cmd.ExecuteNonQuery();
+                    using (sql_cmd = new SQLiteCommand("SELECT MAX(id) FROM Orders", sql_con))
+                    {
+                        OrderNum = sql_cmd.ExecuteScalar().ToString();
+                    }
+                    SendEmailOrder(SUMofOrder, OrderNum, DateTime.Now.ToString());
                     MetroMessageBox.Show(this, "YOUR ORDER WAS CONFIRMED!", "SUCCESS!", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
                     tabControlPRODUCTs.TabPages.Clear();
                     if (IsAdmin)
                     {
@@ -220,6 +230,65 @@ namespace TRPO_Project
                 Refresh();
             }
             return;
+        }
+
+        private void SendEmailOrder(int SumOfOrder, string id, string Date)
+        {
+            string smtpEmail = "smtp.jeffeekpcbuy@gmail.com";
+            string smtpPassword = "9Pocan1337";
+
+            MailAddress SMTPfrom = new MailAddress(smtpEmail, "Jeffeek inc.");
+            MailAddress toUser = new MailAddress(GetUserEmail());
+            MailMessage Message = new MailMessage(SMTPfrom, toUser)
+            {
+                Subject = "Protection Code",
+                Body = $"{MakeHTMLMessage(SumOfOrder, id, Date)}",
+                IsBodyHtml = true,
+            };
+            
+            SmtpClient smtp = new SmtpClient("smtp.gmail.com", 587)
+            {
+                Credentials = new System.Net.NetworkCredential(smtpEmail, smtpPassword),
+                EnableSsl = true
+            };
+            smtp.Send(Message);
+        }
+
+        private string GetUserEmail()
+        {
+            using (sql_con = new SQLiteConnection($"Data Source={Directory.GetCurrentDirectory()}\\TRPO.db"))
+            {
+                sql_con.Open();
+                using (sql_cmd = new SQLiteCommand($"SELECT email FROM LOGin WHERE id={userID}", sql_con))
+                {
+                    return sql_cmd.ExecuteScalar().ToString();
+                }
+            }
+        }
+
+        private string MakeHTMLMessage(int SummOfOrder, string ID, string Date)
+        {
+            string HTMLfile = "";
+            string OrderList = "";
+            using (StreamReader stream = new StreamReader($"{Directory.GetCurrentDirectory()}\\MessageOrder.html"))
+            {
+                HTMLfile = stream.ReadToEnd();
+            }
+
+            foreach (var PC in IDsOfPCinBIN)
+            {
+                OrderList += PC.ID + " | " + PC.CPU + " | " + PC.GPU + " | " + PC.RAM + "GB" + " | " + PC.COST + "$ <br>";
+            }
+
+            Regex R = new Regex("{piska}");
+            Regex R1 = new Regex("{priceALL}");
+            Regex R2 = new Regex("{id}");
+            Regex R3 = new Regex("{datetime}");
+            HTMLfile = R.Replace(HTMLfile, OrderList);
+            HTMLfile = R1.Replace(HTMLfile, SummOfOrder.ToString());
+            HTMLfile = R2.Replace(HTMLfile,ID);
+            HTMLfile = R3.Replace(HTMLfile, Date);
+            return HTMLfile;
         }
     }
 }

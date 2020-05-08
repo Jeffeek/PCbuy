@@ -27,7 +27,7 @@ namespace TRPO_Project
         string SendNum = randNum.Next(1000, 9999).ToString();
         #endregion
 
-        #region constructors
+        #region constructor
         public formLogIn()
         {
             InitializeComponent();
@@ -35,12 +35,6 @@ namespace TRPO_Project
             //TODO: убери автолог
             textboxEMAILlogin.text = "mishamine26@gmail.com";
             textboxPASSlogin.text = "123456";
-        }
-        //возврат в окно
-        public formLogIn(string emailPASTE)
-        {
-            InitializeComponent();
-            textboxEMAILlogin.text = emailPASTE;
         }
         #endregion
 

@@ -370,7 +370,7 @@
     <None Include="Resources\unnamed.png" />
     <None Include="Resources\w512h5121380477044settings.png" />
     <Content Include="TRPO.db">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
   </ItemGroup>
   <ItemGroup>
