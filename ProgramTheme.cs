@@ -24,7 +24,7 @@ namespace TRPO_Project
 
         [DataMember]
         public Color TopRight { get; set; } = Color.Aqua;
-
+        
         public ProgramTheme(string theme, int ID)
         {
             if (string.IsNullOrEmpty(theme) && theme != "Light" && theme != "Dark")

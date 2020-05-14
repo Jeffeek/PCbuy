@@ -199,7 +199,7 @@ namespace TRPO_Project
                     xuiCircleProgressBar1.Percentage++;
                     P++;
                 }
-                PCinfo OBJ = new PCinfo(pc.TYPE, pc.ID, pc.CPU, pc.GPU, pc.RAM, pc.COST, pc.IMG) { isAdmin = true };
+                PCinfo OBJ = new PCinfo(pc.TYPE, pc.ID, pc.CPU, pc.GPU, pc.RAM, pc.COST, pc.IMG) { isAdmin = false };
                 OBJects.Add(OBJ);
                 OBJ.Location = new Point(0, Y);
                 Y += 230;

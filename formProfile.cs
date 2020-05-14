@@ -162,12 +162,33 @@ namespace TRPO_Project
                         using (sql_cmd = new SQLiteCommand($"DELETE FROM LOGin WHERE id={userID}", sql_con))
                         {
                             sql_cmd.ExecuteNonQuery();
+                            DeleteUserFromJSON();
                             File.Delete($"USERsPIC\\id{userID}_USER.png");
                             MetroMessageBox.Show(this, "SUCCESS! YOUR PROFILE WAS DELETED", "DELETE PROFILE", MessageBoxButtons.OK, MessageBoxIcon.Information);
                             Application.Restart();
                         }
                     }
                 }
+            }
+        }
+
+        private void DeleteUserFromJSON()
+        {
+            List<ProgramTheme> themes = new List<ProgramTheme>();
+
+            using (FileStream file = new FileStream($"{Directory.GetCurrentDirectory()}\\ThemeSettings.json", FileMode.OpenOrCreate))
+            {
+                DataContractJsonSerializer jsonSerializer = new DataContractJsonSerializer(typeof(List<ProgramTheme>));
+                themes = jsonSerializer.ReadObject(file) as List<ProgramTheme>;
+            }
+
+            themes.Remove(themes.Find(x => x.UserID == userID));
+
+            File.WriteAllText($"{Directory.GetCurrentDirectory()}\\ThemeSettings.json", "");
+            using (FileStream file = new FileStream($"{Directory.GetCurrentDirectory()}\\ThemeSettings.json", FileMode.OpenOrCreate))
+            {                
+                DataContractJsonSerializer jsonSerializer = new DataContractJsonSerializer(typeof(List<ProgramTheme>));
+                jsonSerializer.WriteObject(file, themes);
             }
         }
         #endregion
@@ -321,6 +342,7 @@ namespace TRPO_Project
         public void ChangeNonMetroControls(ProgramTheme OBJ)
         {
             switchTheme.Checked = OBJ.Theme == "Dark";
+            pictureBoxPROFILE.BackColor = OBJ.Theme == "Dark" ? Color.DimGray : Color.WhiteSmoke;
             labelChangeTheme.ForeColor = OBJ.Theme == "Dark" ? Color.Black : Color.White;
             labelChangeTheme.Text = OBJ.Theme == "Dark" ? "Dark theme" : "Light theme";
             bunifuMaterialTextboxEMAIL.BackColor = OBJ.Theme == "Light" ? Color.White : Color.FromArgb(17,17,17);

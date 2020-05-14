@@ -2,7 +2,7 @@
 
 namespace TRPO_Project
 {
-    partial class formLogIn
+    partial class FormLogIn
     {
         /// <summary>
         /// Обязательная переменная конструктора.
@@ -31,7 +31,7 @@ namespace TRPO_Project
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(formLogIn));
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormLogIn));
             this.metroLinkRegister = new MetroFramework.Controls.MetroLink();
             this.metroLinkForgotPassword = new MetroFramework.Controls.MetroLink();
             this.EMAILlabel = new MetroFramework.Controls.MetroLabel();
@@ -578,7 +578,8 @@ namespace TRPO_Project
             this.Controls.Add(this.metroLinkRegister);
             this.MaximizeBox = false;
             this.MinimizeBox = false;
-            this.Name = "formLogIn";
+            this.Movable = false;
+            this.Name = "FormLogIn";
             this.Resizable = false;
             this.ShadowType = MetroFramework.Forms.MetroFormShadowType.AeroShadow;
             this.SizeGripStyle = System.Windows.Forms.SizeGripStyle.Hide;

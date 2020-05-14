@@ -97,6 +97,7 @@
             // 
             // pictureBoxPROFILE
             // 
+            this.pictureBoxPROFILE.BackColor = System.Drawing.Color.DimGray;
             this.pictureBoxPROFILE.ErrorImage = global::TRPO_Project.Properties.Resources.profile_default;
             this.pictureBoxPROFILE.Image = ((System.Drawing.Image)(resources.GetObject("pictureBoxPROFILE.Image")));
             this.pictureBoxPROFILE.Location = new System.Drawing.Point(100, 33);
@@ -621,6 +622,7 @@
             this.SizeGripStyle = System.Windows.Forms.SizeGripStyle.Hide;
             this.Style = MetroFramework.MetroColorStyle.Purple;
             this.Theme = MetroFramework.MetroThemeStyle.Dark;
+            this.TransparencyKey = System.Drawing.Color.MediumVioletRed;
             this.Load += new System.EventHandler(this.formProfile_Load);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxPROFILE)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxCHANGEpassVisibility)).EndInit();
