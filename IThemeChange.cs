@@ -8,8 +8,8 @@ namespace TRPO_Project
 {
     interface IThemeChange
     {
-        void ChangeMetroControls(ProgramTheme OBJ);
-        void ChangeNonMetroControls(ProgramTheme OBJ);
+        void ChangeMetroControls(ProgramTheme obj);
+        void ChangeNonMetroControls(ProgramTheme obj);
         void ReadTheme();
     }
 }

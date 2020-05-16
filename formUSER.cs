@@ -137,7 +137,7 @@ namespace TRPO_Project
             {
                 if (PriceReaderINT[1] < PriceReaderINT[0])
                 {
-                    MessageBox.Show("Второе число фильтра по цене больше первого!", "ОШИБКА", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    MessageBox.Show(@"Второе число фильтра по цене больше первого!", "ОШИБКА", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                     textBox_PRICE.Focus();
                     xuiCircleProgressBar1.percentage = 0;
                     xuiCircleProgressBar1.Visible = false;
@@ -442,7 +442,7 @@ namespace TRPO_Project
 
         public void ReadTheme()
         {
-            List<ProgramTheme> themes = new List<ProgramTheme>();
+            List<ProgramTheme> themes;
 
             using (FileStream file = new FileStream($"{Directory.GetCurrentDirectory()}\\ThemeSettings.json", FileMode.OpenOrCreate))
             {

@@ -23,6 +23,7 @@ namespace TRPO_Project
     public partial class formADMIN : MetroForm, IThemeChange
     {
         #region variables&collections
+
         private SQLiteConnection sql_con; // connection
         private SQLiteCommand sql_cmd;
         private List<PCinfo> OBJects = new List<PCinfo>(); // объекты главной формы
@@ -30,9 +31,11 @@ namespace TRPO_Project
         public static List<PCinfo> BINid = new List<PCinfo>(); //лист корзины юзера
         private int userID;
         private Point lastPoint;
+
         #endregion
 
         #region Constructor
+
         public formADMIN(int id)
         {
             InitializeComponent();
@@ -41,7 +44,7 @@ namespace TRPO_Project
             FormStartTransition.ShowAsyc(this);
             GetInfoIntoComboBoxes();
             SetPictureProfile();
-            FillPC();
+            FillPc();
             metroComboBoxTYPEofPC.SelectedIndex = 0;
             metroComboBoxCPUsort.SelectedIndex = 0;
             metroComboBoxGPUsort.SelectedIndex = 0;
@@ -51,12 +54,13 @@ namespace TRPO_Project
         #endregion
 
         #region FillingOBJECTS
-        private void FillPC()
+
+        private void FillPc()
         {
             using (sql_con = new SQLiteConnection($"Data Source={Directory.GetCurrentDirectory()}\\TRPO.db"))
             {
                 sql_con.Open();
-                using (sql_cmd = new SQLiteCommand("SELECT * FROM PCdb",sql_con))
+                using (sql_cmd = new SQLiteCommand("SELECT * FROM PCdb", sql_con))
                 {
                     using (var reader = sql_cmd.ExecuteReader())
                     {
@@ -67,16 +71,20 @@ namespace TRPO_Project
                             {
                                 img = Image.FromStream(IMGstream);
                             }
-                            PC OBJ = new PC(reader.GetString(1), reader.GetInt32(0), reader.GetString(3), reader.GetString(4), reader.GetInt32(5), reader.GetInt32(2), img);
+
+                            PC OBJ = new PC(reader.GetString(1), reader.GetInt32(0), reader.GetString(3),
+                                reader.GetString(4), reader.GetInt32(5), reader.GetInt32(2), img);
                             AllPCList.Add(OBJ);
                         }
                     }
                 }
             }
         }
+
         #endregion
 
         #region PictureBOXclick
+
         private void pictureBoxProductBIN_Click(object sender, EventArgs e)
         {
             Form BIN = new BIN(true, userID);
@@ -92,15 +100,16 @@ namespace TRPO_Project
         #endregion
 
         #region Display List
+
         private void bunifuImageButtonSORT_Click(object sender, EventArgs e)
         {
             bunifuImageButtonSORT.Focus();
             ProgressBar.Visible = true;
 
             #region ParseInputPrice
-            string[] PriceReaderSTR = textBox_PRICE.Text.Split('$', '-');
 
-            int[] PriceReaderINT = Array.Empty<int>();
+            var PriceReaderSTR = textBox_PRICE.Text.Split('$', '-');
+            var PriceReaderINT = Array.Empty<int>();
             if (PriceReaderSTR.Length == 2)
             {
                 PriceReaderINT = new int[PriceReaderSTR.Length];
@@ -111,40 +120,47 @@ namespace TRPO_Project
                 PriceReaderINT = new int[PriceReaderSTR.Length - 1];
             }
 
-            for (int i = 1; i < PriceReaderSTR.Length; i++)
+            for (var i = 1; i < PriceReaderSTR.Length; i++)
             {
                 PriceReaderINT[i - 1] = Convert.ToInt32(PriceReaderSTR[i]);
             }
+
             if (PriceReaderINT.Length > 1)
             {
                 if (PriceReaderINT[1] < PriceReaderINT[0])
                 {
-                    MessageBox.Show("Второе число фильтра по цене больше первого!", "ОШИБКА", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    MessageBox.Show(@"Второе число фильтра по цене больше первого!", "ОШИБКА", MessageBoxButtons.OK,
+                        MessageBoxIcon.Warning);
                     textBox_PRICE.Focus();
                     ProgressBar.percentage = 0;
                     ProgressBar.Visible = false;
                     return;
                 }
             }
+
             #endregion
 
-            var ToDisplay = new List<PC>(AllPCList.Where(x => x.COST >= PriceReaderINT[0] && x.COST <= PriceReaderINT[1]));
-
+            var ToDisplay =
+                new List<PC>(AllPCList.Where(x => x.COST >= PriceReaderINT[0] && x.COST <= PriceReaderINT[1]));
             if (metroComboBoxTYPEofPC.Text != "<не выбрано>")
             {
                 ToDisplay = ToDisplay.Where(x => x.TYPE == metroComboBoxTYPEofPC.Text).ToList();
-            }    
+            }
+
             if (metroComboBoxCPUsort.Text != "<не выбрано>")
             {
                 ToDisplay = ToDisplay.Where(x => x.CPU == metroComboBoxCPUsort.Text).ToList();
             }
+
             if (metroComboBoxGPUsort.Text != "<не выбрано>")
             {
                 ToDisplay = ToDisplay.Where(x => x.GPU == metroComboBoxGPUsort.Text).ToList();
             }
+
             if (metroComboBoxRAM.Text.Trim(' ', 'G', 'B') != "<не выбрано>")
             {
-                ToDisplay = ToDisplay.Where(x => x.RAM == Convert.ToInt32(metroComboBoxRAM.Text.Trim(' ', 'G', 'B'))).ToList();
+                ToDisplay = ToDisplay.Where(x => x.RAM == Convert.ToInt32(metroComboBoxRAM.Text.Trim(' ', 'G', 'B')))
+                    .ToList();
             }
 
             if (ToDisplay.Count == 0)
@@ -153,10 +169,11 @@ namespace TRPO_Project
                 MetroMessageBox.Show(this, "NO PC MATCHES", "ERROR!", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
+
             DisplayListAsync(ToDisplay);
         }
 
-        private async void DisplayListAsync(List<PC>Listed)
+        private async void DisplayListAsync(List<PC> Listed)
         {
             if (OBJects.Count > 0)
             {
@@ -165,8 +182,10 @@ namespace TRPO_Project
                     this.Controls.Remove(elem);
                     elem.Dispose();
                 }
+
                 OBJects.Clear();
             }
+
             int Y = 88;
             this.Refresh();
             ProgressBar.percentage = 0;
@@ -181,17 +200,20 @@ namespace TRPO_Project
                     ProgressBar.Percentage++;
                     P++;
                 }
-                PCinfo OBJ = new PCinfo(pc.TYPE, pc.ID, pc.CPU, pc.GPU, pc.RAM, pc.COST, pc.IMG) { isAdmin = true };
+
+                PCinfo OBJ = new PCinfo(pc.TYPE, pc.ID, pc.CPU, pc.GPU, pc.RAM, pc.COST, pc.IMG) {isAdmin = true};
                 OBJects.Add(OBJ);
                 OBJ.Location = new Point(0, Y);
                 Y += 230;
                 OBJ.BackColor = Theme == MetroThemeStyle.Dark ? Color.FromArgb(17, 17, 17) : Color.White;
                 this.Controls.Add(OBJ);
             }
+
             ProgressBar.Enabled = false;
             ProgressBar.Visible = false;
         }
-        #endregion      
+
+        #endregion
 
         #region PriceBOXfunctions
 
@@ -212,6 +234,7 @@ namespace TRPO_Project
                 {
                     textBox_PRICE.Text = "$0-9999";
                 }
+
                 textBox_PRICE.ForeColor = Color.Gray;
             }
         }
@@ -237,9 +260,11 @@ namespace TRPO_Project
                 }
             }
         }
+
         #endregion
 
         #region ComboBOXfill&textCHANGES
+
         private void GetInfoIntoComboBoxes()
         {
             using (sql_con = new SQLiteConnection($"Data Source={Directory.GetCurrentDirectory()}\\TRPO.db"))
@@ -252,8 +277,8 @@ namespace TRPO_Project
                     {
                         metroComboBoxCPUsort.Items.Add(reader.GetString(0));
                     }
-
                 }
+
                 using (sql_cmd = new SQLiteCommand("SELECT DISTINCT typeOfPC from PCdb", sql_con))
                 {
                     SQLiteDataReader reader = sql_cmd.ExecuteReader();
@@ -262,6 +287,7 @@ namespace TRPO_Project
                         metroComboBoxTYPEofPC.Items.Add(reader.GetString(0));
                     }
                 }
+
                 using (sql_cmd = new SQLiteCommand("SELECT DISTINCT GPU from PCdb", sql_con))
                 {
                     SQLiteDataReader reader = sql_cmd.ExecuteReader();
@@ -269,8 +295,8 @@ namespace TRPO_Project
                     {
                         metroComboBoxGPUsort.Items.Add(reader.GetString(0));
                     }
-
                 }
+
                 using (sql_cmd = new SQLiteCommand("SELECT DISTINCT RAM from PCdb ORDER BY RAM", sql_con))
                 {
                     SQLiteDataReader reader = sql_cmd.ExecuteReader();
@@ -350,7 +376,6 @@ namespace TRPO_Project
 
         private void metroComboBoxRAM_Leave(object sender, EventArgs e)
         {
-
             if (metroComboBoxRAM.SelectedIndex < 0)
             {
                 metroComboBoxRAM.Text = "RAM";
@@ -362,9 +387,11 @@ namespace TRPO_Project
                 metroComboBoxRAM.ForeColor = Color.Gray;
             }
         }
+
         #endregion
 
         #region SetPicture
+
         public void SetPictureProfile()
         {
             using (sql_con = new SQLiteConnection($"Data Source={Directory.GetCurrentDirectory()}\\TRPO.db"))
@@ -379,35 +406,43 @@ namespace TRPO_Project
                 }
             }
         }
+
         public void SetNewProfilePicture(Image IMG)
         {
             pictureBoxProfile.Image = IMG;
             pictureBoxProfile.Update();
         }
+
         #endregion
 
         #region ControlButtonsClick
+
         private void bunifuImageButtonEXIT_Click(object sender, EventArgs e)
         {
             Application.Exit();
         }
+
         private void bunifuImageButtonADMINPANEL_Click(object sender, EventArgs e)
         {
             AdminPanelForm adminPanel = new AdminPanelForm(userID);
             adminPanel.ShowDialog(this);
         }
+
         private void button_backToLoginForm_Click(object sender, EventArgs e)
         {
-            var result = MetroMessageBox.Show(this, "ARE YOU SURE THAT YOU WANT TO EXIT?", "EXIT", MessageBoxButtons.YesNo, MessageBoxIcon.Exclamation, MessageBoxDefaultButton.Button1);
+            var result = MetroMessageBox.Show(this, "ARE YOU SURE THAT YOU WANT TO EXIT?", "EXIT",
+                MessageBoxButtons.YesNo, MessageBoxIcon.Exclamation, MessageBoxDefaultButton.Button1);
             if (result == DialogResult.Yes)
             {
                 Close();
                 Application.Restart();
             }
         }
+
         #endregion
 
         #region MovingForm
+
         private void panelHead_MouseDown(object sender, MouseEventArgs e) => lastPoint = e.Location;
 
         private void panelHead_MouseMove(object sender, MouseEventArgs e)
@@ -423,7 +458,7 @@ namespace TRPO_Project
 
         public void ChangeMetroControls(ProgramTheme OBJ)
         {
-            Theme = OBJ.Theme == "Light" ? MetroThemeStyle.Light : MetroThemeStyle.Dark;           
+            Theme = OBJ.Theme == "Light" ? MetroThemeStyle.Light : MetroThemeStyle.Dark;
         }
 
         public void ChangeNonMetroControls(ProgramTheme OBJ)
@@ -438,8 +473,8 @@ namespace TRPO_Project
         public void ReadTheme()
         {
             List<ProgramTheme> themes = new List<ProgramTheme>();
-
-            using (FileStream file = new FileStream($"{Directory.GetCurrentDirectory()}\\ThemeSettings.json", FileMode.OpenOrCreate))
+            using (FileStream file = new FileStream($"{Directory.GetCurrentDirectory()}\\ThemeSettings.json",
+                FileMode.OpenOrCreate))
             {
                 DataContractJsonSerializer jsonSerializer = new DataContractJsonSerializer(typeof(List<ProgramTheme>));
                 themes = jsonSerializer.ReadObject(file) as List<ProgramTheme>;
@@ -453,6 +488,5 @@ namespace TRPO_Project
                 Refresh();
             }
         }
-
     }
 }
