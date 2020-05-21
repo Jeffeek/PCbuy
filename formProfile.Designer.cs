@@ -299,7 +299,8 @@
             // 
             // xuiSlidingPanelSettings
             // 
-            this.xuiSlidingPanelSettings.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.xuiSlidingPanelSettings.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.xuiSlidingPanelSettings.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.xuiSlidingPanelSettings.BottomLeft = System.Drawing.Color.Black;
             this.xuiSlidingPanelSettings.BottomRight = System.Drawing.Color.DodgerBlue;
             this.xuiSlidingPanelSettings.CollapseControl = this.imageButtonSettings;
@@ -598,8 +599,9 @@
             // 
             // formProfile
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
-            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.AutoScaleDimensions = new System.Drawing.SizeF(96F, 96F);
+            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi;
+            this.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.ClientSize = new System.Drawing.Size(313, 288);
             this.ControlBox = false;
             this.Controls.Add(this.xuiSlidingPanelSettings);

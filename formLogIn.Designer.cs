@@ -310,7 +310,7 @@ namespace TRPO_Project
             this.xuiSlidingPanelREGISTRATION.Controls.Add(this.gunaLabel4);
             this.xuiSlidingPanelREGISTRATION.Controls.Add(this.bunifuImageButtonBACK_Reg);
             this.xuiSlidingPanelREGISTRATION.HideControls = false;
-            this.xuiSlidingPanelREGISTRATION.Location = new System.Drawing.Point(25, 29);
+            this.xuiSlidingPanelREGISTRATION.Location = new System.Drawing.Point(25, 30);
             this.xuiSlidingPanelREGISTRATION.Name = "xuiSlidingPanelREGISTRATION";
             this.xuiSlidingPanelREGISTRATION.PanelWidthCollapsed = 0;
             this.xuiSlidingPanelREGISTRATION.PanelWidthExpanded = 345;
@@ -558,7 +558,7 @@ namespace TRPO_Project
             this.panelHead.MouseDown += new System.Windows.Forms.MouseEventHandler(this.panelHead_MouseDown);
             this.panelHead.MouseMove += new System.Windows.Forms.MouseEventHandler(this.panelHead_MouseMove);
             // 
-            // formLogIn
+            // FormLogIn
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(96F, 96F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi;

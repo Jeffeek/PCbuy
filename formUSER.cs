@@ -211,6 +211,7 @@ namespace TRPO_Project
                 OBJ.Location = new Point(0, Y);
                 Y += 230;
                 OBJ.BackColor = Theme == MetroThemeStyle.Dark ? Color.FromArgb(17, 17, 17) : Color.White;
+                OBJ.Anchor = AnchorStyles.Top;
                 this.Controls.Add(OBJ);
             }
             CircleProgressBar.Enabled = false;
@@ -435,7 +436,7 @@ namespace TRPO_Project
 
         public void ChangeMetroControls(ProgramTheme OBJ)
         {
-            Theme = OBJ.Theme == "Light" ? MetroThemeStyle.Light : MetroThemeStyle.Dark;
+            Theme = OBJ.Theme == ETheme.Light ? MetroThemeStyle.Light : MetroThemeStyle.Dark;
         }
 
         public void ChangeNonMetroControls(ProgramTheme OBJ)
@@ -449,28 +450,30 @@ namespace TRPO_Project
 
         public void ReadTheme()
         {
-            List<ProgramTheme> themes;
             try
             {
+                List<ProgramTheme> themes;
                 using (FileStream file = new FileStream($"{Directory.GetCurrentDirectory()}\\ThemeSettings.json",
                     FileMode.OpenOrCreate))
                 {
                     DataContractJsonSerializer jsonSerializer =
                         new DataContractJsonSerializer(typeof(List<ProgramTheme>));
+
                     themes = jsonSerializer.ReadObject(file) as List<ProgramTheme>;
                 }
-            }
-            catch
-            {
-                themes = new List<ProgramTheme>();
-            }
 
-            if (themes.Count(x => x.UserID == userID) > 0)
+                if (themes.Count(x => x.UserID == userID) > 0)
+                {
+                    ProgramTheme ThemeOBJ = themes.Find(x => x.UserID == userID);
+                    ChangeNonMetroControls(ThemeOBJ);
+                    ChangeMetroControls(ThemeOBJ);
+                    Refresh();
+                }
+            }
+            catch (Exception ex)
             {
-                var ThemeOBJ = themes.Find(x => x.UserID == userID);
-                ChangeNonMetroControls(ThemeOBJ);
-                ChangeMetroControls(ThemeOBJ);
-                Refresh();
+                MetroMessageBox.Show(this, "Произошла ошибка при дисериализации: \n" + ex.Message, "Error",
+                    MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 

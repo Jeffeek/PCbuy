@@ -1220,6 +1220,7 @@
             // panelHead
             // 
             this.panelHead.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.panelHead.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.panelHead.BackColor = System.Drawing.Color.Transparent;
             this.panelHead.Location = new System.Drawing.Point(1, 5);
             this.panelHead.Name = "panelHead";
@@ -1230,8 +1231,9 @@
             // 
             // AdminPanelForm
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
-            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.AutoScaleDimensions = new System.Drawing.SizeF(96F, 96F);
+            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi;
+            this.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.ClientSize = new System.Drawing.Size(925, 392);
             this.ContextMenuStrip = this.ContextMenu;
             this.ControlBox = false;

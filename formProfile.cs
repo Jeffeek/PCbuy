@@ -335,18 +335,18 @@ namespace TRPO_Project
 
         public void ChangeMetroControls(ProgramTheme OBJ)
         {
-            Theme = OBJ.Theme == "Light" ? MetroThemeStyle.Light : MetroThemeStyle.Dark;
-            linkLabelCHANGEprofilePIC.Theme = OBJ.Theme == "Light" ? MetroThemeStyle.Light : MetroThemeStyle.Dark;
+            Theme = OBJ.Theme == ETheme.Light ? MetroThemeStyle.Light : MetroThemeStyle.Dark;
+            linkLabelCHANGEprofilePIC.Theme = OBJ.Theme == ETheme.Light ? MetroThemeStyle.Light : MetroThemeStyle.Dark;
         }
 
         public void ChangeNonMetroControls(ProgramTheme OBJ)
         {
-            switchTheme.Checked = OBJ.Theme == "Dark";
-            pictureBoxPROFILE.BackColor = OBJ.Theme == "Dark" ? Color.DimGray : Color.WhiteSmoke;
-            labelChangeTheme.ForeColor = OBJ.Theme == "Dark" ? Color.Black : Color.White;
-            labelChangeTheme.Text = OBJ.Theme == "Dark" ? "Dark theme" : "Light theme";
-            bunifuMaterialTextboxEMAIL.BackColor = OBJ.Theme == "Light" ? Color.White : Color.FromArgb(17,17,17);
-            bunifuMaterialTextboxPASS.BackColor = OBJ.Theme == "Light" ? Color.White : Color.FromArgb(17, 17, 17);
+            switchTheme.Checked = OBJ.Theme == ETheme.Dark;
+            pictureBoxPROFILE.BackColor = OBJ.Theme == ETheme.Dark ? Color.DimGray : Color.WhiteSmoke;
+            labelChangeTheme.ForeColor = OBJ.Theme == ETheme.Dark ? Color.Black : Color.White;
+            labelChangeTheme.Text = OBJ.Theme == ETheme.Dark ? "Dark theme" : "Light theme";
+            bunifuMaterialTextboxEMAIL.BackColor = OBJ.Theme == ETheme.Dark ? Color.White : Color.FromArgb(17,17,17);
+            bunifuMaterialTextboxPASS.BackColor = OBJ.Theme == ETheme.Dark ? Color.White : Color.FromArgb(17, 17, 17);
             circlePictureBoxBL.BackColor = OBJ.BottomLeft;
             circlePictureBoxTL.BackColor = OBJ.TopLeft;
             circlePictureBoxBR.BackColor = OBJ.BottomRight;
@@ -355,27 +355,37 @@ namespace TRPO_Project
 
         public void ReadTheme()
         {
-            List<ProgramTheme> themes = new List<ProgramTheme>();
-
-            using (FileStream file = new FileStream($"{Directory.GetCurrentDirectory()}\\ThemeSettings.json", FileMode.OpenOrCreate))
+            try
             {
-                DataContractJsonSerializer jsonSerializer = new DataContractJsonSerializer(typeof(List<ProgramTheme>));
-                themes = jsonSerializer.ReadObject(file) as List<ProgramTheme>;
-            }
+                List<ProgramTheme> themes;
+                using (FileStream file = new FileStream($"{Directory.GetCurrentDirectory()}\\ThemeSettings.json",
+                    FileMode.OpenOrCreate))
+                {
+                    DataContractJsonSerializer jsonSerializer =
+                        new DataContractJsonSerializer(typeof(List<ProgramTheme>));
 
-            if (themes.Count(x => x.UserID == userID) > 0)
-            {
-                ChangeNonMetroControls(themes.Find(x => x.UserID == userID));
-                ChangeMetroControls(themes.Find(x => x.UserID == userID));
-                Refresh();
+                    themes = jsonSerializer.ReadObject(file) as List<ProgramTheme>;
+                }
+
+                if (themes.Count(x => x.UserID == userID) > 0)
+                {
+                    ProgramTheme ThemeOBJ = themes.Find(x => x.UserID == userID);
+                    ChangeNonMetroControls(ThemeOBJ);
+                    ChangeMetroControls(ThemeOBJ);
+                    Refresh();
+                }
             }
-            return;
+            catch (Exception ex)
+            {
+                MetroMessageBox.Show(this, "Произошла ошибка при дисериализации: \n" + ex.Message, "Error",
+                    MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
 
         private void gunaTileButtonApplySettings_Click(object sender, EventArgs e)
         {
             List<ProgramTheme> themes = new List<ProgramTheme>();
-            string ChoosedTheme = switchTheme.Checked ? "Dark" : "Light";
+            ETheme ChoosedTheme = switchTheme.Checked ? ETheme.Dark : ETheme.Light;
             Color TR = circlePictureBoxTR.BackColor;
             Color TL = circlePictureBoxTL.BackColor;
             Color BR = circlePictureBoxBR.BackColor;
@@ -387,14 +397,7 @@ namespace TRPO_Project
                 themes = jsonSerializer.ReadObject(file) as List<ProgramTheme>;
             }
 
-            foreach (var ThemeID in themes)
-            {
-                if (ThemeID.UserID == userID)
-                {
-                    themes.Remove(ThemeID);
-                    break;
-                }
-            }
+            themes.Remove(themes.Find(x => x.UserID == userID));
 
             themes.Add(new ProgramTheme(ChoosedTheme, userID) { BottomLeft = BL, BottomRight = BR, TopLeft = TL, TopRight = TR});
 

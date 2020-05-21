@@ -431,49 +431,60 @@ namespace TRPO_Project
         #region ThemeChange
         public void ChangeMetroControls(ProgramTheme OBJ)
         {
-            Theme = OBJ.Theme == "Light" ? MetroThemeStyle.Light : MetroThemeStyle.Dark;
-            tabControlAdmin.Theme = OBJ.Theme == "Light" ? MetroThemeStyle.Light : MetroThemeStyle.Dark;
+            Theme = OBJ.Theme == ETheme.Light ? MetroThemeStyle.Light : MetroThemeStyle.Dark;
+            tabControlAdmin.Theme = OBJ.Theme == ETheme.Light ? MetroThemeStyle.Light : MetroThemeStyle.Dark;
 
             foreach (var tab in tabControlAdmin.TabPages.OfType<MetroTabPage>())
             {
-                tab.BackColor = OBJ.Theme == "Light" ? Color.White : Color.Black;
+                tab.BackColor = OBJ.Theme == ETheme.Light ? Color.White : Color.Black;
             }
         }
 
         public void ChangeNonMetroControls(ProgramTheme OBJ)
         {
-            bunifuCustomDataGridVIEWinfoAboutONEprod.BackgroundColor = OBJ.Theme == "Light" ? Color.WhiteSmoke : Color.FromArgb(17,17,17);
-            gunaLineTextBoxNEWvalue.BackColor = OBJ.Theme == "Light" ? Color.WhiteSmoke : Color.FromArgb(17, 17, 17);
-            UsersDataGrid.BackgroundColor = OBJ.Theme == "Light" ? Color.WhiteSmoke : Color.FromArgb(17, 17, 17);
-            PCDataGrid.BackgroundColor = OBJ.Theme == "Light" ? Color.WhiteSmoke : Color.FromArgb(17, 17, 17);
-            InquiryDataGrid.BackgroundColor = OBJ.Theme == "Light" ? Color.WhiteSmoke : Color.FromArgb(17, 17, 17);
-            buttonShowGraphic.BackColor = OBJ.Theme == "Light" ? Color.White : Color.Black;
-            bunifuImageButtonNEWpic.BackColor = OBJ.Theme == "Light" ? Color.LightGray : Color.DimGray;
+            bunifuCustomDataGridVIEWinfoAboutONEprod.BackgroundColor = OBJ.Theme == ETheme.Light ? Color.WhiteSmoke : Color.FromArgb(17,17,17);
+            gunaLineTextBoxNEWvalue.BackColor = OBJ.Theme == ETheme.Light ? Color.WhiteSmoke : Color.FromArgb(17, 17, 17);
+            UsersDataGrid.BackgroundColor = OBJ.Theme == ETheme.Light ? Color.WhiteSmoke : Color.FromArgb(17, 17, 17);
+            PCDataGrid.BackgroundColor = OBJ.Theme == ETheme.Light ? Color.WhiteSmoke : Color.FromArgb(17, 17, 17);
+            InquiryDataGrid.BackgroundColor = OBJ.Theme == ETheme.Light ? Color.WhiteSmoke : Color.FromArgb(17, 17, 17);
+            buttonShowGraphic.BackColor = OBJ.Theme == ETheme.Light ? Color.White : Color.Black;
+            bunifuImageButtonNEWpic.BackColor = OBJ.Theme == ETheme.Light ? Color.LightGray : Color.DimGray;
 
             foreach(var ctrl in tabControlAdmin.TabPages[1].Controls.OfType<GunaLabel>())
             {
-                ctrl.BackColor = OBJ.Theme == "Light" ? Color.WhiteSmoke : Color.FromArgb(17, 17, 17);
+                ctrl.BackColor = OBJ.Theme == ETheme.Light ? Color.WhiteSmoke : Color.FromArgb(17, 17, 17);
             }
 
-            gunaLineTextBoxNEWvalue.BackColor = OBJ.Theme == "Light" ? Color.WhiteSmoke : Color.FromArgb(17, 17, 17);
-            tabPage1.BackColor = OBJ.Theme == "Light" ? Color.White : Color.Black;
+            gunaLineTextBoxNEWvalue.BackColor = OBJ.Theme == ETheme.Light ? Color.WhiteSmoke : Color.FromArgb(17, 17, 17);
+            tabPage1.BackColor = OBJ.Theme == ETheme.Light ? Color.White : Color.Black;
         }
 
         public void ReadTheme()
         {
-            List<ProgramTheme> themes = new List<ProgramTheme>();
-
-            using (FileStream file = new FileStream($"{Directory.GetCurrentDirectory()}\\ThemeSettings.json", FileMode.OpenOrCreate))
+            try
             {
-                DataContractJsonSerializer jsonSerializer = new DataContractJsonSerializer(typeof(List<ProgramTheme>));
-                themes = jsonSerializer.ReadObject(file) as List<ProgramTheme>;
+                List<ProgramTheme> themes;
+                using (FileStream file = new FileStream($"{Directory.GetCurrentDirectory()}\\ThemeSettings.json",
+                    FileMode.OpenOrCreate))
+                {
+                    DataContractJsonSerializer jsonSerializer =
+                        new DataContractJsonSerializer(typeof(List<ProgramTheme>));
+
+                    themes = jsonSerializer.ReadObject(file) as List<ProgramTheme>;
+                }
+
+                if (themes.Count(x => x.UserID == userID) > 0)
+                {
+                    ProgramTheme ThemeOBJ = themes.Find(x => x.UserID == userID);
+                    ChangeNonMetroControls(ThemeOBJ);
+                    ChangeMetroControls(ThemeOBJ);
+                    Refresh();
+                }
             }
-
-            if (themes.Count(x => x.UserID == userID) > 0)
+            catch (Exception ex)
             {
-                ChangeNonMetroControls(themes.Find(x => x.UserID == userID));
-                ChangeMetroControls(themes.Find(x => x.UserID == userID));         
-                Refresh();
+                MetroMessageBox.Show(this, "Произошла ошибка при дисериализации: \n" + ex.Message, "Error",
+                    MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 

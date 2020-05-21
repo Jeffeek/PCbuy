@@ -597,7 +597,7 @@ namespace TRPO_Project
                 themes = jsonSerializer.ReadObject(file) as List<ProgramTheme>;
             }
 
-            themes.Add(new ProgramTheme("Dark", id));
+            themes.Add(new ProgramTheme(ETheme.Dark, id));
 
             using (FileStream file = new FileStream($"{Directory.GetCurrentDirectory()}\\ThemeSettings.json", FileMode.OpenOrCreate))
             {

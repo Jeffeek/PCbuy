@@ -238,6 +238,7 @@
     <Compile Include="Properties\AssemblyInfo.cs">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Compile>
+    <Compile Include="ETheme.cs" />
     <None Include="bin\Debug\icons\password.png" />
     <None Include="bin\Debug\icons\customer.png" />
     <None Include="bin\Debug\icons\cancel.png" />

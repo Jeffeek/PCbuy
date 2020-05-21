@@ -108,23 +108,6 @@ namespace TRPO_Project
 
             #region ParseInputPrice
 
-
-            //var priceReaderStr = textBox_PRICE.Text.Split('$', '-');
-            //var priceReaderInt = Array.Empty<int>();
-            //if (priceReaderStr.Length == 2)
-            //{
-            //    priceReaderInt = new int[priceReaderStr.Length];
-            //    priceReaderInt[1] = Convert.ToInt32(priceReaderStr[1]);
-            //}
-            //else if (priceReaderStr.Length == 3)
-            //{
-            //    priceReaderInt = new int[priceReaderStr.Length - 1];
-            //}
-
-            //for (var i = 1; i < priceReaderStr.Length; i++)
-            //{
-            //    priceReaderInt[i - 1] = Convert.ToInt32(priceReaderStr[i]);
-            //}
             // ReSharper disable once ConvertClosureToMethodGroup
             // ReSharper disable once TooManyChainedReferences
             List<int> priceReaderInt = textBox_PRICE.Text.Split('$', '-').ToList().Where(x => x != string.Empty).ToList().ConvertAll(x => Convert.ToInt32(x));
@@ -138,7 +121,7 @@ namespace TRPO_Project
             {
                 if (priceReaderInt[1] < priceReaderInt[0])
                 {
-                    MetroMessageBox.Show(this, "Второе число фильтра по цене больше первого!", "ОШИБКА", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    MetroMessageBox.Show(this, "Second filter num bigger than first!", "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                     textBox_PRICE.Focus();
                     ProgressBar.percentage = 0;
                     ProgressBar.Visible = false;
@@ -212,9 +195,9 @@ namespace TRPO_Project
                 OBJ.Location = new Point(0, Y);
                 Y += 230;
                 OBJ.BackColor = Theme == MetroThemeStyle.Dark ? Color.FromArgb(17, 17, 17) : Color.White;
+                OBJ.Anchor = AnchorStyles.Top;
                 this.Controls.Add(OBJ);
             }
-
             ProgressBar.Enabled = false;
             ProgressBar.Visible = false;
         }
@@ -464,7 +447,7 @@ namespace TRPO_Project
 
         public void ChangeMetroControls(ProgramTheme OBJ)
         {
-            Theme = OBJ.Theme == "Light" ? MetroThemeStyle.Light : MetroThemeStyle.Dark;
+            Theme = OBJ.Theme == ETheme.Light ? MetroThemeStyle.Light : MetroThemeStyle.Dark;
         }
 
         public void ChangeNonMetroControls(ProgramTheme OBJ)
@@ -478,28 +461,30 @@ namespace TRPO_Project
 
         public void ReadTheme()
         {
-            List<ProgramTheme> themes;
             try
             {
+                List<ProgramTheme> themes;
                 using (FileStream file = new FileStream($"{Directory.GetCurrentDirectory()}\\ThemeSettings.json",
                     FileMode.OpenOrCreate))
                 {
                     DataContractJsonSerializer jsonSerializer =
                         new DataContractJsonSerializer(typeof(List<ProgramTheme>));
+
                     themes = jsonSerializer.ReadObject(file) as List<ProgramTheme>;
                 }
-            }
-            catch
-            {
-                themes = new List<ProgramTheme>();
-            }
 
-            if (themes.Count(x => x.UserID == userID) > 0)
+                if (themes.Count(x => x.UserID == userID) > 0)
+                {
+                    ProgramTheme ThemeOBJ = themes.Find(x => x.UserID == userID);
+                    ChangeNonMetroControls(ThemeOBJ);
+                    ChangeMetroControls(ThemeOBJ);
+                    Refresh();
+                }
+            }
+            catch (Exception ex)
             {
-                var ThemeOBJ = themes.Find(x => x.UserID == userID);
-                ChangeNonMetroControls(ThemeOBJ);
-                ChangeMetroControls(ThemeOBJ);
-                Refresh();
+                MetroMessageBox.Show(this, "Произошла ошибка при дисериализации: \n" + ex.Message, "Error",
+                    MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
     }

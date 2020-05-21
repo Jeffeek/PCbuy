@@ -146,7 +146,9 @@
             // 
             // PCinfo
             // 
-            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
+            this.AutoScaleDimensions = new System.Drawing.SizeF(96F, 96F);
+            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi;
+            this.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.AutoValidate = System.Windows.Forms.AutoValidate.Disable;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(17)))), ((int)(((byte)(17)))), ((int)(((byte)(17)))));
             this.Controls.Add(this.gunaSeparator1);
@@ -159,7 +161,7 @@
             this.Controls.Add(this.buttonBUY);
             this.Controls.Add(this.PCimg);
             this.Name = "PCinfo";
-            this.Size = new System.Drawing.Size(782, 230);
+            this.Size = new System.Drawing.Size(796, 230);
             this.Load += new System.EventHandler(this.PCinfo_Load);
             ((System.ComponentModel.ISupportInitialize)(this.buttonBUY)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.PCimg)).EndInit();

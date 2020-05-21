@@ -203,33 +203,43 @@ namespace TRPO_Project
 
         public void ChangeMetroControls(ProgramTheme OBJ)
         {
-            Theme = OBJ.Theme == "Light" ? MetroThemeStyle.Light : MetroThemeStyle.Dark;
-            tabControlPRODUCTs.Theme = OBJ.Theme == "Dark" ? MetroThemeStyle.Dark : MetroThemeStyle.Light;
-            metroLabelID.ForeColor = OBJ.Theme == "Light" ? Color.Aquamarine : Color.Magenta;
+            Theme = OBJ.Theme == ETheme.Light ? MetroThemeStyle.Light : MetroThemeStyle.Dark;
+            tabControlPRODUCTs.Theme = OBJ.Theme == ETheme.Dark ? MetroThemeStyle.Dark : MetroThemeStyle.Light;
+            metroLabelID.ForeColor = OBJ.Theme == ETheme.Light ? Color.Aquamarine : Color.Magenta;
         }
 
         public void ChangeNonMetroControls(ProgramTheme OBJ)
         {
-            labelYourOrder.BackColor = OBJ.Theme == "Light" ? Color.AliceBlue : Color.MediumVioletRed;
+            labelYourOrder.BackColor = OBJ.Theme == ETheme.Light ? Color.AliceBlue : Color.MediumVioletRed;
         }
 
         public void ReadTheme()
         {
-            List<ProgramTheme> themes = new List<ProgramTheme>();
-
-            using (FileStream file = new FileStream("ThemeSettings.json", FileMode.OpenOrCreate))
+            try
             {
-                DataContractJsonSerializer jsonSerializer = new DataContractJsonSerializer(typeof(List<ProgramTheme>));
-                themes = jsonSerializer.ReadObject(file) as List<ProgramTheme>;
-            }
+                List<ProgramTheme> themes;
+                using (FileStream file = new FileStream($"{Directory.GetCurrentDirectory()}\\ThemeSettings.json",
+                    FileMode.OpenOrCreate))
+                {
+                    DataContractJsonSerializer jsonSerializer =
+                        new DataContractJsonSerializer(typeof(List<ProgramTheme>));
 
-            if (themes.Count(x => x.UserID == userID) > 0)
-            {
-                ChangeNonMetroControls(themes.Find(x => x.UserID == userID));
-                ChangeMetroControls(themes.Find(x => x.UserID == userID));
-                Refresh();
+                    themes = jsonSerializer.ReadObject(file) as List<ProgramTheme>;
+                }
+
+                if (themes.Count(x => x.UserID == userID) > 0)
+                {
+                    ProgramTheme ThemeOBJ = themes.Find(x => x.UserID == userID);
+                    ChangeNonMetroControls(ThemeOBJ);
+                    ChangeMetroControls(ThemeOBJ);
+                    Refresh();
+                }
             }
-            return;
+            catch (Exception ex)
+            {
+                MetroMessageBox.Show(this, "Произошла ошибка при дисериализации: \n" + ex.Message, "Error",
+                    MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
 
         private void SendEmailOrder(int SumOfOrder, string id, string Date)
