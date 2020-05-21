@@ -272,6 +272,7 @@ namespace TRPO_Project
                     else
                     {
                         MetroMessageBox.Show(this, "LOGIN or PASSWORD is incorrect", "UNSUCCESS!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        textboxPASSlogin.text = string.Empty;
                     }
                 }
             }

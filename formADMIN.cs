@@ -62,7 +62,7 @@ namespace TRPO_Project
                 sql_con.Open();
                 using (sql_cmd = new SQLiteCommand("SELECT * FROM PCdb", sql_con))
                 {
-                    using (var reader = sql_cmd.ExecuteReader())
+                    using (SQLiteDataReader reader = sql_cmd.ExecuteReader())
                     {
                         while (reader.Read())
                         {
@@ -93,7 +93,7 @@ namespace TRPO_Project
 
         private void pictureBoxProfile_Click(object sender, EventArgs e)
         {
-            formProfile FP = new formProfile(this, userID);
+            var FP = new formProfile(this, userID);
             FP.ShowDialog(this);
         }
 
@@ -108,29 +108,37 @@ namespace TRPO_Project
 
             #region ParseInputPrice
 
-            var PriceReaderSTR = textBox_PRICE.Text.Split('$', '-');
-            var PriceReaderINT = Array.Empty<int>();
-            if (PriceReaderSTR.Length == 2)
+
+            //var priceReaderStr = textBox_PRICE.Text.Split('$', '-');
+            //var priceReaderInt = Array.Empty<int>();
+            //if (priceReaderStr.Length == 2)
+            //{
+            //    priceReaderInt = new int[priceReaderStr.Length];
+            //    priceReaderInt[1] = Convert.ToInt32(priceReaderStr[1]);
+            //}
+            //else if (priceReaderStr.Length == 3)
+            //{
+            //    priceReaderInt = new int[priceReaderStr.Length - 1];
+            //}
+
+            //for (var i = 1; i < priceReaderStr.Length; i++)
+            //{
+            //    priceReaderInt[i - 1] = Convert.ToInt32(priceReaderStr[i]);
+            //}
+            // ReSharper disable once ConvertClosureToMethodGroup
+            // ReSharper disable once TooManyChainedReferences
+            List<int> priceReaderInt = textBox_PRICE.Text.Split('$', '-').ToList().Where(x => x != string.Empty).ToList().ConvertAll(x => Convert.ToInt32(x));
+
+            if (!textBox_PRICE.Text.Contains("-"))
             {
-                PriceReaderINT = new int[PriceReaderSTR.Length];
-                PriceReaderINT[1] = Convert.ToInt32(PriceReaderSTR[1]);
-            }
-            else if (PriceReaderSTR.Length == 3)
-            {
-                PriceReaderINT = new int[PriceReaderSTR.Length - 1];
+                priceReaderInt.Add(priceReaderInt[0]);
             }
 
-            for (var i = 1; i < PriceReaderSTR.Length; i++)
+            if (priceReaderInt.Count > 1)
             {
-                PriceReaderINT[i - 1] = Convert.ToInt32(PriceReaderSTR[i]);
-            }
-
-            if (PriceReaderINT.Length > 1)
-            {
-                if (PriceReaderINT[1] < PriceReaderINT[0])
+                if (priceReaderInt[1] < priceReaderInt[0])
                 {
-                    MessageBox.Show(@"Второе число фильтра по цене больше первого!", "ОШИБКА", MessageBoxButtons.OK,
-                        MessageBoxIcon.Warning);
+                    MetroMessageBox.Show(this, "Второе число фильтра по цене больше первого!", "ОШИБКА", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                     textBox_PRICE.Focus();
                     ProgressBar.percentage = 0;
                     ProgressBar.Visible = false;
@@ -140,8 +148,7 @@ namespace TRPO_Project
 
             #endregion
 
-            var ToDisplay =
-                new List<PC>(AllPCList.Where(x => x.COST >= PriceReaderINT[0] && x.COST <= PriceReaderINT[1]));
+            var ToDisplay = new List<PC>(AllPCList.Where(x => x.COST >= priceReaderInt[0] && x.COST <= priceReaderInt[1]));
             if (metroComboBoxTYPEofPC.Text != "<не выбрано>")
             {
                 ToDisplay = ToDisplay.Where(x => x.TYPE == metroComboBoxTYPEofPC.Text).ToList();
@@ -159,8 +166,7 @@ namespace TRPO_Project
 
             if (metroComboBoxRAM.Text.Trim(' ', 'G', 'B') != "<не выбрано>")
             {
-                ToDisplay = ToDisplay.Where(x => x.RAM == Convert.ToInt32(metroComboBoxRAM.Text.Trim(' ', 'G', 'B')))
-                    .ToList();
+                ToDisplay = ToDisplay.Where(x => x.RAM == Convert.ToInt32(metroComboBoxRAM.Text.Trim(' ', 'G', 'B'))).ToList();
             }
 
             if (ToDisplay.Count == 0)
@@ -186,7 +192,7 @@ namespace TRPO_Project
                 OBJects.Clear();
             }
 
-            int Y = 88;
+            var Y = 88;
             this.Refresh();
             ProgressBar.percentage = 0;
             ProgressBar.Enabled = true;
@@ -472,12 +478,20 @@ namespace TRPO_Project
 
         public void ReadTheme()
         {
-            List<ProgramTheme> themes = new List<ProgramTheme>();
-            using (FileStream file = new FileStream($"{Directory.GetCurrentDirectory()}\\ThemeSettings.json",
-                FileMode.OpenOrCreate))
+            List<ProgramTheme> themes;
+            try
             {
-                DataContractJsonSerializer jsonSerializer = new DataContractJsonSerializer(typeof(List<ProgramTheme>));
-                themes = jsonSerializer.ReadObject(file) as List<ProgramTheme>;
+                using (FileStream file = new FileStream($"{Directory.GetCurrentDirectory()}\\ThemeSettings.json",
+                    FileMode.OpenOrCreate))
+                {
+                    DataContractJsonSerializer jsonSerializer =
+                        new DataContractJsonSerializer(typeof(List<ProgramTheme>));
+                    themes = jsonSerializer.ReadObject(file) as List<ProgramTheme>;
+                }
+            }
+            catch
+            {
+                themes = new List<ProgramTheme>();
             }
 
             if (themes.Count(x => x.UserID == userID) > 0)

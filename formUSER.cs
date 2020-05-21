@@ -113,40 +113,47 @@ namespace TRPO_Project
         private void bunifuImageButtonSORT_Click(object sender, EventArgs e)
         {
             bunifuImageButtonSORT.Focus();
-            xuiCircleProgressBar1.Visible = true;
+            CircleProgressBar.Visible = true;
 
             #region ParseInputPrice
-            string[] PriceReaderSTR = textBox_PRICE.Text.Split('$', '-');
+            //string[] PriceReaderSTR = textBox_PRICE.Text.Split('$', '-');
 
-            int[] PriceReaderINT = Array.Empty<int>();
-            if (PriceReaderSTR.Length == 2)
+            //int[] PriceReaderINT = Array.Empty<int>();
+            //if (PriceReaderSTR.Length == 2)
+            //{
+            //    PriceReaderINT = new int[PriceReaderSTR.Length];
+            //    PriceReaderINT[1] = Convert.ToInt32(PriceReaderSTR[1]);
+            //}
+            //else if (PriceReaderSTR.Length == 3)
+            //{
+            //    PriceReaderINT = new int[PriceReaderSTR.Length - 1];
+            //}
+
+            //for (int i = 1; i < PriceReaderSTR.Length; i++)
+            //{
+            //    PriceReaderINT[i - 1] = Convert.ToInt32(PriceReaderSTR[i]);
+            //}
+            List<int> priceReaderInt = textBox_PRICE.Text.Split('$', '-').ToList().Where(x => x != string.Empty).ToList().ConvertAll(x => Convert.ToInt32(x));
+
+            if (!textBox_PRICE.Text.Contains("-"))
             {
-                PriceReaderINT = new int[PriceReaderSTR.Length];
-                PriceReaderINT[1] = Convert.ToInt32(PriceReaderSTR[1]);
-            }
-            else if (PriceReaderSTR.Length == 3)
-            {
-                PriceReaderINT = new int[PriceReaderSTR.Length - 1];
+                priceReaderInt.Add(priceReaderInt[0]);
             }
 
-            for (int i = 1; i < PriceReaderSTR.Length; i++)
+            if (priceReaderInt.Count > 1)
             {
-                PriceReaderINT[i - 1] = Convert.ToInt32(PriceReaderSTR[i]);
-            }
-            if (PriceReaderINT.Length > 1)
-            {
-                if (PriceReaderINT[1] < PriceReaderINT[0])
+                if (priceReaderInt[1] < priceReaderInt[0])
                 {
-                    MessageBox.Show(@"Второе число фильтра по цене больше первого!", "ОШИБКА", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    MetroMessageBox.Show(this, "Второе число фильтра по цене больше первого!", "ОШИБКА", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                     textBox_PRICE.Focus();
-                    xuiCircleProgressBar1.percentage = 0;
-                    xuiCircleProgressBar1.Visible = false;
+                    CircleProgressBar.percentage = 0;
+                    CircleProgressBar.Visible = false;
                     return;
                 }
             }
             #endregion
 
-            var ToDisplay = new List<PC>(AllPCList.Where(x => x.COST >= PriceReaderINT[0] && x.COST <= PriceReaderINT[1]));
+            var ToDisplay = new List<PC>(AllPCList.Where(x => x.COST >= priceReaderInt[0] && x.COST <= priceReaderInt[1]));
 
             if (metroComboBoxTYPEofPC.Text != "<не выбрано>")
             {
@@ -167,7 +174,7 @@ namespace TRPO_Project
 
             if (ToDisplay.Count == 0)
             {
-                xuiCircleProgressBar1.Visible = false;
+                CircleProgressBar.Visible = false;
                 MetroMessageBox.Show(this, "NO PC MATCHES", "ERROR!", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
@@ -187,8 +194,8 @@ namespace TRPO_Project
             }
             int Y = 88;
             this.Refresh();
-            xuiCircleProgressBar1.percentage = 0;
-            xuiCircleProgressBar1.Enabled = true;
+            CircleProgressBar.percentage = 0;
+            CircleProgressBar.Enabled = true;
             int Final = 100 / Listed.Count;
             foreach (var pc in Listed)
             {
@@ -196,7 +203,7 @@ namespace TRPO_Project
                 await Task.Delay(30).ConfigureAwait(true);
                 while (P != Final)
                 {
-                    xuiCircleProgressBar1.Percentage++;
+                    CircleProgressBar.Percentage++;
                     P++;
                 }
                 PCinfo OBJ = new PCinfo(pc.TYPE, pc.ID, pc.CPU, pc.GPU, pc.RAM, pc.COST, pc.IMG) { isAdmin = false };
@@ -206,8 +213,8 @@ namespace TRPO_Project
                 OBJ.BackColor = Theme == MetroThemeStyle.Dark ? Color.FromArgb(17, 17, 17) : Color.White;
                 this.Controls.Add(OBJ);
             }
-            xuiCircleProgressBar1.Enabled = false;
-            xuiCircleProgressBar1.Visible = false;
+            CircleProgressBar.Enabled = false;
+            CircleProgressBar.Visible = false;
         }
         #endregion 
 
@@ -443,11 +450,19 @@ namespace TRPO_Project
         public void ReadTheme()
         {
             List<ProgramTheme> themes;
-
-            using (FileStream file = new FileStream($"{Directory.GetCurrentDirectory()}\\ThemeSettings.json", FileMode.OpenOrCreate))
+            try
             {
-                DataContractJsonSerializer jsonSerializer = new DataContractJsonSerializer(typeof(List<ProgramTheme>));
-                themes = jsonSerializer.ReadObject(file) as List<ProgramTheme>;
+                using (FileStream file = new FileStream($"{Directory.GetCurrentDirectory()}\\ThemeSettings.json",
+                    FileMode.OpenOrCreate))
+                {
+                    DataContractJsonSerializer jsonSerializer =
+                        new DataContractJsonSerializer(typeof(List<ProgramTheme>));
+                    themes = jsonSerializer.ReadObject(file) as List<ProgramTheme>;
+                }
+            }
+            catch
+            {
+                themes = new List<ProgramTheme>();
             }
 
             if (themes.Count(x => x.UserID == userID) > 0)

@@ -26,7 +26,7 @@
         {
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(formUSER));
-            this.xuiCircleProgressBar1 = new XanderUI.XUICircleProgressBar();
+            this.CircleProgressBar = new XanderUI.XUICircleProgressBar();
             this.FormEllipse = new XanderUI.XUIObjectEllipse();
             this.FormStartTransition = new Bunifu.Framework.UI.BunifuFormFadeTransition(this.components);
             this.groupBoxHEAD = new Bunifu.Framework.UI.BunifuGradientPanel();
@@ -55,27 +55,27 @@
             this.panelHead.SuspendLayout();
             this.SuspendLayout();
             // 
-            // xuiCircleProgressBar1
+            // CircleProgressBar
             // 
-            this.xuiCircleProgressBar1.AnimationSpeed = 10;
-            this.xuiCircleProgressBar1.FilledColor = System.Drawing.Color.LightBlue;
-            this.xuiCircleProgressBar1.FilledColorAlpha = 90;
-            this.xuiCircleProgressBar1.FilledThickness = 40;
-            this.xuiCircleProgressBar1.Font = new System.Drawing.Font("Unispace", 20.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.xuiCircleProgressBar1.IsAnimated = false;
-            this.xuiCircleProgressBar1.Location = new System.Drawing.Point(540, 240);
-            this.xuiCircleProgressBar1.Name = "xuiCircleProgressBar1";
-            this.xuiCircleProgressBar1.Percentage = 0;
-            this.xuiCircleProgressBar1.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.xuiCircleProgressBar1.ShowText = true;
-            this.xuiCircleProgressBar1.Size = new System.Drawing.Size(225, 225);
-            this.xuiCircleProgressBar1.TabIndex = 2;
-            this.xuiCircleProgressBar1.TabStop = false;
-            this.xuiCircleProgressBar1.TextColor = System.Drawing.Color.LightSeaGreen;
-            this.xuiCircleProgressBar1.TextSize = 30;
-            this.xuiCircleProgressBar1.UnFilledColor = System.Drawing.Color.PaleGreen;
-            this.xuiCircleProgressBar1.UnfilledThickness = 24;
-            this.xuiCircleProgressBar1.Visible = false;
+            this.CircleProgressBar.AnimationSpeed = 10;
+            this.CircleProgressBar.FilledColor = System.Drawing.Color.LightBlue;
+            this.CircleProgressBar.FilledColorAlpha = 90;
+            this.CircleProgressBar.FilledThickness = 40;
+            this.CircleProgressBar.Font = new System.Drawing.Font("Unispace", 20.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.CircleProgressBar.IsAnimated = false;
+            this.CircleProgressBar.Location = new System.Drawing.Point(540, 240);
+            this.CircleProgressBar.Name = "CircleProgressBar";
+            this.CircleProgressBar.Percentage = 0;
+            this.CircleProgressBar.RightToLeft = System.Windows.Forms.RightToLeft.No;
+            this.CircleProgressBar.ShowText = true;
+            this.CircleProgressBar.Size = new System.Drawing.Size(225, 225);
+            this.CircleProgressBar.TabIndex = 2;
+            this.CircleProgressBar.TabStop = false;
+            this.CircleProgressBar.TextColor = System.Drawing.Color.LightSeaGreen;
+            this.CircleProgressBar.TextSize = 30;
+            this.CircleProgressBar.UnFilledColor = System.Drawing.Color.PaleGreen;
+            this.CircleProgressBar.UnfilledThickness = 24;
+            this.CircleProgressBar.Visible = false;
             // 
             // FormEllipse
             // 
@@ -380,7 +380,7 @@
             this.ClientSize = new System.Drawing.Size(796, 470);
             this.ControlBox = false;
             this.Controls.Add(this.panelHead);
-            this.Controls.Add(this.xuiCircleProgressBar1);
+            this.Controls.Add(this.CircleProgressBar);
             this.Controls.Add(this.groupBoxHEAD);
             this.DoubleBuffered = false;
             this.Font = new System.Drawing.Font("Unispace", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -417,7 +417,7 @@
         private System.ComponentModel.IContainer components;
         protected Bunifu.Framework.UI.BunifuImageButton pictureBoxProductBIN;
         protected Bunifu.Framework.UI.BunifuImageButton pictureBoxProfile;
-        internal XanderUI.XUICircleProgressBar xuiCircleProgressBar1;
+        internal XanderUI.XUICircleProgressBar CircleProgressBar;
         private XanderUI.XUIObjectEllipse FormEllipse;
         private Bunifu.Framework.UI.BunifuFormFadeTransition FormStartTransition;
         private Bunifu.Framework.UI.BunifuGradientPanel groupBoxHEAD;
