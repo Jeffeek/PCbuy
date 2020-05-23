@@ -1,0 +1,30 @@
+[
+  {
+    "BottomLeft": {
+      "knownColor": 0,
+      "name": null,
+      "state": 2,
+      "value": 4293187638
+    },
+    "BottomRight": {
+      "knownColor": 0,
+      "name": null,
+      "state": 2,
+      "value": 4293187638
+    },
+    "Theme": 0,
+    "TopLeft": {
+      "knownColor": 0,
+      "name": null,
+      "state": 2,
+      "value": 4293649272
+    },
+    "TopRight": {
+      "knownColor": 0,
+      "name": null,
+      "state": 2,
+      "value": 4293649272
+    },
+    "UserID": 1
+  }
+]
