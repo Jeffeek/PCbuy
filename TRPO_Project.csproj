@@ -273,10 +273,12 @@
     <Compile Include="ThemeModel\ETheme.cs" />
     <None Include="Properties\ok_48px.png" />
     <Content Include="computer.ico" />
+    <Content Include="MessageOrder.html">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
     <Content Include="USERsPIC\id1_Admin.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Content Include="USERsPIC\id2_USER.png" />
     <Content Include="USERsPIC\idDEFAULT_USER.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>

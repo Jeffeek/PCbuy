@@ -91,8 +91,7 @@ namespace TRPO_Project
                     _sqlCon.Open();
                     SQLiteDataReader reader = _sqlCmd.ExecuteReader();
                     reader.Read();
-                    int isAd = reader.GetInt32(0);
-                    if (isAd == 0)
+                    if (reader.GetInt32(0) == 0)
                     {
                         reader.Close();
                         return false; //если юзер
@@ -179,7 +178,7 @@ namespace TRPO_Project
 
         #region EmailSend
         //проверка высыланием рандомного номера на почту(для регистрации и для случая того, если пользователь забыл пароль)
-        private async Task SendMessage(string emailTo)
+        private void SendMessage(string emailTo)
         {
             string smtpEmail = "smtp.jeffeekpcbuy@gmail.com";
             string smtpPassword = "9Pocan1337";
@@ -551,6 +550,7 @@ namespace TRPO_Project
                     textBoxPASS_reg.Text = "";
                 }
             }
+            // ReSharper disable once CatchAllClause
             catch (Exception ex)
             {
                 MetroMessageBox.Show(this, "ERROR \n" + ex.Message, "NOPE", MessageBoxButtons.OK, MessageBoxIcon.Error);

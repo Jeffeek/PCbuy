@@ -796,8 +796,7 @@
             // 
             this.gunaCirclePictureBoxCPU.BackColor = System.Drawing.Color.Transparent;
             this.gunaCirclePictureBoxCPU.BaseColor = System.Drawing.Color.White;
-            this.gunaCirclePictureBoxCPU.Image = global::TRPO_Project.Properties.Resources._43225aba74ba46ba733f83ec5084e73d;
-            this.gunaCirclePictureBoxCPU.Location = new System.Drawing.Point(804, 213);
+            this.gunaCirclePictureBoxCPU.Location = new System.Drawing.Point(804, 200);
             this.gunaCirclePictureBoxCPU.Name = "gunaCirclePictureBoxCPU";
             this.gunaCirclePictureBoxCPU.Size = new System.Drawing.Size(110, 110);
             this.gunaCirclePictureBoxCPU.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
@@ -809,7 +808,6 @@
             // 
             this.gunaCirclePictureBoxPC.BackColor = System.Drawing.Color.Transparent;
             this.gunaCirclePictureBoxPC.BaseColor = System.Drawing.Color.White;
-            this.gunaCirclePictureBoxPC.Image = global::TRPO_Project.Properties.Resources._43225aba74ba46ba733f83ec5084e73d;
             this.gunaCirclePictureBoxPC.Location = new System.Drawing.Point(787, 3);
             this.gunaCirclePictureBoxPC.Name = "gunaCirclePictureBoxPC";
             this.gunaCirclePictureBoxPC.Size = new System.Drawing.Size(125, 125);
@@ -843,7 +841,7 @@
             this.tabControlAdmin.Controls.Add(this.metroTabPage4);
             this.tabControlAdmin.Location = new System.Drawing.Point(1, 38);
             this.tabControlAdmin.Name = "tabControlAdmin";
-            this.tabControlAdmin.SelectedIndex = 0;
+            this.tabControlAdmin.SelectedIndex = 3;
             this.tabControlAdmin.Size = new System.Drawing.Size(925, 348);
             this.tabControlAdmin.TabIndex = 4;
             this.tabControlAdmin.Theme = MetroFramework.MetroThemeStyle.Dark;
@@ -1168,7 +1166,6 @@
             // 
             this.gunaCirclePictureBoxGPU.BackColor = System.Drawing.Color.Transparent;
             this.gunaCirclePictureBoxGPU.BaseColor = System.Drawing.Color.White;
-            this.gunaCirclePictureBoxGPU.Image = global::TRPO_Project.Properties.Resources._43225aba74ba46ba733f83ec5084e73d;
             this.gunaCirclePictureBoxGPU.Location = new System.Drawing.Point(691, 134);
             this.gunaCirclePictureBoxGPU.Name = "gunaCirclePictureBoxGPU";
             this.gunaCirclePictureBoxGPU.Size = new System.Drawing.Size(110, 110);

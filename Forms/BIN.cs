@@ -38,7 +38,7 @@ namespace TRPO_Project
         {
             InitializeComponent();
             this.userID = userID;
-            ReadTheme();
+            ReadThemeAsync().Wait();
             FormStartTransition.ShowAsyc(this);
             IsAdmin = isAdmin;
             metroLabelID.Text += userID;
@@ -201,6 +201,8 @@ namespace TRPO_Project
         }
         #endregion
 
+        #region Theme
+
         public void ChangeMetroControls(ProgramTheme OBJ)
         {
             Theme = OBJ.Theme == ETheme.Light ? MetroThemeStyle.Light : MetroThemeStyle.Dark;
@@ -213,7 +215,7 @@ namespace TRPO_Project
             labelYourOrder.BackColor = OBJ.Theme == ETheme.Light ? Color.AliceBlue : Color.MediumVioletRed;
         }
 
-        public void ReadTheme()
+        public async Task ReadThemeAsync()
         {
             try
             {
@@ -242,27 +244,9 @@ namespace TRPO_Project
             }
         }
 
-        private void SendEmailOrder(int SumOfOrder, string id, string Date)
-        {
-            string smtpEmail = "smtp.jeffeekpcbuy@gmail.com";
-            string smtpPassword = "9Pocan1337";
+        #endregion
 
-            MailAddress SMTPfrom = new MailAddress(smtpEmail, "Jeffeek inc.");
-            MailAddress toUser = new MailAddress(GetUserEmail());
-            MailMessage Message = new MailMessage(SMTPfrom, toUser)
-            {
-                Subject = "Protection Code",
-                Body = $"{MakeHTMLMessage(SumOfOrder, id, Date)}",
-                IsBodyHtml = true,
-            };
-            
-            SmtpClient smtp = new SmtpClient("smtp.gmail.com", 587)
-            {
-                Credentials = new System.Net.NetworkCredential(smtpEmail, smtpPassword),
-                EnableSsl = true
-            };
-            smtp.Send(Message);
-        }
+        #region SendEmail
 
         private string GetUserEmail()
         {
@@ -276,7 +260,7 @@ namespace TRPO_Project
             }
         }
 
-        private string MakeHTMLMessage(int SummOfOrder, string ID, string Date)
+        private async Task<string> MakeHTMLMessage(int SummOfOrder, string ID, string Date)
         {
             string HTMLfile = "";
             string OrderList = "";
@@ -296,9 +280,34 @@ namespace TRPO_Project
             Regex R3 = new Regex("{datetime}");
             HTMLfile = R.Replace(HTMLfile, OrderList);
             HTMLfile = R1.Replace(HTMLfile, SummOfOrder.ToString());
-            HTMLfile = R2.Replace(HTMLfile,ID);
+            HTMLfile = R2.Replace(HTMLfile, ID);
             HTMLfile = R3.Replace(HTMLfile, Date);
             return HTMLfile;
         }
+
+        private async void SendEmailOrder(int SumOfOrder, string id, string Date)
+        {
+            string smtpEmail = "smtp.jeffeekpcbuy@gmail.com";
+            string smtpPassword = "9Pocan1337";
+
+            MailAddress SMTPfrom = new MailAddress(smtpEmail, "Jeffeek inc.");
+            MailAddress toUser = new MailAddress(GetUserEmail());
+            MailMessage Message = new MailMessage(SMTPfrom, toUser)
+            {
+                Subject = "New order was confirmed",
+                Body = $"{await MakeHTMLMessage(SumOfOrder, id, Date)}",
+                IsBodyHtml = true,
+            };
+
+            SmtpClient smtp = new SmtpClient("smtp.gmail.com", 587)
+            {
+                Credentials = new System.Net.NetworkCredential(smtpEmail, smtpPassword),
+                EnableSsl = true
+            };
+            smtp.Send(Message);
+        }
+
+        #endregion
+
     }
 }

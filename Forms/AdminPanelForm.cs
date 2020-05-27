@@ -10,6 +10,7 @@ using MetroFramework;
 using MetroFramework.Forms;
 using TRPO_Project.Properties;
 using System.Runtime.Serialization.Json;
+using System.Threading.Tasks;
 using MetroFramework.Controls;
 using Guna.UI.WinForms;
 
@@ -31,7 +32,7 @@ namespace TRPO_Project
         {
             InitializeComponent();
             userID = UserID;
-            ReadTheme();
+            ReadThemeAsync().Wait();
             FormTransition.ShowAsyc(this);
         }
 
@@ -455,11 +456,17 @@ namespace TRPO_Project
                 ctrl.BackColor = OBJ.Theme == ETheme.Light ? Color.WhiteSmoke : Color.FromArgb(17, 17, 17);
             }
 
+            foreach (var ctrl in tabControlAdmin.TabPages[3].Controls.OfType<GunaCirclePictureBox>())
+            {
+                ctrl.BaseColor = OBJ.Theme == ETheme.Light ? Color.WhiteSmoke : Color.FromArgb(17, 17, 17);
+            }
+
+
             gunaLineTextBoxNEWvalue.BackColor = OBJ.Theme == ETheme.Light ? Color.WhiteSmoke : Color.FromArgb(17, 17, 17);
             tabPage1.BackColor = OBJ.Theme == ETheme.Light ? Color.White : Color.Black;
         }
 
-        public void ReadTheme()
+        public async Task ReadThemeAsync()
         {
             try
             {

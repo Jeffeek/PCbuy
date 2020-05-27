@@ -10,6 +10,6 @@ namespace TRPO_Project
     {
         void ChangeMetroControls(ProgramTheme obj);
         void ChangeNonMetroControls(ProgramTheme obj);
-        void ReadTheme();
+        Task ReadThemeAsync();
     }
 }

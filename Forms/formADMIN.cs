@@ -40,7 +40,7 @@ namespace TRPO_Project
         {
             InitializeComponent();
             userID = id;
-            ReadTheme();
+            ReadThemeAsync().Wait();
             FormStartTransition.ShowAsyc(this);
             GetInfoIntoComboBoxes();
             SetPictureProfile();
@@ -445,6 +445,8 @@ namespace TRPO_Project
 
         #endregion
 
+        #region Theme
+
         public void ChangeMetroControls(ProgramTheme OBJ)
         {
             Theme = OBJ.Theme == ETheme.Light ? MetroThemeStyle.Light : MetroThemeStyle.Dark;
@@ -460,7 +462,7 @@ namespace TRPO_Project
             groupBoxHEAD.Refresh();
         }
 
-        public void ReadTheme()
+        public async Task ReadThemeAsync()
         {
             try
             {
@@ -486,5 +488,8 @@ namespace TRPO_Project
                     MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
+
+        #endregion
+
     }
 }

@@ -95,7 +95,7 @@ namespace TRPO_Project
             Graphic.LineColor = obj.Theme == ETheme.Dark ? Color.Orchid : Color.OrangeRed;
         }
 
-        public void ReadTheme()
+        public async Task ReadThemeAsync()
         {
             try
             {

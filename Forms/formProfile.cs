@@ -44,7 +44,7 @@ namespace TRPO_Project
         {
             InitializeComponent();
             userID = ID;
-            ReadTheme();
+            ReadThemeAsync().Wait();
             userU = formF;
             isADMIN = false;
             bunifuMaterialTextboxEMAIL.Text = takeAlogin();
@@ -56,7 +56,7 @@ namespace TRPO_Project
         {
             InitializeComponent();
             userID = ID;
-            ReadTheme();
+            ReadThemeAsync().Wait();
             userA = formF;
             isADMIN = true;
             linkLabelDELETEprofile.Visible = false;
@@ -355,7 +355,7 @@ namespace TRPO_Project
             circlePictureBoxTR.BackColor = OBJ.TopRight;
         }
 
-        public void ReadTheme()
+        public async Task ReadThemeAsync()
         {
             try
             {

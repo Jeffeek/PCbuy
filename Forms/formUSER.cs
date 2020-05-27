@@ -36,7 +36,7 @@ namespace TRPO_Project
         {
             InitializeComponent();
             userID = id;
-            ReadTheme();
+            ReadThemeAsync().Wait();
             FormStartTransition.ShowAsyc(this);
             GetInfoIntoComboBoxes();
             SetPictureProfile();
@@ -448,7 +448,7 @@ namespace TRPO_Project
             groupBoxHEAD.Refresh();
         }
 
-        public void ReadTheme()
+        public async Task ReadThemeAsync()
         {
             try
             {
