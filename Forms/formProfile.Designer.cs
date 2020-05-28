@@ -60,9 +60,12 @@
             this.colorPalette = new XanderUI.XUIColorPane();
             this.gunaLabel1 = new Guna.UI.WinForms.GunaLabel();
             this.xuiSlidingPanelPassChange = new XanderUI.XUISlidingPanel();
-            this.bunifuImageButtonApplyNewPassword = new Bunifu.Framework.UI.BunifuImageButton();
-            this.bunifuMetroTextboxNewPassSecond = new Bunifu.Framework.UI.BunifuMetroTextbox();
-            this.bunifuMetroTextboxNewPassFirst = new Bunifu.Framework.UI.BunifuMetroTextbox();
+            this.buttonHidePassword = new Bunifu.Framework.UI.BunifuImageButton();
+            this.labelRepeatPass = new Bunifu.Framework.UI.BunifuCustomLabel();
+            this.labelNewPass = new Bunifu.Framework.UI.BunifuCustomLabel();
+            this.buttonApplyNewPassword = new Guna.UI.WinForms.GunaGradientCircleButton();
+            this.textBoxRepeatNewPass = new Guna.UI.WinForms.GunaTextBox();
+            this.textBoxNewPass = new Guna.UI.WinForms.GunaTextBox();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxPROFILE)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxCHANGEpassVisibility)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.bunifuImageButtonEXIT)).BeginInit();
@@ -73,7 +76,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.circlePictureBoxBR)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.circlePictureBoxBL)).BeginInit();
             this.xuiSlidingPanelPassChange.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.bunifuImageButtonApplyNewPassword)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.buttonHidePassword)).BeginInit();
             this.SuspendLayout();
             // 
             // openFileDialogchangeAprofilePIC
@@ -532,71 +535,128 @@
             this.xuiSlidingPanelPassChange.BottomLeft = System.Drawing.Color.Aquamarine;
             this.xuiSlidingPanelPassChange.BottomRight = System.Drawing.Color.Azure;
             this.xuiSlidingPanelPassChange.CollapseControl = this.linkLabelCHANGEpass;
-            this.xuiSlidingPanelPassChange.Collapsed = true;
-            this.xuiSlidingPanelPassChange.Controls.Add(this.bunifuImageButtonApplyNewPassword);
-            this.xuiSlidingPanelPassChange.Controls.Add(this.bunifuMetroTextboxNewPassSecond);
-            this.xuiSlidingPanelPassChange.Controls.Add(this.bunifuMetroTextboxNewPassFirst);
+            this.xuiSlidingPanelPassChange.Collapsed = false;
+            this.xuiSlidingPanelPassChange.Controls.Add(this.buttonHidePassword);
+            this.xuiSlidingPanelPassChange.Controls.Add(this.labelRepeatPass);
+            this.xuiSlidingPanelPassChange.Controls.Add(this.labelNewPass);
+            this.xuiSlidingPanelPassChange.Controls.Add(this.buttonApplyNewPassword);
+            this.xuiSlidingPanelPassChange.Controls.Add(this.textBoxRepeatNewPass);
+            this.xuiSlidingPanelPassChange.Controls.Add(this.textBoxNewPass);
             this.xuiSlidingPanelPassChange.HideControls = false;
-            this.xuiSlidingPanelPassChange.Location = new System.Drawing.Point(1, 177);
+            this.xuiSlidingPanelPassChange.Location = new System.Drawing.Point(1, 162);
             this.xuiSlidingPanelPassChange.Name = "xuiSlidingPanelPassChange";
             this.xuiSlidingPanelPassChange.PanelWidthCollapsed = 0;
-            this.xuiSlidingPanelPassChange.PanelWidthExpanded = 310;
+            this.xuiSlidingPanelPassChange.PanelWidthExpanded = 265;
             this.xuiSlidingPanelPassChange.PrimerColor = System.Drawing.Color.White;
-            this.xuiSlidingPanelPassChange.Size = new System.Drawing.Size(0, 85);
+            this.xuiSlidingPanelPassChange.Size = new System.Drawing.Size(265, 100);
             this.xuiSlidingPanelPassChange.Style = XanderUI.XUIGradientPanel.GradientStyle.Corners;
             this.xuiSlidingPanelPassChange.TabIndex = 37;
             this.xuiSlidingPanelPassChange.TopLeft = System.Drawing.Color.DarkSlateGray;
             this.xuiSlidingPanelPassChange.TopRight = System.Drawing.Color.Black;
             // 
-            // bunifuImageButtonApplyNewPassword
+            // buttonHidePassword
             // 
-            this.bunifuImageButtonApplyNewPassword.BackColor = System.Drawing.Color.SeaGreen;
-            this.bunifuImageButtonApplyNewPassword.Enabled = false;
-            this.bunifuImageButtonApplyNewPassword.Image = ((System.Drawing.Image)(resources.GetObject("bunifuImageButtonApplyNewPassword.Image")));
-            this.bunifuImageButtonApplyNewPassword.ImageActive = null;
-            this.bunifuImageButtonApplyNewPassword.Location = new System.Drawing.Point(214, 15);
-            this.bunifuImageButtonApplyNewPassword.Name = "bunifuImageButtonApplyNewPassword";
-            this.bunifuImageButtonApplyNewPassword.Size = new System.Drawing.Size(91, 54);
-            this.bunifuImageButtonApplyNewPassword.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.bunifuImageButtonApplyNewPassword.TabIndex = 7;
-            this.bunifuImageButtonApplyNewPassword.TabStop = false;
-            this.bunifuImageButtonApplyNewPassword.Zoom = 10;
+            this.buttonHidePassword.BackColor = System.Drawing.Color.Transparent;
+            this.buttonHidePassword.Image = global::TRPO_Project.Properties.Resources.eye_hide;
+            this.buttonHidePassword.ImageActive = null;
+            this.buttonHidePassword.Location = new System.Drawing.Point(167, 21);
+            this.buttonHidePassword.Name = "buttonHidePassword";
+            this.buttonHidePassword.Size = new System.Drawing.Size(23, 21);
+            this.buttonHidePassword.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.buttonHidePassword.TabIndex = 13;
+            this.buttonHidePassword.TabStop = false;
+            this.buttonHidePassword.Zoom = 10;
+            this.buttonHidePassword.Click += new System.EventHandler(this.buttonHidePassword_Click);
             // 
-            // bunifuMetroTextboxNewPassSecond
+            // labelRepeatPass
             // 
-            this.bunifuMetroTextboxNewPassSecond.BorderColorFocused = System.Drawing.Color.Blue;
-            this.bunifuMetroTextboxNewPassSecond.BorderColorIdle = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.bunifuMetroTextboxNewPassSecond.BorderColorMouseHover = System.Drawing.Color.Blue;
-            this.bunifuMetroTextboxNewPassSecond.BorderThickness = 3;
-            this.bunifuMetroTextboxNewPassSecond.Cursor = System.Windows.Forms.Cursors.IBeam;
-            this.bunifuMetroTextboxNewPassSecond.Font = new System.Drawing.Font("Century Gothic", 9.75F);
-            this.bunifuMetroTextboxNewPassSecond.ForeColor = System.Drawing.Color.Silver;
-            this.bunifuMetroTextboxNewPassSecond.isPassword = false;
-            this.bunifuMetroTextboxNewPassSecond.Location = new System.Drawing.Point(23, 44);
-            this.bunifuMetroTextboxNewPassSecond.Margin = new System.Windows.Forms.Padding(4);
-            this.bunifuMetroTextboxNewPassSecond.Name = "bunifuMetroTextboxNewPassSecond";
-            this.bunifuMetroTextboxNewPassSecond.Size = new System.Drawing.Size(184, 25);
-            this.bunifuMetroTextboxNewPassSecond.TabIndex = 6;
-            this.bunifuMetroTextboxNewPassSecond.Text = "REPEAT YOUR PASSWORD";
-            this.bunifuMetroTextboxNewPassSecond.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
+            this.labelRepeatPass.AutoSize = true;
+            this.labelRepeatPass.BackColor = System.Drawing.Color.Transparent;
+            this.labelRepeatPass.Font = new System.Drawing.Font("Unispace", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelRepeatPass.Location = new System.Drawing.Point(14, 52);
+            this.labelRepeatPass.Name = "labelRepeatPass";
+            this.labelRepeatPass.Size = new System.Drawing.Size(140, 14);
+            this.labelRepeatPass.TabIndex = 12;
+            this.labelRepeatPass.Text = "REPEAT NEW PASSWORD";
             // 
-            // bunifuMetroTextboxNewPassFirst
+            // labelNewPass
             // 
-            this.bunifuMetroTextboxNewPassFirst.BorderColorFocused = System.Drawing.Color.Blue;
-            this.bunifuMetroTextboxNewPassFirst.BorderColorIdle = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.bunifuMetroTextboxNewPassFirst.BorderColorMouseHover = System.Drawing.Color.Blue;
-            this.bunifuMetroTextboxNewPassFirst.BorderThickness = 3;
-            this.bunifuMetroTextboxNewPassFirst.Cursor = System.Windows.Forms.Cursors.IBeam;
-            this.bunifuMetroTextboxNewPassFirst.Font = new System.Drawing.Font("Century Gothic", 9.75F);
-            this.bunifuMetroTextboxNewPassFirst.ForeColor = System.Drawing.Color.Silver;
-            this.bunifuMetroTextboxNewPassFirst.isPassword = false;
-            this.bunifuMetroTextboxNewPassFirst.Location = new System.Drawing.Point(23, 15);
-            this.bunifuMetroTextboxNewPassFirst.Margin = new System.Windows.Forms.Padding(4);
-            this.bunifuMetroTextboxNewPassFirst.Name = "bunifuMetroTextboxNewPassFirst";
-            this.bunifuMetroTextboxNewPassFirst.Size = new System.Drawing.Size(184, 25);
-            this.bunifuMetroTextboxNewPassFirst.TabIndex = 5;
-            this.bunifuMetroTextboxNewPassFirst.Text = "NEW PASSWORD";
-            this.bunifuMetroTextboxNewPassFirst.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
+            this.labelNewPass.AutoSize = true;
+            this.labelNewPass.BackColor = System.Drawing.Color.Transparent;
+            this.labelNewPass.Font = new System.Drawing.Font("Unispace", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelNewPass.Location = new System.Drawing.Point(37, 3);
+            this.labelNewPass.Name = "labelNewPass";
+            this.labelNewPass.Size = new System.Drawing.Size(91, 14);
+            this.labelNewPass.TabIndex = 11;
+            this.labelNewPass.Text = "NEW PASSWORD";
+            // 
+            // buttonApplyNewPassword
+            // 
+            this.buttonApplyNewPassword.Animated = true;
+            this.buttonApplyNewPassword.AnimationHoverSpeed = 0.05F;
+            this.buttonApplyNewPassword.AnimationSpeed = 0.03F;
+            this.buttonApplyNewPassword.BackColor = System.Drawing.Color.Transparent;
+            this.buttonApplyNewPassword.BaseColor1 = System.Drawing.Color.SlateGray;
+            this.buttonApplyNewPassword.BaseColor2 = System.Drawing.Color.White;
+            this.buttonApplyNewPassword.BorderColor = System.Drawing.Color.Black;
+            this.buttonApplyNewPassword.BorderSize = 1;
+            this.buttonApplyNewPassword.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.buttonApplyNewPassword.DialogResult = System.Windows.Forms.DialogResult.None;
+            this.buttonApplyNewPassword.Enabled = false;
+            this.buttonApplyNewPassword.FocusedColor = System.Drawing.Color.Empty;
+            this.buttonApplyNewPassword.Font = new System.Drawing.Font("Segoe UI", 9F);
+            this.buttonApplyNewPassword.ForeColor = System.Drawing.Color.White;
+            this.buttonApplyNewPassword.Image = global::TRPO_Project.Properties.Resources.X;
+            this.buttonApplyNewPassword.ImageSize = new System.Drawing.Size(52, 52);
+            this.buttonApplyNewPassword.Location = new System.Drawing.Point(198, 18);
+            this.buttonApplyNewPassword.Name = "buttonApplyNewPassword";
+            this.buttonApplyNewPassword.OnHoverBaseColor1 = System.Drawing.Color.DarkTurquoise;
+            this.buttonApplyNewPassword.OnHoverBaseColor2 = System.Drawing.Color.White;
+            this.buttonApplyNewPassword.OnHoverBorderColor = System.Drawing.Color.DodgerBlue;
+            this.buttonApplyNewPassword.OnHoverForeColor = System.Drawing.Color.White;
+            this.buttonApplyNewPassword.OnHoverImage = null;
+            this.buttonApplyNewPassword.OnPressedColor = System.Drawing.Color.GreenYellow;
+            this.buttonApplyNewPassword.OnPressedDepth = 50;
+            this.buttonApplyNewPassword.Size = new System.Drawing.Size(65, 65);
+            this.buttonApplyNewPassword.TabIndex = 10;
+            // 
+            // textBoxRepeatNewPass
+            // 
+            this.textBoxRepeatNewPass.BackColor = System.Drawing.Color.Transparent;
+            this.textBoxRepeatNewPass.BaseColor = System.Drawing.Color.White;
+            this.textBoxRepeatNewPass.BorderColor = System.Drawing.Color.Silver;
+            this.textBoxRepeatNewPass.Cursor = System.Windows.Forms.Cursors.IBeam;
+            this.textBoxRepeatNewPass.FocusedBaseColor = System.Drawing.Color.White;
+            this.textBoxRepeatNewPass.FocusedBorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(100)))), ((int)(((byte)(88)))), ((int)(((byte)(255)))));
+            this.textBoxRepeatNewPass.FocusedForeColor = System.Drawing.Color.LightGray;
+            this.textBoxRepeatNewPass.Font = new System.Drawing.Font("Segoe UI", 9F);
+            this.textBoxRepeatNewPass.Location = new System.Drawing.Point(4, 69);
+            this.textBoxRepeatNewPass.Name = "textBoxRepeatNewPass";
+            this.textBoxRepeatNewPass.PasswordChar = '●';
+            this.textBoxRepeatNewPass.Radius = 10;
+            this.textBoxRepeatNewPass.Size = new System.Drawing.Size(160, 26);
+            this.textBoxRepeatNewPass.TabIndex = 9;
+            this.textBoxRepeatNewPass.UseSystemPasswordChar = true;
+            this.textBoxRepeatNewPass.TextChanged += new System.EventHandler(this.textBoxRepeatNewPass_TextChanged);
+            // 
+            // textBoxNewPass
+            // 
+            this.textBoxNewPass.BackColor = System.Drawing.Color.Transparent;
+            this.textBoxNewPass.BaseColor = System.Drawing.Color.White;
+            this.textBoxNewPass.BorderColor = System.Drawing.Color.Silver;
+            this.textBoxNewPass.Cursor = System.Windows.Forms.Cursors.IBeam;
+            this.textBoxNewPass.FocusedBaseColor = System.Drawing.Color.White;
+            this.textBoxNewPass.FocusedBorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(100)))), ((int)(((byte)(88)))), ((int)(((byte)(255)))));
+            this.textBoxNewPass.FocusedForeColor = System.Drawing.Color.LightGray;
+            this.textBoxNewPass.Font = new System.Drawing.Font("Segoe UI", 9F);
+            this.textBoxNewPass.Location = new System.Drawing.Point(4, 18);
+            this.textBoxNewPass.Name = "textBoxNewPass";
+            this.textBoxNewPass.PasswordChar = '●';
+            this.textBoxNewPass.Radius = 10;
+            this.textBoxNewPass.Size = new System.Drawing.Size(160, 26);
+            this.textBoxNewPass.TabIndex = 8;
+            this.textBoxNewPass.UseSystemPasswordChar = true;
+            this.textBoxNewPass.TextChanged += new System.EventHandler(this.textBoxNewPass_TextChanged);
             // 
             // formProfile
             // 
@@ -639,7 +699,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.circlePictureBoxBR)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.circlePictureBoxBL)).EndInit();
             this.xuiSlidingPanelPassChange.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.bunifuImageButtonApplyNewPassword)).EndInit();
+            this.xuiSlidingPanelPassChange.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.buttonHidePassword)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -676,9 +737,12 @@
         private Guna.UI.WinForms.GunaLabel gunaLabel1;
         private Bunifu.Framework.UI.BunifuImageButton imageButtonSettings;
         private XanderUI.XUISlidingPanel xuiSlidingPanelPassChange;
-        private Bunifu.Framework.UI.BunifuImageButton bunifuImageButtonApplyNewPassword;
-        private Bunifu.Framework.UI.BunifuMetroTextbox bunifuMetroTextboxNewPassSecond;
-        private Bunifu.Framework.UI.BunifuMetroTextbox bunifuMetroTextboxNewPassFirst;
         private Guna.UI.WinForms.GunaTileButton gunaTileButtonApplySettings;
+        private Bunifu.Framework.UI.BunifuCustomLabel labelRepeatPass;
+        private Bunifu.Framework.UI.BunifuCustomLabel labelNewPass;
+        private Guna.UI.WinForms.GunaGradientCircleButton buttonApplyNewPassword;
+        private Guna.UI.WinForms.GunaTextBox textBoxRepeatNewPass;
+        private Guna.UI.WinForms.GunaTextBox textBoxNewPass;
+        private Bunifu.Framework.UI.BunifuImageButton buttonHidePassword;
     }
 }

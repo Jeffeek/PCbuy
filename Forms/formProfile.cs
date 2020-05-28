@@ -206,70 +206,12 @@ namespace TRPO_Project
 
         #region CHANGE PASS
 
-        #region textBOXleave 
 
-        private void bunifuMetroTextboxNewPassFirst_Leave(object sender, EventArgs e)
-        {
-            if (bunifuMetroTextboxNewPassFirst.Text.Length < 6)
-            {
-                bunifuMetroTextboxNewPassFirst.Text = "NEW PASSWORD";
-                MetroMessageBox.Show(this, "YOUR NEW PASSWORD IS INCORRECT! MIN LENGHT IS 6");
-                bunifuMetroTextboxNewPassFirst.isPassword = false;
-                bunifuMetroTextboxNewPassFirst.ForeColor = Color.LightGray;
-            }
-        }
-        private void bunifuMetroTextboxNewPassSecond_Leave(object sender, EventArgs e)
-        {
-            if (bunifuMetroTextboxNewPassSecond.Text.Length == 0)
-            {
-                bunifuMetroTextboxNewPassSecond.isPassword = false;
-                bunifuMetroTextboxNewPassSecond.Text = "REPEAT YOUR PASSWORD";
-                bunifuMetroTextboxNewPassSecond.ForeColor = Color.LightGray;
-            }
-        }
-        #endregion
-
-        #region textBOXenter 
-        private void bunifuMetroTextboxNewPassFirst_Enter(object sender, EventArgs e)
-        {
-            bunifuMetroTextboxNewPassFirst.Text = "";
-            bunifuMetroTextboxNewPassFirst.isPassword = true;
-        }
-        private void bunifuMetroTextboxNewPassSecond_Enter(object sender, EventArgs e)
-        {
-            bunifuMetroTextboxNewPassSecond.Text = "";
-            bunifuMetroTextboxNewPassSecond.isPassword = true;
-        }
-
-        #endregion
+        
 
         #region textBOXValueChange 
 
-        private void bunifuMetroTextboxNewPassFirst_OnValueChanged(object sender, EventArgs e)
-        {
-            if (bunifuMetroTextboxNewPassFirst.Text.Length < 6)
-            {
-                bunifuMetroTextboxNewPassFirst.ForeColor = Color.Red;
-            }
-            else if (bunifuMetroTextboxNewPassFirst.Text.Length > 5)
-            {
-                bunifuMetroTextboxNewPassFirst.ForeColor = Color.Green;
-            }
-        }
-
-        private void bunifuMetroTextboxNewPassSecond_OnValueChanged(object sender, EventArgs e)
-        {
-            if (bunifuMetroTextboxNewPassSecond.Text == bunifuMetroTextboxNewPassFirst.Text)
-            {
-                bunifuMetroTextboxNewPassSecond.ForeColor = Color.Green;
-                bunifuImageButtonApplyNewPassword.Enabled = true;
-            }
-            else
-            {
-                bunifuMetroTextboxNewPassSecond.ForeColor = Color.Red;
-                bunifuImageButtonApplyNewPassword.Enabled = false;
-            }
-        }
+        
         #endregion
 
         #region ApplyButton 
@@ -286,28 +228,21 @@ namespace TRPO_Project
             }
 
 
-            if (bunifuMetroTextboxNewPassFirst.Text == bunifuMetroTextboxNewPassSecond.Text && bunifuMetroTextboxNewPassSecond.Text.Length > 5)
+            if (textBoxNewPass.Text == textBoxRepeatNewPass.Text && textBoxNewPass.Text.Length > 5)
             {
-                if (oldPASS == bunifuMetroTextboxNewPassFirst.Text)
+                if (oldPASS == textBoxNewPass.Text)
                 {
                     MetroMessageBox.Show(this, "YOU CAN'T UPDATE YOUR PASS BY THIS WAY!", "SMTH WENT WRONG!", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    bunifuMetroTextboxNewPassFirst.Text = "NEW PASSWORD";
-                    bunifuMetroTextboxNewPassSecond.Text = "REPEAT YOUR PASSWORD";
-                    bunifuMetroTextboxNewPassFirst.isPassword = false;
-                    bunifuMetroTextboxNewPassSecond.isPassword = false;
-                    bunifuMetroTextboxNewPassFirst.ForeColor = Color.LightGray;
-                    bunifuMetroTextboxNewPassSecond.ForeColor = Color.LightGray;
                 }
                 else
                 {
                     using (sql_con = new SQLiteConnection($"Data Source={Directory.GetCurrentDirectory()}\\DataBases\\TRPO.db"))
                     {
                         sql_con.Open();
-                        using (sql_cmd = new SQLiteCommand($"UPDATE LOGin SET password='{bunifuMetroTextboxNewPassFirst.Text}' WHERE id={userID}", sql_con))
+                        using (sql_cmd = new SQLiteCommand($"UPDATE LOGin SET password='{textBoxNewPass.Text}' WHERE id={userID}", sql_con))
                         {
                             sql_cmd.ExecuteNonQuery();
                             MetroMessageBox.Show(this, "YOUR PASSWORD WAS UPDATED!", "SUCCESS", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                            bunifuMaterialTextboxPASS.Text = bunifuMetroTextboxNewPassFirst.Text;
                         }
                     }
                 }
@@ -519,5 +454,61 @@ namespace TRPO_Project
                 imageButtonSettings.Enabled = true;
             }
         }
+
+        //TODO: не работает распознавание пароля, залатать
+        private void buttonHidePassword_Click(object sender, EventArgs e)
+        {
+            if (textBoxNewPass.UseSystemPasswordChar)
+            {
+                textBoxNewPass.UseSystemPasswordChar = false;
+            }
+            else
+            {
+                textBoxNewPass.UseSystemPasswordChar = true;
+            }
+            buttonHidePassword.Image = textBoxNewPass.UseSystemPasswordChar ? Resources.eye_show : Resources.eye_hide;
+        }
+
+        //TODO: доделать цвета при введении пароля и сделать смену пароля
+        private void textBoxNewPass_TextChanged(object sender, EventArgs e)
+        {
+            if (textBoxNewPass.Text.Length > 5)
+            {
+                textBoxNewPass.ForeColor = Color.SpringGreen;
+                if (textBoxNewPass.Text == textBoxRepeatNewPass.Text)
+                {
+                    buttonApplyNewPassword.Image = Resources.ok_48px;
+                    buttonApplyNewPassword.BaseColor1 = Color.MediumSeaGreen;
+                    buttonApplyNewPassword.Enabled = true;
+                }
+            }
+            else
+            {
+                textBoxNewPass.ForeColor = Color.Crimson;
+                buttonApplyNewPassword.Image = Resources.X;
+                buttonApplyNewPassword.BaseColor1 = Color.SlateGray;
+                buttonApplyNewPassword.Enabled = false;
+            }
+
+            textBoxNewPass.FocusedBorderColor = textBoxNewPass.ForeColor;
+        }
+
+        private void textBoxRepeatNewPass_TextChanged(object sender, EventArgs e)
+        {
+            if (textBoxRepeatNewPass.Text == textBoxNewPass.Text)
+            {
+                buttonApplyNewPassword.Image = Resources.ok_48px;
+                buttonApplyNewPassword.BaseColor1 = Color.MediumSeaGreen;
+                buttonApplyNewPassword.Enabled = true;
+            }
+            else
+            {
+                textBoxRepeatNewPass.ForeColor = Color.Crimson;
+                buttonApplyNewPassword.Image = Resources.X;
+                buttonApplyNewPassword.BaseColor1 = Color.SlateGray;
+                buttonApplyNewPassword.Enabled = false;
+            }
+        }
+
     }
 }

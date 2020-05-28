@@ -10,6 +10,7 @@ using MetroFramework.Forms;
 using TRPO_Project.Properties;
 using System.Net.Mail;
 using System.Net;
+using System.Runtime.InteropServices;
 using System.Runtime.Serialization.Json;
 using System.Threading.Tasks;
 
@@ -33,6 +34,8 @@ namespace TRPO_Project
         {
             InitializeComponent();
             FormStartTransition.ShowAsyc(this);
+            xuiSlidingPanelREGISTRATION.PanelWidthExpanded = Convert.ToInt32(345 * getScalingFactor(this.Handle));
+            xuiSlidingPanelForgotPass.PanelWidthExpanded = Convert.ToInt32(240 * getScalingFactor(this.Handle));
             //TODO: убери автолог
             textboxEMAILlogin.text = "mishamine26@gmail.com";
             textboxPASSlogin.text = "123456";
@@ -685,6 +688,25 @@ namespace TRPO_Project
             }
         }
 
+
+        #endregion
+
+        #region DpiScaling
+
+        [DllImport("user32.dll")]
+        private static extern int GetDpiForWindow(IntPtr hWnd);
+
+        private float getScalingFactor(IntPtr windowHandle)
+        {
+            try
+            {
+                return GetDpiForWindow(windowHandle) / 96f;
+            }
+            catch
+            {
+                return 1;
+            }
+        }
 
         #endregion
     }
