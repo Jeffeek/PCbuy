@@ -13,6 +13,7 @@ using System.Net;
 using System.Runtime.InteropServices;
 using System.Runtime.Serialization.Json;
 using System.Threading.Tasks;
+using Guna.UI.WinForms;
 
 // ReSharper disable All
 // ReSharper disable All
@@ -33,9 +34,9 @@ namespace TRPO_Project
         public FormLogIn()
         {
             InitializeComponent();
+            ScaleControls.SetScalingFactor(this.Handle);
+            SetScaling();
             FormStartTransition.ShowAsyc(this);
-            xuiSlidingPanelREGISTRATION.PanelWidthExpanded = Convert.ToInt32(345 * getScalingFactor(this.Handle));
-            xuiSlidingPanelForgotPass.PanelWidthExpanded = Convert.ToInt32(240 * getScalingFactor(this.Handle));
             //TODO: убери автолог
             textboxEMAILlogin.text = "mishamine26@gmail.com";
             textboxPASSlogin.text = "123456";
@@ -693,19 +694,21 @@ namespace TRPO_Project
 
         #region DpiScaling
 
-        [DllImport("user32.dll")]
-        private static extern int GetDpiForWindow(IntPtr hWnd);
-
-        private float getScalingFactor(IntPtr windowHandle)
+        private void SetScaling()
         {
-            try
-            {
-                return GetDpiForWindow(windowHandle) / 96f;
-            }
-            catch
-            {
-                return 1;
-            }
+            xuiSlidingPanelREGISTRATION.PanelWidthExpanded =
+                (int) (xuiSlidingPanelREGISTRATION.PanelWidthExpanded * ScaleControls.Scale);
+            xuiSlidingPanelForgotPass.PanelWidthExpanded =
+                (int) (xuiSlidingPanelForgotPass.PanelWidthExpanded * ScaleControls.Scale);
+
+            xuiSlidingPanelREGISTRATION.Controls
+                                                .OfType<GunaLineTextBox>()
+                                                .ToList()
+                                                .ForEach(x => x.Height = (int)(x.Height / ScaleControls.Scale));
+            xuiSlidingPanelForgotPass.Controls
+                                                .OfType<GunaLineTextBox>()
+                                                .ToList()
+                                                .ForEach(x => x.Height = (int)(x.Height / ScaleControls.Scale));
         }
 
         #endregion

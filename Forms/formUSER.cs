@@ -36,7 +36,7 @@ namespace TRPO_Project
         {
             InitializeComponent();
             userID = id;
-            ReadThemeAsync().Wait();
+            ReadThemeAsync();
             FormStartTransition.ShowAsyc(this);
             GetInfoIntoComboBoxes();
             SetPictureProfile();
@@ -116,23 +116,6 @@ namespace TRPO_Project
             CircleProgressBar.Visible = true;
 
             #region ParseInputPrice
-            //string[] PriceReaderSTR = textBox_PRICE.Text.Split('$', '-');
-
-            //int[] PriceReaderINT = Array.Empty<int>();
-            //if (PriceReaderSTR.Length == 2)
-            //{
-            //    PriceReaderINT = new int[PriceReaderSTR.Length];
-            //    PriceReaderINT[1] = Convert.ToInt32(PriceReaderSTR[1]);
-            //}
-            //else if (PriceReaderSTR.Length == 3)
-            //{
-            //    PriceReaderINT = new int[PriceReaderSTR.Length - 1];
-            //}
-
-            //for (int i = 1; i < PriceReaderSTR.Length; i++)
-            //{
-            //    PriceReaderINT[i - 1] = Convert.ToInt32(PriceReaderSTR[i]);
-            //}
             List<int> priceReaderInt = textBox_PRICE.Text.Split('$', '-').ToList().Where(x => x != string.Empty).ToList().ConvertAll(x => Convert.ToInt32(x));
 
             if (!textBox_PRICE.Text.Contains("-"))
@@ -144,7 +127,7 @@ namespace TRPO_Project
             {
                 if (priceReaderInt[1] < priceReaderInt[0])
                 {
-                    MetroMessageBox.Show(this, "Второе число фильтра по цене больше первого!", "ОШИБКА", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    MetroMessageBox.Show(this, "Second filter num bigger than first!", "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                     textBox_PRICE.Focus();
                     CircleProgressBar.percentage = 0;
                     CircleProgressBar.Visible = false;
@@ -197,6 +180,7 @@ namespace TRPO_Project
             CircleProgressBar.percentage = 0;
             CircleProgressBar.Enabled = true;
             int Final = 100 / Listed.Count;
+            int DeltaY = (int) (230 * ScaleControls.Scale);
             foreach (var pc in Listed)
             {
                 int P = 0;
@@ -209,7 +193,7 @@ namespace TRPO_Project
                 PCinfo OBJ = new PCinfo(pc.TYPE, pc.ID, pc.CPU, pc.GPU, pc.RAM, pc.COST, pc.IMG) { isAdmin = false };
                 OBJects.Add(OBJ);
                 OBJ.Location = new Point(0, Y);
-                Y += 230;
+                Y += DeltaY;
                 OBJ.BackColor = Theme == MetroThemeStyle.Dark ? Color.FromArgb(17, 17, 17) : Color.White;
                 OBJ.Anchor = AnchorStyles.Top;
                 this.Controls.Add(OBJ);
@@ -434,6 +418,8 @@ namespace TRPO_Project
 
         #endregion
 
+        #region Theme
+
         public void ChangeMetroControls(ProgramTheme OBJ)
         {
             Theme = OBJ.Theme == ETheme.Light ? MetroThemeStyle.Light : MetroThemeStyle.Dark;
@@ -476,6 +462,8 @@ namespace TRPO_Project
                     MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
+
+        #endregion
 
     }
 }

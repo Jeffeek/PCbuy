@@ -1,10 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
 using System.Drawing;
 using System.Linq;
-using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Data.SQLite;
@@ -12,13 +9,6 @@ using System.IO;
 using TRPO_Project.Properties;
 using MetroFramework;
 using MetroFramework.Forms;
-using MetroFramework.Components;
-using MetroFramework.Controls;
-using MetroFramework.Drawing;
-using System.Threading;
-using XanderUI.Designers;
-using XanderUI;
-using System.Runtime.Serialization;
 using System.Runtime.Serialization.Json;
 using Guna.UI.WinForms;
 
@@ -27,7 +17,7 @@ namespace TRPO_Project
     public partial class formProfile : MetroForm, IThemeChange
     {
         #region variables
-        private bool isPASSvisible = false;
+
         private int userID;
         private formUSER userU;
         private formADMIN userA;
@@ -43,26 +33,27 @@ namespace TRPO_Project
         public formProfile(formUSER formF,int ID)
         {
             InitializeComponent();
+            SetScaling();
             userID = ID;
-            ReadThemeAsync().Wait();
+            ReadThemeAsync();
             userU = formF;
             isADMIN = false;
             bunifuMaterialTextboxEMAIL.Text = takeAlogin();
             bunifuMaterialTextboxPASS.Text = takeApassword();          
-            takeANimg();
+            pictureBoxPROFILE.Image = takeANimg();
         }
 
         public formProfile(formADMIN formF, int ID)
         {
             InitializeComponent();
             userID = ID;
-            ReadThemeAsync().Wait();
+            ReadThemeAsync();
             userA = formF;
             isADMIN = true;
             linkLabelDELETEprofile.Visible = false;
             bunifuMaterialTextboxEMAIL.Text = takeAlogin();
             bunifuMaterialTextboxPASS.Text = takeApassword();
-            takeANimg();
+            pictureBoxPROFILE.Image = takeANimg();
         }
         #endregion
 
@@ -91,8 +82,9 @@ namespace TRPO_Project
                 }
             }
         }
-        private void takeANimg()
+        private Image takeANimg()
         {
+            Image profileImage;
             using (sql_con = new SQLiteConnection($"Data Source={Directory.GetCurrentDirectory()}\\DataBases\\TRPO.db"))
             {
                 sql_con.Open();
@@ -100,29 +92,30 @@ namespace TRPO_Project
                 {
                     using (FileStream IMUR = new FileStream(sql_cmd.ExecuteScalar().ToString(), FileMode.Open))
                     {
-                        pictureBoxPROFILE.Image = Image.FromStream(IMUR);
+                        profileImage = Image.FromStream(IMUR);
                     }
                 }
             }
+
+            return profileImage;
         }
         #endregion
 
         #region Link&PicClicked
         private void pictureBoxCHANGEpassVisibility_Click(object sender, EventArgs e)
         {
-            if (isPASSvisible)
+            if (bunifuMaterialTextboxPASS.isPassword)
             {
                 pictureBoxCHANGEpassVisibility.Image = Resources.eye_hide;
-                isPASSvisible = false;
                 bunifuMaterialTextboxPASS.isPassword = true;
             }
             else
             {
                 pictureBoxCHANGEpassVisibility.Image = Resources.eye_show;
-                isPASSvisible = true;
                 bunifuMaterialTextboxPASS.isPassword = false;
             }
         }
+
         private void linkLabelCHANGEprofilePIC_Click(object sender, EventArgs e)
         {
             if (openFileDialogchangeAprofilePIC.ShowDialog() == DialogResult.OK)
@@ -135,19 +128,20 @@ namespace TRPO_Project
                     Image IMG = Image.FromStream(FS);
                     if (!isADMIN)
                     {
-                        File.Delete($@"USERsPIC\id{userID}_USER.png");
-                        File.Copy(fileName, $@"USERsPIC\id{userID}_USER.png");
+                        File.Delete($@"{Directory.GetCurrentDirectory()}\USERsPIC\id{userID}_USER.png");
+                        File.Copy(fileName, $@"{Directory.GetCurrentDirectory()}\USERsPIC\id{userID}_USER.png");
                         userU.SetNewProfilePicture(IMG);
                     }
                     else
                     {
-                        File.Delete($@"USERsPIC\id{userID}_ADMIN.png");
-                        File.Copy(fileName, $@"USERsPIC\id{userID}_ADMIN.png");
+                        File.Delete($@"{Directory.GetCurrentDirectory()}\USERsPIC\id{userID}_ADMIN.png");
+                        File.Copy(fileName, $@"{Directory.GetCurrentDirectory()}\USERsPIC\id{userID}_ADMIN.png");
                         userA.SetNewProfilePicture(IMG);
                     }
                 }
             }
         }
+
         private void linkLabelDELETEprofile_Click(object sender, EventArgs e)
         {
             var result = MetroMessageBox.Show(this, "ARE YOU SURE?", "DELETE PROFILE", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
@@ -163,7 +157,7 @@ namespace TRPO_Project
                         {
                             sql_cmd.ExecuteNonQuery();
                             DeleteUserFromJSON();
-                            File.Delete($"USERsPIC\\id{userID}_USER.png");
+                            File.Delete($"{Directory.GetCurrentDirectory()}\\USERsPIC\\id{userID}_USER.png");
                             MetroMessageBox.Show(this, "SUCCESS! YOUR PROFILE WAS DELETED", "DELETE PROFILE", MessageBoxButtons.OK, MessageBoxIcon.Information);
                             Application.Restart();
                         }
@@ -191,31 +185,88 @@ namespace TRPO_Project
                 jsonSerializer.WriteObject(file, themes);
             }
         }
-        #endregion
 
-        #region FormClosed
-        private void bunifuImageButtonEXIT_Click(object sender, EventArgs e)
-        {
-            if (File.Exists(@"USERsPIC\temp\tempik.png"))
-            {
-                File.Delete(@"USERsPIC\temp\tempik.png");
-            }
-            this.Close();
-        }
         #endregion
 
         #region CHANGE PASS
 
+        #region TextChanges
 
-        
+        private void textBoxNewPass_TextChanged(object sender, EventArgs e)
+        {
+            if (textBoxNewPass.Text.Length > 5)
+            {
+                textBoxNewPass.ForeColor = Color.SpringGreen;
+                if (textBoxNewPass.Text == textBoxRepeatNewPass.Text)
+                {
+                    buttonApplyNewPassword.Image = Resources.ok_48px;
+                    buttonApplyNewPassword.BaseColor1 = Color.MediumSeaGreen;
+                    buttonApplyNewPassword.Enabled = true;
+                }
+            }
+            else
+            {
+                textBoxNewPass.ForeColor = Color.Crimson;
+                buttonApplyNewPassword.Image = Resources.X;
+                buttonApplyNewPassword.BaseColor1 = Color.SlateGray;
+                buttonApplyNewPassword.Enabled = false;
+            }
 
-        #region textBOXValueChange 
+            textBoxNewPass.FocusedBorderColor = textBoxNewPass.ForeColor;
+        }
 
-        
+        private void textBoxRepeatNewPass_TextChanged(object sender, EventArgs e)
+        {
+            if (textBoxRepeatNewPass.Text.Length > 5)
+            {
+                if (textBoxRepeatNewPass.Text == textBoxNewPass.Text)
+                {
+                    buttonApplyNewPassword.Image = Resources.ok_48px;
+                    buttonApplyNewPassword.BaseColor1 = Color.MediumSeaGreen;
+                    buttonApplyNewPassword.Enabled = true;
+                    textBoxRepeatNewPass.ForeColor = Color.SpringGreen;
+                }
+            }
+            else
+            {
+                textBoxRepeatNewPass.ForeColor = Color.Crimson;
+                buttonApplyNewPassword.Image = Resources.X;
+                buttonApplyNewPassword.BaseColor1 = Color.SlateGray;
+                buttonApplyNewPassword.Enabled = false;
+            }
+
+            textBoxRepeatNewPass.FocusedBorderColor = textBoxRepeatNewPass.ForeColor;
+        }
+
         #endregion
 
-        #region ApplyButton 
-        private void bunifuImageButtonApplyNewPassword_Click(object sender, EventArgs e)
+        #region Button&LabelClick
+
+        private void linkLabelCHANGEpass_Click(object sender, EventArgs e)
+        {
+            if (xuiSlidingPanelPassChange.Collapsed)
+            {
+                linkLabelCHANGEprofilePIC.Enabled = false;
+                linkLabelCHANGEprofilePIC.Enabled = false;
+                imageButtonSettings.Enabled = false;
+                pictureBoxCHANGEpassVisibility.Enabled = false;
+            }
+            else
+            {
+                linkLabelCHANGEprofilePIC.Enabled = true;
+                linkLabelDELETEprofile.Enabled = true;
+                imageButtonSettings.Enabled = true;
+                pictureBoxCHANGEpassVisibility.Enabled = true;
+            }
+        }
+
+        private void buttonHidePassword_Click(object sender, EventArgs e)
+        {
+            textBoxNewPass.UseSystemPasswordChar = !textBoxNewPass.UseSystemPasswordChar;
+            buttonHidePassword.Image = textBoxNewPass.UseSystemPasswordChar ? Resources.eye_hide : Resources.eye_show;
+        }
+
+        private void buttonApplyNewPassword_Click(object sender, EventArgs e)
         {
             string oldPASS;
             using (sql_con = new SQLiteConnection($"Data Source={Directory.GetCurrentDirectory()}\\DataBases\\TRPO.db"))
@@ -232,22 +283,34 @@ namespace TRPO_Project
             {
                 if (oldPASS == textBoxNewPass.Text)
                 {
-                    MetroMessageBox.Show(this, "YOU CAN'T UPDATE YOUR PASS BY THIS WAY!", "SMTH WENT WRONG!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    MetroMessageBox.Show(this, "YOU CAN'T UPDATE YOUR PASS BY THIS WAY!", "SMTH WENT WRONG!",
+                        MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
                 else
                 {
-                    using (sql_con = new SQLiteConnection($"Data Source={Directory.GetCurrentDirectory()}\\DataBases\\TRPO.db"))
+                    using (sql_con =
+                        new SQLiteConnection($"Data Source={Directory.GetCurrentDirectory()}\\DataBases\\TRPO.db"))
                     {
                         sql_con.Open();
-                        using (sql_cmd = new SQLiteCommand($"UPDATE LOGin SET password='{textBoxNewPass.Text}' WHERE id={userID}", sql_con))
+                        using (sql_cmd =
+                            new SQLiteCommand($"UPDATE LOGin SET password='{textBoxNewPass.Text}' WHERE id={userID}",
+                                sql_con))
                         {
                             sql_cmd.ExecuteNonQuery();
-                            MetroMessageBox.Show(this, "YOUR PASSWORD WAS UPDATED!", "SUCCESS", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                            MetroMessageBox.Show(this, "YOUR PASSWORD WAS UPDATED!", "SUCCESS", MessageBoxButtons.OK,
+                                MessageBoxIcon.Information);
                         }
                     }
+
+                    bunifuMaterialTextboxPASS.Text = textBoxNewPass.Text;
+                    xuiSlidingPanelPassChange.Collapsed = true;
                 }
             }
+
+            textBoxNewPass.Text = string.Empty;
+            textBoxRepeatNewPass.Text = string.Empty;
         }
+
         #endregion
 
         #endregion
@@ -321,85 +384,7 @@ namespace TRPO_Project
 
         #endregion
 
-
-        private void gunaTileButtonApplySettings_Click(object sender, EventArgs e)
-        {
-            List<ProgramTheme> themes;
-            ETheme ChoosedTheme = switchTheme.Checked ? ETheme.Dark : ETheme.Light;
-            Color TR = circlePictureBoxTR.BackColor;
-            Color TL = circlePictureBoxTL.BackColor;
-            Color BR = circlePictureBoxBR.BackColor;
-            Color BL = circlePictureBoxBL.BackColor;
-
-            try
-            {
-                using (FileStream file =
-                    new FileStream($"{Directory.GetCurrentDirectory()}\\ThemeModel\\ThemeSettings.json",
-                        FileMode.OpenOrCreate))
-                {
-                    DataContractJsonSerializer jsonSerializer =
-                        new DataContractJsonSerializer(typeof(List<ProgramTheme>));
-                    themes = jsonSerializer.ReadObject(file) as List<ProgramTheme>;
-                }
-            }
-            catch(Exception ex)
-            {
-                themes = new List<ProgramTheme>();
-            }
-
-            themes.Remove(themes.Find(x => x.UserID == userID));
-
-            themes.Add(new ProgramTheme(ChoosedTheme, userID) { BottomLeft = BL, BottomRight = BR, TopLeft = TL, TopRight = TR});
-            File.WriteAllText($"{Directory.GetCurrentDirectory()}\\ThemeModel\\ThemeSettings.json", "");
-            using (FileStream file = new FileStream($"{Directory.GetCurrentDirectory()}\\ThemeModel\\ThemeSettings.json", FileMode.OpenOrCreate))
-            {
-                DataContractJsonSerializer jsonSerializer = new DataContractJsonSerializer(typeof(List<ProgramTheme>));
-                jsonSerializer.WriteObject(file, themes);
-            }
-            MetroMessageBox.Show(this, "The program will be reloaded", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Information);
-            Application.Restart();
-        }
-
-        private void colorPalette_ColorChanged(object sender, EventArgs e)
-        {
-            if (ChoosedPalette != null)
-            {
-                ChoosedPalette.BackColor = colorPalette.SelectedColor;
-            }
-            else
-            {
-                MetroMessageBox.Show(this, "Choose an aim for colorizing", "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-            }
-        }
-
-        private void formProfile_Load(object sender, EventArgs e)
-        {
-            switchTheme.CheckedChanged += (a, b) =>
-            {
-                labelChangeTheme.ForeColor = switchTheme.Checked ? Color.Black : Color.White;
-                labelChangeTheme.Text = switchTheme.Checked ? "Dark theme" : "Light theme";
-            };
-            circlePictureBoxBL.Click += (a, b) => 
-            {
-                ChoosedPalette = circlePictureBoxBL;
-                ChangeColorPalette_labels("BL");
-            };
-            circlePictureBoxTL.Click += (a, b) => 
-            { 
-                ChoosedPalette = circlePictureBoxTL;
-                ChangeColorPalette_labels("TL");
-            };
-            circlePictureBoxBR.Click += (a, b) => 
-            { 
-                ChoosedPalette = circlePictureBoxBR;
-                ChangeColorPalette_labels("BR");
-            };
-            circlePictureBoxTR.Click += (a, b) => 
-            { 
-                ChoosedPalette = circlePictureBoxTR;
-                ChangeColorPalette_labels("TR");
-            };
-        }
+        #region Settings
 
         private void ChangeColorPalette_labels(string choosed)
         {
@@ -439,75 +424,110 @@ namespace TRPO_Project
             }
         }
 
-        private void linkLabelCHANGEpass_Click(object sender, EventArgs e)
+        private void gunaTileButtonApplySettings_Click(object sender, EventArgs e)
         {
-            if (xuiSlidingPanelPassChange.Collapsed)
-            {
-                linkLabelCHANGEprofilePIC.Enabled = false;
-                linkLabelCHANGEprofilePIC.Enabled = false;
-                imageButtonSettings.Enabled = false;
-            }
-            else
-            {
-                linkLabelCHANGEprofilePIC.Enabled = true;
-                linkLabelDELETEprofile.Enabled = true;
-                imageButtonSettings.Enabled = true;
-            }
-        }
+            List<ProgramTheme> themes;
+            ETheme ChoosedTheme = switchTheme.Checked ? ETheme.Dark : ETheme.Light;
+            Color TR = circlePictureBoxTR.BackColor;
+            Color TL = circlePictureBoxTL.BackColor;
+            Color BR = circlePictureBoxBR.BackColor;
+            Color BL = circlePictureBoxBL.BackColor;
 
-        //TODO: не работает распознавание пароля, залатать
-        private void buttonHidePassword_Click(object sender, EventArgs e)
-        {
-            if (textBoxNewPass.UseSystemPasswordChar)
+            try
             {
-                textBoxNewPass.UseSystemPasswordChar = false;
-            }
-            else
-            {
-                textBoxNewPass.UseSystemPasswordChar = true;
-            }
-            buttonHidePassword.Image = textBoxNewPass.UseSystemPasswordChar ? Resources.eye_show : Resources.eye_hide;
-        }
-
-        //TODO: доделать цвета при введении пароля и сделать смену пароля
-        private void textBoxNewPass_TextChanged(object sender, EventArgs e)
-        {
-            if (textBoxNewPass.Text.Length > 5)
-            {
-                textBoxNewPass.ForeColor = Color.SpringGreen;
-                if (textBoxNewPass.Text == textBoxRepeatNewPass.Text)
+                using (FileStream file =
+                    new FileStream($"{Directory.GetCurrentDirectory()}\\ThemeModel\\ThemeSettings.json",
+                        FileMode.OpenOrCreate))
                 {
-                    buttonApplyNewPassword.Image = Resources.ok_48px;
-                    buttonApplyNewPassword.BaseColor1 = Color.MediumSeaGreen;
-                    buttonApplyNewPassword.Enabled = true;
+                    DataContractJsonSerializer jsonSerializer =
+                        new DataContractJsonSerializer(typeof(List<ProgramTheme>));
+                    themes = jsonSerializer.ReadObject(file) as List<ProgramTheme>;
                 }
             }
-            else
+            catch (Exception ex)
             {
-                textBoxNewPass.ForeColor = Color.Crimson;
-                buttonApplyNewPassword.Image = Resources.X;
-                buttonApplyNewPassword.BaseColor1 = Color.SlateGray;
-                buttonApplyNewPassword.Enabled = false;
+                themes = new List<ProgramTheme>();
             }
 
-            textBoxNewPass.FocusedBorderColor = textBoxNewPass.ForeColor;
+            themes.Remove(themes.Find(x => x.UserID == userID));
+
+            themes.Add(new ProgramTheme(ChoosedTheme, userID) { BottomLeft = BL, BottomRight = BR, TopLeft = TL, TopRight = TR });
+            File.WriteAllText($"{Directory.GetCurrentDirectory()}\\ThemeModel\\ThemeSettings.json", "");
+            using (FileStream file = new FileStream($"{Directory.GetCurrentDirectory()}\\ThemeModel\\ThemeSettings.json", FileMode.OpenOrCreate))
+            {
+                DataContractJsonSerializer jsonSerializer = new DataContractJsonSerializer(typeof(List<ProgramTheme>));
+                jsonSerializer.WriteObject(file, themes);
+            }
+            MetroMessageBox.Show(this, "The program will be reloaded", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            Application.Restart();
         }
 
-        private void textBoxRepeatNewPass_TextChanged(object sender, EventArgs e)
+        private void colorPalette_ColorChanged(object sender, EventArgs e)
         {
-            if (textBoxRepeatNewPass.Text == textBoxNewPass.Text)
+            if (ChoosedPalette != null)
             {
-                buttonApplyNewPassword.Image = Resources.ok_48px;
-                buttonApplyNewPassword.BaseColor1 = Color.MediumSeaGreen;
-                buttonApplyNewPassword.Enabled = true;
+                ChoosedPalette.BackColor = colorPalette.SelectedColor;
             }
             else
             {
-                textBoxRepeatNewPass.ForeColor = Color.Crimson;
-                buttonApplyNewPassword.Image = Resources.X;
-                buttonApplyNewPassword.BaseColor1 = Color.SlateGray;
-                buttonApplyNewPassword.Enabled = false;
+                MetroMessageBox.Show(this, "Choose an aim for colorizing", "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
+        }
+
+        #endregion
+
+        #region DpiScaling
+
+        private void SetScaling()
+        {
+            xuiSlidingPanelPassChange.PanelWidthExpanded =
+                (int) (xuiSlidingPanelPassChange.PanelWidthExpanded * ScaleControls.Scale);
+            xuiSlidingPanelSettings.PanelWidthExpanded =
+                (int) (xuiSlidingPanelSettings.PanelWidthExpanded * ScaleControls.Scale);
+
+            xuiSlidingPanelPassChange.Controls
+                                            .OfType<GunaTextBox>()
+                                            .ToList()
+                                            .ForEach(x => x.Height = (int)(x.Height / ScaleControls.Scale));
+            xuiSlidingPanelSettings.Controls
+                                            .OfType<GunaTextBox>()
+                                            .ToList()
+                                            .ForEach(x => x.Height = (int)(x.Height / ScaleControls.Scale));
+
+            buttonHidePassword.Size = new Size((int)(buttonHidePassword.Width / ScaleControls.Scale),
+                                                (int)(buttonHidePassword.Height / ScaleControls.Scale));
+
+        }
+
+        #endregion
+
+        private void formProfile_Load(object sender, EventArgs e)
+        {
+            switchTheme.CheckedChanged += (a, b) =>
+            {
+                labelChangeTheme.ForeColor = switchTheme.Checked ? Color.Black : Color.White;
+                labelChangeTheme.Text = switchTheme.Checked ? "Dark theme" : "Light theme";
+            };
+            circlePictureBoxBL.Click += (a, b) => 
+            {
+                ChoosedPalette = circlePictureBoxBL;
+                ChangeColorPalette_labels("BL");
+            };
+            circlePictureBoxTL.Click += (a, b) => 
+            { 
+                ChoosedPalette = circlePictureBoxTL;
+                ChangeColorPalette_labels("TL");
+            };
+            circlePictureBoxBR.Click += (a, b) => 
+            { 
+                ChoosedPalette = circlePictureBoxBR;
+                ChangeColorPalette_labels("BR");
+            };
+            circlePictureBoxTR.Click += (a, b) => 
+            { 
+                ChoosedPalette = circlePictureBoxTR;
+                ChangeColorPalette_labels("TR");
+            };
         }
 
     }

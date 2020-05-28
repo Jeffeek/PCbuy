@@ -88,7 +88,7 @@
             this.linkLabelCHANGEprofilePIC.BackColor = System.Drawing.Color.Black;
             this.linkLabelCHANGEprofilePIC.Cursor = System.Windows.Forms.Cursors.Hand;
             this.linkLabelCHANGEprofilePIC.ForeColor = System.Drawing.Color.Gray;
-            this.linkLabelCHANGEprofilePIC.Location = new System.Drawing.Point(119, 138);
+            this.linkLabelCHANGEprofilePIC.Location = new System.Drawing.Point(120, 138);
             this.linkLabelCHANGEprofilePIC.Name = "linkLabelCHANGEprofilePIC";
             this.linkLabelCHANGEprofilePIC.Size = new System.Drawing.Size(104, 17);
             this.linkLabelCHANGEprofilePIC.TabIndex = 17;
@@ -138,7 +138,6 @@
             this.bunifuImageButtonEXIT.TabIndex = 21;
             this.bunifuImageButtonEXIT.TabStop = false;
             this.bunifuImageButtonEXIT.Zoom = 10;
-            this.bunifuImageButtonEXIT.Click += new System.EventHandler(this.bunifuImageButtonEXIT_Click);
             // 
             // bunifuMaterialTextboxEMAIL
             // 
@@ -146,7 +145,7 @@
             this.bunifuMaterialTextboxEMAIL.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.bunifuMaterialTextboxEMAIL.Cursor = System.Windows.Forms.Cursors.IBeam;
             this.bunifuMaterialTextboxEMAIL.Font = new System.Drawing.Font("Century Gothic", 9.75F);
-            this.bunifuMaterialTextboxEMAIL.ForeColor = System.Drawing.Color.Aqua;
+            this.bunifuMaterialTextboxEMAIL.ForeColor = System.Drawing.Color.Black;
             this.bunifuMaterialTextboxEMAIL.HintForeColor = System.Drawing.Color.Empty;
             this.bunifuMaterialTextboxEMAIL.HintText = "";
             this.bunifuMaterialTextboxEMAIL.isPassword = false;
@@ -167,7 +166,7 @@
             this.bunifuMaterialTextboxPASS.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.bunifuMaterialTextboxPASS.Cursor = System.Windows.Forms.Cursors.IBeam;
             this.bunifuMaterialTextboxPASS.Font = new System.Drawing.Font("Century Gothic", 9.75F);
-            this.bunifuMaterialTextboxPASS.ForeColor = System.Drawing.Color.Aqua;
+            this.bunifuMaterialTextboxPASS.ForeColor = System.Drawing.Color.Black;
             this.bunifuMaterialTextboxPASS.HintForeColor = System.Drawing.Color.Empty;
             this.bunifuMaterialTextboxPASS.HintText = "";
             this.bunifuMaterialTextboxPASS.isPassword = true;
@@ -264,13 +263,16 @@
             // 
             // labelChangeTheme
             // 
+            this.labelChangeTheme.AutoEllipsis = true;
             this.labelChangeTheme.AutoSize = true;
-            this.labelChangeTheme.BackColor = System.Drawing.Color.Transparent;
-            this.labelChangeTheme.Font = new System.Drawing.Font("Segoe UI", 9F);
+            this.labelChangeTheme.BackColor = System.Drawing.Color.Plum;
+            this.labelChangeTheme.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.labelChangeTheme.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.labelChangeTheme.Font = new System.Drawing.Font("Unispace", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.labelChangeTheme.ForeColor = System.Drawing.Color.Black;
             this.labelChangeTheme.Location = new System.Drawing.Point(103, 6);
             this.labelChangeTheme.Name = "labelChangeTheme";
-            this.labelChangeTheme.Size = new System.Drawing.Size(68, 15);
+            this.labelChangeTheme.Size = new System.Drawing.Size(79, 16);
             this.labelChangeTheme.TabIndex = 34;
             this.labelChangeTheme.Text = "Dark theme";
             // 
@@ -532,10 +534,10 @@
             // xuiSlidingPanelPassChange
             // 
             this.xuiSlidingPanelPassChange.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.xuiSlidingPanelPassChange.BottomLeft = System.Drawing.Color.Aquamarine;
-            this.xuiSlidingPanelPassChange.BottomRight = System.Drawing.Color.Azure;
+            this.xuiSlidingPanelPassChange.BottomLeft = System.Drawing.Color.Silver;
+            this.xuiSlidingPanelPassChange.BottomRight = System.Drawing.Color.Silver;
             this.xuiSlidingPanelPassChange.CollapseControl = this.linkLabelCHANGEpass;
-            this.xuiSlidingPanelPassChange.Collapsed = false;
+            this.xuiSlidingPanelPassChange.Collapsed = true;
             this.xuiSlidingPanelPassChange.Controls.Add(this.buttonHidePassword);
             this.xuiSlidingPanelPassChange.Controls.Add(this.labelRepeatPass);
             this.xuiSlidingPanelPassChange.Controls.Add(this.labelNewPass);
@@ -543,12 +545,12 @@
             this.xuiSlidingPanelPassChange.Controls.Add(this.textBoxRepeatNewPass);
             this.xuiSlidingPanelPassChange.Controls.Add(this.textBoxNewPass);
             this.xuiSlidingPanelPassChange.HideControls = false;
-            this.xuiSlidingPanelPassChange.Location = new System.Drawing.Point(1, 162);
+            this.xuiSlidingPanelPassChange.Location = new System.Drawing.Point(0, 162);
             this.xuiSlidingPanelPassChange.Name = "xuiSlidingPanelPassChange";
             this.xuiSlidingPanelPassChange.PanelWidthCollapsed = 0;
             this.xuiSlidingPanelPassChange.PanelWidthExpanded = 265;
             this.xuiSlidingPanelPassChange.PrimerColor = System.Drawing.Color.White;
-            this.xuiSlidingPanelPassChange.Size = new System.Drawing.Size(265, 100);
+            this.xuiSlidingPanelPassChange.Size = new System.Drawing.Size(0, 100);
             this.xuiSlidingPanelPassChange.Style = XanderUI.XUIGradientPanel.GradientStyle.Corners;
             this.xuiSlidingPanelPassChange.TabIndex = 37;
             this.xuiSlidingPanelPassChange.TopLeft = System.Drawing.Color.DarkSlateGray;
@@ -557,7 +559,7 @@
             // buttonHidePassword
             // 
             this.buttonHidePassword.BackColor = System.Drawing.Color.Transparent;
-            this.buttonHidePassword.Image = global::TRPO_Project.Properties.Resources.eye_hide;
+            this.buttonHidePassword.Image = global::TRPO_Project.Properties.Resources.eye_show;
             this.buttonHidePassword.ImageActive = null;
             this.buttonHidePassword.Location = new System.Drawing.Point(167, 21);
             this.buttonHidePassword.Name = "buttonHidePassword";
@@ -573,6 +575,7 @@
             this.labelRepeatPass.AutoSize = true;
             this.labelRepeatPass.BackColor = System.Drawing.Color.Transparent;
             this.labelRepeatPass.Font = new System.Drawing.Font("Unispace", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelRepeatPass.ForeColor = System.Drawing.Color.Black;
             this.labelRepeatPass.Location = new System.Drawing.Point(14, 52);
             this.labelRepeatPass.Name = "labelRepeatPass";
             this.labelRepeatPass.Size = new System.Drawing.Size(140, 14);
@@ -583,8 +586,10 @@
             // 
             this.labelNewPass.AutoSize = true;
             this.labelNewPass.BackColor = System.Drawing.Color.Transparent;
+            this.labelNewPass.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.labelNewPass.Font = new System.Drawing.Font("Unispace", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelNewPass.Location = new System.Drawing.Point(37, 3);
+            this.labelNewPass.ForeColor = System.Drawing.Color.Black;
+            this.labelNewPass.Location = new System.Drawing.Point(40, 3);
             this.labelNewPass.Name = "labelNewPass";
             this.labelNewPass.Size = new System.Drawing.Size(91, 14);
             this.labelNewPass.TabIndex = 11;
@@ -619,16 +624,18 @@
             this.buttonApplyNewPassword.OnPressedDepth = 50;
             this.buttonApplyNewPassword.Size = new System.Drawing.Size(65, 65);
             this.buttonApplyNewPassword.TabIndex = 10;
+            this.buttonApplyNewPassword.Click += new System.EventHandler(this.buttonApplyNewPassword_Click);
             // 
             // textBoxRepeatNewPass
             // 
             this.textBoxRepeatNewPass.BackColor = System.Drawing.Color.Transparent;
             this.textBoxRepeatNewPass.BaseColor = System.Drawing.Color.White;
-            this.textBoxRepeatNewPass.BorderColor = System.Drawing.Color.Silver;
+            this.textBoxRepeatNewPass.BorderColor = System.Drawing.Color.Black;
+            this.textBoxRepeatNewPass.BorderSize = 1;
             this.textBoxRepeatNewPass.Cursor = System.Windows.Forms.Cursors.IBeam;
             this.textBoxRepeatNewPass.FocusedBaseColor = System.Drawing.Color.White;
             this.textBoxRepeatNewPass.FocusedBorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(100)))), ((int)(((byte)(88)))), ((int)(((byte)(255)))));
-            this.textBoxRepeatNewPass.FocusedForeColor = System.Drawing.Color.LightGray;
+            this.textBoxRepeatNewPass.FocusedForeColor = System.Drawing.Color.Black;
             this.textBoxRepeatNewPass.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.textBoxRepeatNewPass.Location = new System.Drawing.Point(4, 69);
             this.textBoxRepeatNewPass.Name = "textBoxRepeatNewPass";
@@ -643,19 +650,19 @@
             // 
             this.textBoxNewPass.BackColor = System.Drawing.Color.Transparent;
             this.textBoxNewPass.BaseColor = System.Drawing.Color.White;
-            this.textBoxNewPass.BorderColor = System.Drawing.Color.Silver;
+            this.textBoxNewPass.BorderColor = System.Drawing.Color.Black;
+            this.textBoxNewPass.BorderSize = 1;
             this.textBoxNewPass.Cursor = System.Windows.Forms.Cursors.IBeam;
             this.textBoxNewPass.FocusedBaseColor = System.Drawing.Color.White;
             this.textBoxNewPass.FocusedBorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(100)))), ((int)(((byte)(88)))), ((int)(((byte)(255)))));
-            this.textBoxNewPass.FocusedForeColor = System.Drawing.Color.LightGray;
+            this.textBoxNewPass.FocusedForeColor = System.Drawing.Color.Black;
             this.textBoxNewPass.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.textBoxNewPass.Location = new System.Drawing.Point(4, 18);
             this.textBoxNewPass.Name = "textBoxNewPass";
-            this.textBoxNewPass.PasswordChar = '●';
+            this.textBoxNewPass.PasswordChar = '\0';
             this.textBoxNewPass.Radius = 10;
             this.textBoxNewPass.Size = new System.Drawing.Size(160, 26);
             this.textBoxNewPass.TabIndex = 8;
-            this.textBoxNewPass.UseSystemPasswordChar = true;
             this.textBoxNewPass.TextChanged += new System.EventHandler(this.textBoxNewPass_TextChanged);
             // 
             // formProfile

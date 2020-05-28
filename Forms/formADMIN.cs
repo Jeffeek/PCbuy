@@ -180,6 +180,7 @@ namespace TRPO_Project
             ProgressBar.percentage = 0;
             ProgressBar.Enabled = true;
             int Final = 100 / Listed.Count;
+            int DeltaY = (int)(230 * ScaleControls.Scale);
             foreach (var pc in Listed)
             {
                 int P = 0;
@@ -193,7 +194,7 @@ namespace TRPO_Project
                 PCinfo OBJ = new PCinfo(pc.TYPE, pc.ID, pc.CPU, pc.GPU, pc.RAM, pc.COST, pc.IMG) {isAdmin = true};
                 OBJects.Add(OBJ);
                 OBJ.Location = new Point(0, Y);
-                Y += 230;
+                Y += DeltaY;
                 OBJ.BackColor = Theme == MetroThemeStyle.Dark ? Color.FromArgb(17, 17, 17) : Color.White;
                 OBJ.Anchor = AnchorStyles.Top;
                 this.Controls.Add(OBJ);
