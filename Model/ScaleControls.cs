@@ -8,15 +8,15 @@ namespace TRPO_Project
         public static double Scale = 1f;
 
         [DllImport("user32.dll")]
-        private static extern int GetDpiForWindows(IntPtr hWnd);
+        static extern int GetDpiForWindow(IntPtr hWnd);
 
         public static void SetScalingFactor(IntPtr windowHandle)
         {
             try
             {
-                Scale = GetDpiForWindows(windowHandle) / 96f;
+                Scale = GetDpiForWindow(windowHandle) / 96f;
             }
-            catch
+            catch(Exception ex)
             {
                 Scale = 1f;
             }
