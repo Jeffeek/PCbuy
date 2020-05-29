@@ -16,7 +16,7 @@ namespace TRPO_Project
             {
                 Scale = GetDpiForWindow(windowHandle) / 96f;
             }
-            catch(Exception ex)
+            catch
             {
                 Scale = 1f;
             }

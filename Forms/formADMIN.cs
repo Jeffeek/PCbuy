@@ -147,9 +147,9 @@ namespace TRPO_Project
                 ToDisplay = ToDisplay.Where(x => x.GPU == metroComboBoxGPUsort.Text).ToList();
             }
 
-            if (metroComboBoxRAM.Text.Trim(' ', 'G', 'B') != "<не выбрано>")
+            if (metroComboBoxRAM.Text != "<не выбрано>")
             {
-                ToDisplay = ToDisplay.Where(x => x.RAM == Convert.ToInt32(metroComboBoxRAM.Text.Trim(' ', 'G', 'B'))).ToList();
+                ToDisplay = ToDisplay.Where(x => x.RAM == int.Parse(metroComboBoxRAM.Text.Replace(" GB", ""))).ToList();
             }
 
             if (ToDisplay.Count == 0)
@@ -175,26 +175,26 @@ namespace TRPO_Project
                 OBJects.Clear();
             }
 
-            var Y = 88;
+            var Y = (int)(88*ScaleControls.Scale);
             this.Refresh();
             ProgressBar.percentage = 0;
             ProgressBar.Enabled = true;
-            int Final = 100 / Listed.Count;
-            int DeltaY = (int)(230 * ScaleControls.Scale);
+            int oneElementPercentage = 100 / Listed.Count;
+            int deltaY = (int)(230 * ScaleControls.Scale);
             foreach (var pc in Listed)
             {
-                int P = 0;
-                await Task.Delay(30).ConfigureAwait(true);
-                while (P != Final)
+                int _percentage = 0;
+                await Task.Delay(30);
+                while (_percentage != oneElementPercentage)
                 {
                     ProgressBar.Percentage++;
-                    P++;
+                    _percentage++;
                 }
 
                 PCinfo OBJ = new PCinfo(pc.TYPE, pc.ID, pc.CPU, pc.GPU, pc.RAM, pc.COST, pc.IMG) {isAdmin = true};
                 OBJects.Add(OBJ);
                 OBJ.Location = new Point(0, Y);
-                Y += DeltaY;
+                Y += deltaY;
                 OBJ.BackColor = Theme == MetroThemeStyle.Dark ? Color.FromArgb(17, 17, 17) : Color.White;
                 OBJ.Anchor = AnchorStyles.Top;
                 this.Controls.Add(OBJ);
@@ -295,86 +295,6 @@ namespace TRPO_Project
                         metroComboBoxRAM.Items.Add(Convert.ToString(reader.GetInt32(0)) + " GB");
                     }
                 }
-            }
-        }
-
-        private void metroComboBoxTYPEofPC_Enter(object sender, EventArgs e)
-        {
-            metroComboBoxTYPEofPC.Text = "";
-            metroComboBoxTYPEofPC.ForeColor = Color.Black;
-        }
-
-        private void metroComboBoxTYPEofPC_Leave(object sender, EventArgs e)
-        {
-            if (metroComboBoxTYPEofPC.SelectedIndex < 0)
-            {
-                metroComboBoxTYPEofPC.Text = "TYPEofPC";
-                metroComboBoxTYPEofPC.ForeColor = Color.Black;
-            }
-            else
-            {
-                metroComboBoxTYPEofPC.Text = metroComboBoxTYPEofPC.SelectedItem.ToString();
-                metroComboBoxTYPEofPC.ForeColor = Color.Gray;
-            }
-        }
-
-        private void metroComboBoxCPUsort_Enter(object sender, EventArgs e)
-        {
-            metroComboBoxCPUsort.Text = "";
-            metroComboBoxCPUsort.ForeColor = Color.Black;
-        }
-
-        private void metroComboBoxCPUsort_Leave(object sender, EventArgs e)
-        {
-            if (metroComboBoxCPUsort.SelectedIndex < 0)
-            {
-                metroComboBoxCPUsort.Text = "CPU";
-                metroComboBoxCPUsort.ForeColor = Color.Black;
-            }
-            else
-            {
-                metroComboBoxCPUsort.Text = metroComboBoxCPUsort.SelectedItem.ToString();
-                metroComboBoxCPUsort.ForeColor = Color.Gray;
-            }
-        }
-
-        private void metroComboBoxGPUsort_Enter(object sender, EventArgs e)
-        {
-            metroComboBoxGPUsort.Text = "";
-            metroComboBoxGPUsort.ForeColor = Color.Black;
-        }
-
-        private void metroComboBoxGPUsort_Leave(object sender, EventArgs e)
-        {
-            if (metroComboBoxGPUsort.SelectedIndex < 0)
-            {
-                metroComboBoxGPUsort.Text = "GPU";
-                metroComboBoxGPUsort.ForeColor = Color.Black;
-            }
-            else
-            {
-                metroComboBoxGPUsort.Text = metroComboBoxGPUsort.SelectedItem.ToString();
-                metroComboBoxGPUsort.ForeColor = Color.Gray;
-            }
-        }
-
-        private void metroComboBoxRAM_Enter(object sender, EventArgs e)
-        {
-            metroComboBoxRAM.Text = "";
-            metroComboBoxRAM.ForeColor = Color.Black;
-        }
-
-        private void metroComboBoxRAM_Leave(object sender, EventArgs e)
-        {
-            if (metroComboBoxRAM.SelectedIndex < 0)
-            {
-                metroComboBoxRAM.Text = "RAM";
-                metroComboBoxRAM.ForeColor = Color.Black;
-            }
-            else
-            {
-                metroComboBoxRAM.Text = metroComboBoxRAM.SelectedItem.ToString();
-                metroComboBoxRAM.ForeColor = Color.Gray;
             }
         }
 
@@ -491,6 +411,5 @@ namespace TRPO_Project
         }
 
         #endregion
-
     }
 }

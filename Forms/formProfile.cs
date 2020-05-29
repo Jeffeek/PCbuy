@@ -46,6 +46,7 @@ namespace TRPO_Project
         public formProfile(formADMIN formF, int ID)
         {
             InitializeComponent();
+            SetScaling();
             userID = ID;
             ReadThemeAsync();
             userA = formF;
@@ -530,5 +531,9 @@ namespace TRPO_Project
             };
         }
 
+        private void bunifuImageButtonEXIT_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        }
     }
 }

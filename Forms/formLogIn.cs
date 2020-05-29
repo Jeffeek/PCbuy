@@ -31,8 +31,8 @@ namespace TRPO_Project
         #region constructor
         public FormLogIn()
         {
-            InitializeComponent();
             ScaleControls.SetScalingFactor(this.Handle);
+            InitializeComponent();
             SetScaling();
             FormStartTransition.ShowAsyc(this);
             //TODO: убери автолог
