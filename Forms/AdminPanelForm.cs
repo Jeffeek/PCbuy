@@ -86,11 +86,7 @@ namespace TRPO_Project
                 {
                     sql_cmd.ExecuteNonQuery();
                 }
-                using (FileStream FS = new FileStream(openFileDialogADDproduct.FileName, FileMode.Open))
-                {
-                    bunifuImageButtonNEWpic.Image = Image.FromStream(FS);
-                }
-                File.Copy(openFileDialogADDproduct.FileName, $@"PCsIMAGES\id{LASTid}.png");
+                File.Copy(openFileDialogADDproduct.FileName, $@"{Directory.GetCurrentDirectory()}\PCsIMAGES\id{LASTid}.png");
                 FillPcDataGrid();
                 comboBoxSELECT_id_product.AddItem(Convert.ToString(LASTid));
             }
@@ -142,11 +138,6 @@ namespace TRPO_Project
                     }
                 }
             }
-            else
-            {
-                File.Replace(openFileDialogCHANGE_PIC.FileName, (string)bunifuCustomDataGridVIEWinfoAboutONEprod[6, 0].Value, openFileDialogCHANGE_PIC.FileName + ".JOPA");
-                File.Delete(openFileDialogCHANGE_PIC.FileName + ".JOPA");
-            }
             gunaLineTextBoxNEWvalue.Text = string.Empty;
             comboBoxSELECT_id_product_onItemSelected(null, null);
             MetroMessageBox.Show(this, "INFORMATION WAS CHANGED", "SUCCESS", MessageBoxButtons.OK, MessageBoxIcon.Information);
@@ -160,7 +151,11 @@ namespace TRPO_Project
                 using (FileStream FS = new FileStream(openFileDialogCHANGE_PIC.FileName, FileMode.OpenOrCreate))
                 {
                     bunifuImageButtonNEWpcIMG.Image = Image.FromStream(FS);
+                    File.Delete($"{Directory.GetCurrentDirectory()}\\{bunifuCustomDataGridVIEWinfoAboutONEprod[6, 0].Value}");
+                    File.Copy(FS.Name, $"{Directory.GetCurrentDirectory()}\\{bunifuCustomDataGridVIEWinfoAboutONEprod[6, 0].Value}");
+                    gunaCirclePictureBoxPC_ONE.Image = Image.FromStream(FS);
                 }
+                MetroMessageBox.Show(this, "IMAGE WAS CHANGED", "SUCCESS", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
         }
 
@@ -284,6 +279,7 @@ namespace TRPO_Project
                 gunaLineTextBoxNEWvalue.Visible = false;
                 bunifuImageButtonNEWpcIMG.Visible = true;
                 gunaLabelNEWpcPIC.Visible = true;
+                bunifuImageButtonAPPLYchanges.Visible = false;
                 using (FileStream FS = new FileStream(Convert.ToString(bunifuCustomDataGridVIEWinfoAboutONEprod[6, 0].Value), FileMode.OpenOrCreate))
                 {
                     bunifuImageButtonNEWpcIMG.Image = Image.FromStream(FS);
@@ -295,6 +291,7 @@ namespace TRPO_Project
                 gunaLineTextBoxNEWvalue.Visible = true;
                 bunifuImageButtonNEWpcIMG.Visible = false;
                 gunaLabelNEWpcPIC.Visible = false;
+                bunifuImageButtonAPPLYchanges.Visible = true;
             }
         }
 
@@ -405,7 +402,7 @@ namespace TRPO_Project
         }
         private void rEFRESHToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            using (sql_con = new SQLiteConnection("Data Source=TRPO.db"))
+            using (sql_con = new SQLiteConnection($"Data Source={Directory.GetCurrentDirectory()}\\DataBases\\TRPO.db"))
             {
                 sql_con.Open();
                 FillPcDataGrid();
@@ -496,6 +493,5 @@ namespace TRPO_Project
         }
 
         #endregion
-
     }
 }

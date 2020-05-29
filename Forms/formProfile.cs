@@ -19,8 +19,7 @@ namespace TRPO_Project
         #region variables
 
         private int userID;
-        private formUSER userU;
-        private formADMIN userA;
+        private MetroForm mainForm;
         private SQLiteConnection sql_con; // connection
         private SQLiteCommand sql_cmd;
         private bool isADMIN;
@@ -34,9 +33,9 @@ namespace TRPO_Project
         {
             InitializeComponent();
             SetScaling();
+            mainForm = formF;
             userID = ID;
             ReadThemeAsync();
-            userU = formF;
             isADMIN = false;
             bunifuMaterialTextboxEMAIL.Text = takeAlogin();
             bunifuMaterialTextboxPASS.Text = takeApassword();          
@@ -47,9 +46,9 @@ namespace TRPO_Project
         {
             InitializeComponent();
             SetScaling();
+            mainForm = formF;
             userID = ID;
             ReadThemeAsync();
-            userA = formF;
             isADMIN = true;
             linkLabelDELETEprofile.Visible = false;
             bunifuMaterialTextboxEMAIL.Text = takeAlogin();
@@ -105,15 +104,16 @@ namespace TRPO_Project
         #region Link&PicClicked
         private void pictureBoxCHANGEpassVisibility_Click(object sender, EventArgs e)
         {
+            bunifuMaterialTextboxPASS.Focus();
             if (bunifuMaterialTextboxPASS.isPassword)
-            {
-                pictureBoxCHANGEpassVisibility.Image = Resources.eye_hide;
-                bunifuMaterialTextboxPASS.isPassword = true;
-            }
-            else
             {
                 pictureBoxCHANGEpassVisibility.Image = Resources.eye_show;
                 bunifuMaterialTextboxPASS.isPassword = false;
+            }
+            else
+            {
+                pictureBoxCHANGEpassVisibility.Image = Resources.eye_hide;
+                bunifuMaterialTextboxPASS.isPassword = true;
             }
         }
 
@@ -131,13 +131,13 @@ namespace TRPO_Project
                     {
                         File.Delete($@"{Directory.GetCurrentDirectory()}\USERsPIC\id{userID}_USER.png");
                         File.Copy(fileName, $@"{Directory.GetCurrentDirectory()}\USERsPIC\id{userID}_USER.png");
-                        userU.SetNewProfilePicture(IMG);
+                        ((formUSER)mainForm).SetNewProfilePicture(IMG);
                     }
                     else
                     {
                         File.Delete($@"{Directory.GetCurrentDirectory()}\USERsPIC\id{userID}_ADMIN.png");
                         File.Copy(fileName, $@"{Directory.GetCurrentDirectory()}\USERsPIC\id{userID}_ADMIN.png");
-                        userA.SetNewProfilePicture(IMG);
+                        ((formADMIN)mainForm).SetNewProfilePicture(IMG);
                     }
                 }
             }
@@ -305,6 +305,8 @@ namespace TRPO_Project
 
                     bunifuMaterialTextboxPASS.Text = textBoxNewPass.Text;
                     xuiSlidingPanelPassChange.Collapsed = true;
+                    imageButtonSettings.Enabled = true;
+                    pictureBoxCHANGEpassVisibility.Enabled = true;
                 }
             }
 
@@ -346,8 +348,6 @@ namespace TRPO_Project
             pictureBoxPROFILE.BackColor = OBJ.Theme == ETheme.Dark ? Color.DimGray : Color.WhiteSmoke;
             labelChangeTheme.ForeColor = OBJ.Theme == ETheme.Dark ? Color.Black : Color.White;
             labelChangeTheme.Text = OBJ.Theme == ETheme.Dark ? "Dark theme" : "Light theme";
-            bunifuMaterialTextboxEMAIL.BackColor = OBJ.Theme == ETheme.Dark ? Color.White : Color.FromArgb(17, 17, 17);
-            bunifuMaterialTextboxPASS.BackColor = OBJ.Theme == ETheme.Dark ? Color.White : Color.FromArgb(17, 17, 17);
             circlePictureBoxBL.BackColor = OBJ.BottomLeft;
             circlePictureBoxTL.BackColor = OBJ.TopLeft;
             circlePictureBoxBR.BackColor = OBJ.BottomRight;
@@ -502,6 +502,8 @@ namespace TRPO_Project
 
         #endregion
 
+        #region Load&Quit
+
         private void formProfile_Load(object sender, EventArgs e)
         {
             switchTheme.CheckedChanged += (a, b) =>
@@ -535,5 +537,15 @@ namespace TRPO_Project
         {
             this.Close();
         }
+
+        #endregion
+
+        #region TextBoxes(readonlySettings)
+
+        private void bunifuMaterialTextboxPASS_KeyPress(object sender, KeyPressEventArgs e) => e.Handled = true;
+
+        private void bunifuMaterialTextboxEMAIL_KeyPress(object sender, KeyPressEventArgs e) => e.Handled = true;
+
+        #endregion
     }
 }

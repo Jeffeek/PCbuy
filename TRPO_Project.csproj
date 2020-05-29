@@ -321,9 +321,7 @@
     <Content Include="PCsIMAGES\id16.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Content Include="PCsIMAGES\id17.png">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
+    <Content Include="PCsIMAGES\id17.png" />
     <Content Include="PCsIMAGES\id2.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
