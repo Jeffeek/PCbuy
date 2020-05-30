@@ -22,17 +22,74 @@ namespace TRPO_Project
 {
     public partial class formADMIN : MetroForm, IThemeChange
     {
+        //TODO: сделать документацию по использованию на главной и на админ-форме
         #region variables&collections
 
         private SQLiteConnection sql_con; // connection
         private SQLiteCommand sql_cmd;
         private List<PCinfo> OBJects = new List<PCinfo>(); // объекты главной формы
-        private List<PC> AllPCList = new List<PC>();
+        private static List<PC> AllPCList = new List<PC>();
         public static List<PCinfo> BINid = new List<PCinfo>(); //лист корзины юзера
         private int userID;
         private Point lastPoint;
 
         #endregion
+
+        public static void ChangeInfoList(int PC_id, EPCChange actionChange, object NewValue)
+        {
+            switch (actionChange)
+            {
+                case EPCChange.Add:
+                {
+                    AllPCList.Add(NewValue as PC);
+                    break;
+                }
+
+                case EPCChange.Remove:
+                {
+                    AllPCList.Remove(AllPCList.Find(x => x.ID == PC_id));
+                    break;
+                }
+
+                case EPCChange.ChangeCOST:
+                {
+                    AllPCList[AllPCList.IndexOf(AllPCList.Find(x => x.ID == PC_id))].COST = Convert.ToInt32(NewValue);
+                    break;
+                }
+
+                case EPCChange.ChangeCPU:
+                {
+                    AllPCList[AllPCList.IndexOf(AllPCList.Find(x => x.ID == PC_id))].CPU = Convert.ToString(NewValue);
+                    break;
+                }
+
+                case EPCChange.ChangeGPU:
+                {
+                    AllPCList[AllPCList.IndexOf(AllPCList.Find(x => x.ID == PC_id))].GPU = Convert.ToString(NewValue);
+                    break;
+                }
+
+                case EPCChange.ChangeType:
+                {
+                    AllPCList[AllPCList.IndexOf(AllPCList.Find(x => x.ID == PC_id))].TYPE = Convert.ToString(NewValue);
+                    break;
+                }
+
+                case EPCChange.ChangeRAM:
+                {
+                    AllPCList[AllPCList.IndexOf(AllPCList.Find(x => x.ID == PC_id))].RAM = Convert.ToInt32(NewValue);
+                    break;
+                }
+
+                case EPCChange.ChangeIMG:
+                {
+                    AllPCList[AllPCList.IndexOf(AllPCList.Find(x => x.ID == PC_id))].IMG = NewValue as Image;
+                    break;
+                }
+            }
+            
+        }
+
 
         #region Constructor
 

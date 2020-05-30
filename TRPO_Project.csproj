@@ -259,6 +259,7 @@
     <Compile Include="Forms\formUSER.Designer.cs">
       <DependentUpon>formUSER.cs</DependentUpon>
     </Compile>
+    <Compile Include="Model\EPCChange.cs" />
     <Compile Include="Model\ScaleControls.cs" />
     <Compile Include="ThemeModel\IThemeChange.cs" />
     <Compile Include="Model\PC.cs" />

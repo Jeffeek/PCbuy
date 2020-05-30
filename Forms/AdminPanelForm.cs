@@ -11,6 +11,7 @@ using MetroFramework.Forms;
 using TRPO_Project.Properties;
 using System.Runtime.Serialization.Json;
 using System.Threading.Tasks;
+using Bunifu.Framework.UI;
 using MetroFramework.Controls;
 using Guna.UI.WinForms;
 
@@ -23,6 +24,7 @@ namespace TRPO_Project
         private SQLiteCommand sql_cmd;
         private SQLiteDataAdapter dataAdapter;
         private int userID;
+        private EPCChange changeType;
         int LASTid = 0;
         private Point lastPoint;
         #endregion
@@ -72,23 +74,44 @@ namespace TRPO_Project
         #endregion
 
         #region ButtonsClick
+        //успешно пройден тест
         private void bunifuImageButtonAPPLYnewPROD_Click(object sender, EventArgs e)
         {
             string NEWtypeOFpc = bunifuMetroTextboxADDprodType.Text;
             string NEWcpu = bunifuMetroTextboxADDprodCPU.Text;
             string NEWgpu = bunifuMetroTextboxADDprodGPU.Text;
-            string NEWram = bunifuMetroTextboxADDprodRAM.Text;
-            string NEWprice = bunifuMetroTextboxADDprodPRICE.Text;
+            int NEWram = Convert.ToInt32(bunifuMetroTextboxADDprodRAM.Text);
+            int NEWprice = Convert.ToInt32(bunifuMetroTextboxADDprodPRICE.Text);
             using (sql_con = new SQLiteConnection($"Data Source={Directory.GetCurrentDirectory()}\\DataBases\\TRPO.db"))
             {
                 sql_con.Open();
+                using (sql_cmd = new SQLiteCommand("SELECT MAX(id) FROM PCdb", sql_con))
+                {
+                    LASTid = int.Parse(sql_cmd.ExecuteScalar().ToString());
+                }
+                LASTid++;
                 using (sql_cmd = new SQLiteCommand($@"INSERT INTO PCdb (typeOfPC, CPU, GPU, RAM, PRICE, IMAGEpc) VALUES('{NEWtypeOFpc}', '{NEWcpu}', '{NEWgpu}', {NEWram}, {NEWprice}, 'PCsIMAGES\id{LASTid}.png')", sql_con))
                 {
                     sql_cmd.ExecuteNonQuery();
                 }
+
+                using (FileStream FS = new FileStream(openFileDialogADDproduct.FileName, FileMode.OpenOrCreate))
+                {
+                    var newPC = new PC(NEWtypeOFpc, LASTid, NEWcpu, NEWgpu, NEWram, NEWprice, Image.FromStream(FS));
+                    formADMIN.ChangeInfoList(-1, EPCChange.Add, newPC);
+                }
                 File.Copy(openFileDialogADDproduct.FileName, $@"{Directory.GetCurrentDirectory()}\PCsIMAGES\id{LASTid}.png");
                 FillPcDataGrid();
+                MetroMessageBox.Show(this, "PC was successfully added", "Success", MessageBoxButtons.OK, MessageBoxIcon.Asterisk);
                 comboBoxSELECT_id_product.AddItem(Convert.ToString(LASTid));
+                tabControlAdmin.TabPages[0].Controls
+                                                    .OfType<BunifuMaterialTextbox>()
+                                                    .ToList()
+                                                    .ForEach(x => x.Text = string.Empty);
+                bunifuImageButtonNEWpic.Image = Resources.image;
+                bunifuImageButtonAPPLYnewPROD.Image = Resources.X;
+                bunifuImageButtonAPPLYnewPROD.Enabled = false;
+                bunifuImageButtonAPPLYnewPROD.BackColor = Color.SlateGray;
             }
         }
 
@@ -99,15 +122,6 @@ namespace TRPO_Project
             var result = openFileDialogADDproduct.ShowDialog();
             if (result == DialogResult.OK && bunifuMetroTextboxADDprodCPU.Text.Length > 0 && bunifuMetroTextboxADDprodGPU.Text.Length > 0 && bunifuMetroTextboxADDprodRAM.Text.Length > 0 && bunifuMetroTextboxADDprodType.Text.Length > 0)
             {
-                using (sql_con = new SQLiteConnection($"Data Source={Directory.GetCurrentDirectory()}\\DataBases\\TRPO.db"))
-                {
-                    sql_con.Open();
-                    using (sql_cmd = new SQLiteCommand("SELECT MAX(id) FROM PCdb", sql_con))
-                    {
-                        LASTid = int.Parse(sql_cmd.ExecuteScalar().ToString());
-                        LASTid++;
-                    }
-                }
                 bunifuImageButtonAPPLYnewPROD.Enabled = true;
                 bunifuImageButtonAPPLYnewPROD.Image = Resources.ok;
                 bunifuImageButtonAPPLYnewPROD.BackColor = Color.LightGreen;
@@ -136,11 +150,22 @@ namespace TRPO_Project
                     {
                         sql_cmd.ExecuteNonQuery();
                     }
+                    formADMIN.ChangeInfoList(Convert.ToInt32(bunifuCustomDataGridVIEWinfoAboutONEprod[0, 0].Value),
+                        changeType, gunaLineTextBoxNEWvalue.Text);
                 }
+                MetroMessageBox.Show(this, "INFORMATION WAS CHANGED", "SUCCESS", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+            else
+            {
+                using (FileStream FS = new FileStream(Convert.ToString(bunifuCustomDataGridVIEWinfoAboutONEprod[0, 0].Value), FileMode.OpenOrCreate))
+                { 
+                    formADMIN.ChangeInfoList(Convert.ToInt32(bunifuCustomDataGridVIEWinfoAboutONEprod[0, 0].Value),
+                        EPCChange.ChangeIMG, Image.FromStream(FS));
+                }
+                MetroMessageBox.Show(this, "IMAGE WAS CHANGED", "SUCCESS", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
             gunaLineTextBoxNEWvalue.Text = string.Empty;
             comboBoxSELECT_id_product_onItemSelected(null, null);
-            MetroMessageBox.Show(this, "INFORMATION WAS CHANGED", "SUCCESS", MessageBoxButtons.OK, MessageBoxIcon.Information);
         }
 
         private void bunifuImageButtonNEWpcIMG_Click(object sender, EventArgs e)
@@ -155,10 +180,10 @@ namespace TRPO_Project
                     File.Copy(FS.Name, $"{Directory.GetCurrentDirectory()}\\{bunifuCustomDataGridVIEWinfoAboutONEprod[6, 0].Value}");
                     gunaCirclePictureBoxPC_ONE.Image = Image.FromStream(FS);
                 }
-                MetroMessageBox.Show(this, "IMAGE WAS CHANGED", "SUCCESS", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
         }
 
+        //проверено
         private void bunifuImageButton_DeleteProd_Click(object sender, EventArgs e)
         {
             var result = MetroMessageBox.Show(this, "DELETE?", "ARE YOU SURE THAT YOU WANT TO REMOVE THIS PRODUCT FROM DATABASE?", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
@@ -171,7 +196,8 @@ namespace TRPO_Project
                     {
                         sql_cmd.ExecuteNonQuery();
                         MetroMessageBox.Show(this, "SUCCESS!", "THE PRODUCT WAS DELETED!", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                        rEFRESHToolStripMenuItem_Click(sender, e);
+                        formADMIN.ChangeInfoList(Convert.ToInt32(comboBoxSELECT_id_product.selectedValue), EPCChange.Remove, null);
+                        rEFRESHToolStripMenuItem_Click(null, null);
                     }
                 }
             }
@@ -180,7 +206,7 @@ namespace TRPO_Project
         private void buttonShowGraphic_Click(object sender, EventArgs e)
         {
             GraphicForm graphicFORM = new GraphicForm();
-            graphicFORM.Show(this);
+            graphicFORM.ShowDialog(this);
         }
 
         private void bunifuImageButtonHIDE_Click(object sender, EventArgs e) => this.WindowState = FormWindowState.Minimized;
@@ -188,7 +214,8 @@ namespace TRPO_Project
         #endregion
 
         #region KeyPress
-        private void bunifuMetroTextboxADDprodPRICE_KeyPress(object sender, KeyPressEventArgs e)
+
+        private void bunifuMetroTextboxADDprodRAM_KeyPress_1(object sender, KeyPressEventArgs e)
         {
             if (!char.IsDigit(e.KeyChar) && !char.IsControl(e.KeyChar))
             {
@@ -196,7 +223,7 @@ namespace TRPO_Project
             }
         }
 
-        private void bunifuMetroTextboxADDprodRAM_KeyPress(object sender, KeyPressEventArgs e)
+        private void bunifuMetroTextboxADDprodPRICE_KeyPress_1(object sender, KeyPressEventArgs e)
         {
             if (!char.IsDigit(e.KeyChar) && !char.IsControl(e.KeyChar))
             {
@@ -249,6 +276,7 @@ namespace TRPO_Project
                 }
             }
         }
+
         private void comboBoxSELECT_id_product_onItemSelected(object sender, EventArgs e)
         {
             bunifuImageButton_DeleteProd.Enabled = true;
@@ -270,6 +298,7 @@ namespace TRPO_Project
                 }
             }
         }
+
         private void comboBoxCHANGEVALUE_byid_product_onItemSelected(object sender, EventArgs e)
         {
             gunaLineTextBoxNEWvalue.Enabled = true;
@@ -284,6 +313,8 @@ namespace TRPO_Project
                 {
                     bunifuImageButtonNEWpcIMG.Image = Image.FromStream(FS);
                 }
+
+                changeType = EPCChange.ChangeIMG;
             }
             else
             {
@@ -292,6 +323,39 @@ namespace TRPO_Project
                 bunifuImageButtonNEWpcIMG.Visible = false;
                 gunaLabelNEWpcPIC.Visible = false;
                 bunifuImageButtonAPPLYchanges.Visible = true;
+
+                switch (comboBoxCHANGEVALUE_byid_product.selectedValue)
+                {
+                    case "CPU":
+                    {
+                        changeType = EPCChange.ChangeCPU;
+                        break;
+                    }
+
+                    case "GPU":
+                    {
+                        changeType = EPCChange.ChangeGPU;
+                        break;
+                    }
+
+                    case "PRICE":
+                    {
+                        changeType = EPCChange.ChangeCOST;
+                        break;
+                    }
+
+                    case "TYPEofPC":
+                    {
+                        changeType = EPCChange.ChangeType;
+                        break;
+                    }
+
+                    case "RAM":
+                    {
+                        changeType = EPCChange.ChangeRAM;
+                        break;
+                    }
+                }
             }
         }
 
@@ -394,12 +458,9 @@ namespace TRPO_Project
                         comboBoxCHANGEVALUE_byid_product.selectedIndex = 5;
                         break;
                     }
-                default:
-                    {
-                        break;
-                    }
             }
         }
+
         private void rEFRESHToolStripMenuItem_Click(object sender, EventArgs e)
         {
             using (sql_con = new SQLiteConnection($"Data Source={Directory.GetCurrentDirectory()}\\DataBases\\TRPO.db"))
@@ -412,6 +473,7 @@ namespace TRPO_Project
             }
             comboBoxSELECT_id_product.selectedIndex = 0;
         }
+
         private void AdminPanelForm_Load(object sender, EventArgs e)
         {
             using (sql_con = new SQLiteConnection($"Data Source={Directory.GetCurrentDirectory()}\\DataBases\\TRPO.db"))
@@ -424,8 +486,6 @@ namespace TRPO_Project
             }
         }
         
-
-
         #region ThemeChange
         public void ChangeMetroControls(ProgramTheme OBJ)
         {
@@ -493,5 +553,7 @@ namespace TRPO_Project
         }
 
         #endregion
+
+        
     }
 }

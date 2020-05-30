@@ -180,6 +180,7 @@
             this.bunifuMetroTextboxADDprodPRICE.Size = new System.Drawing.Size(329, 44);
             this.bunifuMetroTextboxADDprodPRICE.TabIndex = 33;
             this.bunifuMetroTextboxADDprodPRICE.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
+            this.bunifuMetroTextboxADDprodPRICE.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.bunifuMetroTextboxADDprodPRICE_KeyPress_1);
             // 
             // bunifuMetroTextboxADDprodRAM
             // 
@@ -199,6 +200,7 @@
             this.bunifuMetroTextboxADDprodRAM.Size = new System.Drawing.Size(329, 44);
             this.bunifuMetroTextboxADDprodRAM.TabIndex = 32;
             this.bunifuMetroTextboxADDprodRAM.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
+            this.bunifuMetroTextboxADDprodRAM.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.bunifuMetroTextboxADDprodRAM_KeyPress_1);
             // 
             // label10
             // 
@@ -839,11 +841,11 @@
             this.tabControlAdmin.Controls.Add(this.metroTabPage2);
             this.tabControlAdmin.Controls.Add(this.metroTabPage3);
             this.tabControlAdmin.Controls.Add(this.metroTabPage4);
-            this.tabControlAdmin.Location = new System.Drawing.Point(1, 38);
+            this.tabControlAdmin.Location = new System.Drawing.Point(0, 38);
             this.tabControlAdmin.Name = "tabControlAdmin";
-            this.tabControlAdmin.SelectedIndex = 3;
+            this.tabControlAdmin.SelectedIndex = 4;
             this.tabControlAdmin.Size = new System.Drawing.Size(925, 348);
-            this.tabControlAdmin.TabIndex = 4;
+            this.tabControlAdmin.TabIndex = 0;
             this.tabControlAdmin.Theme = MetroFramework.MetroThemeStyle.Dark;
             this.tabControlAdmin.UseSelectable = true;
             // 
