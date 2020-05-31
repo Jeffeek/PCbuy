@@ -143,6 +143,16 @@ namespace TRPO_Project.Properties {
         /// <summary>
         ///   Поиск локализованного ресурса типа System.Drawing.Bitmap.
         /// </summary>
+        public static System.Drawing.Bitmap delete_64px {
+            get {
+                object obj = ResourceManager.GetObject("delete_64px", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Поиск локализованного ресурса типа System.Drawing.Bitmap.
+        /// </summary>
         public static System.Drawing.Bitmap delete_product {
             get {
                 object obj = ResourceManager.GetObject("delete_product", resourceCulture);
@@ -336,6 +346,16 @@ namespace TRPO_Project.Properties {
         public static System.Drawing.Bitmap trash {
             get {
                 object obj = ResourceManager.GetObject("trash", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Поиск локализованного ресурса типа System.Drawing.Bitmap.
+        /// </summary>
+        public static System.Drawing.Bitmap unavailable_64px {
+            get {
+                object obj = ResourceManager.GetObject("unavailable_64px", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

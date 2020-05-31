@@ -275,9 +275,11 @@
     <Compile Include="ThemeModel\ETheme.cs" />
     <None Include="Properties\ok_48px.png" />
     <Content Include="computer.ico" />
+    <None Include="delete_64px.png" />
     <Content Include="MessageOrder.html">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
+    <None Include="unavailable_64px.png" />
     <Content Include="USERsPIC\id1_Admin.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>

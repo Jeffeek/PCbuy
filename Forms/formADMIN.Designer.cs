@@ -278,8 +278,6 @@
             this.metroComboBoxCPUsort.FontSize = MetroFramework.MetroComboBoxSize.Small;
             this.metroComboBoxCPUsort.ForeColor = System.Drawing.Color.SkyBlue;
             this.metroComboBoxCPUsort.ItemHeight = 19;
-            this.metroComboBoxCPUsort.Items.AddRange(new object[] {
-            "<не выбрано>"});
             this.metroComboBoxCPUsort.Location = new System.Drawing.Point(211, 20);
             this.metroComboBoxCPUsort.Name = "metroComboBoxCPUsort";
             this.metroComboBoxCPUsort.Size = new System.Drawing.Size(105, 25);
@@ -300,8 +298,6 @@
             this.metroComboBoxTYPEofPC.ForeColor = System.Drawing.Color.Aquamarine;
             this.metroComboBoxTYPEofPC.FormattingEnabled = true;
             this.metroComboBoxTYPEofPC.ItemHeight = 19;
-            this.metroComboBoxTYPEofPC.Items.AddRange(new object[] {
-            "<не выбрано>"});
             this.metroComboBoxTYPEofPC.Location = new System.Drawing.Point(100, 20);
             this.metroComboBoxTYPEofPC.Name = "metroComboBoxTYPEofPC";
             this.metroComboBoxTYPEofPC.Size = new System.Drawing.Size(105, 25);
@@ -333,8 +329,6 @@
             this.metroComboBoxGPUsort.ForeColor = System.Drawing.Color.SkyBlue;
             this.metroComboBoxGPUsort.FormattingEnabled = true;
             this.metroComboBoxGPUsort.ItemHeight = 19;
-            this.metroComboBoxGPUsort.Items.AddRange(new object[] {
-            "<не выбрано>"});
             this.metroComboBoxGPUsort.Location = new System.Drawing.Point(322, 20);
             this.metroComboBoxGPUsort.Name = "metroComboBoxGPUsort";
             this.metroComboBoxGPUsort.Size = new System.Drawing.Size(105, 25);
@@ -356,8 +350,6 @@
             this.metroComboBoxRAM.ForeColor = System.Drawing.Color.SkyBlue;
             this.metroComboBoxRAM.FormattingEnabled = true;
             this.metroComboBoxRAM.ItemHeight = 19;
-            this.metroComboBoxRAM.Items.AddRange(new object[] {
-            "<не выбрано>"});
             this.metroComboBoxRAM.Location = new System.Drawing.Point(433, 20);
             this.metroComboBoxRAM.Name = "metroComboBoxRAM";
             this.metroComboBoxRAM.Size = new System.Drawing.Size(105, 25);

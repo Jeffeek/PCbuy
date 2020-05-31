@@ -51,22 +51,24 @@
             this.Graphic.BackColor = System.Drawing.Color.Black;
             this.Graphic.BackGroundColor = System.Drawing.Color.Black;
             this.Graphic.BelowLineColor = System.Drawing.Color.Black;
-            this.Graphic.BorderColor = System.Drawing.Color.Black;
+            this.Graphic.BorderColor = System.Drawing.Color.Transparent;
+            this.Graphic.Dock = System.Windows.Forms.DockStyle.Fill;
             this.Graphic.ForeColor = System.Drawing.Color.Black;
             this.Graphic.GraphStyle = XanderUI.XUILineGraph.Style.Curved;
             this.Graphic.GraphTitle = "XUI LineGraph";
             this.Graphic.GraphTitleColor = System.Drawing.Color.Black;
             this.Graphic.Items = ((System.Collections.Generic.List<int>)(resources.GetObject("Graphic.Items")));
             this.Graphic.LineColor = System.Drawing.Color.Orchid;
-            this.Graphic.Location = new System.Drawing.Point(0, 37);
+            this.Graphic.Location = new System.Drawing.Point(20, 60);
             this.Graphic.Name = "Graphic";
             this.Graphic.PointSize = 10;
             this.Graphic.ShowBorder = false;
             this.Graphic.ShowPoints = true;
             this.Graphic.ShowTitle = false;
-            this.Graphic.ShowVerticalLines = true;
-            this.Graphic.Size = new System.Drawing.Size(780, 415);
+            this.Graphic.ShowVerticalLines = false;
+            this.Graphic.Size = new System.Drawing.Size(741, 372);
             this.Graphic.TabIndex = 0;
+            this.Graphic.TabStop = false;
             this.Graphic.Text = "xuiLineGraph1";
             this.Graphic.TitleAlignment = System.Drawing.StringAlignment.Center;
             this.Graphic.VerticalLineColor = System.Drawing.Color.Black;
@@ -109,7 +111,7 @@
             // 
             // panelHead
             // 
-            this.panelHead.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.panelHead.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.panelHead.Location = new System.Drawing.Point(0, 5);
             this.panelHead.Name = "panelHead";
             this.panelHead.Size = new System.Drawing.Size(780, 32);

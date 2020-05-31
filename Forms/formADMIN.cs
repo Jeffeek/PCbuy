@@ -17,6 +17,7 @@ using MetroFramework.Components;
 using System.Threading;
 using TRPO_Project.Properties;
 using System.Runtime.Serialization.Json;
+using MetroFramework.Controls;
 
 namespace TRPO_Project
 {
@@ -34,6 +35,8 @@ namespace TRPO_Project
         private Point lastPoint;
 
         #endregion
+
+        #region ChangeInfoInPCList
 
         public static void ChangeInfoList(int PC_id, EPCChange actionChange, object NewValue)
         {
@@ -53,43 +56,44 @@ namespace TRPO_Project
 
                 case EPCChange.ChangeCOST:
                 {
-                    AllPCList[AllPCList.IndexOf(AllPCList.Find(x => x.ID == PC_id))].COST = Convert.ToInt32(NewValue);
+                    AllPCList.Find(x => x.ID == PC_id).COST = Convert.ToInt32(NewValue);
                     break;
                 }
 
                 case EPCChange.ChangeCPU:
                 {
-                    AllPCList[AllPCList.IndexOf(AllPCList.Find(x => x.ID == PC_id))].CPU = Convert.ToString(NewValue);
+                    AllPCList.Find(x => x.ID == PC_id).CPU = Convert.ToString(NewValue);
                     break;
                 }
 
                 case EPCChange.ChangeGPU:
                 {
-                    AllPCList[AllPCList.IndexOf(AllPCList.Find(x => x.ID == PC_id))].GPU = Convert.ToString(NewValue);
+                    AllPCList.Find(x => x.ID == PC_id).GPU = Convert.ToString(NewValue);
                     break;
                 }
 
                 case EPCChange.ChangeType:
                 {
-                    AllPCList[AllPCList.IndexOf(AllPCList.Find(x => x.ID == PC_id))].TYPE = Convert.ToString(NewValue);
+                    AllPCList.Find(x => x.ID == PC_id).TYPE = Convert.ToString(NewValue);
                     break;
                 }
 
                 case EPCChange.ChangeRAM:
                 {
-                    AllPCList[AllPCList.IndexOf(AllPCList.Find(x => x.ID == PC_id))].RAM = Convert.ToInt32(NewValue);
+                    AllPCList.Find(x => x.ID == PC_id).RAM = Convert.ToInt32(NewValue);
                     break;
                 }
 
                 case EPCChange.ChangeIMG:
                 {
-                    AllPCList[AllPCList.IndexOf(AllPCList.Find(x => x.ID == PC_id))].IMG = NewValue as Image;
+                    AllPCList.Find(x => x.ID == PC_id).IMG = NewValue as Image;
                     break;
                 }
             }
             
         }
 
+        #endregion
 
         #region Constructor
 
@@ -97,8 +101,8 @@ namespace TRPO_Project
         {
             InitializeComponent();
             userID = id;
-            ReadThemeAsync().Wait();
             FormStartTransition.ShowAsyc(this);
+            ReadThemeAsync();
             GetInfoIntoComboBoxes();
             SetPictureProfile();
             FillPc();
@@ -191,22 +195,22 @@ namespace TRPO_Project
             var ToDisplay = new List<PC>(AllPCList.Where(x => x.COST >= priceReaderInt[0] && x.COST <= priceReaderInt[1]));
             if (metroComboBoxTYPEofPC.Text != "<не выбрано>")
             {
-                ToDisplay = ToDisplay.Where(x => x.TYPE == metroComboBoxTYPEofPC.Text).ToList();
+                ToDisplay = ToDisplay.Where(x => x.TYPE == metroComboBoxTYPEofPC.Text)?.ToList();
             }
 
             if (metroComboBoxCPUsort.Text != "<не выбрано>")
             {
-                ToDisplay = ToDisplay.Where(x => x.CPU == metroComboBoxCPUsort.Text).ToList();
+                ToDisplay = ToDisplay.Where(x => x.CPU == metroComboBoxCPUsort.Text)?.ToList();
             }
 
             if (metroComboBoxGPUsort.Text != "<не выбрано>")
             {
-                ToDisplay = ToDisplay.Where(x => x.GPU == metroComboBoxGPUsort.Text).ToList();
+                ToDisplay = ToDisplay.Where(x => x.GPU == metroComboBoxGPUsort.Text)?.ToList();
             }
 
             if (metroComboBoxRAM.Text != "<не выбрано>")
             {
-                ToDisplay = ToDisplay.Where(x => x.RAM == int.Parse(metroComboBoxRAM.Text.Replace(" GB", ""))).ToList();
+                ToDisplay = ToDisplay.Where(x => x.RAM == int.Parse(metroComboBoxRAM.Text.Replace(" GB", "")))?.ToList();
             }
 
             if (ToDisplay.Count == 0)
@@ -314,9 +318,18 @@ namespace TRPO_Project
 
         private void GetInfoIntoComboBoxes()
         {
+            metroComboBoxCPUsort.Items.Clear();
+            metroComboBoxGPUsort.Items.Clear();
+            metroComboBoxRAM.Items.Clear();
+            metroComboBoxTYPEofPC.Items.Clear();
+            metroComboBoxCPUsort.Items.Add("<не выбрано>");
+            metroComboBoxGPUsort.Items.Add("<не выбрано>");
+            metroComboBoxRAM.Items.Add("<не выбрано>");
+            metroComboBoxTYPEofPC.Items.Add("<не выбрано>");
             using (sql_con = new SQLiteConnection($"Data Source={Directory.GetCurrentDirectory()}\\DataBases\\TRPO.db"))
             {
                 sql_con.Open();
+
                 using (sql_cmd = new SQLiteCommand("SELECT DISTINCT CPU from PCdb", sql_con))
                 {
                     SQLiteDataReader reader = sql_cmd.ExecuteReader();
@@ -353,6 +366,11 @@ namespace TRPO_Project
                     }
                 }
             }
+
+            metroComboBoxCPUsort.SelectedIndex = 0;
+            metroComboBoxGPUsort.SelectedIndex = 0;
+            metroComboBoxRAM.SelectedIndex = 0;
+            metroComboBoxTYPEofPC.SelectedIndex = 0;
         }
 
         #endregion
@@ -393,6 +411,7 @@ namespace TRPO_Project
         {
             AdminPanelForm adminPanel = new AdminPanelForm(userID);
             adminPanel.ShowDialog(this);
+            GetInfoIntoComboBoxes();
         }
 
         private void button_backToLoginForm_Click(object sender, EventArgs e)
