@@ -539,7 +539,7 @@ namespace TRPO_Project
             gunaLineTextBoxNEWvalue.BackColor = OBJ.Theme == ETheme.Light ? Color.WhiteSmoke : Color.FromArgb(17, 17, 17);
         }
 
-        public async Task ReadThemeAsync()
+        public async void ReadThemeAsync()
         {
             try
             {

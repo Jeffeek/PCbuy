@@ -33,7 +33,7 @@ namespace TRPO_Project
         {
             InitializeComponent();
             this.userID = userID;
-            ReadThemeAsync().Wait();
+            ReadThemeAsync();
             FormStartTransition.ShowAsyc(this);
             IsAdmin = isAdmin;
             metroLabelID.Text += userID;
@@ -210,7 +210,7 @@ namespace TRPO_Project
             labelYourOrder.BackColor = OBJ.Theme == ETheme.Light ? Color.AliceBlue : Color.MediumVioletRed;
         }
 
-        public async Task ReadThemeAsync()
+        public async void ReadThemeAsync()
         {
             try
             {

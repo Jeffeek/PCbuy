@@ -259,6 +259,16 @@
     <Compile Include="Forms\formUSER.Designer.cs">
       <DependentUpon>formUSER.cs</DependentUpon>
     </Compile>
+    <Compile Include="Forms\HelpForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\HelpForm.Designer.cs">
+      <DependentUpon>HelpForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\HelpText\CurrentLanguage.cs" />
+    <Compile Include="Forms\HelpText\EnglishLanguage.cs" />
+    <Compile Include="Forms\HelpText\ILanguageChangable.cs" />
+    <Compile Include="Forms\HelpText\RussianLanguage.cs" />
     <Compile Include="Model\EPCChange.cs" />
     <Compile Include="Model\ScaleControls.cs" />
     <Compile Include="ThemeModel\IThemeChange.cs" />
@@ -275,11 +285,18 @@
     <Compile Include="ThemeModel\ETheme.cs" />
     <None Include="Properties\ok_48px.png" />
     <Content Include="computer.ico" />
-    <None Include="delete_64px.png" />
+    <None Include="help_64px.png" />
     <Content Include="MessageOrder.html">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <None Include="unavailable_64px.png" />
+    <None Include="Resources\Main1.png" />
+    <None Include="Resources\Main2.png" />
+    <None Include="Resources\Profile1.png" />
+    <None Include="Resources\profile2.png" />
+    <None Include="Resources\profile3.png" />
+    <None Include="Resources\basket1.png" />
+    <None Include="Resources\basket2.png" />
+    <None Include="Resources\basket3.png" />
     <Content Include="USERsPIC\id1_Admin.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
@@ -404,6 +421,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="CustomControls\PCinfo.resx">
       <DependentUpon>PCinfo.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\HelpForm.resx">
+      <DependentUpon>HelpForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>PublicResXFileCodeGenerator</Generator>

@@ -17,6 +17,7 @@ using MetroFramework.Components;
 using System.Threading;
 using TRPO_Project.Properties;
 using System.Runtime.Serialization.Json;
+using Guna.UI.WinForms;
 using MetroFramework.Controls;
 
 namespace TRPO_Project
@@ -456,10 +457,11 @@ namespace TRPO_Project
             groupBoxHEAD.GradientBottomRight = OBJ.BottomRight;
             groupBoxHEAD.GradientTopLeft = OBJ.TopLeft;
             groupBoxHEAD.GradientTopRight = OBJ.TopRight;
+            groupBoxHEAD.Controls.OfType<Label>().Select(x => x.ForeColor = OBJ.FontColor).ToList();
             groupBoxHEAD.Refresh();
         }
 
-        public async Task ReadThemeAsync()
+        public async void ReadThemeAsync()
         {
             try
             {
@@ -487,5 +489,11 @@ namespace TRPO_Project
         }
 
         #endregion
+
+        private void buttonHelp_Click(object sender, EventArgs e)
+        {
+            HelpForm helpForm = new HelpForm(this.Theme);
+            helpForm.Show(this);
+        }
     }
 }

@@ -31,9 +31,6 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(formProfile));
             this.openFileDialogchangeAprofilePIC = new System.Windows.Forms.OpenFileDialog();
             this.linkLabelCHANGEprofilePIC = new MetroFramework.Controls.MetroLink();
-            this.pictureBoxPROFILE = new System.Windows.Forms.PictureBox();
-            this.pictureBoxCHANGEpassVisibility = new Bunifu.Framework.UI.BunifuImageButton();
-            this.bunifuImageButtonEXIT = new Bunifu.Framework.UI.BunifuImageButton();
             this.bunifuMaterialTextboxEMAIL = new Bunifu.Framework.UI.BunifuMaterialTextbox();
             this.bunifuMaterialTextboxPASS = new Bunifu.Framework.UI.BunifuMaterialTextbox();
             this.linkLabelCHANGEpass = new MetroFramework.Controls.MetroLink();
@@ -44,13 +41,9 @@
             this.panelHead = new System.Windows.Forms.Panel();
             this.labelChangeTheme = new Guna.UI.WinForms.GunaLabel();
             this.switchTheme = new Guna.UI.WinForms.GunaWinSwitch();
-            this.imageButtonSettings = new Bunifu.Framework.UI.BunifuImageButton();
             this.xuiSlidingPanelSettings = new XanderUI.XUISlidingPanel();
+            this.labelFontColor = new Guna.UI.WinForms.GunaLinkLabel();
             this.gunaTileButtonApplySettings = new Guna.UI.WinForms.GunaTileButton();
-            this.circlePictureBoxTR = new Guna.UI.WinForms.GunaCirclePictureBox();
-            this.circlePictureBoxTL = new Guna.UI.WinForms.GunaCirclePictureBox();
-            this.circlePictureBoxBR = new Guna.UI.WinForms.GunaCirclePictureBox();
-            this.circlePictureBoxBL = new Guna.UI.WinForms.GunaCirclePictureBox();
             this.labelPaletteTR = new Guna.UI.WinForms.GunaLabel();
             this.labelPaletteTL = new Guna.UI.WinForms.GunaLabel();
             this.gunaLabel7 = new Guna.UI.WinForms.GunaLabel();
@@ -60,23 +53,33 @@
             this.colorPalette = new XanderUI.XUIColorPane();
             this.gunaLabel1 = new Guna.UI.WinForms.GunaLabel();
             this.xuiSlidingPanelPassChange = new XanderUI.XUISlidingPanel();
-            this.buttonHidePassword = new Bunifu.Framework.UI.BunifuImageButton();
             this.labelRepeatPass = new Bunifu.Framework.UI.BunifuCustomLabel();
             this.labelNewPass = new Bunifu.Framework.UI.BunifuCustomLabel();
-            this.buttonApplyNewPassword = new Guna.UI.WinForms.GunaGradientCircleButton();
             this.textBoxRepeatNewPass = new Guna.UI.WinForms.GunaTextBox();
             this.textBoxNewPass = new Guna.UI.WinForms.GunaTextBox();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxPROFILE)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxCHANGEpassVisibility)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.bunifuImageButtonEXIT)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.imageButtonSettings)).BeginInit();
+            this.fontColorDialog = new System.Windows.Forms.ColorDialog();
+            this.imageButtonSettings = new Bunifu.Framework.UI.BunifuImageButton();
+            this.buttonReloadTheme = new Guna.UI.WinForms.GunaGradientCircleButton();
+            this.circlePictureBoxTR = new Guna.UI.WinForms.GunaCirclePictureBox();
+            this.circlePictureBoxTL = new Guna.UI.WinForms.GunaCirclePictureBox();
+            this.circlePictureBoxBR = new Guna.UI.WinForms.GunaCirclePictureBox();
+            this.circlePictureBoxBL = new Guna.UI.WinForms.GunaCirclePictureBox();
+            this.buttonHidePassword = new Bunifu.Framework.UI.BunifuImageButton();
+            this.buttonApplyNewPassword = new Guna.UI.WinForms.GunaGradientCircleButton();
+            this.bunifuImageButtonEXIT = new Bunifu.Framework.UI.BunifuImageButton();
+            this.pictureBoxCHANGEpassVisibility = new Bunifu.Framework.UI.BunifuImageButton();
+            this.pictureBoxPROFILE = new System.Windows.Forms.PictureBox();
             this.xuiSlidingPanelSettings.SuspendLayout();
+            this.xuiSlidingPanelPassChange.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.imageButtonSettings)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.circlePictureBoxTR)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.circlePictureBoxTL)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.circlePictureBoxBR)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.circlePictureBoxBL)).BeginInit();
-            this.xuiSlidingPanelPassChange.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.buttonHidePassword)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.bunifuImageButtonEXIT)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxCHANGEpassVisibility)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxPROFILE)).BeginInit();
             this.SuspendLayout();
             // 
             // openFileDialogchangeAprofilePIC
@@ -98,48 +101,6 @@
             this.linkLabelCHANGEprofilePIC.UseSelectable = true;
             this.linkLabelCHANGEprofilePIC.Click += new System.EventHandler(this.linkLabelCHANGEprofilePIC_Click);
             // 
-            // pictureBoxPROFILE
-            // 
-            this.pictureBoxPROFILE.BackColor = System.Drawing.Color.DimGray;
-            this.pictureBoxPROFILE.ErrorImage = global::TRPO_Project.Properties.Resources.profile_default;
-            this.pictureBoxPROFILE.Image = ((System.Drawing.Image)(resources.GetObject("pictureBoxPROFILE.Image")));
-            this.pictureBoxPROFILE.Location = new System.Drawing.Point(94, 33);
-            this.pictureBoxPROFILE.Name = "pictureBoxPROFILE";
-            this.pictureBoxPROFILE.Size = new System.Drawing.Size(124, 122);
-            this.pictureBoxPROFILE.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.pictureBoxPROFILE.TabIndex = 7;
-            this.pictureBoxPROFILE.TabStop = false;
-            // 
-            // pictureBoxCHANGEpassVisibility
-            // 
-            this.pictureBoxCHANGEpassVisibility.BackColor = System.Drawing.Color.Transparent;
-            this.pictureBoxCHANGEpassVisibility.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.pictureBoxCHANGEpassVisibility.Image = global::TRPO_Project.Properties.Resources.eye_hide;
-            this.pictureBoxCHANGEpassVisibility.ImageActive = null;
-            this.pictureBoxCHANGEpassVisibility.Location = new System.Drawing.Point(241, 233);
-            this.pictureBoxCHANGEpassVisibility.Name = "pictureBoxCHANGEpassVisibility";
-            this.pictureBoxCHANGEpassVisibility.Size = new System.Drawing.Size(25, 20);
-            this.pictureBoxCHANGEpassVisibility.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.pictureBoxCHANGEpassVisibility.TabIndex = 22;
-            this.pictureBoxCHANGEpassVisibility.TabStop = false;
-            this.pictureBoxCHANGEpassVisibility.Zoom = 10;
-            this.pictureBoxCHANGEpassVisibility.Click += new System.EventHandler(this.pictureBoxCHANGEpassVisibility_Click);
-            // 
-            // bunifuImageButtonEXIT
-            // 
-            this.bunifuImageButtonEXIT.BackColor = System.Drawing.Color.DarkRed;
-            this.bunifuImageButtonEXIT.Image = global::TRPO_Project.Properties.Resources.X;
-            this.bunifuImageButtonEXIT.ImageActive = null;
-            this.bunifuImageButtonEXIT.InitialImage = global::TRPO_Project.Properties.Resources.X;
-            this.bunifuImageButtonEXIT.Location = new System.Drawing.Point(287, 7);
-            this.bunifuImageButtonEXIT.Name = "bunifuImageButtonEXIT";
-            this.bunifuImageButtonEXIT.Size = new System.Drawing.Size(20, 20);
-            this.bunifuImageButtonEXIT.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.bunifuImageButtonEXIT.TabIndex = 21;
-            this.bunifuImageButtonEXIT.TabStop = false;
-            this.bunifuImageButtonEXIT.Zoom = 10;
-            this.bunifuImageButtonEXIT.Click += new System.EventHandler(this.bunifuImageButtonEXIT_Click);
-            // 
             // bunifuMaterialTextboxEMAIL
             // 
             this.bunifuMaterialTextboxEMAIL.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
@@ -156,7 +117,7 @@
             this.bunifuMaterialTextboxEMAIL.LineMouseHoverColor = System.Drawing.Color.DeepSkyBlue;
             this.bunifuMaterialTextboxEMAIL.LineThickness = 3;
             this.bunifuMaterialTextboxEMAIL.Location = new System.Drawing.Point(77, 181);
-            this.bunifuMaterialTextboxEMAIL.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.bunifuMaterialTextboxEMAIL.Margin = new System.Windows.Forms.Padding(4);
             this.bunifuMaterialTextboxEMAIL.Name = "bunifuMaterialTextboxEMAIL";
             this.bunifuMaterialTextboxEMAIL.Size = new System.Drawing.Size(158, 25);
             this.bunifuMaterialTextboxEMAIL.TabIndex = 24;
@@ -179,7 +140,7 @@
             this.bunifuMaterialTextboxPASS.LineMouseHoverColor = System.Drawing.Color.DeepSkyBlue;
             this.bunifuMaterialTextboxPASS.LineThickness = 3;
             this.bunifuMaterialTextboxPASS.Location = new System.Drawing.Point(77, 231);
-            this.bunifuMaterialTextboxPASS.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.bunifuMaterialTextboxPASS.Margin = new System.Windows.Forms.Padding(4);
             this.bunifuMaterialTextboxPASS.Name = "bunifuMaterialTextboxPASS";
             this.bunifuMaterialTextboxPASS.Size = new System.Drawing.Size(158, 25);
             this.bunifuMaterialTextboxPASS.TabIndex = 25;
@@ -272,12 +233,12 @@
             // 
             this.labelChangeTheme.AutoEllipsis = true;
             this.labelChangeTheme.AutoSize = true;
-            this.labelChangeTheme.BackColor = System.Drawing.Color.Plum;
+            this.labelChangeTheme.BackColor = System.Drawing.Color.Transparent;
             this.labelChangeTheme.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.labelChangeTheme.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.labelChangeTheme.Font = new System.Drawing.Font("Unispace", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.labelChangeTheme.ForeColor = System.Drawing.Color.Black;
-            this.labelChangeTheme.Location = new System.Drawing.Point(103, 6);
+            this.labelChangeTheme.Location = new System.Drawing.Point(111, 3);
             this.labelChangeTheme.Name = "labelChangeTheme";
             this.labelChangeTheme.Size = new System.Drawing.Size(79, 16);
             this.labelChangeTheme.TabIndex = 34;
@@ -291,33 +252,21 @@
             this.switchTheme.CheckedOffColor = System.Drawing.Color.DarkGray;
             this.switchTheme.CheckedOnColor = System.Drawing.Color.SpringGreen;
             this.switchTheme.FillColor = System.Drawing.Color.White;
-            this.switchTheme.Location = new System.Drawing.Point(189, 3);
+            this.switchTheme.Location = new System.Drawing.Point(191, 0);
             this.switchTheme.Name = "switchTheme";
             this.switchTheme.Size = new System.Drawing.Size(40, 22);
             this.switchTheme.TabIndex = 33;
-            // 
-            // imageButtonSettings
-            // 
-            this.imageButtonSettings.BackColor = System.Drawing.Color.DimGray;
-            this.imageButtonSettings.Image = global::TRPO_Project.Properties.Resources.settings;
-            this.imageButtonSettings.ImageActive = null;
-            this.imageButtonSettings.Location = new System.Drawing.Point(276, 36);
-            this.imageButtonSettings.Name = "imageButtonSettings";
-            this.imageButtonSettings.Size = new System.Drawing.Size(30, 30);
-            this.imageButtonSettings.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.imageButtonSettings.TabIndex = 35;
-            this.imageButtonSettings.TabStop = false;
-            this.imageButtonSettings.Zoom = 10;
-            this.imageButtonSettings.Click += new System.EventHandler(this.imageButtonSettings_Click);
             // 
             // xuiSlidingPanelSettings
             // 
             this.xuiSlidingPanelSettings.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.xuiSlidingPanelSettings.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.xuiSlidingPanelSettings.BottomLeft = System.Drawing.Color.Black;
-            this.xuiSlidingPanelSettings.BottomRight = System.Drawing.Color.DodgerBlue;
+            this.xuiSlidingPanelSettings.BottomLeft = System.Drawing.Color.SeaGreen;
+            this.xuiSlidingPanelSettings.BottomRight = System.Drawing.Color.SteelBlue;
             this.xuiSlidingPanelSettings.CollapseControl = this.imageButtonSettings;
             this.xuiSlidingPanelSettings.Collapsed = true;
+            this.xuiSlidingPanelSettings.Controls.Add(this.buttonReloadTheme);
+            this.xuiSlidingPanelSettings.Controls.Add(this.labelFontColor);
             this.xuiSlidingPanelSettings.Controls.Add(this.gunaTileButtonApplySettings);
             this.xuiSlidingPanelSettings.Controls.Add(this.circlePictureBoxTR);
             this.xuiSlidingPanelSettings.Controls.Add(this.circlePictureBoxTL);
@@ -337,13 +286,33 @@
             this.xuiSlidingPanelSettings.Location = new System.Drawing.Point(0, 30);
             this.xuiSlidingPanelSettings.Name = "xuiSlidingPanelSettings";
             this.xuiSlidingPanelSettings.PanelWidthCollapsed = 0;
-            this.xuiSlidingPanelSettings.PanelWidthExpanded = 234;
+            this.xuiSlidingPanelSettings.PanelWidthExpanded = 240;
             this.xuiSlidingPanelSettings.PrimerColor = System.Drawing.Color.White;
             this.xuiSlidingPanelSettings.Size = new System.Drawing.Size(0, 261);
             this.xuiSlidingPanelSettings.Style = XanderUI.XUIGradientPanel.GradientStyle.Corners;
             this.xuiSlidingPanelSettings.TabIndex = 36;
             this.xuiSlidingPanelSettings.TopLeft = System.Drawing.Color.Black;
             this.xuiSlidingPanelSettings.TopRight = System.Drawing.Color.Black;
+            // 
+            // labelFontColor
+            // 
+            this.labelFontColor.ActiveLinkColor = System.Drawing.Color.Cyan;
+            this.labelFontColor.AutoEllipsis = true;
+            this.labelFontColor.AutoSize = true;
+            this.labelFontColor.BackColor = System.Drawing.Color.Transparent;
+            this.labelFontColor.DisabledLinkColor = System.Drawing.Color.MediumSlateBlue;
+            this.labelFontColor.Font = new System.Drawing.Font("Unispace", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelFontColor.ForeColor = System.Drawing.Color.Cyan;
+            this.labelFontColor.LinkBehavior = System.Windows.Forms.LinkBehavior.AlwaysUnderline;
+            this.labelFontColor.LinkColor = System.Drawing.Color.Cyan;
+            this.labelFontColor.Location = new System.Drawing.Point(73, 53);
+            this.labelFontColor.Name = "labelFontColor";
+            this.labelFontColor.Size = new System.Drawing.Size(109, 19);
+            this.labelFontColor.TabIndex = 48;
+            this.labelFontColor.TabStop = true;
+            this.labelFontColor.Text = "FONT COLOR";
+            this.labelFontColor.VisitedLinkColor = System.Drawing.Color.White;
+            this.labelFontColor.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.labelFontColor_LinkClicked);
             // 
             // gunaTileButtonApplySettings
             // 
@@ -374,58 +343,6 @@
             this.gunaTileButtonApplySettings.Text = "APPLY";
             this.gunaTileButtonApplySettings.TextRenderingHint = Guna.UI.WinForms.DrawingTextRenderingHint.AntiAliasGridFit;
             this.gunaTileButtonApplySettings.Click += new System.EventHandler(this.gunaTileButtonApplySettings_Click);
-            // 
-            // circlePictureBoxTR
-            // 
-            this.circlePictureBoxTR.BackColor = System.Drawing.Color.MediumSlateBlue;
-            this.circlePictureBoxTR.BaseColor = System.Drawing.Color.Transparent;
-            this.circlePictureBoxTR.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.circlePictureBoxTR.Location = new System.Drawing.Point(189, 180);
-            this.circlePictureBoxTR.Name = "circlePictureBoxTR";
-            this.circlePictureBoxTR.Size = new System.Drawing.Size(35, 35);
-            this.circlePictureBoxTR.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.circlePictureBoxTR.TabIndex = 46;
-            this.circlePictureBoxTR.TabStop = false;
-            this.circlePictureBoxTR.UseTransfarantBackground = false;
-            // 
-            // circlePictureBoxTL
-            // 
-            this.circlePictureBoxTL.BackColor = System.Drawing.Color.DarkOrchid;
-            this.circlePictureBoxTL.BaseColor = System.Drawing.Color.Transparent;
-            this.circlePictureBoxTL.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.circlePictureBoxTL.Location = new System.Drawing.Point(138, 180);
-            this.circlePictureBoxTL.Name = "circlePictureBoxTL";
-            this.circlePictureBoxTL.Size = new System.Drawing.Size(35, 35);
-            this.circlePictureBoxTL.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.circlePictureBoxTL.TabIndex = 45;
-            this.circlePictureBoxTL.TabStop = false;
-            this.circlePictureBoxTL.UseTransfarantBackground = false;
-            // 
-            // circlePictureBoxBR
-            // 
-            this.circlePictureBoxBR.BackColor = System.Drawing.Color.MediumTurquoise;
-            this.circlePictureBoxBR.BaseColor = System.Drawing.Color.Transparent;
-            this.circlePictureBoxBR.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.circlePictureBoxBR.Location = new System.Drawing.Point(70, 180);
-            this.circlePictureBoxBR.Name = "circlePictureBoxBR";
-            this.circlePictureBoxBR.Size = new System.Drawing.Size(35, 35);
-            this.circlePictureBoxBR.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.circlePictureBoxBR.TabIndex = 44;
-            this.circlePictureBoxBR.TabStop = false;
-            this.circlePictureBoxBR.UseTransfarantBackground = false;
-            // 
-            // circlePictureBoxBL
-            // 
-            this.circlePictureBoxBL.BackColor = System.Drawing.Color.Black;
-            this.circlePictureBoxBL.BaseColor = System.Drawing.Color.Transparent;
-            this.circlePictureBoxBL.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.circlePictureBoxBL.Location = new System.Drawing.Point(17, 180);
-            this.circlePictureBoxBL.Name = "circlePictureBoxBL";
-            this.circlePictureBoxBL.Size = new System.Drawing.Size(35, 35);
-            this.circlePictureBoxBL.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.circlePictureBoxBL.TabIndex = 43;
-            this.circlePictureBoxBL.TabStop = false;
-            this.circlePictureBoxBL.UseTransfarantBackground = false;
             // 
             // labelPaletteTR
             // 
@@ -517,7 +434,7 @@
             this.colorPalette.Color9 = System.Drawing.Color.FromArgb(((int)(((byte)(230)))), ((int)(((byte)(71)))), ((int)(((byte)(89)))));
             this.colorPalette.Cursor = System.Windows.Forms.Cursors.Hand;
             this.colorPalette.GridColor = System.Drawing.Color.White;
-            this.colorPalette.Location = new System.Drawing.Point(22, 75);
+            this.colorPalette.Location = new System.Drawing.Point(23, 75);
             this.colorPalette.Name = "colorPalette";
             this.colorPalette.SelectedColor = System.Drawing.Color.Empty;
             this.colorPalette.ShowGrid = true;
@@ -530,11 +447,11 @@
             // 
             this.gunaLabel1.AutoSize = true;
             this.gunaLabel1.BackColor = System.Drawing.Color.Transparent;
-            this.gunaLabel1.Font = new System.Drawing.Font("Unispace", 9.749999F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.gunaLabel1.Font = new System.Drawing.Font("Unispace", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.gunaLabel1.ForeColor = System.Drawing.Color.Honeydew;
-            this.gunaLabel1.Location = new System.Drawing.Point(8, 45);
+            this.gunaLabel1.Location = new System.Drawing.Point(1, 30);
             this.gunaLabel1.Name = "gunaLabel1";
-            this.gunaLabel1.Size = new System.Drawing.Size(215, 15);
+            this.gunaLabel1.Size = new System.Drawing.Size(242, 18);
             this.gunaLabel1.TabIndex = 35;
             this.gunaLabel1.Text = "Color palette on Main Form";
             // 
@@ -563,20 +480,6 @@
             this.xuiSlidingPanelPassChange.TopLeft = System.Drawing.Color.DarkSlateGray;
             this.xuiSlidingPanelPassChange.TopRight = System.Drawing.Color.Black;
             // 
-            // buttonHidePassword
-            // 
-            this.buttonHidePassword.BackColor = System.Drawing.Color.Transparent;
-            this.buttonHidePassword.Image = global::TRPO_Project.Properties.Resources.eye_show;
-            this.buttonHidePassword.ImageActive = null;
-            this.buttonHidePassword.Location = new System.Drawing.Point(167, 21);
-            this.buttonHidePassword.Name = "buttonHidePassword";
-            this.buttonHidePassword.Size = new System.Drawing.Size(23, 21);
-            this.buttonHidePassword.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.buttonHidePassword.TabIndex = 13;
-            this.buttonHidePassword.TabStop = false;
-            this.buttonHidePassword.Zoom = 10;
-            this.buttonHidePassword.Click += new System.EventHandler(this.buttonHidePassword_Click);
-            // 
             // labelRepeatPass
             // 
             this.labelRepeatPass.AutoSize = true;
@@ -601,37 +504,6 @@
             this.labelNewPass.Size = new System.Drawing.Size(91, 14);
             this.labelNewPass.TabIndex = 11;
             this.labelNewPass.Text = "NEW PASSWORD";
-            // 
-            // buttonApplyNewPassword
-            // 
-            this.buttonApplyNewPassword.Animated = true;
-            this.buttonApplyNewPassword.AnimationHoverSpeed = 0.05F;
-            this.buttonApplyNewPassword.AnimationSpeed = 0.03F;
-            this.buttonApplyNewPassword.BackColor = System.Drawing.Color.Transparent;
-            this.buttonApplyNewPassword.BaseColor1 = System.Drawing.Color.SlateGray;
-            this.buttonApplyNewPassword.BaseColor2 = System.Drawing.Color.White;
-            this.buttonApplyNewPassword.BorderColor = System.Drawing.Color.Black;
-            this.buttonApplyNewPassword.BorderSize = 1;
-            this.buttonApplyNewPassword.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.buttonApplyNewPassword.DialogResult = System.Windows.Forms.DialogResult.None;
-            this.buttonApplyNewPassword.Enabled = false;
-            this.buttonApplyNewPassword.FocusedColor = System.Drawing.Color.Empty;
-            this.buttonApplyNewPassword.Font = new System.Drawing.Font("Segoe UI", 9F);
-            this.buttonApplyNewPassword.ForeColor = System.Drawing.Color.White;
-            this.buttonApplyNewPassword.Image = global::TRPO_Project.Properties.Resources.X;
-            this.buttonApplyNewPassword.ImageSize = new System.Drawing.Size(52, 52);
-            this.buttonApplyNewPassword.Location = new System.Drawing.Point(198, 18);
-            this.buttonApplyNewPassword.Name = "buttonApplyNewPassword";
-            this.buttonApplyNewPassword.OnHoverBaseColor1 = System.Drawing.Color.DarkTurquoise;
-            this.buttonApplyNewPassword.OnHoverBaseColor2 = System.Drawing.Color.White;
-            this.buttonApplyNewPassword.OnHoverBorderColor = System.Drawing.Color.DodgerBlue;
-            this.buttonApplyNewPassword.OnHoverForeColor = System.Drawing.Color.White;
-            this.buttonApplyNewPassword.OnHoverImage = null;
-            this.buttonApplyNewPassword.OnPressedColor = System.Drawing.Color.GreenYellow;
-            this.buttonApplyNewPassword.OnPressedDepth = 50;
-            this.buttonApplyNewPassword.Size = new System.Drawing.Size(65, 65);
-            this.buttonApplyNewPassword.TabIndex = 10;
-            this.buttonApplyNewPassword.Click += new System.EventHandler(this.buttonApplyNewPassword_Click);
             // 
             // textBoxRepeatNewPass
             // 
@@ -672,6 +544,191 @@
             this.textBoxNewPass.TabIndex = 8;
             this.textBoxNewPass.TextChanged += new System.EventHandler(this.textBoxNewPass_TextChanged);
             // 
+            // fontColorDialog
+            // 
+            this.fontColorDialog.AnyColor = true;
+            this.fontColorDialog.Color = System.Drawing.Color.Cyan;
+            // 
+            // imageButtonSettings
+            // 
+            this.imageButtonSettings.BackColor = System.Drawing.Color.DimGray;
+            this.imageButtonSettings.Image = global::TRPO_Project.Properties.Resources.settings;
+            this.imageButtonSettings.ImageActive = null;
+            this.imageButtonSettings.Location = new System.Drawing.Point(276, 36);
+            this.imageButtonSettings.Name = "imageButtonSettings";
+            this.imageButtonSettings.Size = new System.Drawing.Size(30, 30);
+            this.imageButtonSettings.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.imageButtonSettings.TabIndex = 35;
+            this.imageButtonSettings.TabStop = false;
+            this.imageButtonSettings.Zoom = 10;
+            this.imageButtonSettings.Click += new System.EventHandler(this.imageButtonSettings_Click);
+            // 
+            // buttonReloadTheme
+            // 
+            this.buttonReloadTheme.AnimationHoverSpeed = 0.15F;
+            this.buttonReloadTheme.AnimationSpeed = 0.03F;
+            this.buttonReloadTheme.BackColor = System.Drawing.Color.Transparent;
+            this.buttonReloadTheme.BaseColor1 = System.Drawing.Color.Aquamarine;
+            this.buttonReloadTheme.BaseColor2 = System.Drawing.Color.Teal;
+            this.buttonReloadTheme.BorderColor = System.Drawing.Color.Lime;
+            this.buttonReloadTheme.BorderSize = 1;
+            this.buttonReloadTheme.DialogResult = System.Windows.Forms.DialogResult.None;
+            this.buttonReloadTheme.FocusedColor = System.Drawing.Color.Empty;
+            this.buttonReloadTheme.Font = new System.Drawing.Font("Segoe UI", 9F);
+            this.buttonReloadTheme.ForeColor = System.Drawing.Color.White;
+            this.buttonReloadTheme.Image = global::TRPO_Project.Properties.Resources.restart_64px;
+            this.buttonReloadTheme.ImageSize = new System.Drawing.Size(25, 25);
+            this.buttonReloadTheme.Location = new System.Drawing.Point(10, 1);
+            this.buttonReloadTheme.Name = "buttonReloadTheme";
+            this.buttonReloadTheme.OnHoverBaseColor1 = System.Drawing.Color.FromArgb(((int)(((byte)(155)))), ((int)(((byte)(145)))), ((int)(((byte)(221)))));
+            this.buttonReloadTheme.OnHoverBaseColor2 = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(85)))), ((int)(((byte)(255)))));
+            this.buttonReloadTheme.OnHoverBorderColor = System.Drawing.Color.Black;
+            this.buttonReloadTheme.OnHoverForeColor = System.Drawing.Color.White;
+            this.buttonReloadTheme.OnHoverImage = null;
+            this.buttonReloadTheme.OnPressedColor = System.Drawing.Color.Black;
+            this.buttonReloadTheme.Size = new System.Drawing.Size(25, 25);
+            this.buttonReloadTheme.TabIndex = 49;
+            this.buttonReloadTheme.Click += new System.EventHandler(this.buttonReloadTheme_Click);
+            // 
+            // circlePictureBoxTR
+            // 
+            this.circlePictureBoxTR.BackColor = System.Drawing.Color.MediumSlateBlue;
+            this.circlePictureBoxTR.BaseColor = System.Drawing.Color.Transparent;
+            this.circlePictureBoxTR.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.circlePictureBoxTR.Location = new System.Drawing.Point(189, 180);
+            this.circlePictureBoxTR.Name = "circlePictureBoxTR";
+            this.circlePictureBoxTR.Size = new System.Drawing.Size(35, 35);
+            this.circlePictureBoxTR.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.circlePictureBoxTR.TabIndex = 46;
+            this.circlePictureBoxTR.TabStop = false;
+            this.circlePictureBoxTR.UseTransfarantBackground = false;
+            // 
+            // circlePictureBoxTL
+            // 
+            this.circlePictureBoxTL.BackColor = System.Drawing.Color.DarkOrchid;
+            this.circlePictureBoxTL.BaseColor = System.Drawing.Color.Transparent;
+            this.circlePictureBoxTL.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.circlePictureBoxTL.Location = new System.Drawing.Point(138, 180);
+            this.circlePictureBoxTL.Name = "circlePictureBoxTL";
+            this.circlePictureBoxTL.Size = new System.Drawing.Size(35, 35);
+            this.circlePictureBoxTL.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.circlePictureBoxTL.TabIndex = 45;
+            this.circlePictureBoxTL.TabStop = false;
+            this.circlePictureBoxTL.UseTransfarantBackground = false;
+            // 
+            // circlePictureBoxBR
+            // 
+            this.circlePictureBoxBR.BackColor = System.Drawing.Color.MediumTurquoise;
+            this.circlePictureBoxBR.BaseColor = System.Drawing.Color.Transparent;
+            this.circlePictureBoxBR.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.circlePictureBoxBR.Location = new System.Drawing.Point(70, 180);
+            this.circlePictureBoxBR.Name = "circlePictureBoxBR";
+            this.circlePictureBoxBR.Size = new System.Drawing.Size(35, 35);
+            this.circlePictureBoxBR.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.circlePictureBoxBR.TabIndex = 44;
+            this.circlePictureBoxBR.TabStop = false;
+            this.circlePictureBoxBR.UseTransfarantBackground = false;
+            // 
+            // circlePictureBoxBL
+            // 
+            this.circlePictureBoxBL.BackColor = System.Drawing.Color.Black;
+            this.circlePictureBoxBL.BaseColor = System.Drawing.Color.Transparent;
+            this.circlePictureBoxBL.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.circlePictureBoxBL.Location = new System.Drawing.Point(17, 180);
+            this.circlePictureBoxBL.Name = "circlePictureBoxBL";
+            this.circlePictureBoxBL.Size = new System.Drawing.Size(35, 35);
+            this.circlePictureBoxBL.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.circlePictureBoxBL.TabIndex = 43;
+            this.circlePictureBoxBL.TabStop = false;
+            this.circlePictureBoxBL.UseTransfarantBackground = false;
+            // 
+            // buttonHidePassword
+            // 
+            this.buttonHidePassword.BackColor = System.Drawing.Color.Transparent;
+            this.buttonHidePassword.Image = global::TRPO_Project.Properties.Resources.eye_show;
+            this.buttonHidePassword.ImageActive = null;
+            this.buttonHidePassword.Location = new System.Drawing.Point(167, 21);
+            this.buttonHidePassword.Name = "buttonHidePassword";
+            this.buttonHidePassword.Size = new System.Drawing.Size(23, 21);
+            this.buttonHidePassword.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.buttonHidePassword.TabIndex = 13;
+            this.buttonHidePassword.TabStop = false;
+            this.buttonHidePassword.Zoom = 10;
+            this.buttonHidePassword.Click += new System.EventHandler(this.buttonHidePassword_Click);
+            // 
+            // buttonApplyNewPassword
+            // 
+            this.buttonApplyNewPassword.Animated = true;
+            this.buttonApplyNewPassword.AnimationHoverSpeed = 0.05F;
+            this.buttonApplyNewPassword.AnimationSpeed = 0.03F;
+            this.buttonApplyNewPassword.BackColor = System.Drawing.Color.Transparent;
+            this.buttonApplyNewPassword.BaseColor1 = System.Drawing.Color.SlateGray;
+            this.buttonApplyNewPassword.BaseColor2 = System.Drawing.Color.White;
+            this.buttonApplyNewPassword.BorderColor = System.Drawing.Color.Black;
+            this.buttonApplyNewPassword.BorderSize = 1;
+            this.buttonApplyNewPassword.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.buttonApplyNewPassword.DialogResult = System.Windows.Forms.DialogResult.None;
+            this.buttonApplyNewPassword.Enabled = false;
+            this.buttonApplyNewPassword.FocusedColor = System.Drawing.Color.Empty;
+            this.buttonApplyNewPassword.Font = new System.Drawing.Font("Segoe UI", 9F);
+            this.buttonApplyNewPassword.ForeColor = System.Drawing.Color.White;
+            this.buttonApplyNewPassword.Image = global::TRPO_Project.Properties.Resources.X;
+            this.buttonApplyNewPassword.ImageSize = new System.Drawing.Size(52, 52);
+            this.buttonApplyNewPassword.Location = new System.Drawing.Point(198, 18);
+            this.buttonApplyNewPassword.Name = "buttonApplyNewPassword";
+            this.buttonApplyNewPassword.OnHoverBaseColor1 = System.Drawing.Color.DarkTurquoise;
+            this.buttonApplyNewPassword.OnHoverBaseColor2 = System.Drawing.Color.White;
+            this.buttonApplyNewPassword.OnHoverBorderColor = System.Drawing.Color.DodgerBlue;
+            this.buttonApplyNewPassword.OnHoverForeColor = System.Drawing.Color.White;
+            this.buttonApplyNewPassword.OnHoverImage = null;
+            this.buttonApplyNewPassword.OnPressedColor = System.Drawing.Color.GreenYellow;
+            this.buttonApplyNewPassword.OnPressedDepth = 50;
+            this.buttonApplyNewPassword.Size = new System.Drawing.Size(65, 65);
+            this.buttonApplyNewPassword.TabIndex = 10;
+            this.buttonApplyNewPassword.Click += new System.EventHandler(this.buttonApplyNewPassword_Click);
+            // 
+            // bunifuImageButtonEXIT
+            // 
+            this.bunifuImageButtonEXIT.BackColor = System.Drawing.Color.DarkRed;
+            this.bunifuImageButtonEXIT.Image = global::TRPO_Project.Properties.Resources.X;
+            this.bunifuImageButtonEXIT.ImageActive = null;
+            this.bunifuImageButtonEXIT.InitialImage = global::TRPO_Project.Properties.Resources.X;
+            this.bunifuImageButtonEXIT.Location = new System.Drawing.Point(287, 7);
+            this.bunifuImageButtonEXIT.Name = "bunifuImageButtonEXIT";
+            this.bunifuImageButtonEXIT.Size = new System.Drawing.Size(20, 20);
+            this.bunifuImageButtonEXIT.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.bunifuImageButtonEXIT.TabIndex = 21;
+            this.bunifuImageButtonEXIT.TabStop = false;
+            this.bunifuImageButtonEXIT.Zoom = 10;
+            this.bunifuImageButtonEXIT.Click += new System.EventHandler(this.bunifuImageButtonEXIT_Click);
+            // 
+            // pictureBoxCHANGEpassVisibility
+            // 
+            this.pictureBoxCHANGEpassVisibility.BackColor = System.Drawing.Color.Transparent;
+            this.pictureBoxCHANGEpassVisibility.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.pictureBoxCHANGEpassVisibility.Image = global::TRPO_Project.Properties.Resources.eye_hide;
+            this.pictureBoxCHANGEpassVisibility.ImageActive = null;
+            this.pictureBoxCHANGEpassVisibility.Location = new System.Drawing.Point(241, 233);
+            this.pictureBoxCHANGEpassVisibility.Name = "pictureBoxCHANGEpassVisibility";
+            this.pictureBoxCHANGEpassVisibility.Size = new System.Drawing.Size(25, 20);
+            this.pictureBoxCHANGEpassVisibility.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pictureBoxCHANGEpassVisibility.TabIndex = 22;
+            this.pictureBoxCHANGEpassVisibility.TabStop = false;
+            this.pictureBoxCHANGEpassVisibility.Zoom = 10;
+            this.pictureBoxCHANGEpassVisibility.Click += new System.EventHandler(this.pictureBoxCHANGEpassVisibility_Click);
+            // 
+            // pictureBoxPROFILE
+            // 
+            this.pictureBoxPROFILE.BackColor = System.Drawing.Color.DimGray;
+            this.pictureBoxPROFILE.ErrorImage = global::TRPO_Project.Properties.Resources.profile_default;
+            this.pictureBoxPROFILE.Image = ((System.Drawing.Image)(resources.GetObject("pictureBoxPROFILE.Image")));
+            this.pictureBoxPROFILE.Location = new System.Drawing.Point(94, 33);
+            this.pictureBoxPROFILE.Name = "pictureBoxPROFILE";
+            this.pictureBoxPROFILE.Size = new System.Drawing.Size(124, 122);
+            this.pictureBoxPROFILE.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pictureBoxPROFILE.TabIndex = 7;
+            this.pictureBoxPROFILE.TabStop = false;
+            // 
             // formProfile
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(96F, 96F);
@@ -702,19 +759,19 @@
             this.Theme = MetroFramework.MetroThemeStyle.Dark;
             this.TransparencyKey = System.Drawing.Color.MediumVioletRed;
             this.Load += new System.EventHandler(this.formProfile_Load);
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxPROFILE)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxCHANGEpassVisibility)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.bunifuImageButtonEXIT)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.imageButtonSettings)).EndInit();
             this.xuiSlidingPanelSettings.ResumeLayout(false);
             this.xuiSlidingPanelSettings.PerformLayout();
+            this.xuiSlidingPanelPassChange.ResumeLayout(false);
+            this.xuiSlidingPanelPassChange.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.imageButtonSettings)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.circlePictureBoxTR)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.circlePictureBoxTL)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.circlePictureBoxBR)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.circlePictureBoxBL)).EndInit();
-            this.xuiSlidingPanelPassChange.ResumeLayout(false);
-            this.xuiSlidingPanelPassChange.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.buttonHidePassword)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.bunifuImageButtonEXIT)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxCHANGEpassVisibility)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxPROFILE)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -758,5 +815,8 @@
         private Guna.UI.WinForms.GunaTextBox textBoxRepeatNewPass;
         private Guna.UI.WinForms.GunaTextBox textBoxNewPass;
         private Bunifu.Framework.UI.BunifuImageButton buttonHidePassword;
+        private Guna.UI.WinForms.GunaLinkLabel labelFontColor;
+        private System.Windows.Forms.ColorDialog fontColorDialog;
+        private Guna.UI.WinForms.GunaGradientCircleButton buttonReloadTheme;
     }
 }
