@@ -24,7 +24,6 @@ namespace TRPO_Project
 {
     public partial class formADMIN : MetroForm, IThemeChange
     {
-        //TODO: сделать документацию по использованию на главной и на админ-форме
         #region variables&collections
 
         private SQLiteConnection sql_con; // connection
@@ -461,7 +460,7 @@ namespace TRPO_Project
             groupBoxHEAD.Refresh();
         }
 
-        public async void ReadThemeAsync()
+        public void ReadThemeAsync()
         {
             try
             {
@@ -492,7 +491,7 @@ namespace TRPO_Project
 
         private void buttonHelp_Click(object sender, EventArgs e)
         {
-            HelpForm helpForm = new HelpForm(this.Theme);
+            var helpForm = new HelpForm(this.Theme);
             helpForm.Show(this);
         }
     }

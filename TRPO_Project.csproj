@@ -283,6 +283,7 @@
     <Compile Include="Model\ProgramTheme.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="ThemeModel\ETheme.cs" />
+    <None Include="ClassDiagram1.cd" />
     <None Include="Properties\ok_48px.png" />
     <Content Include="computer.ico" />
     <None Include="help_64px.png" />

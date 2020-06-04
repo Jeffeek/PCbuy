@@ -90,11 +90,11 @@
             // 
             // bunifuImageButtonEXIT
             // 
-            this.bunifuImageButtonEXIT.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.bunifuImageButtonEXIT.BackColor = System.Drawing.Color.Red;
             this.bunifuImageButtonEXIT.Image = global::TRPO_Project.Properties.Resources.X;
             this.bunifuImageButtonEXIT.ImageActive = null;
             this.bunifuImageButtonEXIT.InitialImage = global::TRPO_Project.Properties.Resources.X;
-            this.bunifuImageButtonEXIT.Location = new System.Drawing.Point(445, 8);
+            this.bunifuImageButtonEXIT.Location = new System.Drawing.Point(443, 8);
             this.bunifuImageButtonEXIT.Name = "bunifuImageButtonEXIT";
             this.bunifuImageButtonEXIT.Size = new System.Drawing.Size(20, 20);
             this.bunifuImageButtonEXIT.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;

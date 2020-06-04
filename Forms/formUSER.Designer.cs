@@ -160,7 +160,7 @@
             this.textBox_PRICE.LineMouseHoverColor = System.Drawing.Color.Magenta;
             this.textBox_PRICE.LineThickness = 3;
             this.textBox_PRICE.Location = new System.Drawing.Point(13, 21);
-            this.textBox_PRICE.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.textBox_PRICE.Margin = new System.Windows.Forms.Padding(4);
             this.textBox_PRICE.Name = "textBox_PRICE";
             this.textBox_PRICE.Size = new System.Drawing.Size(83, 25);
             this.textBox_PRICE.TabIndex = 4;
@@ -353,11 +353,11 @@
             // bunifuImageButtonEXIT
             // 
             this.bunifuImageButtonEXIT.Anchor = System.Windows.Forms.AnchorStyles.Top;
-            this.bunifuImageButtonEXIT.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.bunifuImageButtonEXIT.BackColor = System.Drawing.Color.Red;
             this.bunifuImageButtonEXIT.Image = global::TRPO_Project.Properties.Resources.X;
             this.bunifuImageButtonEXIT.ImageActive = null;
             this.bunifuImageButtonEXIT.InitialImage = global::TRPO_Project.Properties.Resources.X;
-            this.bunifuImageButtonEXIT.Location = new System.Drawing.Point(770, 3);
+            this.bunifuImageButtonEXIT.Location = new System.Drawing.Point(769, 2);
             this.bunifuImageButtonEXIT.Name = "bunifuImageButtonEXIT";
             this.bunifuImageButtonEXIT.Size = new System.Drawing.Size(20, 20);
             this.bunifuImageButtonEXIT.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;

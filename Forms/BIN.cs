@@ -25,7 +25,7 @@ namespace TRPO_Project
         private bool IsAdmin;
         private string EmailMessage = "";
         private int userID;
-        private List<PCinfo> IDsOfPCinBIN = new List<PCinfo>();
+        private List<PCinfo> IDsOfPCinBIN;
         #endregion
 
         #region constructor
@@ -145,14 +145,6 @@ namespace TRPO_Project
         #region ButtonsClick
         private void bunifuImageButtonEXIT_Click(object sender, EventArgs e)
         {
-            if (IsAdmin)
-            {
-                formADMIN.BINid = IDsOfPCinBIN;
-            }
-            else
-            {
-                formUSER.BINid = IDsOfPCinBIN;
-            }
             this.Close();
         }
 
@@ -180,16 +172,7 @@ namespace TRPO_Project
                     MetroMessageBox.Show(this, "YOUR ORDER WAS CONFIRMED!", "SUCCESS!", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
                     tabControlPRODUCTs.TabPages.Clear();
-                    if (IsAdmin)
-                    {
-                        IDsOfPCinBIN.Clear();
-                        formADMIN.BINid.Clear();
-                    }
-                    else
-                    {
-                        IDsOfPCinBIN.Clear();
-                        formUSER.BINid.Clear();
-                    }
+                    IDsOfPCinBIN.Clear();
                 }
             }
             Close();
@@ -210,7 +193,7 @@ namespace TRPO_Project
             labelYourOrder.BackColor = OBJ.Theme == ETheme.Light ? Color.AliceBlue : Color.MediumVioletRed;
         }
 
-        public async void ReadThemeAsync()
+        public void ReadThemeAsync()
         {
             try
             {
@@ -294,12 +277,12 @@ namespace TRPO_Project
                 IsBodyHtml = true,
             };
 
-            SmtpClient smtp = new SmtpClient("smtp.gmail.com", 587)
+            var smtp = new SmtpClient("smtp.gmail.com", 587)
             {
                 Credentials = new System.Net.NetworkCredential(smtpEmail, smtpPassword),
                 EnableSsl = true
             };
-            smtp.Send(Message);
+            await smtp.SendMailAsync(Message);
         }
 
         #endregion

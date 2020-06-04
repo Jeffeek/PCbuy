@@ -46,6 +46,14 @@ namespace TRPO_Project
             metroComboBoxGPUsort.SelectedIndex = 0;
             metroComboBoxRAM.SelectedIndex = 0;
         }
+
+        public PC PC
+        {
+            get => default;
+            set
+            {
+            }
+        }
         #endregion
 
         #region PictureBOXclick

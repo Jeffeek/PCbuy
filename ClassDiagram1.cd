@@ -1,0 +1,144 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Class Name="TRPO_Project.formUSER" Collapsed="true">
+    <Position X="2.5" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>BERAAESCCC8FoBGICICAogBCAGIAIAAgQCBgIACBIRQ=</HashCode>
+      <FileName>Forms\formUSER.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Property Name="PC" />
+    </ShowAsAssociation>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="TRPO_Project.AdminPanelForm" Collapsed="true">
+    <Position X="4.25" Y="2.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>TKQTFuKlAD5v8AuhGES0IMQnEGGQ5AEDADK6AQTESAw=</HashCode>
+      <FileName>Forms\AdminPanelForm.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="TRPO_Project.BIN" Collapsed="true">
+    <Position X="5.25" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>hAAgIAAAICQDABAAKACAIAADCGAAAJAgAAAgBAAAAAQ=</HashCode>
+      <FileName>Forms\BIN.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="TRPO_Project.formADMIN" Collapsed="true">
+    <Position X="2.5" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>BERAAESCCC8FsAGICICAowBCAGIBIAAgQDBgIACBYRQ=</HashCode>
+      <FileName>Forms\formADMIN.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Property Name="PC" />
+    </ShowAsAssociation>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="TRPO_Project.FormLogIn" Collapsed="true">
+    <Position X="0.5" Y="1" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>FAYwiFCWCSjkVAsIgCCFp6ACAUCAAhCgTSghAFiCAAA=</HashCode>
+      <FileName>Forms\formLogIn.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="TRPO_Project.GraphicForm" Collapsed="true">
+    <Position X="6" Y="3.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAQQACAGACAEAAAAAACAIAAiAGAAAACBACAgAACAAAQ=</HashCode>
+      <FileName>Forms\GraphicForm.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="TRPO_Project.HelpForm" Collapsed="true">
+    <Position X="5.25" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAQAIAAEACwEFAQABACEMAACAGACAEAAACAwAADSAoQ=</HashCode>
+      <FileName>Forms\HelpForm.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="TRPO_Project.Forms.HelpText.EnglishLanguage" Collapsed="true">
+    <Position X="6" Y="8" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAQAAAAAAAIAAAAAAAAAAAAAAAEAAAAAAAA=</HashCode>
+      <FileName>Forms\HelpText\EnglishLanguage.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="TRPO_Project.Forms.HelpText.RussianLanguage" Collapsed="true">
+    <Position X="7.75" Y="8" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAQAAAAAAAIAAAAAAAAAAAAAAAEAAAAAAAA=</HashCode>
+      <FileName>Forms\HelpText\RussianLanguage.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="TRPO_Project.ScaleControls">
+    <Position X="9.5" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAIAAAAAAAAAAAEAAAAAAAACAAA=</HashCode>
+      <FileName>Model\ScaleControls.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="TRPO_Project.ProgramTheme">
+    <Position X="2" Y="7.75" Width="3" />
+    <TypeIdentifier>
+      <HashCode>AgAAAIAIAAAAABAUAAAAAAgAAAAAAAAAAAAAAAAAAEA=</HashCode>
+      <FileName>Model\ProgramTheme.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="TRPO_Project.PC" Collapsed="true">
+    <Position X="0.5" Y="3.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAgAAAAAAARgAAAAAAQAACIAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Model\PC.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="TRPO_Project.PCinfo" Collapsed="true">
+    <Position X="0.5" Y="4" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAhIMgAACARgAAAAACQAACKAAAAIAgACAQAAAAgAAA=</HashCode>
+      <FileName>CustomControls\PCinfo.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Interface Name="TRPO_Project.Forms.HelpText.ILanguageChangable">
+    <Position X="6" Y="6.25" Width="3.25" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAQAAAAAAAIAAAAAAAAAAAAAAAEAAAAAAAA=</HashCode>
+      <FileName>Forms\HelpText\ILanguageChangable.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="TRPO_Project.IThemeChange">
+    <Position X="3.5" Y="6.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAGAAAAAAAAAAAAAAAAQ=</HashCode>
+      <FileName>ThemeModel\IThemeChange.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Enum Name="TRPO_Project.Forms.HelpText.CurrentLanguage">
+    <Position X="7" Y="8.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAACAAAAAAAAAAAAABAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Forms\HelpText\CurrentLanguage.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Enum Name="TRPO_Project.ETheme">
+    <Position X="2" Y="6.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAgAAAAAAAABAAAAAAAAAAAA=</HashCode>
+      <FileName>ThemeModel\ETheme.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Enum Name="TRPO_Project.EPCChange" Collapsed="true">
+    <Position X="0.5" Y="5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AIIAAAAAAAAQAQAAAAEABAAAAAAAAAAAACACAAAAAAA=</HashCode>
+      <FileName>Model\EPCChange.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Font Name="Comic Sans MS" Size="8.25" />
+</ClassDiagram>

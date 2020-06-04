@@ -71,7 +71,7 @@
             this.tabHelp.Controls.Add(this.metroTabPage3);
             this.tabHelp.Location = new System.Drawing.Point(0, 31);
             this.tabHelp.Name = "tabHelp";
-            this.tabHelp.SelectedIndex = 0;
+            this.tabHelp.SelectedIndex = 2;
             this.tabHelp.Size = new System.Drawing.Size(716, 307);
             this.tabHelp.TabIndex = 0;
             this.tabHelp.Theme = MetroFramework.MetroThemeStyle.Dark;
@@ -302,7 +302,7 @@
             this.comboBoxLanguage.Items.AddRange(new object[] {
             "RUSSIAN",
             "ENGLISH"});
-            this.comboBoxLanguage.Location = new System.Drawing.Point(312, 0);
+            this.comboBoxLanguage.Location = new System.Drawing.Point(330, 0);
             this.comboBoxLanguage.Name = "comboBoxLanguage";
             this.comboBoxLanguage.OnHoverItemBaseColor = System.Drawing.Color.DeepSkyBlue;
             this.comboBoxLanguage.OnHoverItemForeColor = System.Drawing.Color.Yellow;
@@ -314,7 +314,7 @@
             // 
             // bunifuImageButtonEXIT
             // 
-            this.bunifuImageButtonEXIT.BackColor = System.Drawing.Color.DarkRed;
+            this.bunifuImageButtonEXIT.BackColor = System.Drawing.Color.Red;
             this.bunifuImageButtonEXIT.Image = global::TRPO_Project.Properties.Resources.X;
             this.bunifuImageButtonEXIT.ImageActive = null;
             this.bunifuImageButtonEXIT.InitialImage = global::TRPO_Project.Properties.Resources.X;
