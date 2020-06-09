@@ -33,9 +33,9 @@ namespace TRPO_Project
         public AdminPanelForm(int UserID)
         {
             InitializeComponent();
+            FormTransition.ShowAsyc(this);
             userID = UserID;
             ReadThemeAsync();
-            FormTransition.ShowAsyc(this);
         }
 
         #endregion
@@ -77,7 +77,7 @@ namespace TRPO_Project
         //успешно пройден тест
         private void bunifuImageButtonAPPLYnewPROD_Click(object sender, EventArgs e)
         {
-            string NEWtypeOFpc = bunifuImageButtonAPPLYnewPROD.Text;
+            string NEWtypeOFpc = bunifuMetroTextboxADDprodType.Text;
             string NEWcpu = bunifuMetroTextboxADDprodCPU.Text;
             string NEWgpu = bunifuMetroTextboxADDprodGPU.Text;
             int NEWram = Convert.ToInt32(bunifuMetroTextboxADDprodRAM.Text);
@@ -100,7 +100,15 @@ namespace TRPO_Project
                     var newPC = new PC(NEWtypeOFpc, LASTid, NEWcpu, NEWgpu, NEWram, NEWprice, Image.FromStream(FS));
                     formADMIN.ChangeInfoList(-1, EPCChange.Add, newPC);
                 }
-                File.Copy(openFileDialogADDproduct.FileName, $@"{Directory.GetCurrentDirectory()}\PCsIMAGES\id{LASTid}.png");
+
+                string _newPicPath = $@"{Directory.GetCurrentDirectory()}\PCsIMAGES\id{LASTid}.png";
+
+                if (File.Exists(_newPicPath))
+                {
+                    File.Delete(_newPicPath);
+                }
+
+                File.Copy(openFileDialogADDproduct.FileName, _newPicPath);
                 FillPcDataGrid();
                 MetroMessageBox.Show(this, "PC was successfully added", "Success", MessageBoxButtons.OK, MessageBoxIcon.Asterisk);
                 comboBoxSELECT_id_product.AddItem(Convert.ToString(LASTid));
@@ -120,7 +128,12 @@ namespace TRPO_Project
         private void bunifuImageButtonNEWpic_Click(object sender, EventArgs e)
         {
             var result = openFileDialogADDproduct.ShowDialog();
-            if (result == DialogResult.OK && bunifuMetroTextboxADDprodCPU.Text.Length > 0 && bunifuMetroTextboxADDprodGPU.Text.Length > 0 && bunifuMetroTextboxADDprodRAM.Text.Length > 0 && bunifuImageButtonAPPLYnewPROD.Text.Length > 0)
+            if (result == DialogResult.OK 
+                && bunifuMetroTextboxADDprodCPU.Text.Length > 0 
+                && bunifuMetroTextboxADDprodGPU.Text.Length > 0 
+                && bunifuMetroTextboxADDprodRAM.Text.Length > 0 
+                && bunifuMetroTextboxADDprodType.Text.Length > 0
+                && bunifuMetroTextboxADDprodPRICE.Text.Length > 0)
             {
                 bunifuImageButtonAPPLYnewPROD.Enabled = true;
                 bunifuImageButtonAPPLYnewPROD.Image = Resources.ok;
@@ -132,7 +145,7 @@ namespace TRPO_Project
             }
             else
             {
-                MetroMessageBox.Show(this, "SOMETHING WENT WRONG, BRO!", "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MetroMessageBox.Show(this, "SOMETHING WENT WRONG!", "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 bunifuImageButtonAPPLYnewPROD.Enabled = false;
                 bunifuImageButtonAPPLYnewPROD.Image = Resources.X;
                 bunifuImageButtonAPPLYnewPROD.BackColor = Color.SlateGray;

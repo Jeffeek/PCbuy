@@ -90,7 +90,7 @@
             // 
             // bunifuImageButtonEXIT
             // 
-            this.bunifuImageButtonEXIT.BackColor = System.Drawing.Color.Red;
+            this.bunifuImageButtonEXIT.BackColor = System.Drawing.Color.Crimson;
             this.bunifuImageButtonEXIT.Image = global::TRPO_Project.Properties.Resources.X;
             this.bunifuImageButtonEXIT.ImageActive = null;
             this.bunifuImageButtonEXIT.InitialImage = global::TRPO_Project.Properties.Resources.X;
@@ -131,7 +131,10 @@
             this.Controls.Add(this.tabControlPRODUCTs);
             this.Controls.Add(this.labelYourOrder);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
+            this.MaximizeBox = false;
+            this.MinimizeBox = false;
             this.Name = "BIN";
+            this.Resizable = false;
             this.SizeGripStyle = System.Windows.Forms.SizeGripStyle.Hide;
             this.Style = MetroFramework.MetroColorStyle.Magenta;
             this.Theme = MetroFramework.MetroThemeStyle.Dark;

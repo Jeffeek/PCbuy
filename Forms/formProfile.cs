@@ -32,6 +32,7 @@ namespace TRPO_Project
         public formProfile(formUSER formF,int ID)
         {
             InitializeComponent();
+            StartTransation.ShowAsyc(this);
             SetScaling();
             mainForm = formF;
             userID = ID;
@@ -45,6 +46,7 @@ namespace TRPO_Project
         public formProfile(formADMIN formF, int ID)
         {
             InitializeComponent();
+            StartTransation.ShowAsyc(this);
             SetScaling();
             mainForm = formF;
             userID = ID;

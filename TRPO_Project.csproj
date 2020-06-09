@@ -271,6 +271,11 @@
     <Compile Include="Forms\HelpText\RussianLanguage.cs" />
     <Compile Include="Model\EPCChange.cs" />
     <Compile Include="Model\ScaleControls.cs" />
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
     <Compile Include="ThemeModel\IThemeChange.cs" />
     <Compile Include="Model\PC.cs" />
     <Compile Include="CustomControls\PCinfo.cs">
@@ -284,9 +289,7 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="ThemeModel\ETheme.cs" />
     <None Include="ClassDiagram1.cd" />
-    <None Include="Properties\ok_48px.png" />
     <Content Include="computer.ico" />
-    <None Include="help_64px.png" />
     <Content Include="MessageOrder.html">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
@@ -298,6 +301,8 @@
     <None Include="Resources\basket1.png" />
     <None Include="Resources\basket2.png" />
     <None Include="Resources\basket3.png" />
+    <None Include="Resources\unavailable_64px.png" />
+    <None Include="Resources\restart_64px.png" />
     <Content Include="USERsPIC\id1_Admin.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
@@ -437,11 +442,6 @@
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
     </EmbeddedResource>
-    <Compile Include="Properties\Resources.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>Resources.resx</DependentUpon>
-    </Compile>
     <Compile Include="Properties\Settings.Designer.cs">
       <AutoGen>True</AutoGen>
       <DependentUpon>Settings.settings</DependentUpon>

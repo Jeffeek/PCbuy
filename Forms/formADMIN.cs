@@ -1,24 +1,14 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
 using System.Drawing;
 using System.Linq;
-using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.IO;
-using System.Diagnostics;
 using System.Data.SQLite;
-using System.Data.Sql;
 using MetroFramework;
 using MetroFramework.Forms;
-using MetroFramework.Components;
-using System.Threading;
-using TRPO_Project.Properties;
 using System.Runtime.Serialization.Json;
-using Guna.UI.WinForms;
-using MetroFramework.Controls;
 
 namespace TRPO_Project
 {
@@ -245,7 +235,7 @@ namespace TRPO_Project
             foreach (var pc in Listed)
             {
                 int _percentage = 0;
-                await Task.Delay(30);
+                await Task.Delay(15);
                 while (_percentage != oneElementPercentage)
                 {
                     ProgressBar.Percentage++;

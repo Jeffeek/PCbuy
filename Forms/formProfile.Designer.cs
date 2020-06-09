@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(formProfile));
             this.openFileDialogchangeAprofilePIC = new System.Windows.Forms.OpenFileDialog();
             this.linkLabelCHANGEprofilePIC = new MetroFramework.Controls.MetroLink();
@@ -69,6 +70,7 @@
             this.bunifuImageButtonEXIT = new Bunifu.Framework.UI.BunifuImageButton();
             this.pictureBoxCHANGEpassVisibility = new Bunifu.Framework.UI.BunifuImageButton();
             this.pictureBoxPROFILE = new System.Windows.Forms.PictureBox();
+            this.StartTransation = new Bunifu.Framework.UI.BunifuFormFadeTransition(this.components);
             this.xuiSlidingPanelSettings.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.imageButtonSettings)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.circlePictureBoxTR)).BeginInit();
@@ -238,7 +240,7 @@
             this.labelChangeTheme.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.labelChangeTheme.Font = new System.Drawing.Font("Unispace", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.labelChangeTheme.ForeColor = System.Drawing.Color.Black;
-            this.labelChangeTheme.Location = new System.Drawing.Point(111, 3);
+            this.labelChangeTheme.Location = new System.Drawing.Point(103, 3);
             this.labelChangeTheme.Name = "labelChangeTheme";
             this.labelChangeTheme.Size = new System.Drawing.Size(79, 16);
             this.labelChangeTheme.TabIndex = 34;
@@ -261,8 +263,8 @@
             // 
             this.xuiSlidingPanelSettings.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.xuiSlidingPanelSettings.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.xuiSlidingPanelSettings.BottomLeft = System.Drawing.Color.SeaGreen;
-            this.xuiSlidingPanelSettings.BottomRight = System.Drawing.Color.SteelBlue;
+            this.xuiSlidingPanelSettings.BottomLeft = System.Drawing.Color.Purple;
+            this.xuiSlidingPanelSettings.BottomRight = System.Drawing.Color.Orange;
             this.xuiSlidingPanelSettings.CollapseControl = this.imageButtonSettings;
             this.xuiSlidingPanelSettings.Collapsed = true;
             this.xuiSlidingPanelSettings.Controls.Add(this.buttonReloadTheme);
@@ -313,9 +315,9 @@
             this.buttonReloadTheme.AnimationHoverSpeed = 0.15F;
             this.buttonReloadTheme.AnimationSpeed = 0.03F;
             this.buttonReloadTheme.BackColor = System.Drawing.Color.Transparent;
-            this.buttonReloadTheme.BaseColor1 = System.Drawing.Color.Aquamarine;
-            this.buttonReloadTheme.BaseColor2 = System.Drawing.Color.Teal;
-            this.buttonReloadTheme.BorderColor = System.Drawing.Color.Lime;
+            this.buttonReloadTheme.BaseColor1 = System.Drawing.Color.Orange;
+            this.buttonReloadTheme.BaseColor2 = System.Drawing.Color.Azure;
+            this.buttonReloadTheme.BorderColor = System.Drawing.Color.Magenta;
             this.buttonReloadTheme.BorderSize = 1;
             this.buttonReloadTheme.DialogResult = System.Windows.Forms.DialogResult.None;
             this.buttonReloadTheme.FocusedColor = System.Drawing.Color.Empty;
@@ -689,7 +691,7 @@
             // 
             // bunifuImageButtonEXIT
             // 
-            this.bunifuImageButtonEXIT.BackColor = System.Drawing.Color.Red;
+            this.bunifuImageButtonEXIT.BackColor = System.Drawing.Color.Crimson;
             this.bunifuImageButtonEXIT.Image = global::TRPO_Project.Properties.Resources.X;
             this.bunifuImageButtonEXIT.ImageActive = null;
             this.bunifuImageButtonEXIT.InitialImage = global::TRPO_Project.Properties.Resources.X;
@@ -728,6 +730,10 @@
             this.pictureBoxPROFILE.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pictureBoxPROFILE.TabIndex = 7;
             this.pictureBoxPROFILE.TabStop = false;
+            // 
+            // StartTransation
+            // 
+            this.StartTransation.Delay = 1;
             // 
             // formProfile
             // 
@@ -818,5 +824,6 @@
         private Guna.UI.WinForms.GunaLinkLabel labelFontColor;
         private System.Windows.Forms.ColorDialog fontColorDialog;
         private Guna.UI.WinForms.GunaGradientCircleButton buttonReloadTheme;
+        private Bunifu.Framework.UI.BunifuFormFadeTransition StartTransation;
     }
 }

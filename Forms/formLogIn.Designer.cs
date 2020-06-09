@@ -155,8 +155,8 @@ namespace TRPO_Project
             // 
             this.xuiSlidingPanelForgotPass.Anchor = System.Windows.Forms.AnchorStyles.Left;
             this.xuiSlidingPanelForgotPass.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.xuiSlidingPanelForgotPass.BottomLeft = System.Drawing.Color.Plum;
-            this.xuiSlidingPanelForgotPass.BottomRight = System.Drawing.Color.Aquamarine;
+            this.xuiSlidingPanelForgotPass.BottomLeft = System.Drawing.Color.Orange;
+            this.xuiSlidingPanelForgotPass.BottomRight = System.Drawing.Color.Yellow;
             this.xuiSlidingPanelForgotPass.CollapseControl = this.metroLinkForgotPassword;
             this.xuiSlidingPanelForgotPass.Collapsed = true;
             this.xuiSlidingPanelForgotPass.Controls.Add(this.imageButtonCheckNum);
@@ -175,8 +175,8 @@ namespace TRPO_Project
             this.xuiSlidingPanelForgotPass.Size = new System.Drawing.Size(0, 216);
             this.xuiSlidingPanelForgotPass.Style = XanderUI.XUIGradientPanel.GradientStyle.Corners;
             this.xuiSlidingPanelForgotPass.TabIndex = 16;
-            this.xuiSlidingPanelForgotPass.TopLeft = System.Drawing.SystemColors.Highlight;
-            this.xuiSlidingPanelForgotPass.TopRight = System.Drawing.Color.CornflowerBlue;
+            this.xuiSlidingPanelForgotPass.TopLeft = System.Drawing.Color.GreenYellow;
+            this.xuiSlidingPanelForgotPass.TopRight = System.Drawing.Color.DarkRed;
             // 
             // imageButtonCheckNum
             // 
@@ -195,7 +195,7 @@ namespace TRPO_Project
             this.imageButtonCheckNum.ForeColor = System.Drawing.Color.White;
             this.imageButtonCheckNum.Image = global::TRPO_Project.Properties.Resources.delete2;
             this.imageButtonCheckNum.ImageSize = new System.Drawing.Size(52, 52);
-            this.imageButtonCheckNum.Location = new System.Drawing.Point(111, 162);
+            this.imageButtonCheckNum.Location = new System.Drawing.Point(111, 156);
             this.imageButtonCheckNum.Name = "imageButtonCheckNum";
             this.imageButtonCheckNum.OnHoverBaseColor = System.Drawing.Color.SpringGreen;
             this.imageButtonCheckNum.OnHoverBorderColor = System.Drawing.Color.Black;
@@ -213,13 +213,13 @@ namespace TRPO_Project
             // gunaLineTextBoxCheckSendedNum
             // 
             this.gunaLineTextBoxCheckSendedNum.Animated = true;
-            this.gunaLineTextBoxCheckSendedNum.BackColor = System.Drawing.Color.LavenderBlush;
+            this.gunaLineTextBoxCheckSendedNum.BackColor = System.Drawing.Color.White;
             this.gunaLineTextBoxCheckSendedNum.Cursor = System.Windows.Forms.Cursors.IBeam;
             this.gunaLineTextBoxCheckSendedNum.FocusedLineColor = System.Drawing.Color.FromArgb(((int)(((byte)(100)))), ((int)(((byte)(88)))), ((int)(((byte)(255)))));
             this.gunaLineTextBoxCheckSendedNum.Font = new System.Drawing.Font("Unispace", 8.999999F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.gunaLineTextBoxCheckSendedNum.ForeColor = System.Drawing.Color.SeaGreen;
-            this.gunaLineTextBoxCheckSendedNum.LineColor = System.Drawing.Color.DeepSkyBlue;
-            this.gunaLineTextBoxCheckSendedNum.Location = new System.Drawing.Point(25, 177);
+            this.gunaLineTextBoxCheckSendedNum.LineColor = System.Drawing.Color.DarkOrange;
+            this.gunaLineTextBoxCheckSendedNum.Location = new System.Drawing.Point(25, 169);
             this.gunaLineTextBoxCheckSendedNum.Name = "gunaLineTextBoxCheckSendedNum";
             this.gunaLineTextBoxCheckSendedNum.PasswordChar = '\0';
             this.gunaLineTextBoxCheckSendedNum.Size = new System.Drawing.Size(72, 25);
@@ -278,7 +278,7 @@ namespace TRPO_Project
             // textBox_ForgotPass
             // 
             this.textBox_ForgotPass.Animated = true;
-            this.textBox_ForgotPass.BackColor = System.Drawing.Color.Thistle;
+            this.textBox_ForgotPass.BackColor = System.Drawing.Color.DarkOrange;
             this.textBox_ForgotPass.Cursor = System.Windows.Forms.Cursors.IBeam;
             this.textBox_ForgotPass.FocusedLineColor = System.Drawing.Color.FromArgb(((int)(((byte)(100)))), ((int)(((byte)(88)))), ((int)(((byte)(255)))));
             this.textBox_ForgotPass.Font = new System.Drawing.Font("Unispace", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -311,8 +311,8 @@ namespace TRPO_Project
             // 
             this.xuiSlidingPanelREGISTRATION.Anchor = System.Windows.Forms.AnchorStyles.Left;
             this.xuiSlidingPanelREGISTRATION.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.xuiSlidingPanelREGISTRATION.BottomLeft = System.Drawing.Color.DeepSkyBlue;
-            this.xuiSlidingPanelREGISTRATION.BottomRight = System.Drawing.Color.Fuchsia;
+            this.xuiSlidingPanelREGISTRATION.BottomLeft = System.Drawing.Color.Blue;
+            this.xuiSlidingPanelREGISTRATION.BottomRight = System.Drawing.Color.Violet;
             this.xuiSlidingPanelREGISTRATION.CollapseControl = this.metroLinkRegister;
             this.xuiSlidingPanelREGISTRATION.Collapsed = true;
             this.xuiSlidingPanelREGISTRATION.Controls.Add(this.buttonProtectionCode_reg);
@@ -335,8 +335,8 @@ namespace TRPO_Project
             this.xuiSlidingPanelREGISTRATION.Size = new System.Drawing.Size(0, 217);
             this.xuiSlidingPanelREGISTRATION.Style = XanderUI.XUIGradientPanel.GradientStyle.Corners;
             this.xuiSlidingPanelREGISTRATION.TabIndex = 24;
-            this.xuiSlidingPanelREGISTRATION.TopLeft = System.Drawing.Color.LightSeaGreen;
-            this.xuiSlidingPanelREGISTRATION.TopRight = System.Drawing.Color.DarkGreen;
+            this.xuiSlidingPanelREGISTRATION.TopLeft = System.Drawing.Color.MediumSlateBlue;
+            this.xuiSlidingPanelREGISTRATION.TopRight = System.Drawing.Color.DarkGray;
             // 
             // buttonProtectionCode_reg
             // 
@@ -371,7 +371,7 @@ namespace TRPO_Project
             // 
             // textBoxProtectionCode_reg
             // 
-            this.textBoxProtectionCode_reg.BackColor = System.Drawing.Color.LightPink;
+            this.textBoxProtectionCode_reg.BackColor = System.Drawing.Color.Plum;
             this.textBoxProtectionCode_reg.Cursor = System.Windows.Forms.Cursors.IBeam;
             this.textBoxProtectionCode_reg.Font = new System.Drawing.Font("Unispace", 9.749999F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.textBoxProtectionCode_reg.ForeColor = System.Drawing.Color.SeaGreen;
@@ -379,7 +379,7 @@ namespace TRPO_Project
             this.textBoxProtectionCode_reg.HintText = "";
             this.textBoxProtectionCode_reg.isPassword = false;
             this.textBoxProtectionCode_reg.LineFocusedColor = System.Drawing.Color.Blue;
-            this.textBoxProtectionCode_reg.LineIdleColor = System.Drawing.Color.Cyan;
+            this.textBoxProtectionCode_reg.LineIdleColor = System.Drawing.Color.Purple;
             this.textBoxProtectionCode_reg.LineMouseHoverColor = System.Drawing.Color.Blue;
             this.textBoxProtectionCode_reg.LineThickness = 3;
             this.textBoxProtectionCode_reg.Location = new System.Drawing.Point(268, 51);
@@ -529,7 +529,7 @@ namespace TRPO_Project
             // 
             // bunifuImageButtonEXIT
             // 
-            this.bunifuImageButtonEXIT.BackColor = System.Drawing.Color.Red;
+            this.bunifuImageButtonEXIT.BackColor = System.Drawing.Color.Crimson;
             this.bunifuImageButtonEXIT.Image = global::TRPO_Project.Properties.Resources.X;
             this.bunifuImageButtonEXIT.ImageActive = null;
             this.bunifuImageButtonEXIT.Location = new System.Drawing.Point(370, 8);

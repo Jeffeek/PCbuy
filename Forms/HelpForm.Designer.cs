@@ -314,7 +314,7 @@
             // 
             // bunifuImageButtonEXIT
             // 
-            this.bunifuImageButtonEXIT.BackColor = System.Drawing.Color.Red;
+            this.bunifuImageButtonEXIT.BackColor = System.Drawing.Color.Crimson;
             this.bunifuImageButtonEXIT.Image = global::TRPO_Project.Properties.Resources.X;
             this.bunifuImageButtonEXIT.ImageActive = null;
             this.bunifuImageButtonEXIT.InitialImage = global::TRPO_Project.Properties.Resources.X;
