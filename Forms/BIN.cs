@@ -66,11 +66,11 @@ namespace TRPO_Project
                 BunifuImageButton IMGpb = new BunifuImageButton();
                 BunifuImageButton deleteProductButton = new BunifuImageButton();
                 tabControlPRODUCTs.TabPages.Add($"PC: {i + 1}");
-                tabControlPRODUCTs.TabPages[i].Name = IDsOfPCinBIN[i].ID.ToString();
+                tabControlPRODUCTs.TabPages[i].Name = IDsOfPCinBIN[i].PC.ID.ToString();
                 tabControlPRODUCTs.TabPages[i].BackColor = Color.FromArgb(171717);
 
                 #region takeINFaboutID              
-                CPU = IDsOfPCinBIN[i].CPU;
+                CPU = IDsOfPCinBIN[i].PC.CPU;
                 CPU_label.Text = "CPU: " + CPU;
                 CPU_label.Location = new Point(10, 50);
                 CPU_label.Visible = true;
@@ -79,7 +79,7 @@ namespace TRPO_Project
                 CPU_label.Font = new Font("Unispace", 8F, FontStyle.Bold, GraphicsUnit.Point, ((byte)(0)));
                 tabControlPRODUCTs.TabPages[i].Controls.Add(CPU_label);
 
-                GPU = IDsOfPCinBIN[i].GPU;
+                GPU = IDsOfPCinBIN[i].PC.GPU;
                 GPU_label.Text = "GPU: " + GPU;
                 GPU_label.Location = new Point(10, 75);
                 GPU_label.Visible = true;
@@ -88,7 +88,7 @@ namespace TRPO_Project
                 GPU_label.Font = new Font("Unispace", 8F, FontStyle.Bold, GraphicsUnit.Point, ((byte)(0)));
                 tabControlPRODUCTs.TabPages[i].Controls.Add(GPU_label);
 
-                RAM = IDsOfPCinBIN[i].RAM.ToString();
+                RAM = IDsOfPCinBIN[i].PC.RAM.ToString();
                 RAM_label.Text = "RAM: " + RAM + "GB";
                 RAM_label.Location = new Point(10, 100);
                 RAM_label.Visible = true;
@@ -97,7 +97,7 @@ namespace TRPO_Project
                 RAM_label.Font = new Font("Unispace", 8F, FontStyle.Bold, GraphicsUnit.Point, ((byte)(0)));
                 tabControlPRODUCTs.TabPages[i].Controls.Add(RAM_label);
 
-                COST = IDsOfPCinBIN[i].COST.ToString();
+                COST = IDsOfPCinBIN[i].PC.COST.ToString();
                 COST_label.Text = "PRICE: " + COST + "$";
                 COST_label.Location = new Point(10, 125);
                 COST_label.Visible = true;
@@ -106,7 +106,7 @@ namespace TRPO_Project
                 COST_label.Font = new Font("Unispace", 8F, FontStyle.Bold, GraphicsUnit.Point, ((byte)(0)));
                 tabControlPRODUCTs.TabPages[i].Controls.Add(COST_label);
 
-                IMGpb.Image = IDsOfPCinBIN[i].IMG;
+                IMGpb.Image = IDsOfPCinBIN[i].PC.IMG;
                 IMGpb.Visible = true;
                 IMGpb.Size = new Size(190, 173);
                 IMGpb.SizeMode = PictureBoxSizeMode.StretchImage;
@@ -155,8 +155,8 @@ namespace TRPO_Project
             string OrderNum;
             foreach (var PC in IDsOfPCinBIN)
             {
-                IDs += PC.ID + " | ";
-                SUMofOrder += PC.COST;
+                IDs += PC.PC.ID + " | ";
+                SUMofOrder += PC.PC.COST;
             }
             using (sql_con = new SQLiteConnection($"Data Source={Directory.GetCurrentDirectory()}\\DataBases\\TRPO.db"))
             {
@@ -249,7 +249,7 @@ namespace TRPO_Project
 
             foreach (var PC in IDsOfPCinBIN)
             {
-                OrderList += PC.ID + " | " + PC.CPU + " | " + PC.GPU + " | " + PC.RAM + "GB" + " | " + PC.COST + "$ <br>";
+                OrderList += PC.PC.ID + " | " + PC.PC.CPU + " | " + PC.PC.GPU + " | " + PC.PC.RAM + "GB" + " | " + PC.PC.COST + "$ <br>";
             }
 
             Regex R = new Regex("{piska}");

@@ -198,7 +198,7 @@ namespace TRPO_Project
                     CircleProgressBar.Percentage++;
                     _percentage++;
                 }
-                PCinfo OBJ = new PCinfo(pc.TYPE, pc.ID, pc.CPU, pc.GPU, pc.RAM, pc.COST, pc.IMG) { isAdmin = false };
+                PCinfo OBJ = new PCinfo(pc) { isAdmin = false };
                 OBJects.Add(OBJ);
                 OBJ.Location = new Point(0, Y);
                 Y += deltaY;
@@ -373,8 +373,8 @@ namespace TRPO_Project
                 if (themes.Count(x => x.UserID == userID) > 0)
                 {
                     ProgramTheme ThemeOBJ = themes.Find(x => x.UserID == userID);
-                    ChangeNonMetroControls(ThemeOBJ);
-                    ChangeMetroControls(ThemeOBJ);
+                    await Task.Run(() => ChangeNonMetroControls(ThemeOBJ));
+                    await Task.Run(() => ChangeMetroControls(ThemeOBJ));
                     Refresh();
                 }
             }

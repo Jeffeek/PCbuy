@@ -12,31 +12,19 @@ namespace TRPO_Project
 {
     public partial class PCinfo : UserControl
     {
-        public string TYPE { get; set; }
-        public int ID { get; set; }
-        public string CPU { get; set; }
-        public string GPU { get; set; }
-        public int RAM { get; set; }
-        public int COST { get; set; }
-        public Image IMG { get; set; }
+        public PC PC { get; set; }
         public bool isAdmin { set; get; }
-        public PCinfo(string TYPE, int ID, string CPU, string GPU, int RAM, int COST, Image IMG)
+        public PCinfo(PC pc)
         {
             InitializeComponent();
-            this.TYPE = TYPE;
-            this.ID = ID;
-            this.CPU = CPU;
-            this.GPU = GPU;
-            this.RAM = RAM;
-            this.COST = COST;
-            this.IMG = IMG;
-            labelID.Text += ID;
-            labelTYPE.Text += TYPE;
-            labelRAM.Text += RAM + "GB";
-            labelCPU.Text += CPU;
-            labelCOST.Text += COST + "$";
-            labelGPU.Text += GPU;
-            PCimg.Image = IMG;
+            PC = pc;
+            labelID.Text += PC.ID;
+            labelTYPE.Text += PC.TYPE;
+            labelRAM.Text += PC.RAM + "GB";
+            labelCPU.Text += PC.CPU;
+            labelCOST.Text += PC.COST + "$";
+            labelGPU.Text += PC.GPU;
+            PCimg.Image = PC.IMG;
         }
 
         private void buttonBUY_Click(object sender, EventArgs e)

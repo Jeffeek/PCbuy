@@ -242,7 +242,7 @@ namespace TRPO_Project
                     _percentage++;
                 }
 
-                PCinfo OBJ = new PCinfo(pc.TYPE, pc.ID, pc.CPU, pc.GPU, pc.RAM, pc.COST, pc.IMG) {isAdmin = true};
+                PCinfo OBJ = new PCinfo(pc) {isAdmin = true};
                 OBJects.Add(OBJ);
                 OBJ.Location = new Point(0, Y);
                 Y += deltaY;

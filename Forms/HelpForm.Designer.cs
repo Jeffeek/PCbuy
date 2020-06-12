@@ -1,4 +1,4 @@
-﻿namespace TRPO_Project
+namespace TRPO_Project
 {
     partial class HelpForm
     {
