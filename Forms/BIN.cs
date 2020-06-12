@@ -22,28 +22,21 @@ namespace TRPO_Project
         #region variables
         private SQLiteConnection sql_con; // connection
         private SQLiteCommand sql_cmd;
-        private bool IsAdmin;
-        private string EmailMessage = "";
-        private int userID;
-        private List<PCinfo> IDsOfPCinBIN;
+        private int _userId;
+        public static List<PC> ListBIN = new List<PC>();
         #endregion
 
         #region constructor
-        public BIN(bool isAdmin, int userID)
+        public BIN(int userID)
         {
             InitializeComponent();
-            this.userID = userID;
+            _userId = userID;
             ReadThemeAsync();
             FormStartTransition.ShowAsyc(this);
-            IsAdmin = isAdmin;
             metroLabelID.Text += userID;
-            if (isAdmin)
-                IDsOfPCinBIN = formADMIN.BINid;
-            else
-                IDsOfPCinBIN = formUSER.BINid;
             CreateListOfProducts();
 
-            if (IDsOfPCinBIN.Count > 0)
+            if (ListBIN.Count > 0)
             {
                 imageButtonCONFIRMorder.BackColor = Color.SeaGreen;
                 imageButtonCONFIRMorder.Enabled = true;
@@ -56,7 +49,7 @@ namespace TRPO_Project
         #region CreateList
         private void CreateListOfProducts()
         {
-            for (int i = 0; i < IDsOfPCinBIN.Count; i++)
+            for (int i = 0; i < ListBIN.Count; i++)
             {
                 string CPU, GPU, RAM, COST;
                 GunaLabel CPU_label = new GunaLabel();
@@ -66,11 +59,11 @@ namespace TRPO_Project
                 BunifuImageButton IMGpb = new BunifuImageButton();
                 BunifuImageButton deleteProductButton = new BunifuImageButton();
                 tabControlPRODUCTs.TabPages.Add($"PC: {i + 1}");
-                tabControlPRODUCTs.TabPages[i].Name = IDsOfPCinBIN[i].PC.ID.ToString();
+                tabControlPRODUCTs.TabPages[i].Name = ListBIN[i].ID.ToString();
                 tabControlPRODUCTs.TabPages[i].BackColor = Color.FromArgb(171717);
 
                 #region takeINFaboutID              
-                CPU = IDsOfPCinBIN[i].PC.CPU;
+                CPU = ListBIN[i].CPU;
                 CPU_label.Text = "CPU: " + CPU;
                 CPU_label.Location = new Point(10, 50);
                 CPU_label.Visible = true;
@@ -79,7 +72,7 @@ namespace TRPO_Project
                 CPU_label.Font = new Font("Unispace", 8F, FontStyle.Bold, GraphicsUnit.Point, ((byte)(0)));
                 tabControlPRODUCTs.TabPages[i].Controls.Add(CPU_label);
 
-                GPU = IDsOfPCinBIN[i].PC.GPU;
+                GPU = ListBIN[i].GPU;
                 GPU_label.Text = "GPU: " + GPU;
                 GPU_label.Location = new Point(10, 75);
                 GPU_label.Visible = true;
@@ -88,7 +81,7 @@ namespace TRPO_Project
                 GPU_label.Font = new Font("Unispace", 8F, FontStyle.Bold, GraphicsUnit.Point, ((byte)(0)));
                 tabControlPRODUCTs.TabPages[i].Controls.Add(GPU_label);
 
-                RAM = IDsOfPCinBIN[i].PC.RAM.ToString();
+                RAM = ListBIN[i].RAM.ToString();
                 RAM_label.Text = "RAM: " + RAM + "GB";
                 RAM_label.Location = new Point(10, 100);
                 RAM_label.Visible = true;
@@ -97,7 +90,7 @@ namespace TRPO_Project
                 RAM_label.Font = new Font("Unispace", 8F, FontStyle.Bold, GraphicsUnit.Point, ((byte)(0)));
                 tabControlPRODUCTs.TabPages[i].Controls.Add(RAM_label);
 
-                COST = IDsOfPCinBIN[i].PC.COST.ToString();
+                COST = ListBIN[i].COST.ToString();
                 COST_label.Text = "PRICE: " + COST + "$";
                 COST_label.Location = new Point(10, 125);
                 COST_label.Visible = true;
@@ -106,7 +99,7 @@ namespace TRPO_Project
                 COST_label.Font = new Font("Unispace", 8F, FontStyle.Bold, GraphicsUnit.Point, ((byte)(0)));
                 tabControlPRODUCTs.TabPages[i].Controls.Add(COST_label);
 
-                IMGpb.Image = IDsOfPCinBIN[i].PC.IMG;
+                IMGpb.Image = ListBIN[i].IMG;
                 IMGpb.Visible = true;
                 IMGpb.Size = new Size(190, 173);
                 IMGpb.SizeMode = PictureBoxSizeMode.StretchImage;
@@ -123,9 +116,9 @@ namespace TRPO_Project
 
                 deleteProductButton.Click += (s, e) =>
                 {
-                    if (IDsOfPCinBIN.Count > 0)
+                    if (ListBIN.Count > 0)
                     {
-                        IDsOfPCinBIN.Remove(IDsOfPCinBIN[i-1]);
+                        ListBIN.Remove(ListBIN[i-1]);
                         i--;
                     }
                     tabControlPRODUCTs.TabPages.Remove(tabControlPRODUCTs.SelectedTab);
@@ -139,7 +132,6 @@ namespace TRPO_Project
                 #endregion
             }
         }
-
         #endregion
 
         #region ButtonsClick
@@ -153,15 +145,15 @@ namespace TRPO_Project
             string IDs = string.Empty;
             int SUMofOrder = 0;
             string OrderNum;
-            foreach (var PC in IDsOfPCinBIN)
+            foreach (var PC in ListBIN)
             {
-                IDs += PC.PC.ID + " | ";
-                SUMofOrder += PC.PC.COST;
+                IDs += PC.ID + " | ";
+                SUMofOrder += PC.COST;
             }
             using (sql_con = new SQLiteConnection($"Data Source={Directory.GetCurrentDirectory()}\\DataBases\\TRPO.db"))
             {
                 sql_con.Open();
-                using (sql_cmd = new SQLiteCommand($"INSERT INTO Orders(userID, pcIDs, PRICEall, Date) VALUES({userID}, '{IDs}', {SUMofOrder},'{DateTime.Now}')", sql_con))
+                using (sql_cmd = new SQLiteCommand($"INSERT INTO Orders(userID, pcIDs, PRICEall, Date) VALUES({_userId}, '{IDs}', {SUMofOrder},'{DateTime.Now}')", sql_con))
                 {
                     sql_cmd.ExecuteNonQuery();
                     using (sql_cmd = new SQLiteCommand("SELECT MAX(id) FROM Orders", sql_con))
@@ -172,7 +164,7 @@ namespace TRPO_Project
                     MetroMessageBox.Show(this, "YOUR ORDER WAS CONFIRMED!", "SUCCESS!", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
                     tabControlPRODUCTs.TabPages.Clear();
-                    IDsOfPCinBIN.Clear();
+                    ListBIN.Clear();
                 }
             }
             Close();
@@ -207,9 +199,9 @@ namespace TRPO_Project
                     themes = jsonSerializer.ReadObject(file) as List<ProgramTheme>;
                 }
 
-                if (themes.Count(x => x.UserID == userID) > 0)
+                if (themes.Count(x => x.UserID == _userId) > 0)
                 {
-                    ProgramTheme ThemeOBJ = themes.Find(x => x.UserID == userID);
+                    ProgramTheme ThemeOBJ = themes.Find(x => x.UserID == _userId);
                     ChangeNonMetroControls(ThemeOBJ);
                     ChangeMetroControls(ThemeOBJ);
                     Refresh();
@@ -231,7 +223,7 @@ namespace TRPO_Project
             using (sql_con = new SQLiteConnection($"Data Source={Directory.GetCurrentDirectory()}\\DataBases\\TRPO.db"))
             {
                 sql_con.Open();
-                using (sql_cmd = new SQLiteCommand($"SELECT email FROM LOGin WHERE id={userID}", sql_con))
+                using (sql_cmd = new SQLiteCommand($"SELECT email FROM LOGin WHERE id={_userId}", sql_con))
                 {
                     return sql_cmd.ExecuteScalar().ToString();
                 }
@@ -247,9 +239,9 @@ namespace TRPO_Project
                 HTMLfile = stream.ReadToEnd();
             }
 
-            foreach (var PC in IDsOfPCinBIN)
+            foreach (var PC in ListBIN)
             {
-                OrderList += PC.PC.ID + " | " + PC.PC.CPU + " | " + PC.PC.GPU + " | " + PC.PC.RAM + "GB" + " | " + PC.PC.COST + "$ <br>";
+                OrderList += PC.ID + " | " + PC.CPU + " | " + PC.GPU + " | " + PC.RAM + "GB" + " | " + PC.COST + "$ <br>";
             }
 
             Regex R = new Regex("{piska}");

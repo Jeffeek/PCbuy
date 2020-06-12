@@ -486,7 +486,7 @@ namespace TRPO_Project
         private void SetScaling()
         {
             xuiSlidingPanelPassChange.PanelWidthExpanded =
-                (int) (xuiSlidingPanelPassChange.PanelWidthExpanded * ScaleControls.Scale);
+                (int) (xuiSlidingPanelPassChange.PanelWidthExpanded * ScaleControls.Scale * 1.2);
             xuiSlidingPanelSettings.PanelWidthExpanded =
                 (int) (xuiSlidingPanelSettings.PanelWidthExpanded * ScaleControls.Scale);
 

@@ -20,7 +20,6 @@ namespace TRPO_Project
         private SQLiteCommand sql_cmd;
         private List<PCinfo> OBJects = new List<PCinfo>(); // объекты главной формы
         private static List<PC> AllPCList = new List<PC>();
-        public static List<PCinfo> BINid = new List<PCinfo>(); //лист корзины юзера
         private int userID;
         private Point lastPoint;
 
@@ -80,7 +79,6 @@ namespace TRPO_Project
                     break;
                 }
             }
-            
         }
 
         #endregion
@@ -138,7 +136,7 @@ namespace TRPO_Project
 
         private void pictureBoxProductBIN_Click(object sender, EventArgs e)
         {
-            Form BIN = new BIN(true, userID);
+            Form BIN = new BIN(userID);
             BIN.ShowDialog(this);
         }
 

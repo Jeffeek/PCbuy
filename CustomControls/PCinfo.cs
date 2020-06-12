@@ -27,17 +27,7 @@ namespace TRPO_Project
             PCimg.Image = PC.IMG;
         }
 
-        private void buttonBUY_Click(object sender, EventArgs e)
-        {
-            if (isAdmin)
-            {
-                formADMIN.BINid.Add(this);
-            }
-            else
-            {
-                formUSER.BINid.Add(this);
-            }
-        }
+        private void buttonBUY_Click(object sender, EventArgs e) => BIN.ListBIN.Add(PC);
 
         private void PCinfo_Load(object sender, EventArgs e)
         {

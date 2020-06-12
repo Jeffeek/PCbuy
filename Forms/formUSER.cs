@@ -27,7 +27,6 @@ namespace TRPO_Project
         private Point lastPoint;
         private List<PCinfo> OBJects = new List<PCinfo>(); // объекты главной формы
         private List<PC> AllPCList = new List<PC>();
-        public static List<PCinfo> BINid = new List<PCinfo>(); //лист корзины юзера
         private int userID;
         #endregion
 
@@ -59,7 +58,7 @@ namespace TRPO_Project
         #region PictureBOXclick
         private void pictureBoxProductBIN_Click(object sender, EventArgs e)
         {
-            Form BIN = new BIN(false, userID);           
+            Form BIN = new BIN(userID);           
             BIN.ShowDialog(this);
         }
 
