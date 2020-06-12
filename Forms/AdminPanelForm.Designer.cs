@@ -39,20 +39,6 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(AdminPanelForm));
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle8 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle9 = new System.Windows.Forms.DataGridViewCellStyle();
-            this.tabPage1 = new System.Windows.Forms.TabPage();
-            this.bunifuMetroTextboxADDprodPRICE = new Bunifu.Framework.UI.BunifuMaterialTextbox();
-            this.bunifuMetroTextboxADDprodRAM = new Bunifu.Framework.UI.BunifuMaterialTextbox();
-            this.label10 = new System.Windows.Forms.Label();
-            this.bunifuImageButtonAPPLYnewPROD = new Bunifu.Framework.UI.BunifuImageButton();
-            this.bunifuMetroTextboxADDprodGPU = new Bunifu.Framework.UI.BunifuMaterialTextbox();
-            this.label9 = new System.Windows.Forms.Label();
-            this.bunifuMetroTextboxADDprodType = new Bunifu.Framework.UI.BunifuMaterialTextbox();
-            this.bunifuImageButtonNEWpic = new Bunifu.Framework.UI.BunifuImageButton();
-            this.bunifuMetroTextboxADDprodCPU = new Bunifu.Framework.UI.BunifuMaterialTextbox();
-            this.label6 = new System.Windows.Forms.Label();
-            this.label7 = new System.Windows.Forms.Label();
-            this.label8 = new System.Windows.Forms.Label();
-            this.label5 = new System.Windows.Forms.Label();
             this.gunaLabelIDofPC = new Guna.UI.WinForms.GunaLabel();
             this.bunifuCustomDataGridVIEWinfoAboutONEprod = new Bunifu.Framework.UI.BunifuCustomDataGrid();
             this.dataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -80,25 +66,36 @@
             this.rEFRESHToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.FormTransition = new Bunifu.Framework.UI.BunifuFormFadeTransition(this.components);
             this.xuiObjectEllipse1 = new XanderUI.XUIObjectEllipse();
-            this.bunifuImageButtonEXIT = new Bunifu.Framework.UI.BunifuImageButton();
-            this.bunifuImageButton_DeleteProd = new Bunifu.Framework.UI.BunifuImageButton();
-            this.bunifuImageButtonAPPLYchanges = new Bunifu.Framework.UI.BunifuImageButton();
-            this.CirclePictureBoxUSER = new Guna.UI.WinForms.GunaCirclePictureBox();
-            this.gunaCirclePictureBoxCPU = new Guna.UI.WinForms.GunaCirclePictureBox();
-            this.gunaCirclePictureBoxPC = new Guna.UI.WinForms.GunaCirclePictureBox();
-            this.buttonShowGraphic = new Bunifu.Framework.UI.BunifuImageButton();
             this.tabControlAdmin = new MetroFramework.Controls.MetroTabControl();
+            this.metroTabPage5 = new MetroFramework.Controls.MetroTabPage();
+            this.gunaLabel7 = new Guna.UI.WinForms.GunaLabel();
+            this.gunaLabel5 = new Guna.UI.WinForms.GunaLabel();
+            this.gunaLabel6 = new Guna.UI.WinForms.GunaLabel();
+            this.gunaLabel4 = new Guna.UI.WinForms.GunaLabel();
+            this.gunaLabel3 = new Guna.UI.WinForms.GunaLabel();
+            this.gunaLabel2 = new Guna.UI.WinForms.GunaLabel();
+            this.buttonCancelAdding = new Guna.UI.WinForms.GunaGradientCircleButton();
+            this.bunifuMetroTextboxADDprodPRICE = new Bunifu.Framework.UI.BunifuMaterialTextbox();
+            this.bunifuMetroTextboxADDprodRAM = new Bunifu.Framework.UI.BunifuMaterialTextbox();
+            this.bunifuImageButtonAPPLYnewPROD = new Bunifu.Framework.UI.BunifuImageButton();
+            this.bunifuMetroTextboxADDprodGPU = new Bunifu.Framework.UI.BunifuMaterialTextbox();
+            this.bunifuMetroTextboxADDprodType = new Bunifu.Framework.UI.BunifuMaterialTextbox();
+            this.bunifuImageButtonNEWpic = new Bunifu.Framework.UI.BunifuImageButton();
+            this.bunifuMetroTextboxADDprodCPU = new Bunifu.Framework.UI.BunifuMaterialTextbox();
             this.metroTabPage1 = new MetroFramework.Controls.MetroTabPage();
             this.gunaLabelDeleteProd = new Guna.UI.WinForms.GunaLabel();
             this.gunaLabel1 = new Guna.UI.WinForms.GunaLabel();
-            this.gunaCirclePictureBoxPC_ONE = new Guna.UI.WinForms.GunaCirclePictureBox();
             this.gunaLabelNEWpcPIC = new Guna.UI.WinForms.GunaLabel();
-            this.bunifuImageButtonNEWpcIMG = new Bunifu.Framework.UI.BunifuImageButton();
             this.gunaLabelCHANGE_prop = new Guna.UI.WinForms.GunaLabel();
             this.gunaLabelNEWvalue = new Guna.UI.WinForms.GunaLabel();
             this.gunaLineTextBoxNEWvalue = new Guna.UI.WinForms.GunaLineTextBox();
             this.comboBoxCHANGEVALUE_byid_product = new Bunifu.Framework.UI.BunifuDropdown();
+            this.btnApplyChangesPC = new Guna.UI.WinForms.GunaGradientCircleButton();
+            this.gunaCirclePictureBoxPC_ONE = new Guna.UI.WinForms.GunaCirclePictureBox();
+            this.bunifuImageButtonNEWpcIMG = new Bunifu.Framework.UI.BunifuImageButton();
+            this.bunifuImageButton_DeleteProd = new Bunifu.Framework.UI.BunifuImageButton();
             this.metroTabPage2 = new MetroFramework.Controls.MetroTabPage();
+            this.CirclePictureBoxUSER = new Guna.UI.WinForms.GunaCirclePictureBox();
             this.metroTabPage3 = new MetroFramework.Controls.MetroTabPage();
             this.PCDataGrid = new Bunifu.Framework.UI.BunifuCustomDataGrid();
             this.dataGridViewTextBoxColumn8 = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -109,249 +106,38 @@
             this.dataGridViewTextBoxColumn13 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn14 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.gunaCirclePictureBoxGPU = new Guna.UI.WinForms.GunaCirclePictureBox();
+            this.gunaCirclePictureBoxCPU = new Guna.UI.WinForms.GunaCirclePictureBox();
+            this.gunaCirclePictureBoxPC = new Guna.UI.WinForms.GunaCirclePictureBox();
             this.metroTabPage4 = new MetroFramework.Controls.MetroTabPage();
+            this.buttonShowGraphic = new Bunifu.Framework.UI.BunifuImageButton();
             this.openFileDialogCHANGE_PIC = new System.Windows.Forms.OpenFileDialog();
-            this.bunifuImageButtonHIDE = new Bunifu.Framework.UI.BunifuImageButton();
             this.panelHead = new System.Windows.Forms.Panel();
-            this.tabPage1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.bunifuImageButtonAPPLYnewPROD)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.bunifuImageButtonNEWpic)).BeginInit();
+            this.bunifuImageButtonHIDE = new Bunifu.Framework.UI.BunifuImageButton();
+            this.bunifuImageButtonEXIT = new Bunifu.Framework.UI.BunifuImageButton();
             ((System.ComponentModel.ISupportInitialize)(this.bunifuCustomDataGridVIEWinfoAboutONEprod)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.UsersDataGrid)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.InquiryDataGrid)).BeginInit();
             this.ContextMenu.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.bunifuImageButtonEXIT)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.bunifuImageButton_DeleteProd)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.bunifuImageButtonAPPLYchanges)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.CirclePictureBoxUSER)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.gunaCirclePictureBoxCPU)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.gunaCirclePictureBoxPC)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.buttonShowGraphic)).BeginInit();
             this.tabControlAdmin.SuspendLayout();
+            this.metroTabPage5.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.bunifuImageButtonAPPLYnewPROD)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.bunifuImageButtonNEWpic)).BeginInit();
             this.metroTabPage1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.gunaCirclePictureBoxPC_ONE)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.bunifuImageButtonNEWpcIMG)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.bunifuImageButton_DeleteProd)).BeginInit();
             this.metroTabPage2.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.CirclePictureBoxUSER)).BeginInit();
             this.metroTabPage3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.PCDataGrid)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gunaCirclePictureBoxGPU)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.gunaCirclePictureBoxCPU)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.gunaCirclePictureBoxPC)).BeginInit();
             this.metroTabPage4.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.buttonShowGraphic)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.bunifuImageButtonHIDE)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.bunifuImageButtonEXIT)).BeginInit();
             this.SuspendLayout();
-            // 
-            // tabPage1
-            // 
-            this.tabPage1.BackColor = System.Drawing.Color.Black;
-            this.tabPage1.Controls.Add(this.bunifuMetroTextboxADDprodPRICE);
-            this.tabPage1.Controls.Add(this.bunifuMetroTextboxADDprodRAM);
-            this.tabPage1.Controls.Add(this.label10);
-            this.tabPage1.Controls.Add(this.bunifuImageButtonAPPLYnewPROD);
-            this.tabPage1.Controls.Add(this.bunifuMetroTextboxADDprodGPU);
-            this.tabPage1.Controls.Add(this.label9);
-            this.tabPage1.Controls.Add(this.bunifuMetroTextboxADDprodType);
-            this.tabPage1.Controls.Add(this.bunifuImageButtonNEWpic);
-            this.tabPage1.Controls.Add(this.bunifuMetroTextboxADDprodCPU);
-            this.tabPage1.Controls.Add(this.label6);
-            this.tabPage1.Controls.Add(this.label7);
-            this.tabPage1.Controls.Add(this.label8);
-            this.tabPage1.Controls.Add(this.label5);
-            this.tabPage1.Location = new System.Drawing.Point(4, 38);
-            this.tabPage1.Name = "tabPage1";
-            this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage1.Size = new System.Drawing.Size(917, 306);
-            this.tabPage1.TabIndex = 0;
-            this.tabPage1.Text = "ADD NEW";
-            // 
-            // bunifuMetroTextboxADDprodPRICE
-            // 
-            this.bunifuMetroTextboxADDprodPRICE.Cursor = System.Windows.Forms.Cursors.IBeam;
-            this.bunifuMetroTextboxADDprodPRICE.Font = new System.Drawing.Font("Unispace", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.bunifuMetroTextboxADDprodPRICE.ForeColor = System.Drawing.Color.MediumSpringGreen;
-            this.bunifuMetroTextboxADDprodPRICE.HintForeColor = System.Drawing.Color.SpringGreen;
-            this.bunifuMetroTextboxADDprodPRICE.HintText = "";
-            this.bunifuMetroTextboxADDprodPRICE.isPassword = false;
-            this.bunifuMetroTextboxADDprodPRICE.LineFocusedColor = System.Drawing.Color.Fuchsia;
-            this.bunifuMetroTextboxADDprodPRICE.LineIdleColor = System.Drawing.Color.Lime;
-            this.bunifuMetroTextboxADDprodPRICE.LineMouseHoverColor = System.Drawing.Color.Purple;
-            this.bunifuMetroTextboxADDprodPRICE.LineThickness = 3;
-            this.bunifuMetroTextboxADDprodPRICE.Location = new System.Drawing.Point(133, 182);
-            this.bunifuMetroTextboxADDprodPRICE.Margin = new System.Windows.Forms.Padding(4);
-            this.bunifuMetroTextboxADDprodPRICE.Name = "bunifuMetroTextboxADDprodPRICE";
-            this.bunifuMetroTextboxADDprodPRICE.Size = new System.Drawing.Size(329, 44);
-            this.bunifuMetroTextboxADDprodPRICE.TabIndex = 33;
-            this.bunifuMetroTextboxADDprodPRICE.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
-            // 
-            // bunifuMetroTextboxADDprodRAM
-            // 
-            this.bunifuMetroTextboxADDprodRAM.Cursor = System.Windows.Forms.Cursors.IBeam;
-            this.bunifuMetroTextboxADDprodRAM.Font = new System.Drawing.Font("Unispace", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.bunifuMetroTextboxADDprodRAM.ForeColor = System.Drawing.Color.MediumSpringGreen;
-            this.bunifuMetroTextboxADDprodRAM.HintForeColor = System.Drawing.Color.SpringGreen;
-            this.bunifuMetroTextboxADDprodRAM.HintText = "";
-            this.bunifuMetroTextboxADDprodRAM.isPassword = false;
-            this.bunifuMetroTextboxADDprodRAM.LineFocusedColor = System.Drawing.Color.Fuchsia;
-            this.bunifuMetroTextboxADDprodRAM.LineIdleColor = System.Drawing.Color.Lime;
-            this.bunifuMetroTextboxADDprodRAM.LineMouseHoverColor = System.Drawing.Color.Purple;
-            this.bunifuMetroTextboxADDprodRAM.LineThickness = 3;
-            this.bunifuMetroTextboxADDprodRAM.Location = new System.Drawing.Point(133, 94);
-            this.bunifuMetroTextboxADDprodRAM.Margin = new System.Windows.Forms.Padding(4);
-            this.bunifuMetroTextboxADDprodRAM.Name = "bunifuMetroTextboxADDprodRAM";
-            this.bunifuMetroTextboxADDprodRAM.Size = new System.Drawing.Size(329, 44);
-            this.bunifuMetroTextboxADDprodRAM.TabIndex = 32;
-            this.bunifuMetroTextboxADDprodRAM.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
-            // 
-            // label10
-            // 
-            this.label10.AutoSize = true;
-            this.label10.Font = new System.Drawing.Font("Unispace", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label10.ForeColor = System.Drawing.Color.Turquoise;
-            this.label10.Location = new System.Drawing.Point(56, 198);
-            this.label10.Name = "label10";
-            this.label10.Size = new System.Drawing.Size(70, 23);
-            this.label10.TabIndex = 28;
-            this.label10.Text = "PRICE";
-            // 
-            // bunifuImageButtonAPPLYnewPROD
-            // 
-            this.bunifuImageButtonAPPLYnewPROD.BackColor = System.Drawing.Color.SlateGray;
-            this.bunifuImageButtonAPPLYnewPROD.Enabled = false;
-            this.bunifuImageButtonAPPLYnewPROD.Image = global::TRPO_Project.Properties.Resources.X;
-            this.bunifuImageButtonAPPLYnewPROD.ImageActive = null;
-            this.bunifuImageButtonAPPLYnewPROD.Location = new System.Drawing.Point(788, 246);
-            this.bunifuImageButtonAPPLYnewPROD.Name = "bunifuImageButtonAPPLYnewPROD";
-            this.bunifuImageButtonAPPLYnewPROD.Size = new System.Drawing.Size(116, 47);
-            this.bunifuImageButtonAPPLYnewPROD.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.bunifuImageButtonAPPLYnewPROD.TabIndex = 27;
-            this.bunifuImageButtonAPPLYnewPROD.TabStop = false;
-            this.bunifuImageButtonAPPLYnewPROD.Zoom = 10;
-            this.bunifuImageButtonAPPLYnewPROD.Click += new System.EventHandler(this.bunifuImageButtonAPPLYnewPROD_Click);
-            // 
-            // bunifuMetroTextboxADDprodGPU
-            // 
-            this.bunifuMetroTextboxADDprodGPU.Cursor = System.Windows.Forms.Cursors.IBeam;
-            this.bunifuMetroTextboxADDprodGPU.Font = new System.Drawing.Font("Unispace", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.bunifuMetroTextboxADDprodGPU.ForeColor = System.Drawing.Color.MediumSpringGreen;
-            this.bunifuMetroTextboxADDprodGPU.HintForeColor = System.Drawing.Color.SpringGreen;
-            this.bunifuMetroTextboxADDprodGPU.HintText = "";
-            this.bunifuMetroTextboxADDprodGPU.isPassword = false;
-            this.bunifuMetroTextboxADDprodGPU.LineFocusedColor = System.Drawing.Color.Fuchsia;
-            this.bunifuMetroTextboxADDprodGPU.LineIdleColor = System.Drawing.Color.Lime;
-            this.bunifuMetroTextboxADDprodGPU.LineMouseHoverColor = System.Drawing.Color.Purple;
-            this.bunifuMetroTextboxADDprodGPU.LineThickness = 3;
-            this.bunifuMetroTextboxADDprodGPU.Location = new System.Drawing.Point(133, 228);
-            this.bunifuMetroTextboxADDprodGPU.Margin = new System.Windows.Forms.Padding(4);
-            this.bunifuMetroTextboxADDprodGPU.Name = "bunifuMetroTextboxADDprodGPU";
-            this.bunifuMetroTextboxADDprodGPU.Size = new System.Drawing.Size(329, 44);
-            this.bunifuMetroTextboxADDprodGPU.TabIndex = 31;
-            this.bunifuMetroTextboxADDprodGPU.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
-            // 
-            // label9
-            // 
-            this.label9.AutoSize = true;
-            this.label9.Font = new System.Drawing.Font("Unispace", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label9.ForeColor = System.Drawing.Color.Turquoise;
-            this.label9.Location = new System.Drawing.Point(80, 114);
-            this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(46, 23);
-            this.label9.TabIndex = 25;
-            this.label9.Text = "RAM";
-            // 
-            // bunifuMetroTextboxADDprodType
-            // 
-            this.bunifuMetroTextboxADDprodType.Cursor = System.Windows.Forms.Cursors.IBeam;
-            this.bunifuMetroTextboxADDprodType.Font = new System.Drawing.Font("Unispace", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.bunifuMetroTextboxADDprodType.ForeColor = System.Drawing.Color.MediumSpringGreen;
-            this.bunifuMetroTextboxADDprodType.HintForeColor = System.Drawing.Color.SpringGreen;
-            this.bunifuMetroTextboxADDprodType.HintText = "";
-            this.bunifuMetroTextboxADDprodType.isPassword = false;
-            this.bunifuMetroTextboxADDprodType.LineFocusedColor = System.Drawing.Color.Fuchsia;
-            this.bunifuMetroTextboxADDprodType.LineIdleColor = System.Drawing.Color.Lime;
-            this.bunifuMetroTextboxADDprodType.LineMouseHoverColor = System.Drawing.Color.Purple;
-            this.bunifuMetroTextboxADDprodType.LineThickness = 3;
-            this.bunifuMetroTextboxADDprodType.Location = new System.Drawing.Point(133, 50);
-            this.bunifuMetroTextboxADDprodType.Margin = new System.Windows.Forms.Padding(4);
-            this.bunifuMetroTextboxADDprodType.Name = "bunifuMetroTextboxADDprodType";
-            this.bunifuMetroTextboxADDprodType.Size = new System.Drawing.Size(329, 44);
-            this.bunifuMetroTextboxADDprodType.TabIndex = 29;
-            this.bunifuMetroTextboxADDprodType.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
-            // 
-            // bunifuImageButtonNEWpic
-            // 
-            this.bunifuImageButtonNEWpic.BackColor = System.Drawing.Color.DimGray;
-            this.bunifuImageButtonNEWpic.Image = global::TRPO_Project.Properties.Resources.image;
-            this.bunifuImageButtonNEWpic.ImageActive = null;
-            this.bunifuImageButtonNEWpic.Location = new System.Drawing.Point(498, 78);
-            this.bunifuImageButtonNEWpic.Name = "bunifuImageButtonNEWpic";
-            this.bunifuImageButtonNEWpic.Size = new System.Drawing.Size(187, 195);
-            this.bunifuImageButtonNEWpic.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.bunifuImageButtonNEWpic.TabIndex = 26;
-            this.bunifuImageButtonNEWpic.TabStop = false;
-            this.bunifuImageButtonNEWpic.Zoom = 10;
-            this.bunifuImageButtonNEWpic.Click += new System.EventHandler(this.bunifuImageButtonNEWpic_Click);
-            // 
-            // bunifuMetroTextboxADDprodCPU
-            // 
-            this.bunifuMetroTextboxADDprodCPU.Cursor = System.Windows.Forms.Cursors.IBeam;
-            this.bunifuMetroTextboxADDprodCPU.Font = new System.Drawing.Font("Unispace", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.bunifuMetroTextboxADDprodCPU.ForeColor = System.Drawing.Color.MediumSpringGreen;
-            this.bunifuMetroTextboxADDprodCPU.HintForeColor = System.Drawing.Color.SpringGreen;
-            this.bunifuMetroTextboxADDprodCPU.HintText = "";
-            this.bunifuMetroTextboxADDprodCPU.isPassword = false;
-            this.bunifuMetroTextboxADDprodCPU.LineFocusedColor = System.Drawing.Color.Fuchsia;
-            this.bunifuMetroTextboxADDprodCPU.LineIdleColor = System.Drawing.Color.Lime;
-            this.bunifuMetroTextboxADDprodCPU.LineMouseHoverColor = System.Drawing.Color.Purple;
-            this.bunifuMetroTextboxADDprodCPU.LineThickness = 3;
-            this.bunifuMetroTextboxADDprodCPU.Location = new System.Drawing.Point(133, 137);
-            this.bunifuMetroTextboxADDprodCPU.Margin = new System.Windows.Forms.Padding(4);
-            this.bunifuMetroTextboxADDprodCPU.Name = "bunifuMetroTextboxADDprodCPU";
-            this.bunifuMetroTextboxADDprodCPU.Size = new System.Drawing.Size(329, 44);
-            this.bunifuMetroTextboxADDprodCPU.TabIndex = 30;
-            this.bunifuMetroTextboxADDprodCPU.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
-            // 
-            // label6
-            // 
-            this.label6.AutoSize = true;
-            this.label6.Font = new System.Drawing.Font("Unispace", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label6.ForeColor = System.Drawing.Color.Turquoise;
-            this.label6.Location = new System.Drawing.Point(20, 70);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(106, 23);
-            this.label6.TabIndex = 22;
-            this.label6.Text = "TYPEOfPC";
-            // 
-            // label7
-            // 
-            this.label7.AutoSize = true;
-            this.label7.Font = new System.Drawing.Font("Unispace", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label7.ForeColor = System.Drawing.Color.Turquoise;
-            this.label7.Location = new System.Drawing.Point(80, 154);
-            this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(46, 23);
-            this.label7.TabIndex = 23;
-            this.label7.Text = "CPU";
-            // 
-            // label8
-            // 
-            this.label8.AutoSize = true;
-            this.label8.Font = new System.Drawing.Font("Unispace", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label8.ForeColor = System.Drawing.Color.Turquoise;
-            this.label8.Location = new System.Drawing.Point(77, 247);
-            this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(46, 23);
-            this.label8.TabIndex = 24;
-            this.label8.Text = "GPU";
-            // 
-            // label5
-            // 
-            this.label5.AutoSize = true;
-            this.label5.BackColor = System.Drawing.Color.Black;
-            this.label5.Font = new System.Drawing.Font("Unispace", 20.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label5.ForeColor = System.Drawing.Color.DeepPink;
-            this.label5.Location = new System.Drawing.Point(361, 13);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(255, 33);
-            this.label5.TabIndex = 0;
-            this.label5.Text = "Add New Product";
             // 
             // gunaLabelIDofPC
             // 
@@ -369,10 +155,12 @@
             // 
             this.bunifuCustomDataGridVIEWinfoAboutONEprod.AllowUserToAddRows = false;
             this.bunifuCustomDataGridVIEWinfoAboutONEprod.AllowUserToDeleteRows = false;
+            this.bunifuCustomDataGridVIEWinfoAboutONEprod.AllowUserToResizeColumns = false;
             this.bunifuCustomDataGridVIEWinfoAboutONEprod.AllowUserToResizeRows = false;
             dataGridViewCellStyle1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
             this.bunifuCustomDataGridVIEWinfoAboutONEprod.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
             this.bunifuCustomDataGridVIEWinfoAboutONEprod.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.AllCells;
+            this.bunifuCustomDataGridVIEWinfoAboutONEprod.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.AllCells;
             this.bunifuCustomDataGridVIEWinfoAboutONEprod.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(17)))), ((int)(((byte)(17)))), ((int)(((byte)(17)))));
             this.bunifuCustomDataGridVIEWinfoAboutONEprod.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.bunifuCustomDataGridVIEWinfoAboutONEprod.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.SunkenHorizontal;
@@ -385,7 +173,6 @@
             dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
             dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
             this.bunifuCustomDataGridVIEWinfoAboutONEprod.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
-            this.bunifuCustomDataGridVIEWinfoAboutONEprod.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.bunifuCustomDataGridVIEWinfoAboutONEprod.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.dataGridViewTextBoxColumn1,
             this.dataGridViewTextBoxColumn2,
@@ -406,6 +193,7 @@
             this.bunifuCustomDataGridVIEWinfoAboutONEprod.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
             this.bunifuCustomDataGridVIEWinfoAboutONEprod.Size = new System.Drawing.Size(606, 43);
             this.bunifuCustomDataGridVIEWinfoAboutONEprod.TabIndex = 5;
+            this.bunifuCustomDataGridVIEWinfoAboutONEprod.TabStop = false;
             this.bunifuCustomDataGridVIEWinfoAboutONEprod.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.bunifuCustomDataGridVIEWinfoAboutONEprod_CellClick);
             // 
             // dataGridViewTextBoxColumn1
@@ -417,6 +205,7 @@
             this.dataGridViewTextBoxColumn1.HeaderText = "pcID";
             this.dataGridViewTextBoxColumn1.Name = "dataGridViewTextBoxColumn1";
             this.dataGridViewTextBoxColumn1.ReadOnly = true;
+            this.dataGridViewTextBoxColumn1.Resizable = System.Windows.Forms.DataGridViewTriState.False;
             this.dataGridViewTextBoxColumn1.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
             this.dataGridViewTextBoxColumn1.Width = 40;
             // 
@@ -429,7 +218,9 @@
             this.dataGridViewTextBoxColumn2.HeaderText = "TypeOfPC";
             this.dataGridViewTextBoxColumn2.Name = "dataGridViewTextBoxColumn2";
             this.dataGridViewTextBoxColumn2.ReadOnly = true;
-            this.dataGridViewTextBoxColumn2.Width = 85;
+            this.dataGridViewTextBoxColumn2.Resizable = System.Windows.Forms.DataGridViewTriState.False;
+            this.dataGridViewTextBoxColumn2.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            this.dataGridViewTextBoxColumn2.Width = 66;
             // 
             // dataGridViewTextBoxColumn3
             // 
@@ -440,7 +231,9 @@
             this.dataGridViewTextBoxColumn3.HeaderText = "PRICE";
             this.dataGridViewTextBoxColumn3.Name = "dataGridViewTextBoxColumn3";
             this.dataGridViewTextBoxColumn3.ReadOnly = true;
-            this.dataGridViewTextBoxColumn3.Width = 68;
+            this.dataGridViewTextBoxColumn3.Resizable = System.Windows.Forms.DataGridViewTriState.False;
+            this.dataGridViewTextBoxColumn3.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            this.dataGridViewTextBoxColumn3.Width = 49;
             // 
             // dataGridViewTextBoxColumn4
             // 
@@ -451,7 +244,9 @@
             this.dataGridViewTextBoxColumn4.HeaderText = "CPU";
             this.dataGridViewTextBoxColumn4.Name = "dataGridViewTextBoxColumn4";
             this.dataGridViewTextBoxColumn4.ReadOnly = true;
-            this.dataGridViewTextBoxColumn4.Width = 58;
+            this.dataGridViewTextBoxColumn4.Resizable = System.Windows.Forms.DataGridViewTriState.False;
+            this.dataGridViewTextBoxColumn4.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            this.dataGridViewTextBoxColumn4.Width = 39;
             // 
             // dataGridViewTextBoxColumn5
             // 
@@ -462,7 +257,9 @@
             this.dataGridViewTextBoxColumn5.HeaderText = "GPU";
             this.dataGridViewTextBoxColumn5.Name = "dataGridViewTextBoxColumn5";
             this.dataGridViewTextBoxColumn5.ReadOnly = true;
-            this.dataGridViewTextBoxColumn5.Width = 59;
+            this.dataGridViewTextBoxColumn5.Resizable = System.Windows.Forms.DataGridViewTriState.False;
+            this.dataGridViewTextBoxColumn5.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            this.dataGridViewTextBoxColumn5.Width = 40;
             // 
             // dataGridViewTextBoxColumn6
             // 
@@ -473,7 +270,9 @@
             this.dataGridViewTextBoxColumn6.HeaderText = "RAM";
             this.dataGridViewTextBoxColumn6.Name = "dataGridViewTextBoxColumn6";
             this.dataGridViewTextBoxColumn6.ReadOnly = true;
-            this.dataGridViewTextBoxColumn6.Width = 60;
+            this.dataGridViewTextBoxColumn6.Resizable = System.Windows.Forms.DataGridViewTriState.False;
+            this.dataGridViewTextBoxColumn6.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            this.dataGridViewTextBoxColumn6.Width = 41;
             // 
             // dataGridViewTextBoxColumn7
             // 
@@ -484,7 +283,9 @@
             this.dataGridViewTextBoxColumn7.HeaderText = "IMAGEpc";
             this.dataGridViewTextBoxColumn7.Name = "dataGridViewTextBoxColumn7";
             this.dataGridViewTextBoxColumn7.ReadOnly = true;
-            this.dataGridViewTextBoxColumn7.Width = 82;
+            this.dataGridViewTextBoxColumn7.Resizable = System.Windows.Forms.DataGridViewTriState.False;
+            this.dataGridViewTextBoxColumn7.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            this.dataGridViewTextBoxColumn7.Width = 63;
             // 
             // comboBoxSELECT_id_product
             // 
@@ -498,7 +299,8 @@
             this.comboBoxSELECT_id_product.onHoverColor = System.Drawing.Color.Aquamarine;
             this.comboBoxSELECT_id_product.selectedIndex = -1;
             this.comboBoxSELECT_id_product.Size = new System.Drawing.Size(141, 35);
-            this.comboBoxSELECT_id_product.TabIndex = 2;
+            this.comboBoxSELECT_id_product.TabIndex = 5;
+            this.comboBoxSELECT_id_product.TabStop = false;
             this.comboBoxSELECT_id_product.onItemSelected += new System.EventHandler(this.comboBoxSELECT_id_product_onItemSelected);
             // 
             // UsersDataGrid
@@ -536,7 +338,7 @@
             this.UsersDataGrid.GridColor = System.Drawing.Color.Black;
             this.UsersDataGrid.HeaderBgColor = System.Drawing.Color.Fuchsia;
             this.UsersDataGrid.HeaderForeColor = System.Drawing.Color.Black;
-            this.UsersDataGrid.Location = new System.Drawing.Point(-4, 0);
+            this.UsersDataGrid.Location = new System.Drawing.Point(0, 0);
             this.UsersDataGrid.MultiSelect = false;
             this.UsersDataGrid.Name = "UsersDataGrid";
             this.UsersDataGrid.ReadOnly = true;
@@ -544,8 +346,9 @@
             dataGridViewCellStyle5.Font = new System.Drawing.Font("Unispace", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.UsersDataGrid.RowsDefaultCellStyle = dataGridViewCellStyle5;
             this.UsersDataGrid.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.UsersDataGrid.Size = new System.Drawing.Size(925, 310);
+            this.UsersDataGrid.Size = new System.Drawing.Size(917, 310);
             this.UsersDataGrid.TabIndex = 0;
+            this.UsersDataGrid.TabStop = false;
             this.UsersDataGrid.CellMouseEnter += new System.Windows.Forms.DataGridViewCellEventHandler(this.UsersDataGrid_CellMouseEnter);
             // 
             // UsersID
@@ -645,6 +448,7 @@
             this.InquiryDataGrid.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
             this.InquiryDataGrid.Size = new System.Drawing.Size(859, 310);
             this.InquiryDataGrid.TabIndex = 3;
+            this.InquiryDataGrid.TabStop = false;
             // 
             // order_id
             // 
@@ -733,147 +537,306 @@
             this.xuiObjectEllipse1.EffectedControl = this;
             this.xuiObjectEllipse1.EffectedForm = this;
             // 
-            // bunifuImageButtonEXIT
-            // 
-            this.bunifuImageButtonEXIT.Anchor = System.Windows.Forms.AnchorStyles.Top;
-            this.bunifuImageButtonEXIT.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            this.bunifuImageButtonEXIT.Image = global::TRPO_Project.Properties.Resources.X;
-            this.bunifuImageButtonEXIT.ImageActive = null;
-            this.bunifuImageButtonEXIT.InitialImage = global::TRPO_Project.Properties.Resources.X;
-            this.bunifuImageButtonEXIT.Location = new System.Drawing.Point(899, 8);
-            this.bunifuImageButtonEXIT.Name = "bunifuImageButtonEXIT";
-            this.bunifuImageButtonEXIT.Size = new System.Drawing.Size(20, 20);
-            this.bunifuImageButtonEXIT.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.bunifuImageButtonEXIT.TabIndex = 3;
-            this.bunifuImageButtonEXIT.TabStop = false;
-            this.bunifuImageButtonEXIT.Zoom = 10;
-            this.bunifuImageButtonEXIT.Click += new System.EventHandler(this.bunifuImageButtonEXIT_Click);
-            // 
-            // bunifuImageButton_DeleteProd
-            // 
-            this.bunifuImageButton_DeleteProd.BackColor = System.Drawing.Color.DarkRed;
-            this.bunifuImageButton_DeleteProd.Enabled = false;
-            this.bunifuImageButton_DeleteProd.Image = global::TRPO_Project.Properties.Resources.delete2;
-            this.bunifuImageButton_DeleteProd.ImageActive = null;
-            this.bunifuImageButton_DeleteProd.Location = new System.Drawing.Point(758, 262);
-            this.bunifuImageButton_DeleteProd.Name = "bunifuImageButton_DeleteProd";
-            this.bunifuImageButton_DeleteProd.Size = new System.Drawing.Size(114, 41);
-            this.bunifuImageButton_DeleteProd.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.bunifuImageButton_DeleteProd.TabIndex = 10;
-            this.bunifuImageButton_DeleteProd.TabStop = false;
-            this.bunifuImageButton_DeleteProd.Zoom = 10;
-            this.bunifuImageButton_DeleteProd.Click += new System.EventHandler(this.bunifuImageButton_DeleteProd_Click);
-            // 
-            // bunifuImageButtonAPPLYchanges
-            // 
-            this.bunifuImageButtonAPPLYchanges.BackColor = System.Drawing.Color.Gray;
-            this.bunifuImageButtonAPPLYchanges.Enabled = false;
-            this.bunifuImageButtonAPPLYchanges.Image = global::TRPO_Project.Properties.Resources.X;
-            this.bunifuImageButtonAPPLYchanges.ImageActive = null;
-            this.bunifuImageButtonAPPLYchanges.Location = new System.Drawing.Point(340, 160);
-            this.bunifuImageButtonAPPLYchanges.Name = "bunifuImageButtonAPPLYchanges";
-            this.bunifuImageButtonAPPLYchanges.Size = new System.Drawing.Size(154, 64);
-            this.bunifuImageButtonAPPLYchanges.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.bunifuImageButtonAPPLYchanges.TabIndex = 8;
-            this.bunifuImageButtonAPPLYchanges.TabStop = false;
-            this.bunifuImageButtonAPPLYchanges.Zoom = 10;
-            this.bunifuImageButtonAPPLYchanges.Click += new System.EventHandler(this.bunifuImageButtonAPPLYchanges_Click);
-            // 
-            // CirclePictureBoxUSER
-            // 
-            this.CirclePictureBoxUSER.BackColor = System.Drawing.Color.Transparent;
-            this.CirclePictureBoxUSER.BaseColor = System.Drawing.Color.Transparent;
-            this.CirclePictureBoxUSER.Image = global::TRPO_Project.Properties.Resources.w400h4001341689813administrator;
-            this.CirclePictureBoxUSER.Location = new System.Drawing.Point(744, 138);
-            this.CirclePictureBoxUSER.Name = "CirclePictureBoxUSER";
-            this.CirclePictureBoxUSER.Size = new System.Drawing.Size(170, 168);
-            this.CirclePictureBoxUSER.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.CirclePictureBoxUSER.TabIndex = 1;
-            this.CirclePictureBoxUSER.TabStop = false;
-            this.CirclePictureBoxUSER.UseTransfarantBackground = true;
-            // 
-            // gunaCirclePictureBoxCPU
-            // 
-            this.gunaCirclePictureBoxCPU.BackColor = System.Drawing.Color.Transparent;
-            this.gunaCirclePictureBoxCPU.BaseColor = System.Drawing.Color.White;
-            this.gunaCirclePictureBoxCPU.Location = new System.Drawing.Point(804, 200);
-            this.gunaCirclePictureBoxCPU.Name = "gunaCirclePictureBoxCPU";
-            this.gunaCirclePictureBoxCPU.Size = new System.Drawing.Size(110, 110);
-            this.gunaCirclePictureBoxCPU.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.gunaCirclePictureBoxCPU.TabIndex = 4;
-            this.gunaCirclePictureBoxCPU.TabStop = false;
-            this.gunaCirclePictureBoxCPU.UseTransfarantBackground = false;
-            // 
-            // gunaCirclePictureBoxPC
-            // 
-            this.gunaCirclePictureBoxPC.BackColor = System.Drawing.Color.Transparent;
-            this.gunaCirclePictureBoxPC.BaseColor = System.Drawing.Color.White;
-            this.gunaCirclePictureBoxPC.Location = new System.Drawing.Point(787, 3);
-            this.gunaCirclePictureBoxPC.Name = "gunaCirclePictureBoxPC";
-            this.gunaCirclePictureBoxPC.Size = new System.Drawing.Size(125, 125);
-            this.gunaCirclePictureBoxPC.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.gunaCirclePictureBoxPC.TabIndex = 2;
-            this.gunaCirclePictureBoxPC.TabStop = false;
-            this.gunaCirclePictureBoxPC.UseTransfarantBackground = false;
-            // 
-            // buttonShowGraphic
-            // 
-            this.buttonShowGraphic.BackColor = System.Drawing.Color.Black;
-            this.buttonShowGraphic.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.buttonShowGraphic.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.buttonShowGraphic.Image = global::TRPO_Project.Properties.Resources.line_chart;
-            this.buttonShowGraphic.ImageActive = null;
-            this.buttonShowGraphic.Location = new System.Drawing.Point(3, 3);
-            this.buttonShowGraphic.Name = "buttonShowGraphic";
-            this.buttonShowGraphic.Size = new System.Drawing.Size(50, 50);
-            this.buttonShowGraphic.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
-            this.buttonShowGraphic.TabIndex = 4;
-            this.buttonShowGraphic.TabStop = false;
-            this.buttonShowGraphic.Zoom = 10;
-            this.buttonShowGraphic.Click += new System.EventHandler(this.buttonShowGraphic_Click);
-            // 
             // tabControlAdmin
             // 
-            this.tabControlAdmin.Controls.Add(this.tabPage1);
+            this.tabControlAdmin.Controls.Add(this.metroTabPage5);
             this.tabControlAdmin.Controls.Add(this.metroTabPage1);
             this.tabControlAdmin.Controls.Add(this.metroTabPage2);
             this.tabControlAdmin.Controls.Add(this.metroTabPage3);
             this.tabControlAdmin.Controls.Add(this.metroTabPage4);
             this.tabControlAdmin.Location = new System.Drawing.Point(1, 38);
             this.tabControlAdmin.Name = "tabControlAdmin";
-            this.tabControlAdmin.SelectedIndex = 3;
-            this.tabControlAdmin.Size = new System.Drawing.Size(925, 348);
-            this.tabControlAdmin.TabIndex = 4;
+            this.tabControlAdmin.SelectedIndex = 1;
+            this.tabControlAdmin.Size = new System.Drawing.Size(924, 348);
+            this.tabControlAdmin.TabIndex = 0;
             this.tabControlAdmin.Theme = MetroFramework.MetroThemeStyle.Dark;
             this.tabControlAdmin.UseSelectable = true;
+            // 
+            // metroTabPage5
+            // 
+            this.metroTabPage5.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(17)))), ((int)(((byte)(17)))), ((int)(((byte)(17)))));
+            this.metroTabPage5.Controls.Add(this.gunaLabel7);
+            this.metroTabPage5.Controls.Add(this.gunaLabel5);
+            this.metroTabPage5.Controls.Add(this.gunaLabel6);
+            this.metroTabPage5.Controls.Add(this.gunaLabel4);
+            this.metroTabPage5.Controls.Add(this.gunaLabel3);
+            this.metroTabPage5.Controls.Add(this.gunaLabel2);
+            this.metroTabPage5.Controls.Add(this.buttonCancelAdding);
+            this.metroTabPage5.Controls.Add(this.bunifuMetroTextboxADDprodPRICE);
+            this.metroTabPage5.Controls.Add(this.bunifuMetroTextboxADDprodRAM);
+            this.metroTabPage5.Controls.Add(this.bunifuImageButtonAPPLYnewPROD);
+            this.metroTabPage5.Controls.Add(this.bunifuMetroTextboxADDprodGPU);
+            this.metroTabPage5.Controls.Add(this.bunifuMetroTextboxADDprodType);
+            this.metroTabPage5.Controls.Add(this.bunifuImageButtonNEWpic);
+            this.metroTabPage5.Controls.Add(this.bunifuMetroTextboxADDprodCPU);
+            this.metroTabPage5.HorizontalScrollbarBarColor = true;
+            this.metroTabPage5.HorizontalScrollbarHighlightOnWheel = false;
+            this.metroTabPage5.HorizontalScrollbarSize = 10;
+            this.metroTabPage5.Location = new System.Drawing.Point(4, 38);
+            this.metroTabPage5.Name = "metroTabPage5";
+            this.metroTabPage5.Size = new System.Drawing.Size(916, 306);
+            this.metroTabPage5.Style = MetroFramework.MetroColorStyle.Lime;
+            this.metroTabPage5.TabIndex = 4;
+            this.metroTabPage5.Text = "ADD NEW";
+            this.metroTabPage5.Theme = MetroFramework.MetroThemeStyle.Dark;
+            this.metroTabPage5.VerticalScrollbarBarColor = true;
+            this.metroTabPage5.VerticalScrollbarHighlightOnWheel = false;
+            this.metroTabPage5.VerticalScrollbarSize = 10;
+            // 
+            // gunaLabel7
+            // 
+            this.gunaLabel7.AutoSize = true;
+            this.gunaLabel7.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(17)))), ((int)(((byte)(17)))), ((int)(((byte)(17)))));
+            this.gunaLabel7.Font = new System.Drawing.Font("Unispace", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.gunaLabel7.ForeColor = System.Drawing.Color.DeepPink;
+            this.gunaLabel7.Location = new System.Drawing.Point(1, 71);
+            this.gunaLabel7.Name = "gunaLabel7";
+            this.gunaLabel7.Size = new System.Drawing.Size(142, 25);
+            this.gunaLabel7.TabIndex = 56;
+            this.gunaLabel7.Text = "Type Of PC";
+            // 
+            // gunaLabel5
+            // 
+            this.gunaLabel5.AutoSize = true;
+            this.gunaLabel5.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(17)))), ((int)(((byte)(17)))), ((int)(((byte)(17)))));
+            this.gunaLabel5.Font = new System.Drawing.Font("Unispace", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.gunaLabel5.ForeColor = System.Drawing.Color.DeepPink;
+            this.gunaLabel5.Location = new System.Drawing.Point(92, 115);
+            this.gunaLabel5.Name = "gunaLabel5";
+            this.gunaLabel5.Size = new System.Drawing.Size(51, 25);
+            this.gunaLabel5.TabIndex = 55;
+            this.gunaLabel5.Text = "RAM";
+            // 
+            // gunaLabel6
+            // 
+            this.gunaLabel6.AutoSize = true;
+            this.gunaLabel6.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(17)))), ((int)(((byte)(17)))), ((int)(((byte)(17)))));
+            this.gunaLabel6.Font = new System.Drawing.Font("Unispace", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.gunaLabel6.ForeColor = System.Drawing.Color.DeepPink;
+            this.gunaLabel6.Location = new System.Drawing.Point(92, 158);
+            this.gunaLabel6.Name = "gunaLabel6";
+            this.gunaLabel6.Size = new System.Drawing.Size(51, 25);
+            this.gunaLabel6.TabIndex = 54;
+            this.gunaLabel6.Text = "CPU";
+            // 
+            // gunaLabel4
+            // 
+            this.gunaLabel4.AutoSize = true;
+            this.gunaLabel4.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(17)))), ((int)(((byte)(17)))), ((int)(((byte)(17)))));
+            this.gunaLabel4.Font = new System.Drawing.Font("Unispace", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.gunaLabel4.ForeColor = System.Drawing.Color.DeepPink;
+            this.gunaLabel4.Location = new System.Drawing.Point(66, 203);
+            this.gunaLabel4.Name = "gunaLabel4";
+            this.gunaLabel4.Size = new System.Drawing.Size(77, 25);
+            this.gunaLabel4.TabIndex = 53;
+            this.gunaLabel4.Text = "PRICE";
+            // 
+            // gunaLabel3
+            // 
+            this.gunaLabel3.AutoSize = true;
+            this.gunaLabel3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(17)))), ((int)(((byte)(17)))), ((int)(((byte)(17)))));
+            this.gunaLabel3.Font = new System.Drawing.Font("Unispace", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.gunaLabel3.ForeColor = System.Drawing.Color.DeepPink;
+            this.gunaLabel3.Location = new System.Drawing.Point(92, 250);
+            this.gunaLabel3.Name = "gunaLabel3";
+            this.gunaLabel3.Size = new System.Drawing.Size(51, 25);
+            this.gunaLabel3.TabIndex = 52;
+            this.gunaLabel3.Text = "GPU";
+            // 
+            // gunaLabel2
+            // 
+            this.gunaLabel2.AutoSize = true;
+            this.gunaLabel2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(17)))), ((int)(((byte)(17)))), ((int)(((byte)(17)))));
+            this.gunaLabel2.Font = new System.Drawing.Font("Unispace", 20.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.gunaLabel2.ForeColor = System.Drawing.Color.DeepPink;
+            this.gunaLabel2.Location = new System.Drawing.Point(356, 12);
+            this.gunaLabel2.Name = "gunaLabel2";
+            this.gunaLabel2.Size = new System.Drawing.Size(255, 33);
+            this.gunaLabel2.TabIndex = 0;
+            this.gunaLabel2.Text = "Add New Product";
+            // 
+            // buttonCancelAdding
+            // 
+            this.buttonCancelAdding.AnimationHoverSpeed = 0.1F;
+            this.buttonCancelAdding.AnimationSpeed = 0.03F;
+            this.buttonCancelAdding.BackColor = System.Drawing.Color.Transparent;
+            this.buttonCancelAdding.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.buttonCancelAdding.BaseColor1 = System.Drawing.Color.DarkSlateBlue;
+            this.buttonCancelAdding.BaseColor2 = System.Drawing.Color.Indigo;
+            this.buttonCancelAdding.BorderColor = System.Drawing.Color.SpringGreen;
+            this.buttonCancelAdding.BorderSize = 2;
+            this.buttonCancelAdding.DialogResult = System.Windows.Forms.DialogResult.None;
+            this.buttonCancelAdding.FocusedColor = System.Drawing.Color.Empty;
+            this.buttonCancelAdding.Font = new System.Drawing.Font("Unispace", 14.25F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Underline))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.buttonCancelAdding.ForeColor = System.Drawing.Color.MediumPurple;
+            this.buttonCancelAdding.Image = null;
+            this.buttonCancelAdding.ImageSize = new System.Drawing.Size(52, 52);
+            this.buttonCancelAdding.Location = new System.Drawing.Point(789, 12);
+            this.buttonCancelAdding.Name = "buttonCancelAdding";
+            this.buttonCancelAdding.OnHoverBaseColor1 = System.Drawing.Color.DarkSlateGray;
+            this.buttonCancelAdding.OnHoverBaseColor2 = System.Drawing.Color.DarkCyan;
+            this.buttonCancelAdding.OnHoverBorderColor = System.Drawing.Color.MediumBlue;
+            this.buttonCancelAdding.OnHoverForeColor = System.Drawing.Color.White;
+            this.buttonCancelAdding.OnHoverImage = null;
+            this.buttonCancelAdding.OnPressedColor = System.Drawing.Color.Purple;
+            this.buttonCancelAdding.Size = new System.Drawing.Size(100, 100);
+            this.buttonCancelAdding.TabIndex = 50;
+            this.buttonCancelAdding.TabStop = false;
+            this.buttonCancelAdding.Text = "CANCEL";
+            this.buttonCancelAdding.Click += new System.EventHandler(this.btnCancelAdding_Click);
+            // 
+            // bunifuMetroTextboxADDprodPRICE
+            // 
+            this.bunifuMetroTextboxADDprodPRICE.Cursor = System.Windows.Forms.Cursors.IBeam;
+            this.bunifuMetroTextboxADDprodPRICE.Font = new System.Drawing.Font("Unispace", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.bunifuMetroTextboxADDprodPRICE.ForeColor = System.Drawing.Color.MediumSpringGreen;
+            this.bunifuMetroTextboxADDprodPRICE.HintForeColor = System.Drawing.Color.SpringGreen;
+            this.bunifuMetroTextboxADDprodPRICE.HintText = "";
+            this.bunifuMetroTextboxADDprodPRICE.isPassword = false;
+            this.bunifuMetroTextboxADDprodPRICE.LineFocusedColor = System.Drawing.Color.Fuchsia;
+            this.bunifuMetroTextboxADDprodPRICE.LineIdleColor = System.Drawing.Color.Lime;
+            this.bunifuMetroTextboxADDprodPRICE.LineMouseHoverColor = System.Drawing.Color.Purple;
+            this.bunifuMetroTextboxADDprodPRICE.LineThickness = 3;
+            this.bunifuMetroTextboxADDprodPRICE.Location = new System.Drawing.Point(162, 184);
+            this.bunifuMetroTextboxADDprodPRICE.Margin = new System.Windows.Forms.Padding(4);
+            this.bunifuMetroTextboxADDprodPRICE.Name = "bunifuMetroTextboxADDprodPRICE";
+            this.bunifuMetroTextboxADDprodPRICE.Size = new System.Drawing.Size(329, 44);
+            this.bunifuMetroTextboxADDprodPRICE.TabIndex = 3;
+            this.bunifuMetroTextboxADDprodPRICE.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
+            this.bunifuMetroTextboxADDprodPRICE.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.CheckRAMandPRICE_Adding);
+            // 
+            // bunifuMetroTextboxADDprodRAM
+            // 
+            this.bunifuMetroTextboxADDprodRAM.Cursor = System.Windows.Forms.Cursors.IBeam;
+            this.bunifuMetroTextboxADDprodRAM.Font = new System.Drawing.Font("Unispace", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.bunifuMetroTextboxADDprodRAM.ForeColor = System.Drawing.Color.MediumSpringGreen;
+            this.bunifuMetroTextboxADDprodRAM.HintForeColor = System.Drawing.Color.SpringGreen;
+            this.bunifuMetroTextboxADDprodRAM.HintText = "";
+            this.bunifuMetroTextboxADDprodRAM.isPassword = false;
+            this.bunifuMetroTextboxADDprodRAM.LineFocusedColor = System.Drawing.Color.Fuchsia;
+            this.bunifuMetroTextboxADDprodRAM.LineIdleColor = System.Drawing.Color.Lime;
+            this.bunifuMetroTextboxADDprodRAM.LineMouseHoverColor = System.Drawing.Color.Purple;
+            this.bunifuMetroTextboxADDprodRAM.LineThickness = 3;
+            this.bunifuMetroTextboxADDprodRAM.Location = new System.Drawing.Point(162, 96);
+            this.bunifuMetroTextboxADDprodRAM.Margin = new System.Windows.Forms.Padding(4);
+            this.bunifuMetroTextboxADDprodRAM.Name = "bunifuMetroTextboxADDprodRAM";
+            this.bunifuMetroTextboxADDprodRAM.Size = new System.Drawing.Size(329, 44);
+            this.bunifuMetroTextboxADDprodRAM.TabIndex = 1;
+            this.bunifuMetroTextboxADDprodRAM.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
+            this.bunifuMetroTextboxADDprodRAM.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.CheckRAMandPRICE_Adding);
+            // 
+            // bunifuImageButtonAPPLYnewPROD
+            // 
+            this.bunifuImageButtonAPPLYnewPROD.BackColor = System.Drawing.Color.Indigo;
+            this.bunifuImageButtonAPPLYnewPROD.Enabled = false;
+            this.bunifuImageButtonAPPLYnewPROD.Image = global::TRPO_Project.Properties.Resources.unavailable_64px;
+            this.bunifuImageButtonAPPLYnewPROD.ImageActive = null;
+            this.bunifuImageButtonAPPLYnewPROD.Location = new System.Drawing.Point(784, 248);
+            this.bunifuImageButtonAPPLYnewPROD.Name = "bunifuImageButtonAPPLYnewPROD";
+            this.bunifuImageButtonAPPLYnewPROD.Size = new System.Drawing.Size(116, 47);
+            this.bunifuImageButtonAPPLYnewPROD.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.bunifuImageButtonAPPLYnewPROD.TabIndex = 43;
+            this.bunifuImageButtonAPPLYnewPROD.TabStop = false;
+            this.bunifuImageButtonAPPLYnewPROD.Zoom = 10;
+            this.bunifuImageButtonAPPLYnewPROD.Click += new System.EventHandler(this.bunifuImageButtonAPPLYnewPROD_Click);
+            // 
+            // bunifuMetroTextboxADDprodGPU
+            // 
+            this.bunifuMetroTextboxADDprodGPU.Cursor = System.Windows.Forms.Cursors.IBeam;
+            this.bunifuMetroTextboxADDprodGPU.Font = new System.Drawing.Font("Unispace", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.bunifuMetroTextboxADDprodGPU.ForeColor = System.Drawing.Color.MediumSpringGreen;
+            this.bunifuMetroTextboxADDprodGPU.HintForeColor = System.Drawing.Color.SpringGreen;
+            this.bunifuMetroTextboxADDprodGPU.HintText = "";
+            this.bunifuMetroTextboxADDprodGPU.isPassword = false;
+            this.bunifuMetroTextboxADDprodGPU.LineFocusedColor = System.Drawing.Color.Fuchsia;
+            this.bunifuMetroTextboxADDprodGPU.LineIdleColor = System.Drawing.Color.Lime;
+            this.bunifuMetroTextboxADDprodGPU.LineMouseHoverColor = System.Drawing.Color.Purple;
+            this.bunifuMetroTextboxADDprodGPU.LineThickness = 3;
+            this.bunifuMetroTextboxADDprodGPU.Location = new System.Drawing.Point(162, 229);
+            this.bunifuMetroTextboxADDprodGPU.Margin = new System.Windows.Forms.Padding(4);
+            this.bunifuMetroTextboxADDprodGPU.Name = "bunifuMetroTextboxADDprodGPU";
+            this.bunifuMetroTextboxADDprodGPU.Size = new System.Drawing.Size(329, 44);
+            this.bunifuMetroTextboxADDprodGPU.TabIndex = 4;
+            this.bunifuMetroTextboxADDprodGPU.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
+            // 
+            // bunifuMetroTextboxADDprodType
+            // 
+            this.bunifuMetroTextboxADDprodType.Cursor = System.Windows.Forms.Cursors.IBeam;
+            this.bunifuMetroTextboxADDprodType.Font = new System.Drawing.Font("Unispace", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.bunifuMetroTextboxADDprodType.ForeColor = System.Drawing.Color.MediumSpringGreen;
+            this.bunifuMetroTextboxADDprodType.HintForeColor = System.Drawing.Color.SpringGreen;
+            this.bunifuMetroTextboxADDprodType.HintText = "";
+            this.bunifuMetroTextboxADDprodType.isPassword = false;
+            this.bunifuMetroTextboxADDprodType.LineFocusedColor = System.Drawing.Color.Fuchsia;
+            this.bunifuMetroTextboxADDprodType.LineIdleColor = System.Drawing.Color.Lime;
+            this.bunifuMetroTextboxADDprodType.LineMouseHoverColor = System.Drawing.Color.Purple;
+            this.bunifuMetroTextboxADDprodType.LineThickness = 3;
+            this.bunifuMetroTextboxADDprodType.Location = new System.Drawing.Point(162, 52);
+            this.bunifuMetroTextboxADDprodType.Margin = new System.Windows.Forms.Padding(4);
+            this.bunifuMetroTextboxADDprodType.Name = "bunifuMetroTextboxADDprodType";
+            this.bunifuMetroTextboxADDprodType.Size = new System.Drawing.Size(329, 44);
+            this.bunifuMetroTextboxADDprodType.TabIndex = 0;
+            this.bunifuMetroTextboxADDprodType.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
+            // 
+            // bunifuImageButtonNEWpic
+            // 
+            this.bunifuImageButtonNEWpic.BackColor = System.Drawing.Color.DimGray;
+            this.bunifuImageButtonNEWpic.Image = global::TRPO_Project.Properties.Resources.image;
+            this.bunifuImageButtonNEWpic.ImageActive = null;
+            this.bunifuImageButtonNEWpic.Location = new System.Drawing.Point(521, 80);
+            this.bunifuImageButtonNEWpic.Name = "bunifuImageButtonNEWpic";
+            this.bunifuImageButtonNEWpic.Size = new System.Drawing.Size(187, 195);
+            this.bunifuImageButtonNEWpic.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.bunifuImageButtonNEWpic.TabIndex = 42;
+            this.bunifuImageButtonNEWpic.TabStop = false;
+            this.bunifuImageButtonNEWpic.Zoom = 10;
+            this.bunifuImageButtonNEWpic.Click += new System.EventHandler(this.bunifuImageButtonNEWpic_Click);
+            // 
+            // bunifuMetroTextboxADDprodCPU
+            // 
+            this.bunifuMetroTextboxADDprodCPU.Cursor = System.Windows.Forms.Cursors.IBeam;
+            this.bunifuMetroTextboxADDprodCPU.Font = new System.Drawing.Font("Unispace", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.bunifuMetroTextboxADDprodCPU.ForeColor = System.Drawing.Color.MediumSpringGreen;
+            this.bunifuMetroTextboxADDprodCPU.HintForeColor = System.Drawing.Color.SpringGreen;
+            this.bunifuMetroTextboxADDprodCPU.HintText = "";
+            this.bunifuMetroTextboxADDprodCPU.isPassword = false;
+            this.bunifuMetroTextboxADDprodCPU.LineFocusedColor = System.Drawing.Color.Fuchsia;
+            this.bunifuMetroTextboxADDprodCPU.LineIdleColor = System.Drawing.Color.Lime;
+            this.bunifuMetroTextboxADDprodCPU.LineMouseHoverColor = System.Drawing.Color.Purple;
+            this.bunifuMetroTextboxADDprodCPU.LineThickness = 3;
+            this.bunifuMetroTextboxADDprodCPU.Location = new System.Drawing.Point(162, 139);
+            this.bunifuMetroTextboxADDprodCPU.Margin = new System.Windows.Forms.Padding(4);
+            this.bunifuMetroTextboxADDprodCPU.Name = "bunifuMetroTextboxADDprodCPU";
+            this.bunifuMetroTextboxADDprodCPU.Size = new System.Drawing.Size(329, 44);
+            this.bunifuMetroTextboxADDprodCPU.TabIndex = 2;
+            this.bunifuMetroTextboxADDprodCPU.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
             // 
             // metroTabPage1
             // 
             this.metroTabPage1.BackColor = System.Drawing.Color.Black;
             this.metroTabPage1.Controls.Add(this.gunaLabelDeleteProd);
             this.metroTabPage1.Controls.Add(this.gunaLabel1);
-            this.metroTabPage1.Controls.Add(this.gunaCirclePictureBoxPC_ONE);
             this.metroTabPage1.Controls.Add(this.gunaLabelNEWpcPIC);
-            this.metroTabPage1.Controls.Add(this.bunifuImageButtonNEWpcIMG);
-            this.metroTabPage1.Controls.Add(this.bunifuImageButton_DeleteProd);
             this.metroTabPage1.Controls.Add(this.gunaLabelCHANGE_prop);
             this.metroTabPage1.Controls.Add(this.gunaLabelNEWvalue);
             this.metroTabPage1.Controls.Add(this.gunaLineTextBoxNEWvalue);
             this.metroTabPage1.Controls.Add(this.gunaLabelIDofPC);
             this.metroTabPage1.Controls.Add(this.comboBoxCHANGEVALUE_byid_product);
-            this.metroTabPage1.Controls.Add(this.bunifuImageButtonAPPLYchanges);
             this.metroTabPage1.Controls.Add(this.comboBoxSELECT_id_product);
             this.metroTabPage1.Controls.Add(this.bunifuCustomDataGridVIEWinfoAboutONEprod);
+            this.metroTabPage1.Controls.Add(this.btnApplyChangesPC);
+            this.metroTabPage1.Controls.Add(this.gunaCirclePictureBoxPC_ONE);
+            this.metroTabPage1.Controls.Add(this.bunifuImageButtonNEWpcIMG);
+            this.metroTabPage1.Controls.Add(this.bunifuImageButton_DeleteProd);
             this.metroTabPage1.HorizontalScrollbarBarColor = true;
             this.metroTabPage1.HorizontalScrollbarHighlightOnWheel = false;
             this.metroTabPage1.HorizontalScrollbarSize = 10;
             this.metroTabPage1.Location = new System.Drawing.Point(4, 38);
             this.metroTabPage1.Name = "metroTabPage1";
-            this.metroTabPage1.Size = new System.Drawing.Size(917, 306);
+            this.metroTabPage1.Size = new System.Drawing.Size(916, 306);
             this.metroTabPage1.TabIndex = 0;
             this.metroTabPage1.Text = "CHANGE INFO";
             this.metroTabPage1.Theme = MetroFramework.MetroThemeStyle.Dark;
-            this.metroTabPage1.UseCustomBackColor = true;
             this.metroTabPage1.VerticalScrollbarBarColor = false;
             this.metroTabPage1.VerticalScrollbarHighlightOnWheel = false;
             this.metroTabPage1.VerticalScrollbarSize = 10;
@@ -902,18 +865,6 @@
             this.gunaLabel1.TabIndex = 17;
             this.gunaLabel1.Text = "CHANGE INFORMATION ABOUT PRODUCT / DELETE PRODUCT";
             // 
-            // gunaCirclePictureBoxPC_ONE
-            // 
-            this.gunaCirclePictureBoxPC_ONE.BackColor = System.Drawing.Color.Transparent;
-            this.gunaCirclePictureBoxPC_ONE.BaseColor = System.Drawing.Color.Transparent;
-            this.gunaCirclePictureBoxPC_ONE.Location = new System.Drawing.Point(789, 104);
-            this.gunaCirclePictureBoxPC_ONE.Name = "gunaCirclePictureBoxPC_ONE";
-            this.gunaCirclePictureBoxPC_ONE.Size = new System.Drawing.Size(120, 120);
-            this.gunaCirclePictureBoxPC_ONE.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.gunaCirclePictureBoxPC_ONE.TabIndex = 16;
-            this.gunaCirclePictureBoxPC_ONE.TabStop = false;
-            this.gunaCirclePictureBoxPC_ONE.UseTransfarantBackground = true;
-            // 
             // gunaLabelNEWpcPIC
             // 
             this.gunaLabelNEWpcPIC.AutoSize = true;
@@ -926,21 +877,6 @@
             this.gunaLabelNEWpcPIC.TabIndex = 15;
             this.gunaLabelNEWpcPIC.Text = "NEW PC PICTURE: ";
             this.gunaLabelNEWpcPIC.Visible = false;
-            // 
-            // bunifuImageButtonNEWpcIMG
-            // 
-            this.bunifuImageButtonNEWpcIMG.BackColor = System.Drawing.Color.Transparent;
-            this.bunifuImageButtonNEWpcIMG.Image = ((System.Drawing.Image)(resources.GetObject("bunifuImageButtonNEWpcIMG.Image")));
-            this.bunifuImageButtonNEWpcIMG.ImageActive = null;
-            this.bunifuImageButtonNEWpcIMG.Location = new System.Drawing.Point(188, 198);
-            this.bunifuImageButtonNEWpcIMG.Name = "bunifuImageButtonNEWpcIMG";
-            this.bunifuImageButtonNEWpcIMG.Size = new System.Drawing.Size(108, 108);
-            this.bunifuImageButtonNEWpcIMG.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.bunifuImageButtonNEWpcIMG.TabIndex = 14;
-            this.bunifuImageButtonNEWpcIMG.TabStop = false;
-            this.bunifuImageButtonNEWpcIMG.Visible = false;
-            this.bunifuImageButtonNEWpcIMG.Zoom = 10;
-            this.bunifuImageButtonNEWpcIMG.Click += new System.EventHandler(this.bunifuImageButtonNEWpcIMG_Click);
             // 
             // gunaLabelCHANGE_prop
             // 
@@ -978,7 +914,7 @@
             this.gunaLineTextBoxNEWvalue.Name = "gunaLineTextBoxNEWvalue";
             this.gunaLineTextBoxNEWvalue.PasswordChar = '\0';
             this.gunaLineTextBoxNEWvalue.Size = new System.Drawing.Size(141, 29);
-            this.gunaLineTextBoxNEWvalue.TabIndex = 6;
+            this.gunaLineTextBoxNEWvalue.TabIndex = 5;
             this.gunaLineTextBoxNEWvalue.TextChanged += new System.EventHandler(this.gunaLineTextBoxNEWvalue_TextChanged);
             this.gunaLineTextBoxNEWvalue.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.gunaLineTextBoxNEWvalue_KeyPress);
             // 
@@ -986,7 +922,6 @@
             // 
             this.comboBoxCHANGEVALUE_byid_product.BackColor = System.Drawing.Color.Transparent;
             this.comboBoxCHANGEVALUE_byid_product.BorderRadius = 5;
-            this.comboBoxCHANGEVALUE_byid_product.Enabled = false;
             this.comboBoxCHANGEVALUE_byid_product.ForeColor = System.Drawing.Color.White;
             this.comboBoxCHANGEVALUE_byid_product.Items = new string[] {
         "TYPEofPC",
@@ -999,10 +934,85 @@
             this.comboBoxCHANGEVALUE_byid_product.Name = "comboBoxCHANGEVALUE_byid_product";
             this.comboBoxCHANGEVALUE_byid_product.NomalColor = System.Drawing.Color.DeepSkyBlue;
             this.comboBoxCHANGEVALUE_byid_product.onHoverColor = System.Drawing.Color.Aquamarine;
-            this.comboBoxCHANGEVALUE_byid_product.selectedIndex = -1;
+            this.comboBoxCHANGEVALUE_byid_product.selectedIndex = 0;
             this.comboBoxCHANGEVALUE_byid_product.Size = new System.Drawing.Size(141, 35);
-            this.comboBoxCHANGEVALUE_byid_product.TabIndex = 4;
+            this.comboBoxCHANGEVALUE_byid_product.TabIndex = 6;
+            this.comboBoxCHANGEVALUE_byid_product.TabStop = false;
             this.comboBoxCHANGEVALUE_byid_product.onItemSelected += new System.EventHandler(this.comboBoxCHANGEVALUE_byid_product_onItemSelected);
+            // 
+            // btnApplyChangesPC
+            // 
+            this.btnApplyChangesPC.Animated = true;
+            this.btnApplyChangesPC.AnimationHoverSpeed = 0.1F;
+            this.btnApplyChangesPC.AnimationSpeed = 0.03F;
+            this.btnApplyChangesPC.BackColor = System.Drawing.Color.Transparent;
+            this.btnApplyChangesPC.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.btnApplyChangesPC.BaseColor1 = System.Drawing.Color.MediumSlateBlue;
+            this.btnApplyChangesPC.BaseColor2 = System.Drawing.Color.DarkSlateBlue;
+            this.btnApplyChangesPC.BorderColor = System.Drawing.Color.Indigo;
+            this.btnApplyChangesPC.BorderSize = 1;
+            this.btnApplyChangesPC.DialogResult = System.Windows.Forms.DialogResult.None;
+            this.btnApplyChangesPC.Enabled = false;
+            this.btnApplyChangesPC.FocusedColor = System.Drawing.Color.DeepPink;
+            this.btnApplyChangesPC.Font = new System.Drawing.Font("Segoe UI", 9F);
+            this.btnApplyChangesPC.ForeColor = System.Drawing.Color.White;
+            this.btnApplyChangesPC.GradientMode = System.Drawing.Drawing2D.LinearGradientMode.Vertical;
+            this.btnApplyChangesPC.Image = global::TRPO_Project.Properties.Resources.X;
+            this.btnApplyChangesPC.ImageSize = new System.Drawing.Size(52, 52);
+            this.btnApplyChangesPC.Location = new System.Drawing.Point(349, 130);
+            this.btnApplyChangesPC.Name = "btnApplyChangesPC";
+            this.btnApplyChangesPC.OnHoverBaseColor1 = System.Drawing.Color.Indigo;
+            this.btnApplyChangesPC.OnHoverBaseColor2 = System.Drawing.Color.DarkSlateBlue;
+            this.btnApplyChangesPC.OnHoverBorderColor = System.Drawing.Color.SlateBlue;
+            this.btnApplyChangesPC.OnHoverForeColor = System.Drawing.Color.White;
+            this.btnApplyChangesPC.OnHoverImage = null;
+            this.btnApplyChangesPC.OnPressedColor = System.Drawing.Color.DarkSlateBlue;
+            this.btnApplyChangesPC.OnPressedDepth = 50;
+            this.btnApplyChangesPC.Size = new System.Drawing.Size(130, 130);
+            this.btnApplyChangesPC.TabIndex = 19;
+            this.btnApplyChangesPC.TabStop = false;
+            this.btnApplyChangesPC.Click += new System.EventHandler(this.btnApplyChangesPC_Click);
+            // 
+            // gunaCirclePictureBoxPC_ONE
+            // 
+            this.gunaCirclePictureBoxPC_ONE.BackColor = System.Drawing.Color.Transparent;
+            this.gunaCirclePictureBoxPC_ONE.BaseColor = System.Drawing.Color.Transparent;
+            this.gunaCirclePictureBoxPC_ONE.Location = new System.Drawing.Point(758, 113);
+            this.gunaCirclePictureBoxPC_ONE.Name = "gunaCirclePictureBoxPC_ONE";
+            this.gunaCirclePictureBoxPC_ONE.Size = new System.Drawing.Size(114, 111);
+            this.gunaCirclePictureBoxPC_ONE.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.gunaCirclePictureBoxPC_ONE.TabIndex = 16;
+            this.gunaCirclePictureBoxPC_ONE.TabStop = false;
+            this.gunaCirclePictureBoxPC_ONE.UseTransfarantBackground = true;
+            // 
+            // bunifuImageButtonNEWpcIMG
+            // 
+            this.bunifuImageButtonNEWpcIMG.BackColor = System.Drawing.Color.Transparent;
+            this.bunifuImageButtonNEWpcIMG.Image = ((System.Drawing.Image)(resources.GetObject("bunifuImageButtonNEWpcIMG.Image")));
+            this.bunifuImageButtonNEWpcIMG.ImageActive = null;
+            this.bunifuImageButtonNEWpcIMG.Location = new System.Drawing.Point(188, 198);
+            this.bunifuImageButtonNEWpcIMG.Name = "bunifuImageButtonNEWpcIMG";
+            this.bunifuImageButtonNEWpcIMG.Size = new System.Drawing.Size(100, 105);
+            this.bunifuImageButtonNEWpcIMG.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.bunifuImageButtonNEWpcIMG.TabIndex = 14;
+            this.bunifuImageButtonNEWpcIMG.TabStop = false;
+            this.bunifuImageButtonNEWpcIMG.Visible = false;
+            this.bunifuImageButtonNEWpcIMG.Zoom = 10;
+            this.bunifuImageButtonNEWpcIMG.Click += new System.EventHandler(this.bunifuImageButtonNEWpcIMG_Click);
+            // 
+            // bunifuImageButton_DeleteProd
+            // 
+            this.bunifuImageButton_DeleteProd.BackColor = System.Drawing.Color.DarkRed;
+            this.bunifuImageButton_DeleteProd.Image = global::TRPO_Project.Properties.Resources.delete2;
+            this.bunifuImageButton_DeleteProd.ImageActive = null;
+            this.bunifuImageButton_DeleteProd.Location = new System.Drawing.Point(758, 262);
+            this.bunifuImageButton_DeleteProd.Name = "bunifuImageButton_DeleteProd";
+            this.bunifuImageButton_DeleteProd.Size = new System.Drawing.Size(114, 41);
+            this.bunifuImageButton_DeleteProd.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.bunifuImageButton_DeleteProd.TabIndex = 10;
+            this.bunifuImageButton_DeleteProd.TabStop = false;
+            this.bunifuImageButton_DeleteProd.Zoom = 10;
+            this.bunifuImageButton_DeleteProd.Click += new System.EventHandler(this.bunifuImageButton_DeleteProd_Click);
             // 
             // metroTabPage2
             // 
@@ -1014,12 +1024,25 @@
             this.metroTabPage2.HorizontalScrollbarSize = 10;
             this.metroTabPage2.Location = new System.Drawing.Point(4, 38);
             this.metroTabPage2.Name = "metroTabPage2";
-            this.metroTabPage2.Size = new System.Drawing.Size(917, 306);
+            this.metroTabPage2.Size = new System.Drawing.Size(916, 306);
             this.metroTabPage2.TabIndex = 1;
             this.metroTabPage2.Text = "USER\'S INFO";
             this.metroTabPage2.VerticalScrollbarBarColor = true;
             this.metroTabPage2.VerticalScrollbarHighlightOnWheel = false;
             this.metroTabPage2.VerticalScrollbarSize = 10;
+            // 
+            // CirclePictureBoxUSER
+            // 
+            this.CirclePictureBoxUSER.BackColor = System.Drawing.Color.Transparent;
+            this.CirclePictureBoxUSER.BaseColor = System.Drawing.Color.Transparent;
+            this.CirclePictureBoxUSER.Image = global::TRPO_Project.Properties.Resources.w400h4001341689813administrator;
+            this.CirclePictureBoxUSER.Location = new System.Drawing.Point(743, 138);
+            this.CirclePictureBoxUSER.Name = "CirclePictureBoxUSER";
+            this.CirclePictureBoxUSER.Size = new System.Drawing.Size(170, 168);
+            this.CirclePictureBoxUSER.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.CirclePictureBoxUSER.TabIndex = 1;
+            this.CirclePictureBoxUSER.TabStop = false;
+            this.CirclePictureBoxUSER.UseTransfarantBackground = true;
             // 
             // metroTabPage3
             // 
@@ -1033,11 +1056,10 @@
             this.metroTabPage3.HorizontalScrollbarSize = 10;
             this.metroTabPage3.Location = new System.Drawing.Point(4, 38);
             this.metroTabPage3.Name = "metroTabPage3";
-            this.metroTabPage3.Size = new System.Drawing.Size(917, 306);
+            this.metroTabPage3.Size = new System.Drawing.Size(916, 306);
             this.metroTabPage3.TabIndex = 2;
             this.metroTabPage3.Text = "PC\'S INFO";
             this.metroTabPage3.Theme = MetroFramework.MetroThemeStyle.Dark;
-            this.metroTabPage3.UseCustomBackColor = true;
             this.metroTabPage3.VerticalScrollbarBarColor = true;
             this.metroTabPage3.VerticalScrollbarHighlightOnWheel = false;
             this.metroTabPage3.VerticalScrollbarSize = 10;
@@ -1082,6 +1104,7 @@
             this.PCDataGrid.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
             this.PCDataGrid.Size = new System.Drawing.Size(691, 310);
             this.PCDataGrid.TabIndex = 0;
+            this.PCDataGrid.TabStop = false;
             this.PCDataGrid.CellMouseEnter += new System.Windows.Forms.DataGridViewCellEventHandler(this.PCDataGrid_CellMouseEnter);
             // 
             // dataGridViewTextBoxColumn8
@@ -1166,7 +1189,7 @@
             // 
             this.gunaCirclePictureBoxGPU.BackColor = System.Drawing.Color.Transparent;
             this.gunaCirclePictureBoxGPU.BaseColor = System.Drawing.Color.White;
-            this.gunaCirclePictureBoxGPU.Location = new System.Drawing.Point(691, 134);
+            this.gunaCirclePictureBoxGPU.Location = new System.Drawing.Point(691, 130);
             this.gunaCirclePictureBoxGPU.Name = "gunaCirclePictureBoxGPU";
             this.gunaCirclePictureBoxGPU.Size = new System.Drawing.Size(110, 110);
             this.gunaCirclePictureBoxGPU.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
@@ -1174,45 +1197,68 @@
             this.gunaCirclePictureBoxGPU.TabStop = false;
             this.gunaCirclePictureBoxGPU.UseTransfarantBackground = false;
             // 
+            // gunaCirclePictureBoxCPU
+            // 
+            this.gunaCirclePictureBoxCPU.BackColor = System.Drawing.Color.Transparent;
+            this.gunaCirclePictureBoxCPU.BaseColor = System.Drawing.Color.White;
+            this.gunaCirclePictureBoxCPU.Location = new System.Drawing.Point(804, 195);
+            this.gunaCirclePictureBoxCPU.Name = "gunaCirclePictureBoxCPU";
+            this.gunaCirclePictureBoxCPU.Size = new System.Drawing.Size(110, 110);
+            this.gunaCirclePictureBoxCPU.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.gunaCirclePictureBoxCPU.TabIndex = 4;
+            this.gunaCirclePictureBoxCPU.TabStop = false;
+            this.gunaCirclePictureBoxCPU.UseTransfarantBackground = false;
+            // 
+            // gunaCirclePictureBoxPC
+            // 
+            this.gunaCirclePictureBoxPC.BackColor = System.Drawing.Color.Transparent;
+            this.gunaCirclePictureBoxPC.BaseColor = System.Drawing.Color.White;
+            this.gunaCirclePictureBoxPC.Location = new System.Drawing.Point(787, 3);
+            this.gunaCirclePictureBoxPC.Name = "gunaCirclePictureBoxPC";
+            this.gunaCirclePictureBoxPC.Size = new System.Drawing.Size(125, 125);
+            this.gunaCirclePictureBoxPC.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.gunaCirclePictureBoxPC.TabIndex = 2;
+            this.gunaCirclePictureBoxPC.TabStop = false;
+            this.gunaCirclePictureBoxPC.UseTransfarantBackground = false;
+            // 
             // metroTabPage4
             // 
             this.metroTabPage4.BackColor = System.Drawing.Color.Black;
-            this.metroTabPage4.Controls.Add(this.buttonShowGraphic);
             this.metroTabPage4.Controls.Add(this.InquiryDataGrid);
+            this.metroTabPage4.Controls.Add(this.buttonShowGraphic);
             this.metroTabPage4.HorizontalScrollbarBarColor = true;
             this.metroTabPage4.HorizontalScrollbarHighlightOnWheel = false;
             this.metroTabPage4.HorizontalScrollbarSize = 10;
             this.metroTabPage4.Location = new System.Drawing.Point(4, 38);
             this.metroTabPage4.Name = "metroTabPage4";
-            this.metroTabPage4.Size = new System.Drawing.Size(917, 306);
+            this.metroTabPage4.Size = new System.Drawing.Size(916, 306);
             this.metroTabPage4.TabIndex = 3;
             this.metroTabPage4.Text = "INQUIRY";
             this.metroTabPage4.Theme = MetroFramework.MetroThemeStyle.Dark;
-            this.metroTabPage4.UseCustomBackColor = true;
             this.metroTabPage4.VerticalScrollbarBarColor = true;
             this.metroTabPage4.VerticalScrollbarHighlightOnWheel = false;
             this.metroTabPage4.VerticalScrollbarSize = 10;
+            // 
+            // buttonShowGraphic
+            // 
+            this.buttonShowGraphic.BackColor = System.Drawing.Color.Black;
+            this.buttonShowGraphic.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.buttonShowGraphic.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.buttonShowGraphic.Image = global::TRPO_Project.Properties.Resources.line_chart;
+            this.buttonShowGraphic.ImageActive = null;
+            this.buttonShowGraphic.Location = new System.Drawing.Point(3, 3);
+            this.buttonShowGraphic.Name = "buttonShowGraphic";
+            this.buttonShowGraphic.Size = new System.Drawing.Size(50, 50);
+            this.buttonShowGraphic.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
+            this.buttonShowGraphic.TabIndex = 4;
+            this.buttonShowGraphic.TabStop = false;
+            this.buttonShowGraphic.Zoom = 10;
+            this.buttonShowGraphic.Click += new System.EventHandler(this.buttonShowGraphic_Click);
             // 
             // openFileDialogCHANGE_PIC
             // 
             this.openFileDialogCHANGE_PIC.Filter = "*PNG | *.png";
             this.openFileDialogCHANGE_PIC.RestoreDirectory = true;
-            // 
-            // bunifuImageButtonHIDE
-            // 
-            this.bunifuImageButtonHIDE.Anchor = System.Windows.Forms.AnchorStyles.Top;
-            this.bunifuImageButtonHIDE.BackColor = System.Drawing.Color.DeepSkyBlue;
-            this.bunifuImageButtonHIDE.Image = global::TRPO_Project.Properties.Resources.minus;
-            this.bunifuImageButtonHIDE.ImageActive = null;
-            this.bunifuImageButtonHIDE.InitialImage = global::TRPO_Project.Properties.Resources.X;
-            this.bunifuImageButtonHIDE.Location = new System.Drawing.Point(873, 8);
-            this.bunifuImageButtonHIDE.Name = "bunifuImageButtonHIDE";
-            this.bunifuImageButtonHIDE.Size = new System.Drawing.Size(20, 20);
-            this.bunifuImageButtonHIDE.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.bunifuImageButtonHIDE.TabIndex = 5;
-            this.bunifuImageButtonHIDE.TabStop = false;
-            this.bunifuImageButtonHIDE.Zoom = 10;
-            this.bunifuImageButtonHIDE.Click += new System.EventHandler(this.bunifuImageButtonHIDE_Click);
             // 
             // panelHead
             // 
@@ -1225,6 +1271,38 @@
             this.panelHead.TabIndex = 6;
             this.panelHead.MouseDown += new System.Windows.Forms.MouseEventHandler(this.panelHead_MouseDown);
             this.panelHead.MouseMove += new System.Windows.Forms.MouseEventHandler(this.panelHead_MouseMove);
+            // 
+            // bunifuImageButtonHIDE
+            // 
+            this.bunifuImageButtonHIDE.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.bunifuImageButtonHIDE.BackColor = System.Drawing.Color.CornflowerBlue;
+            this.bunifuImageButtonHIDE.Image = global::TRPO_Project.Properties.Resources.minus;
+            this.bunifuImageButtonHIDE.ImageActive = null;
+            this.bunifuImageButtonHIDE.InitialImage = global::TRPO_Project.Properties.Resources.X;
+            this.bunifuImageButtonHIDE.Location = new System.Drawing.Point(873, 8);
+            this.bunifuImageButtonHIDE.Name = "bunifuImageButtonHIDE";
+            this.bunifuImageButtonHIDE.Size = new System.Drawing.Size(20, 20);
+            this.bunifuImageButtonHIDE.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.bunifuImageButtonHIDE.TabIndex = 5;
+            this.bunifuImageButtonHIDE.TabStop = false;
+            this.bunifuImageButtonHIDE.Zoom = 10;
+            this.bunifuImageButtonHIDE.Click += new System.EventHandler(this.bunifuImageButtonHIDE_Click);
+            // 
+            // bunifuImageButtonEXIT
+            // 
+            this.bunifuImageButtonEXIT.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.bunifuImageButtonEXIT.BackColor = System.Drawing.Color.Crimson;
+            this.bunifuImageButtonEXIT.Image = global::TRPO_Project.Properties.Resources.X;
+            this.bunifuImageButtonEXIT.ImageActive = null;
+            this.bunifuImageButtonEXIT.InitialImage = global::TRPO_Project.Properties.Resources.X;
+            this.bunifuImageButtonEXIT.Location = new System.Drawing.Point(899, 8);
+            this.bunifuImageButtonEXIT.Name = "bunifuImageButtonEXIT";
+            this.bunifuImageButtonEXIT.Size = new System.Drawing.Size(20, 20);
+            this.bunifuImageButtonEXIT.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.bunifuImageButtonEXIT.TabIndex = 3;
+            this.bunifuImageButtonEXIT.TabStop = false;
+            this.bunifuImageButtonEXIT.Zoom = 10;
+            this.bunifuImageButtonEXIT.Click += new System.EventHandler(this.bunifuImageButtonEXIT_Click);
             // 
             // AdminPanelForm
             // 
@@ -1248,53 +1326,42 @@
             this.Theme = MetroFramework.MetroThemeStyle.Dark;
             this.TransparencyKey = System.Drawing.Color.Honeydew;
             this.Load += new System.EventHandler(this.AdminPanelForm_Load);
-            this.tabPage1.ResumeLayout(false);
-            this.tabPage1.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.bunifuImageButtonAPPLYnewPROD)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.bunifuImageButtonNEWpic)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.bunifuCustomDataGridVIEWinfoAboutONEprod)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.UsersDataGrid)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.InquiryDataGrid)).EndInit();
             this.ContextMenu.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.bunifuImageButtonEXIT)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.bunifuImageButton_DeleteProd)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.bunifuImageButtonAPPLYchanges)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.CirclePictureBoxUSER)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.gunaCirclePictureBoxCPU)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.gunaCirclePictureBoxPC)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.buttonShowGraphic)).EndInit();
             this.tabControlAdmin.ResumeLayout(false);
+            this.metroTabPage5.ResumeLayout(false);
+            this.metroTabPage5.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.bunifuImageButtonAPPLYnewPROD)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.bunifuImageButtonNEWpic)).EndInit();
             this.metroTabPage1.ResumeLayout(false);
             this.metroTabPage1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.gunaCirclePictureBoxPC_ONE)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.bunifuImageButtonNEWpcIMG)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.bunifuImageButton_DeleteProd)).EndInit();
             this.metroTabPage2.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.CirclePictureBoxUSER)).EndInit();
             this.metroTabPage3.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.PCDataGrid)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.gunaCirclePictureBoxGPU)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.gunaCirclePictureBoxCPU)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.gunaCirclePictureBoxPC)).EndInit();
             this.metroTabPage4.ResumeLayout(false);
             this.metroTabPage4.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.buttonShowGraphic)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.bunifuImageButtonHIDE)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.bunifuImageButtonEXIT)).EndInit();
             this.ResumeLayout(false);
 
         }
 
         #endregion
-        private System.Windows.Forms.TabPage tabPage1;
-        private System.Windows.Forms.Label label5;
         private System.Windows.Forms.OpenFileDialog openFileDialogADDproduct;
         private Bunifu.Framework.UI.BunifuCustomDataGrid UsersDataGrid;
         protected Bunifu.Framework.UI.BunifuImageButton bunifuImageButtonEXIT;
         private Bunifu.Framework.UI.BunifuCustomDataGrid bunifuCustomDataGridVIEWinfoAboutONEprod;
         private Bunifu.Framework.UI.BunifuDropdown comboBoxSELECT_id_product;
-        private Bunifu.Framework.UI.BunifuImageButton bunifuImageButtonAPPLYchanges;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn1;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn2;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn3;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn4;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn5;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn6;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn7;
         private Guna.UI.WinForms.GunaCirclePictureBox gunaCirclePictureBoxPC;
         private Guna.UI.WinForms.GunaCirclePictureBox gunaCirclePictureBoxCPU;
         private Bunifu.Framework.UI.BunifuCustomDataGrid InquiryDataGrid;
@@ -1311,18 +1378,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn Order_PRICE;
         private Bunifu.Framework.UI.BunifuImageButton bunifuImageButton_DeleteProd;
         private Guna.UI.WinForms.GunaLabel gunaLabelIDofPC;
-        private Bunifu.Framework.UI.BunifuMaterialTextbox bunifuMetroTextboxADDprodPRICE;
-        private Bunifu.Framework.UI.BunifuMaterialTextbox bunifuMetroTextboxADDprodRAM;
-        private System.Windows.Forms.Label label10;
-        private Bunifu.Framework.UI.BunifuImageButton bunifuImageButtonAPPLYnewPROD;
-        private Bunifu.Framework.UI.BunifuMaterialTextbox bunifuMetroTextboxADDprodGPU;
-        private System.Windows.Forms.Label label9;
-        private Bunifu.Framework.UI.BunifuMaterialTextbox bunifuMetroTextboxADDprodType;
-        private Bunifu.Framework.UI.BunifuImageButton bunifuImageButtonNEWpic;
-        private Bunifu.Framework.UI.BunifuMaterialTextbox bunifuMetroTextboxADDprodCPU;
-        private System.Windows.Forms.Label label6;
-        private System.Windows.Forms.Label label7;
-        private System.Windows.Forms.Label label8;
         private MetroFramework.Controls.MetroTabControl tabControlAdmin;
         private MetroFramework.Controls.MetroTabPage metroTabPage1;
         private MetroFramework.Controls.MetroTabPage metroTabPage2;
@@ -1354,5 +1409,28 @@
         private System.Windows.Forms.Panel panelHead;
         private Guna.UI.WinForms.GunaLabel gunaLabelDeleteProd;
         private Guna.UI.WinForms.GunaLabel gunaLabel1;
+        private Guna.UI.WinForms.GunaGradientCircleButton btnApplyChangesPC;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn1;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn2;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn3;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn4;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn5;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn6;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn7;
+        private MetroFramework.Controls.MetroTabPage metroTabPage5;
+        private Guna.UI.WinForms.GunaLabel gunaLabel2;
+        private Guna.UI.WinForms.GunaGradientCircleButton buttonCancelAdding;
+        private Bunifu.Framework.UI.BunifuMaterialTextbox bunifuMetroTextboxADDprodPRICE;
+        private Bunifu.Framework.UI.BunifuMaterialTextbox bunifuMetroTextboxADDprodRAM;
+        private Bunifu.Framework.UI.BunifuImageButton bunifuImageButtonAPPLYnewPROD;
+        private Bunifu.Framework.UI.BunifuMaterialTextbox bunifuMetroTextboxADDprodGPU;
+        private Bunifu.Framework.UI.BunifuMaterialTextbox bunifuMetroTextboxADDprodType;
+        private Bunifu.Framework.UI.BunifuImageButton bunifuImageButtonNEWpic;
+        private Bunifu.Framework.UI.BunifuMaterialTextbox bunifuMetroTextboxADDprodCPU;
+        private Guna.UI.WinForms.GunaLabel gunaLabel7;
+        private Guna.UI.WinForms.GunaLabel gunaLabel5;
+        private Guna.UI.WinForms.GunaLabel gunaLabel6;
+        private Guna.UI.WinForms.GunaLabel gunaLabel4;
+        private Guna.UI.WinForms.GunaLabel gunaLabel3;
     }
 }

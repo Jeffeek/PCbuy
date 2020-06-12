@@ -51,7 +51,7 @@
             this.Graphic.BackColor = System.Drawing.Color.Black;
             this.Graphic.BackGroundColor = System.Drawing.Color.Black;
             this.Graphic.BelowLineColor = System.Drawing.Color.Black;
-            this.Graphic.BorderColor = System.Drawing.Color.Black;
+            this.Graphic.BorderColor = System.Drawing.Color.Transparent;
             this.Graphic.ForeColor = System.Drawing.Color.Black;
             this.Graphic.GraphStyle = XanderUI.XUILineGraph.Style.Curved;
             this.Graphic.GraphTitle = "XUI LineGraph";
@@ -64,9 +64,10 @@
             this.Graphic.ShowBorder = false;
             this.Graphic.ShowPoints = true;
             this.Graphic.ShowTitle = false;
-            this.Graphic.ShowVerticalLines = true;
-            this.Graphic.Size = new System.Drawing.Size(780, 415);
+            this.Graphic.ShowVerticalLines = false;
+            this.Graphic.Size = new System.Drawing.Size(780, 416);
             this.Graphic.TabIndex = 0;
+            this.Graphic.TabStop = false;
             this.Graphic.Text = "xuiLineGraph1";
             this.Graphic.TitleAlignment = System.Drawing.StringAlignment.Center;
             this.Graphic.VerticalLineColor = System.Drawing.Color.Black;
@@ -74,7 +75,7 @@
             // bunifuImageButtonEXIT
             // 
             this.bunifuImageButtonEXIT.Anchor = System.Windows.Forms.AnchorStyles.Top;
-            this.bunifuImageButtonEXIT.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.bunifuImageButtonEXIT.BackColor = System.Drawing.Color.Crimson;
             this.bunifuImageButtonEXIT.Image = global::TRPO_Project.Properties.Resources.X;
             this.bunifuImageButtonEXIT.ImageActive = null;
             this.bunifuImageButtonEXIT.InitialImage = global::TRPO_Project.Properties.Resources.X;
@@ -94,7 +95,7 @@
             // bunifuImageButtonHIDE
             // 
             this.bunifuImageButtonHIDE.Anchor = System.Windows.Forms.AnchorStyles.Top;
-            this.bunifuImageButtonHIDE.BackColor = System.Drawing.Color.DeepSkyBlue;
+            this.bunifuImageButtonHIDE.BackColor = System.Drawing.Color.CornflowerBlue;
             this.bunifuImageButtonHIDE.Image = global::TRPO_Project.Properties.Resources.minus;
             this.bunifuImageButtonHIDE.ImageActive = null;
             this.bunifuImageButtonHIDE.InitialImage = global::TRPO_Project.Properties.Resources.X;
@@ -109,7 +110,7 @@
             // 
             // panelHead
             // 
-            this.panelHead.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.panelHead.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.panelHead.Location = new System.Drawing.Point(0, 5);
             this.panelHead.Name = "panelHead";
             this.panelHead.Size = new System.Drawing.Size(780, 32);

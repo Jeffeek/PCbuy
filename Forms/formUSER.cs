@@ -27,7 +27,6 @@ namespace TRPO_Project
         private Point lastPoint;
         private List<PCinfo> OBJects = new List<PCinfo>(); // объекты главной формы
         private List<PC> AllPCList = new List<PC>();
-        public static List<PCinfo> BINid = new List<PCinfo>(); //лист корзины юзера
         private int userID;
         #endregion
 
@@ -46,12 +45,20 @@ namespace TRPO_Project
             metroComboBoxGPUsort.SelectedIndex = 0;
             metroComboBoxRAM.SelectedIndex = 0;
         }
+
+        public PC PC
+        {
+            get => default;
+            set
+            {
+            }
+        }
         #endregion
 
         #region PictureBOXclick
         private void pictureBoxProductBIN_Click(object sender, EventArgs e)
         {
-            Form BIN = new BIN(false, userID);           
+            Form BIN = new BIN(userID);           
             BIN.ShowDialog(this);
         }
 
@@ -190,7 +197,7 @@ namespace TRPO_Project
                     CircleProgressBar.Percentage++;
                     _percentage++;
                 }
-                PCinfo OBJ = new PCinfo(pc.TYPE, pc.ID, pc.CPU, pc.GPU, pc.RAM, pc.COST, pc.IMG) { isAdmin = false };
+                PCinfo OBJ = new PCinfo(pc) { isAdmin = false };
                 OBJects.Add(OBJ);
                 OBJ.Location = new Point(0, Y);
                 Y += deltaY;
@@ -344,10 +351,11 @@ namespace TRPO_Project
             groupBoxHEAD.GradientBottomRight = OBJ.BottomRight;
             groupBoxHEAD.GradientTopLeft = OBJ.TopLeft;
             groupBoxHEAD.GradientTopRight = OBJ.TopRight;
+            groupBoxHEAD.Controls.OfType<Label>().Select(x => x.ForeColor = OBJ.FontColor).ToList();
             groupBoxHEAD.Refresh();
         }
 
-        public async Task ReadThemeAsync()
+        public async void ReadThemeAsync()
         {
             try
             {
@@ -364,8 +372,8 @@ namespace TRPO_Project
                 if (themes.Count(x => x.UserID == userID) > 0)
                 {
                     ProgramTheme ThemeOBJ = themes.Find(x => x.UserID == userID);
-                    ChangeNonMetroControls(ThemeOBJ);
-                    ChangeMetroControls(ThemeOBJ);
+                    await Task.Run(() => ChangeNonMetroControls(ThemeOBJ));
+                    await Task.Run(() => ChangeMetroControls(ThemeOBJ));
                     Refresh();
                 }
             }
@@ -377,5 +385,11 @@ namespace TRPO_Project
         }
 
         #endregion
+
+        private void buttonHelp_Click(object sender, EventArgs e)
+        {
+            HelpForm helpForm = new HelpForm(this.Theme);
+            helpForm.Show(this);
+        }
     }
 }

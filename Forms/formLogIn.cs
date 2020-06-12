@@ -13,8 +13,6 @@ using System.Net;
 using System.Runtime.Serialization.Json;
 using Guna.UI.WinForms;
 
-// ReSharper disable All
-// ReSharper disable All
 
 namespace TRPO_Project
 {

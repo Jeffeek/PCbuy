@@ -29,10 +29,12 @@ namespace TRPO_Project
         private List<int> GRAPH_NODE = new List<int>();
         private Point lastPoint;
 
-        public GraphicForm()
+        public GraphicForm(MetroThemeStyle theme)
         {
             InitializeComponent();
             FormFadeTransition.ShowAsyc(this);
+            this.Theme = theme;
+            Graphic.BackGroundColor = this.Theme == MetroThemeStyle.Light ? Color.White : Color.FromArgb(17, 17, 17);
             FillGraphic();
         }
 
@@ -95,7 +97,7 @@ namespace TRPO_Project
             Graphic.LineColor = obj.Theme == ETheme.Dark ? Color.Orchid : Color.OrangeRed;
         }
 
-        public async Task ReadThemeAsync()
+        public async void ReadThemeAsync()
         {
             try
             {

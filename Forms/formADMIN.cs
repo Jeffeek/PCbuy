@@ -1,21 +1,13 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
 using System.Drawing;
 using System.Linq;
-using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.IO;
-using System.Diagnostics;
 using System.Data.SQLite;
-using System.Data.Sql;
 using MetroFramework;
 using MetroFramework.Forms;
-using MetroFramework.Components;
-using System.Threading;
-using TRPO_Project.Properties;
 using System.Runtime.Serialization.Json;
 
 namespace TRPO_Project
@@ -27,10 +19,67 @@ namespace TRPO_Project
         private SQLiteConnection sql_con; // connection
         private SQLiteCommand sql_cmd;
         private List<PCinfo> OBJects = new List<PCinfo>(); // объекты главной формы
-        private List<PC> AllPCList = new List<PC>();
-        public static List<PCinfo> BINid = new List<PCinfo>(); //лист корзины юзера
+        private static List<PC> AllPCList = new List<PC>();
         private int userID;
         private Point lastPoint;
+
+        #endregion
+
+        #region ChangeInfoInPCList
+
+        public static void ChangeInfoList(int PC_id, EPCChange actionChange, object NewValue)
+        {
+            switch (actionChange)
+            {
+                case EPCChange.Add:
+                {
+                    AllPCList.Add(NewValue as PC);
+                    break;
+                }
+
+                case EPCChange.Remove:
+                {
+                    AllPCList.Remove(AllPCList.Find(x => x.ID == PC_id));
+                    break;
+                }
+
+                case EPCChange.ChangeCOST:
+                {
+                    AllPCList.Find(x => x.ID == PC_id).COST = Convert.ToInt32(NewValue);
+                    break;
+                }
+
+                case EPCChange.ChangeCPU:
+                {
+                    AllPCList.Find(x => x.ID == PC_id).CPU = Convert.ToString(NewValue);
+                    break;
+                }
+
+                case EPCChange.ChangeGPU:
+                {
+                    AllPCList.Find(x => x.ID == PC_id).GPU = Convert.ToString(NewValue);
+                    break;
+                }
+
+                case EPCChange.ChangeType:
+                {
+                    AllPCList.Find(x => x.ID == PC_id).TYPE = Convert.ToString(NewValue);
+                    break;
+                }
+
+                case EPCChange.ChangeRAM:
+                {
+                    AllPCList.Find(x => x.ID == PC_id).RAM = Convert.ToInt32(NewValue);
+                    break;
+                }
+
+                case EPCChange.ChangeIMG:
+                {
+                    AllPCList.Find(x => x.ID == PC_id).IMG = NewValue as Image;
+                    break;
+                }
+            }
+        }
 
         #endregion
 
@@ -40,8 +89,8 @@ namespace TRPO_Project
         {
             InitializeComponent();
             userID = id;
-            ReadThemeAsync().Wait();
             FormStartTransition.ShowAsyc(this);
+            ReadThemeAsync();
             GetInfoIntoComboBoxes();
             SetPictureProfile();
             FillPc();
@@ -87,7 +136,7 @@ namespace TRPO_Project
 
         private void pictureBoxProductBIN_Click(object sender, EventArgs e)
         {
-            Form BIN = new BIN(true, userID);
+            Form BIN = new BIN(userID);
             BIN.ShowDialog(this);
         }
 
@@ -134,22 +183,22 @@ namespace TRPO_Project
             var ToDisplay = new List<PC>(AllPCList.Where(x => x.COST >= priceReaderInt[0] && x.COST <= priceReaderInt[1]));
             if (metroComboBoxTYPEofPC.Text != "<не выбрано>")
             {
-                ToDisplay = ToDisplay.Where(x => x.TYPE == metroComboBoxTYPEofPC.Text).ToList();
+                ToDisplay = ToDisplay.Where(x => x.TYPE == metroComboBoxTYPEofPC.Text)?.ToList();
             }
 
             if (metroComboBoxCPUsort.Text != "<не выбрано>")
             {
-                ToDisplay = ToDisplay.Where(x => x.CPU == metroComboBoxCPUsort.Text).ToList();
+                ToDisplay = ToDisplay.Where(x => x.CPU == metroComboBoxCPUsort.Text)?.ToList();
             }
 
             if (metroComboBoxGPUsort.Text != "<не выбрано>")
             {
-                ToDisplay = ToDisplay.Where(x => x.GPU == metroComboBoxGPUsort.Text).ToList();
+                ToDisplay = ToDisplay.Where(x => x.GPU == metroComboBoxGPUsort.Text)?.ToList();
             }
 
             if (metroComboBoxRAM.Text != "<не выбрано>")
             {
-                ToDisplay = ToDisplay.Where(x => x.RAM == int.Parse(metroComboBoxRAM.Text.Replace(" GB", ""))).ToList();
+                ToDisplay = ToDisplay.Where(x => x.RAM == int.Parse(metroComboBoxRAM.Text.Replace(" GB", "")))?.ToList();
             }
 
             if (ToDisplay.Count == 0)
@@ -184,14 +233,14 @@ namespace TRPO_Project
             foreach (var pc in Listed)
             {
                 int _percentage = 0;
-                await Task.Delay(30);
+                await Task.Delay(15);
                 while (_percentage != oneElementPercentage)
                 {
                     ProgressBar.Percentage++;
                     _percentage++;
                 }
 
-                PCinfo OBJ = new PCinfo(pc.TYPE, pc.ID, pc.CPU, pc.GPU, pc.RAM, pc.COST, pc.IMG) {isAdmin = true};
+                PCinfo OBJ = new PCinfo(pc) {isAdmin = true};
                 OBJects.Add(OBJ);
                 OBJ.Location = new Point(0, Y);
                 Y += deltaY;
@@ -257,9 +306,18 @@ namespace TRPO_Project
 
         private void GetInfoIntoComboBoxes()
         {
+            metroComboBoxCPUsort.Items.Clear();
+            metroComboBoxGPUsort.Items.Clear();
+            metroComboBoxRAM.Items.Clear();
+            metroComboBoxTYPEofPC.Items.Clear();
+            metroComboBoxCPUsort.Items.Add("<не выбрано>");
+            metroComboBoxGPUsort.Items.Add("<не выбрано>");
+            metroComboBoxRAM.Items.Add("<не выбрано>");
+            metroComboBoxTYPEofPC.Items.Add("<не выбрано>");
             using (sql_con = new SQLiteConnection($"Data Source={Directory.GetCurrentDirectory()}\\DataBases\\TRPO.db"))
             {
                 sql_con.Open();
+
                 using (sql_cmd = new SQLiteCommand("SELECT DISTINCT CPU from PCdb", sql_con))
                 {
                     SQLiteDataReader reader = sql_cmd.ExecuteReader();
@@ -296,6 +354,11 @@ namespace TRPO_Project
                     }
                 }
             }
+
+            metroComboBoxCPUsort.SelectedIndex = 0;
+            metroComboBoxGPUsort.SelectedIndex = 0;
+            metroComboBoxRAM.SelectedIndex = 0;
+            metroComboBoxTYPEofPC.SelectedIndex = 0;
         }
 
         #endregion
@@ -336,6 +399,7 @@ namespace TRPO_Project
         {
             AdminPanelForm adminPanel = new AdminPanelForm(userID);
             adminPanel.ShowDialog(this);
+            GetInfoIntoComboBoxes();
         }
 
         private void button_backToLoginForm_Click(object sender, EventArgs e)
@@ -380,10 +444,11 @@ namespace TRPO_Project
             groupBoxHEAD.GradientBottomRight = OBJ.BottomRight;
             groupBoxHEAD.GradientTopLeft = OBJ.TopLeft;
             groupBoxHEAD.GradientTopRight = OBJ.TopRight;
+            groupBoxHEAD.Controls.OfType<Label>().Select(x => x.ForeColor = OBJ.FontColor).ToList();
             groupBoxHEAD.Refresh();
         }
 
-        public async Task ReadThemeAsync()
+        public void ReadThemeAsync()
         {
             try
             {
@@ -411,5 +476,11 @@ namespace TRPO_Project
         }
 
         #endregion
+
+        private void buttonHelp_Click(object sender, EventArgs e)
+        {
+            var helpForm = new HelpForm(this.Theme);
+            helpForm.Show(this);
+        }
     }
 }

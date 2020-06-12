@@ -26,6 +26,9 @@ namespace TRPO_Project
         [DataMember]
         public Color TopRight { get; set; } = Color.Aqua;
 
+        [DataMember]
+        public Color FontColor { get; set; } = Color.Cyan;
+
         /// <exception cref="T:System.Exception">при невалидном ID пользователя</exception>
         public ProgramTheme(ETheme theme, int id)
         {
@@ -39,7 +42,7 @@ namespace TRPO_Project
 
         public override string ToString()
         {
-            return $"[{UserID}:{(Theme == ETheme.Dark ? "Dark" : "Light")}]\n[BottomRight:{BottomRight}, BottomLeft:{BottomLeft}, TopRight:{TopRight}, TopLeft:{TopLeft}]";
+            return $"[{UserID}:{(Theme == ETheme.Dark ? "Dark" : "Light")}]\n[BottomRight:{BottomRight}, BottomLeft:{BottomLeft}, TopRight:{TopRight}, TopLeft:{TopLeft}, FontColor:{FontColor}]";
         }
     }
 }

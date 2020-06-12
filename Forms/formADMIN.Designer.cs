@@ -51,6 +51,7 @@
             this.metroComboBoxRAM = new MetroFramework.Controls.MetroComboBox();
             this.bunifuImageButtonEXIT = new Bunifu.Framework.UI.BunifuImageButton();
             this.panelHead = new System.Windows.Forms.Panel();
+            this.buttonHelp = new Guna.UI.WinForms.GunaGradientCircleButton();
             ((System.ComponentModel.ISupportInitialize)(this.button_backToLoginForm)).BeginInit();
             this.groupBoxHEAD.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.bunifuImageButtonSORT)).BeginInit();
@@ -58,6 +59,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxProfile)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxProductBIN)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.bunifuImageButtonEXIT)).BeginInit();
+            this.panelHead.SuspendLayout();
             this.SuspendLayout();
             // 
             // ProgressBar
@@ -74,8 +76,7 @@
             this.ProgressBar.RightToLeft = System.Windows.Forms.RightToLeft.No;
             this.ProgressBar.ShowText = true;
             this.ProgressBar.Size = new System.Drawing.Size(225, 225);
-            this.ProgressBar.TabIndex = 2;
-            this.ProgressBar.TabStop = false;
+            this.ProgressBar.TabIndex = 0;
             this.ProgressBar.TextColor = System.Drawing.Color.LightSeaGreen;
             this.ProgressBar.TextSize = 30;
             this.ProgressBar.UnFilledColor = System.Drawing.Color.PaleGreen;
@@ -184,7 +185,7 @@
             this.textBox_PRICE.Margin = new System.Windows.Forms.Padding(4);
             this.textBox_PRICE.Name = "textBox_PRICE";
             this.textBox_PRICE.Size = new System.Drawing.Size(83, 24);
-            this.textBox_PRICE.TabIndex = 17;
+            this.textBox_PRICE.TabIndex = 1;
             this.textBox_PRICE.TabStop = false;
             this.textBox_PRICE.Text = "$0-9999";
             this.textBox_PRICE.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
@@ -272,20 +273,19 @@
             // 
             // metroComboBoxCPUsort
             // 
-            this.metroComboBoxCPUsort.BackColor = System.Drawing.Color.Azure;
+            this.metroComboBoxCPUsort.BackColor = System.Drawing.Color.LightCyan;
             this.metroComboBoxCPUsort.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.metroComboBoxCPUsort.DropDownWidth = 140;
+            this.metroComboBoxCPUsort.DisplayFocus = true;
+            this.metroComboBoxCPUsort.DropDownWidth = 150;
+            this.metroComboBoxCPUsort.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.metroComboBoxCPUsort.FontSize = MetroFramework.MetroComboBoxSize.Small;
             this.metroComboBoxCPUsort.ForeColor = System.Drawing.Color.SkyBlue;
             this.metroComboBoxCPUsort.ItemHeight = 19;
-            this.metroComboBoxCPUsort.Items.AddRange(new object[] {
-            "<не выбрано>"});
             this.metroComboBoxCPUsort.Location = new System.Drawing.Point(211, 20);
             this.metroComboBoxCPUsort.Name = "metroComboBoxCPUsort";
             this.metroComboBoxCPUsort.Size = new System.Drawing.Size(105, 25);
             this.metroComboBoxCPUsort.Style = MetroFramework.MetroColorStyle.Teal;
-            this.metroComboBoxCPUsort.TabIndex = 11;
-            this.metroComboBoxCPUsort.TabStop = false;
+            this.metroComboBoxCPUsort.TabIndex = 3;
             this.metroComboBoxCPUsort.UseCustomBackColor = true;
             this.metroComboBoxCPUsort.UseCustomForeColor = true;
             this.metroComboBoxCPUsort.UseSelectable = true;
@@ -294,20 +294,18 @@
             // 
             this.metroComboBoxTYPEofPC.BackColor = System.Drawing.Color.LightCyan;
             this.metroComboBoxTYPEofPC.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.metroComboBoxTYPEofPC.DropDownWidth = 140;
-            this.metroComboBoxTYPEofPC.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.metroComboBoxTYPEofPC.DisplayFocus = true;
+            this.metroComboBoxTYPEofPC.DropDownWidth = 100;
+            this.metroComboBoxTYPEofPC.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.metroComboBoxTYPEofPC.FontSize = MetroFramework.MetroComboBoxSize.Small;
             this.metroComboBoxTYPEofPC.ForeColor = System.Drawing.Color.Aquamarine;
             this.metroComboBoxTYPEofPC.FormattingEnabled = true;
             this.metroComboBoxTYPEofPC.ItemHeight = 19;
-            this.metroComboBoxTYPEofPC.Items.AddRange(new object[] {
-            "<не выбрано>"});
             this.metroComboBoxTYPEofPC.Location = new System.Drawing.Point(100, 20);
             this.metroComboBoxTYPEofPC.Name = "metroComboBoxTYPEofPC";
             this.metroComboBoxTYPEofPC.Size = new System.Drawing.Size(105, 25);
             this.metroComboBoxTYPEofPC.Style = MetroFramework.MetroColorStyle.Blue;
-            this.metroComboBoxTYPEofPC.TabIndex = 1;
-            this.metroComboBoxTYPEofPC.TabStop = false;
+            this.metroComboBoxTYPEofPC.TabIndex = 2;
             this.metroComboBoxTYPEofPC.UseCustomBackColor = true;
             this.metroComboBoxTYPEofPC.UseCustomForeColor = true;
             this.metroComboBoxTYPEofPC.UseSelectable = true;
@@ -325,22 +323,20 @@
             // 
             // metroComboBoxGPUsort
             // 
-            this.metroComboBoxGPUsort.BackColor = System.Drawing.Color.Azure;
+            this.metroComboBoxGPUsort.BackColor = System.Drawing.Color.LightCyan;
             this.metroComboBoxGPUsort.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.metroComboBoxGPUsort.DropDownWidth = 140;
+            this.metroComboBoxGPUsort.DisplayFocus = true;
+            this.metroComboBoxGPUsort.DropDownWidth = 160;
             this.metroComboBoxGPUsort.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.metroComboBoxGPUsort.FontSize = MetroFramework.MetroComboBoxSize.Small;
             this.metroComboBoxGPUsort.ForeColor = System.Drawing.Color.SkyBlue;
             this.metroComboBoxGPUsort.FormattingEnabled = true;
             this.metroComboBoxGPUsort.ItemHeight = 19;
-            this.metroComboBoxGPUsort.Items.AddRange(new object[] {
-            "<не выбрано>"});
             this.metroComboBoxGPUsort.Location = new System.Drawing.Point(322, 20);
             this.metroComboBoxGPUsort.Name = "metroComboBoxGPUsort";
             this.metroComboBoxGPUsort.Size = new System.Drawing.Size(105, 25);
             this.metroComboBoxGPUsort.Style = MetroFramework.MetroColorStyle.Teal;
-            this.metroComboBoxGPUsort.TabIndex = 12;
-            this.metroComboBoxGPUsort.TabStop = false;
+            this.metroComboBoxGPUsort.TabIndex = 4;
             this.metroComboBoxGPUsort.UseCustomBackColor = true;
             this.metroComboBoxGPUsort.UseCustomForeColor = true;
             this.metroComboBoxGPUsort.UseSelectable = true;
@@ -349,21 +345,19 @@
             // 
             this.metroComboBoxRAM.BackColor = System.Drawing.Color.LightCyan;
             this.metroComboBoxRAM.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.metroComboBoxRAM.DropDownWidth = 140;
-            this.metroComboBoxRAM.FlatStyle = System.Windows.Forms.FlatStyle.System;
+            this.metroComboBoxRAM.DisplayFocus = true;
+            this.metroComboBoxRAM.DropDownWidth = 80;
+            this.metroComboBoxRAM.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.metroComboBoxRAM.FontSize = MetroFramework.MetroComboBoxSize.Small;
             this.metroComboBoxRAM.FontWeight = MetroFramework.MetroComboBoxWeight.Light;
             this.metroComboBoxRAM.ForeColor = System.Drawing.Color.SkyBlue;
             this.metroComboBoxRAM.FormattingEnabled = true;
             this.metroComboBoxRAM.ItemHeight = 19;
-            this.metroComboBoxRAM.Items.AddRange(new object[] {
-            "<не выбрано>"});
             this.metroComboBoxRAM.Location = new System.Drawing.Point(433, 20);
             this.metroComboBoxRAM.Name = "metroComboBoxRAM";
             this.metroComboBoxRAM.Size = new System.Drawing.Size(105, 25);
-            this.metroComboBoxRAM.Style = MetroFramework.MetroColorStyle.Teal;
-            this.metroComboBoxRAM.TabIndex = 13;
-            this.metroComboBoxRAM.TabStop = false;
+            this.metroComboBoxRAM.Style = MetroFramework.MetroColorStyle.Blue;
+            this.metroComboBoxRAM.TabIndex = 5;
             this.metroComboBoxRAM.UseCustomBackColor = true;
             this.metroComboBoxRAM.UseCustomForeColor = true;
             this.metroComboBoxRAM.UseSelectable = true;
@@ -371,7 +365,7 @@
             // bunifuImageButtonEXIT
             // 
             this.bunifuImageButtonEXIT.Anchor = System.Windows.Forms.AnchorStyles.Top;
-            this.bunifuImageButtonEXIT.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.bunifuImageButtonEXIT.BackColor = System.Drawing.Color.Crimson;
             this.bunifuImageButtonEXIT.Cursor = System.Windows.Forms.Cursors.Hand;
             this.bunifuImageButtonEXIT.Image = global::TRPO_Project.Properties.Resources.X;
             this.bunifuImageButtonEXIT.ImageActive = null;
@@ -389,12 +383,40 @@
             // 
             this.panelHead.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.panelHead.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.panelHead.Controls.Add(this.buttonHelp);
             this.panelHead.Location = new System.Drawing.Point(0, 5);
             this.panelHead.Name = "panelHead";
             this.panelHead.Size = new System.Drawing.Size(796, 28);
             this.panelHead.TabIndex = 16;
             this.panelHead.MouseDown += new System.Windows.Forms.MouseEventHandler(this.panelHead_MouseDown);
             this.panelHead.MouseMove += new System.Windows.Forms.MouseEventHandler(this.panelHead_MouseMove);
+            // 
+            // buttonHelp
+            // 
+            this.buttonHelp.AnimationHoverSpeed = 0.15F;
+            this.buttonHelp.AnimationSpeed = 0.03F;
+            this.buttonHelp.BaseColor1 = System.Drawing.Color.DarkBlue;
+            this.buttonHelp.BaseColor2 = System.Drawing.Color.Indigo;
+            this.buttonHelp.BorderColor = System.Drawing.Color.Red;
+            this.buttonHelp.BorderSize = 1;
+            this.buttonHelp.DialogResult = System.Windows.Forms.DialogResult.None;
+            this.buttonHelp.FocusedColor = System.Drawing.Color.Empty;
+            this.buttonHelp.Font = new System.Drawing.Font("Segoe UI", 9F);
+            this.buttonHelp.ForeColor = System.Drawing.Color.White;
+            this.buttonHelp.Image = global::TRPO_Project.Properties.Resources.help_64px;
+            this.buttonHelp.ImageSize = new System.Drawing.Size(30, 30);
+            this.buttonHelp.Location = new System.Drawing.Point(12, 2);
+            this.buttonHelp.Name = "buttonHelp";
+            this.buttonHelp.OnHoverBaseColor1 = System.Drawing.Color.Orchid;
+            this.buttonHelp.OnHoverBaseColor2 = System.Drawing.Color.DarkSlateBlue;
+            this.buttonHelp.OnHoverBorderColor = System.Drawing.Color.Gold;
+            this.buttonHelp.OnHoverForeColor = System.Drawing.Color.White;
+            this.buttonHelp.OnHoverImage = null;
+            this.buttonHelp.OnPressedColor = System.Drawing.Color.OrangeRed;
+            this.buttonHelp.Size = new System.Drawing.Size(20, 20);
+            this.buttonHelp.TabIndex = 17;
+            this.buttonHelp.TabStop = false;
+            this.buttonHelp.Click += new System.EventHandler(this.buttonHelp_Click);
             // 
             // formADMIN
             // 
@@ -430,6 +452,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxProfile)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxProductBIN)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.bunifuImageButtonEXIT)).EndInit();
+            this.panelHead.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -456,5 +479,6 @@
         private Bunifu.Framework.UI.BunifuImageButton button_backToLoginForm;
         private System.Windows.Forms.Label labelPRICE;
         private System.Windows.Forms.Panel panelHead;
+        private Guna.UI.WinForms.GunaGradientCircleButton buttonHelp;
     }
 }

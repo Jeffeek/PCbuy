@@ -32,6 +32,7 @@ namespace TRPO_Project
         public formProfile(formUSER formF,int ID)
         {
             InitializeComponent();
+            StartTransation.ShowAsyc(this);
             SetScaling();
             mainForm = formF;
             userID = ID;
@@ -45,6 +46,7 @@ namespace TRPO_Project
         public formProfile(formADMIN formF, int ID)
         {
             InitializeComponent();
+            StartTransation.ShowAsyc(this);
             SetScaling();
             mainForm = formF;
             userID = ID;
@@ -352,9 +354,10 @@ namespace TRPO_Project
             circlePictureBoxTL.BackColor = OBJ.TopLeft;
             circlePictureBoxBR.BackColor = OBJ.BottomRight;
             circlePictureBoxTR.BackColor = OBJ.TopRight;
+            labelFontColor.LinkColor = OBJ.FontColor;
         }
 
-        public async Task ReadThemeAsync()
+        public async void ReadThemeAsync()
         {
             try
             {
@@ -433,6 +436,7 @@ namespace TRPO_Project
             Color TL = circlePictureBoxTL.BackColor;
             Color BR = circlePictureBoxBR.BackColor;
             Color BL = circlePictureBoxBL.BackColor;
+            Color Font = labelFontColor.LinkColor;
 
             try
             {
@@ -452,7 +456,7 @@ namespace TRPO_Project
 
             themes.Remove(themes.Find(x => x.UserID == userID));
 
-            themes.Add(new ProgramTheme(ChoosedTheme, userID) { BottomLeft = BL, BottomRight = BR, TopLeft = TL, TopRight = TR });
+            themes.Add(new ProgramTheme(ChoosedTheme, userID) { BottomLeft = BL, BottomRight = BR, TopLeft = TL, TopRight = TR, FontColor = Font});
             File.WriteAllText($"{Directory.GetCurrentDirectory()}\\ThemeModel\\ThemeSettings.json", "");
             using (FileStream file = new FileStream($"{Directory.GetCurrentDirectory()}\\ThemeModel\\ThemeSettings.json", FileMode.OpenOrCreate))
             {
@@ -482,7 +486,7 @@ namespace TRPO_Project
         private void SetScaling()
         {
             xuiSlidingPanelPassChange.PanelWidthExpanded =
-                (int) (xuiSlidingPanelPassChange.PanelWidthExpanded * ScaleControls.Scale);
+                (int) (xuiSlidingPanelPassChange.PanelWidthExpanded * ScaleControls.Scale * 1.2);
             xuiSlidingPanelSettings.PanelWidthExpanded =
                 (int) (xuiSlidingPanelSettings.PanelWidthExpanded * ScaleControls.Scale);
 
@@ -547,5 +551,23 @@ namespace TRPO_Project
         private void bunifuMaterialTextboxEMAIL_KeyPress(object sender, KeyPressEventArgs e) => e.Handled = true;
 
         #endregion
+
+        private void labelFontColor_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        {
+            if (fontColorDialog.ShowDialog(this) == DialogResult.OK)
+            {
+                labelFontColor.LinkColor = fontColorDialog.Color;
+            }
+        }
+
+        private void buttonReloadTheme_Click(object sender, EventArgs e)
+        {
+            switchTheme.Checked = true;
+            labelFontColor.LinkColor = Color.Cyan;
+            circlePictureBoxBL.BackColor = Color.Black;
+            circlePictureBoxBR.BackColor = Color.MediumTurquoise;
+            circlePictureBoxTL.BackColor = Color.DarkOrchid;
+            circlePictureBoxTR.BackColor = Color.MediumSlateBlue;
+        }
     }
 }
