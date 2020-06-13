@@ -1,4 +1,6 @@
-﻿namespace TRPO_Project
+﻿using System;
+
+namespace TRPO_Project
 {
     partial class formUSER
     {
@@ -46,6 +48,7 @@
             this.metroComboBoxRAM = new MetroFramework.Controls.MetroComboBox();
             this.bunifuImageButtonEXIT = new Bunifu.Framework.UI.BunifuImageButton();
             this.panelHead = new System.Windows.Forms.Panel();
+            this.buttonHelp = new Guna.UI.WinForms.GunaGradientCircleButton();
             this.groupBoxHEAD.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.button_backToLoginForm)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.bunifuImageButtonSORT)).BeginInit();
@@ -64,7 +67,7 @@
             this.CircleProgressBar.Font = new System.Drawing.Font("Unispace", 20.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.CircleProgressBar.IsAnimated = false;
             this.CircleProgressBar.Location = new System.Drawing.Point(675, 300);
-            this.CircleProgressBar.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.CircleProgressBar.Margin = new System.Windows.Forms.Padding(4);
             this.CircleProgressBar.Name = "CircleProgressBar";
             this.CircleProgressBar.Percentage = 0;
             this.CircleProgressBar.RightToLeft = System.Windows.Forms.RightToLeft.No;
@@ -115,7 +118,7 @@
             this.groupBoxHEAD.GradientTopLeft = System.Drawing.Color.DarkOrchid;
             this.groupBoxHEAD.GradientTopRight = System.Drawing.Color.MediumSlateBlue;
             this.groupBoxHEAD.Location = new System.Drawing.Point(0, 40);
-            this.groupBoxHEAD.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.groupBoxHEAD.Margin = new System.Windows.Forms.Padding(4);
             this.groupBoxHEAD.Name = "groupBoxHEAD";
             this.groupBoxHEAD.Quality = 100;
             this.groupBoxHEAD.Size = new System.Drawing.Size(995, 70);
@@ -140,7 +143,7 @@
             this.button_backToLoginForm.Image = global::TRPO_Project.Properties.Resources.exit_sign_64px;
             this.button_backToLoginForm.ImageActive = null;
             this.button_backToLoginForm.Location = new System.Drawing.Point(935, 11);
-            this.button_backToLoginForm.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.button_backToLoginForm.Margin = new System.Windows.Forms.Padding(4);
             this.button_backToLoginForm.Name = "button_backToLoginForm";
             this.button_backToLoginForm.Size = new System.Drawing.Size(54, 54);
             this.button_backToLoginForm.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
@@ -163,7 +166,7 @@
             this.textBox_PRICE.LineMouseHoverColor = System.Drawing.Color.Magenta;
             this.textBox_PRICE.LineThickness = 3;
             this.textBox_PRICE.Location = new System.Drawing.Point(16, 26);
-            this.textBox_PRICE.Margin = new System.Windows.Forms.Padding(5, 5, 5, 5);
+            this.textBox_PRICE.Margin = new System.Windows.Forms.Padding(5);
             this.textBox_PRICE.Name = "textBox_PRICE";
             this.textBox_PRICE.Size = new System.Drawing.Size(104, 31);
             this.textBox_PRICE.TabIndex = 4;
@@ -187,7 +190,7 @@
             this.metroComboBoxTYPEofPC.Items.AddRange(new object[] {
             "<не выбрано>"});
             this.metroComboBoxTYPEofPC.Location = new System.Drawing.Point(130, 25);
-            this.metroComboBoxTYPEofPC.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.metroComboBoxTYPEofPC.Margin = new System.Windows.Forms.Padding(4);
             this.metroComboBoxTYPEofPC.Name = "metroComboBoxTYPEofPC";
             this.metroComboBoxTYPEofPC.Size = new System.Drawing.Size(130, 27);
             this.metroComboBoxTYPEofPC.Style = MetroFramework.MetroColorStyle.Teal;
@@ -205,7 +208,7 @@
             this.bunifuImageButtonSORT.Image = global::TRPO_Project.Properties.Resources.sort;
             this.bunifuImageButtonSORT.ImageActive = null;
             this.bunifuImageButtonSORT.Location = new System.Drawing.Point(700, 11);
-            this.bunifuImageButtonSORT.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.bunifuImageButtonSORT.Margin = new System.Windows.Forms.Padding(4);
             this.bunifuImageButtonSORT.Name = "bunifuImageButtonSORT";
             this.bunifuImageButtonSORT.Size = new System.Drawing.Size(54, 54);
             this.bunifuImageButtonSORT.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
@@ -246,7 +249,7 @@
             this.pictureBoxProfile.Image = global::TRPO_Project.Properties.Resources.profile_default;
             this.pictureBoxProfile.ImageActive = null;
             this.pictureBoxProfile.Location = new System.Drawing.Point(874, 11);
-            this.pictureBoxProfile.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.pictureBoxProfile.Margin = new System.Windows.Forms.Padding(4);
             this.pictureBoxProfile.Name = "pictureBoxProfile";
             this.pictureBoxProfile.Size = new System.Drawing.Size(54, 54);
             this.pictureBoxProfile.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
@@ -274,7 +277,7 @@
             this.pictureBoxProductBIN.Image = global::TRPO_Project.Properties.Resources.shopping_cart;
             this.pictureBoxProductBIN.ImageActive = null;
             this.pictureBoxProductBIN.Location = new System.Drawing.Point(772, 11);
-            this.pictureBoxProductBIN.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.pictureBoxProductBIN.Margin = new System.Windows.Forms.Padding(4);
             this.pictureBoxProductBIN.Name = "pictureBoxProductBIN";
             this.pictureBoxProductBIN.Size = new System.Drawing.Size(54, 54);
             this.pictureBoxProductBIN.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
@@ -294,7 +297,7 @@
             this.metroComboBoxCPUsort.Items.AddRange(new object[] {
             "<не выбрано>"});
             this.metroComboBoxCPUsort.Location = new System.Drawing.Point(269, 25);
-            this.metroComboBoxCPUsort.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.metroComboBoxCPUsort.Margin = new System.Windows.Forms.Padding(4);
             this.metroComboBoxCPUsort.Name = "metroComboBoxCPUsort";
             this.metroComboBoxCPUsort.Size = new System.Drawing.Size(130, 27);
             this.metroComboBoxCPUsort.Style = MetroFramework.MetroColorStyle.Teal;
@@ -329,7 +332,7 @@
             this.metroComboBoxGPUsort.Items.AddRange(new object[] {
             "<не выбрано>"});
             this.metroComboBoxGPUsort.Location = new System.Drawing.Point(408, 25);
-            this.metroComboBoxGPUsort.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.metroComboBoxGPUsort.Margin = new System.Windows.Forms.Padding(4);
             this.metroComboBoxGPUsort.Name = "metroComboBoxGPUsort";
             this.metroComboBoxGPUsort.Size = new System.Drawing.Size(130, 27);
             this.metroComboBoxGPUsort.Style = MetroFramework.MetroColorStyle.Teal;
@@ -353,7 +356,7 @@
             this.metroComboBoxRAM.Items.AddRange(new object[] {
             "<не выбрано>"});
             this.metroComboBoxRAM.Location = new System.Drawing.Point(546, 25);
-            this.metroComboBoxRAM.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.metroComboBoxRAM.Margin = new System.Windows.Forms.Padding(4);
             this.metroComboBoxRAM.Name = "metroComboBoxRAM";
             this.metroComboBoxRAM.Size = new System.Drawing.Size(130, 27);
             this.metroComboBoxRAM.Style = MetroFramework.MetroColorStyle.Teal;
@@ -372,7 +375,7 @@
             this.bunifuImageButtonEXIT.ImageActive = null;
             this.bunifuImageButtonEXIT.InitialImage = global::TRPO_Project.Properties.Resources.X;
             this.bunifuImageButtonEXIT.Location = new System.Drawing.Point(962, 4);
-            this.bunifuImageButtonEXIT.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.bunifuImageButtonEXIT.Margin = new System.Windows.Forms.Padding(4);
             this.bunifuImageButtonEXIT.Name = "bunifuImageButtonEXIT";
             this.bunifuImageButtonEXIT.Size = new System.Drawing.Size(25, 25);
             this.bunifuImageButtonEXIT.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
@@ -385,14 +388,43 @@
             // 
             this.panelHead.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.panelHead.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.panelHead.Controls.Add(this.buttonHelp);
             this.panelHead.Controls.Add(this.bunifuImageButtonEXIT);
             this.panelHead.Location = new System.Drawing.Point(0, 6);
-            this.panelHead.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.panelHead.Margin = new System.Windows.Forms.Padding(4);
             this.panelHead.Name = "panelHead";
             this.panelHead.Size = new System.Drawing.Size(994, 34);
             this.panelHead.TabIndex = 4;
             this.panelHead.MouseDown += new System.Windows.Forms.MouseEventHandler(this.panelHead_MouseDown);
             this.panelHead.MouseMove += new System.Windows.Forms.MouseEventHandler(this.panelHead_MouseMove);
+            // 
+            // buttonHelp
+            // 
+            this.buttonHelp.AnimationHoverSpeed = 0.15F;
+            this.buttonHelp.AnimationSpeed = 0.03F;
+            this.buttonHelp.BaseColor1 = System.Drawing.Color.DarkBlue;
+            this.buttonHelp.BaseColor2 = System.Drawing.Color.Indigo;
+            this.buttonHelp.BorderColor = System.Drawing.Color.Red;
+            this.buttonHelp.BorderSize = 1;
+            this.buttonHelp.DialogResult = System.Windows.Forms.DialogResult.None;
+            this.buttonHelp.FocusedColor = System.Drawing.Color.Empty;
+            this.buttonHelp.Font = new System.Drawing.Font("Segoe UI", 9F);
+            this.buttonHelp.ForeColor = System.Drawing.Color.White;
+            this.buttonHelp.Image = global::TRPO_Project.Properties.Resources.help_64px;
+            this.buttonHelp.ImageSize = new System.Drawing.Size(30, 30);
+            this.buttonHelp.Location = new System.Drawing.Point(4, 4);
+            this.buttonHelp.Margin = new System.Windows.Forms.Padding(4);
+            this.buttonHelp.Name = "buttonHelp";
+            this.buttonHelp.OnHoverBaseColor1 = System.Drawing.Color.Orchid;
+            this.buttonHelp.OnHoverBaseColor2 = System.Drawing.Color.DarkSlateBlue;
+            this.buttonHelp.OnHoverBorderColor = System.Drawing.Color.Gold;
+            this.buttonHelp.OnHoverForeColor = System.Drawing.Color.White;
+            this.buttonHelp.OnHoverImage = null;
+            this.buttonHelp.OnPressedColor = System.Drawing.Color.OrangeRed;
+            this.buttonHelp.Size = new System.Drawing.Size(25, 25);
+            this.buttonHelp.TabIndex = 18;
+            this.buttonHelp.TabStop = false;
+            this.buttonHelp.Click += new System.EventHandler(this.buttonHelp_Click);
             // 
             // formUSER
             // 
@@ -410,7 +442,7 @@
             this.DoubleBuffered = false;
             this.Font = new System.Drawing.Font("Unispace", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
-            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.Margin = new System.Windows.Forms.Padding(4);
             this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.Name = "formUSER";
@@ -455,5 +487,6 @@
         private Bunifu.Framework.UI.BunifuImageButton button_backToLoginForm;
         protected System.Windows.Forms.Label label1;
         private System.Windows.Forms.Panel panelHead;
+        private Guna.UI.WinForms.GunaGradientCircleButton buttonHelp;
     }
 }
