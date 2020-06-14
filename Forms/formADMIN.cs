@@ -245,7 +245,7 @@ namespace TRPO_Project
                 OBJects.Add(OBJ);
                 OBJ.Location = new Point(0, Y);
                 Y += deltaY;
-                OBJ.BackColor = Theme == MetroThemeStyle.Dark ? Color.FromArgb(17, 17, 17) : Color.White;
+                OBJ.BackColor = Theme == MetroThemeStyle.Dark ? Color.FromArgb(23, 23, 26) : Color.White;
                 OBJ.Anchor = AnchorStyles.Top;
                 this.Controls.Add(OBJ);
             }

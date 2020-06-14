@@ -133,13 +133,13 @@ namespace TRPO_Project
                     {
                         File.Delete($@"{Directory.GetCurrentDirectory()}\USERsPIC\id{userID}_USER.png");
                         File.Copy(fileName, $@"{Directory.GetCurrentDirectory()}\USERsPIC\id{userID}_USER.png");
-                        ((formUSER)mainForm).SetNewProfilePicture(IMG);
+                        (mainForm as formUSER)?.SetNewProfilePicture(IMG);
                     }
                     else
                     {
                         File.Delete($@"{Directory.GetCurrentDirectory()}\USERsPIC\id{userID}_ADMIN.png");
                         File.Copy(fileName, $@"{Directory.GetCurrentDirectory()}\USERsPIC\id{userID}_ADMIN.png");
-                        ((formADMIN)mainForm).SetNewProfilePicture(IMG);
+                        (mainForm as formADMIN)?.SetNewProfilePicture(IMG);
                     }
                 }
             }
@@ -486,9 +486,9 @@ namespace TRPO_Project
         private void SetScaling()
         {
             xuiSlidingPanelPassChange.PanelWidthExpanded =
-                (int) (xuiSlidingPanelPassChange.PanelWidthExpanded * ScaleControls.Scale * 1.2);
+                (int) (xuiSlidingPanelPassChange.PanelWidthExpanded * ScaleControls.Scale * 1.05);
             xuiSlidingPanelSettings.PanelWidthExpanded =
-                (int) (xuiSlidingPanelSettings.PanelWidthExpanded * ScaleControls.Scale);
+                (int) (xuiSlidingPanelSettings.PanelWidthExpanded * ScaleControls.Scale * 1.05);
 
             xuiSlidingPanelPassChange.Controls
                                             .OfType<GunaTextBox>()

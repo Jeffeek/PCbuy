@@ -25,7 +25,7 @@ namespace TRPO_Project
         private SQLiteConnection sql_con; // connection
         private SQLiteCommand sql_cmd;
         private Point lastPoint;
-        private List<PCinfo> OBJects = new List<PCinfo>(); // объекты главной формы
+        private List<PCinfo> LObjects = new List<PCinfo>(); // объекты главной формы
         private List<PC> AllPCList = new List<PC>();
         private int userID;
         #endregion
@@ -165,14 +165,14 @@ namespace TRPO_Project
 
         private async void DisplayListAsync(List<PC> Listed)
         {
-            if (OBJects.Count > 0)
+            if (LObjects.Count > 0)
             {
-                foreach (var elem in OBJects)
+                foreach (var elem in LObjects)
                 {
                     this.Controls.Remove(elem);
                     elem.Dispose();
                 }
-                OBJects.Clear();
+                LObjects.Clear();
             }
             int Y = (int)(88*ScaleControls.Scale);
             this.Refresh();
@@ -190,7 +190,7 @@ namespace TRPO_Project
                     _percentage++;
                 }
                 PCinfo OBJ = new PCinfo(pc) { isAdmin = false };
-                OBJects.Add(OBJ);
+                LObjects.Add(OBJ);
                 OBJ.Location = new Point(0, Y);
                 Y += deltaY;
                 OBJ.BackColor = Theme == MetroThemeStyle.Dark ? Color.FromArgb(17, 17, 17) : Color.White;

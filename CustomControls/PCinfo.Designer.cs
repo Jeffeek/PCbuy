@@ -47,9 +47,10 @@
             this.buttonBUY.BackColor = System.Drawing.Color.DeepSkyBlue;
             this.buttonBUY.Image = global::TRPO_Project.Properties.Resources.buy;
             this.buttonBUY.ImageActive = null;
-            this.buttonBUY.Location = new System.Drawing.Point(232, 157);
+            this.buttonBUY.Location = new System.Drawing.Point(290, 196);
+            this.buttonBUY.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.buttonBUY.Name = "buttonBUY";
-            this.buttonBUY.Size = new System.Drawing.Size(120, 49);
+            this.buttonBUY.Size = new System.Drawing.Size(150, 61);
             this.buttonBUY.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.buttonBUY.TabIndex = 1;
             this.buttonBUY.TabStop = false;
@@ -61,9 +62,10 @@
             this.PCimg.BackColor = System.Drawing.Color.SeaGreen;
             this.PCimg.Image = ((System.Drawing.Image)(resources.GetObject("PCimg.Image")));
             this.PCimg.ImageActive = null;
-            this.PCimg.Location = new System.Drawing.Point(20, 13);
+            this.PCimg.Location = new System.Drawing.Point(25, 16);
+            this.PCimg.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.PCimg.Name = "PCimg";
-            this.PCimg.Size = new System.Drawing.Size(180, 190);
+            this.PCimg.Size = new System.Drawing.Size(225, 238);
             this.PCimg.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.PCimg.TabIndex = 0;
             this.PCimg.TabStop = false;
@@ -73,21 +75,23 @@
             // 
             this.labelTYPE.AutoSize = true;
             this.labelTYPE.Font = new System.Drawing.Font("Unispace", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelTYPE.ForeColor = System.Drawing.Color.Turquoise;
-            this.labelTYPE.Location = new System.Drawing.Point(227, 3);
+            this.labelTYPE.ForeColor = System.Drawing.Color.Gray;
+            this.labelTYPE.Location = new System.Drawing.Point(284, 4);
+            this.labelTYPE.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.labelTYPE.Name = "labelTYPE";
-            this.labelTYPE.Size = new System.Drawing.Size(163, 29);
+            this.labelTYPE.Size = new System.Drawing.Size(231, 36);
             this.labelTYPE.TabIndex = 2;
-            this.labelTYPE.Text = "TYPEofPC: ";
+            this.labelTYPE.Text = "Type of PC: ";
             // 
             // labelCPU
             // 
             this.labelCPU.AutoSize = true;
             this.labelCPU.Font = new System.Drawing.Font("Unispace", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelCPU.ForeColor = System.Drawing.Color.MediumOrchid;
-            this.labelCPU.Location = new System.Drawing.Point(227, 31);
+            this.labelCPU.ForeColor = System.Drawing.Color.Gray;
+            this.labelCPU.Location = new System.Drawing.Point(284, 39);
+            this.labelCPU.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.labelCPU.Name = "labelCPU";
-            this.labelCPU.Size = new System.Drawing.Size(88, 29);
+            this.labelCPU.Size = new System.Drawing.Size(105, 36);
             this.labelCPU.TabIndex = 3;
             this.labelCPU.Text = "CPU: ";
             // 
@@ -95,10 +99,11 @@
             // 
             this.labelGPU.AutoSize = true;
             this.labelGPU.Font = new System.Drawing.Font("Unispace", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelGPU.ForeColor = System.Drawing.Color.LimeGreen;
-            this.labelGPU.Location = new System.Drawing.Point(227, 59);
+            this.labelGPU.ForeColor = System.Drawing.Color.Gray;
+            this.labelGPU.Location = new System.Drawing.Point(284, 74);
+            this.labelGPU.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.labelGPU.Name = "labelGPU";
-            this.labelGPU.Size = new System.Drawing.Size(88, 29);
+            this.labelGPU.Size = new System.Drawing.Size(105, 36);
             this.labelGPU.TabIndex = 4;
             this.labelGPU.Text = "GPU: ";
             // 
@@ -106,10 +111,11 @@
             // 
             this.labelCOST.AutoSize = true;
             this.labelCOST.Font = new System.Drawing.Font("Unispace", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelCOST.ForeColor = System.Drawing.Color.Red;
-            this.labelCOST.Location = new System.Drawing.Point(227, 125);
+            this.labelCOST.ForeColor = System.Drawing.Color.MediumSpringGreen;
+            this.labelCOST.Location = new System.Drawing.Point(284, 156);
+            this.labelCOST.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.labelCOST.Name = "labelCOST";
-            this.labelCOST.Size = new System.Drawing.Size(118, 29);
+            this.labelCOST.Size = new System.Drawing.Size(141, 36);
             this.labelCOST.TabIndex = 5;
             this.labelCOST.Text = "PRICE: ";
             // 
@@ -117,10 +123,11 @@
             // 
             this.labelRAM.AutoSize = true;
             this.labelRAM.Font = new System.Drawing.Font("Unispace", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelRAM.ForeColor = System.Drawing.Color.DarkOliveGreen;
-            this.labelRAM.Location = new System.Drawing.Point(227, 86);
+            this.labelRAM.ForeColor = System.Drawing.Color.Gray;
+            this.labelRAM.Location = new System.Drawing.Point(284, 108);
+            this.labelRAM.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.labelRAM.Name = "labelRAM";
-            this.labelRAM.Size = new System.Drawing.Size(88, 29);
+            this.labelRAM.Size = new System.Drawing.Size(105, 36);
             this.labelRAM.TabIndex = 6;
             this.labelRAM.Text = "RAM: ";
             // 
@@ -129,9 +136,10 @@
             this.labelID.AutoSize = true;
             this.labelID.Font = new System.Drawing.Font("Unispace", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.labelID.ForeColor = System.Drawing.Color.SpringGreen;
-            this.labelID.Location = new System.Drawing.Point(625, 0);
+            this.labelID.Location = new System.Drawing.Point(781, 0);
+            this.labelID.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.labelID.Name = "labelID";
-            this.labelID.Size = new System.Drawing.Size(73, 29);
+            this.labelID.Size = new System.Drawing.Size(87, 36);
             this.labelID.TabIndex = 7;
             this.labelID.Text = "ID: ";
             this.labelID.Visible = false;
@@ -139,14 +147,15 @@
             // gunaSeparator1
             // 
             this.gunaSeparator1.LineColor = System.Drawing.Color.Silver;
-            this.gunaSeparator1.Location = new System.Drawing.Point(0, 209);
+            this.gunaSeparator1.Location = new System.Drawing.Point(0, 261);
+            this.gunaSeparator1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.gunaSeparator1.Name = "gunaSeparator1";
-            this.gunaSeparator1.Size = new System.Drawing.Size(783, 18);
+            this.gunaSeparator1.Size = new System.Drawing.Size(979, 22);
             this.gunaSeparator1.TabIndex = 8;
             // 
             // PCinfo
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(96F, 96F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(120F, 120F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi;
             this.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.AutoValidate = System.Windows.Forms.AutoValidate.Disable;
@@ -160,8 +169,9 @@
             this.Controls.Add(this.labelTYPE);
             this.Controls.Add(this.buttonBUY);
             this.Controls.Add(this.PCimg);
+            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.Name = "PCinfo";
-            this.Size = new System.Drawing.Size(796, 230);
+            this.Size = new System.Drawing.Size(995, 288);
             this.Load += new System.EventHandler(this.PCinfo_Load);
             ((System.ComponentModel.ISupportInitialize)(this.buttonBUY)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.PCimg)).EndInit();
