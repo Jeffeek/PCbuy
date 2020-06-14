@@ -1035,7 +1035,7 @@
             // 
             this.CirclePictureBoxUSER.BackColor = System.Drawing.Color.Transparent;
             this.CirclePictureBoxUSER.BaseColor = System.Drawing.Color.Transparent;
-            this.CirclePictureBoxUSER.Image = global::TRPO_Project.Properties.Resources.w400h4001341689813administrator;
+            this.CirclePictureBoxUSER.Image = global::TRPO_Project.Properties.Resources.admin_settings_male_64px;
             this.CirclePictureBoxUSER.Location = new System.Drawing.Point(743, 138);
             this.CirclePictureBoxUSER.Name = "CirclePictureBoxUSER";
             this.CirclePictureBoxUSER.Size = new System.Drawing.Size(170, 168);

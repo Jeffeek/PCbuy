@@ -14,6 +14,7 @@ namespace TRPO_Project
     {
         public PC PC { get; set; }
         public bool isAdmin { set; get; }
+
         public PCinfo(PC pc)
         {
             InitializeComponent();

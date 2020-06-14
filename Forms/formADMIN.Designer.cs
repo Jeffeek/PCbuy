@@ -33,33 +33,30 @@
             this.ProgressBar = new XanderUI.XUICircleProgressBar();
             this.FormStartTransition = new Bunifu.Framework.UI.BunifuFormFadeTransition(this.components);
             this.EllipseForm = new XanderUI.XUIObjectEllipse();
-            this.button_backToLoginForm = new Bunifu.Framework.UI.BunifuImageButton();
+            this.panelHead = new System.Windows.Forms.Panel();
+            this.buttonHelp = new Guna.UI.WinForms.GunaGradientCircleButton();
+            this.buttonAnimator = new XanderUI.XUIObjectAnimator();
+            this.gunaColorTransition1 = new Guna.UI.WinForms.GunaColorTransition(this.components);
+            this.bunifuImageButtonEXIT = new Bunifu.Framework.UI.BunifuImageButton();
             this.groupBoxHEAD = new Bunifu.Framework.UI.BunifuGradientPanel();
+            this.button_backToLoginForm = new Guna.UI.WinForms.GunaGradientCircleButton();
+            this.bunifuImageButtonADMINPANEL = new Guna.UI.WinForms.GunaGradientCircleButton();
+            this.pictureBoxProfile = new Guna.UI.WinForms.GunaGradientCircleButton();
+            this.pictureBoxProductBIN = new Guna.UI.WinForms.GunaGradientCircleButton();
+            this.bunifuImageButtonSORT = new Guna.UI.WinForms.GunaGradientCircleButton();
             this.labelPRICE = new System.Windows.Forms.Label();
-            this.bunifuImageButtonSORT = new Bunifu.Framework.UI.BunifuImageButton();
             this.textBox_PRICE = new Bunifu.Framework.UI.BunifuMaterialTextbox();
-            this.bunifuImageButtonADMINPANEL = new Bunifu.Framework.UI.BunifuImageButton();
             this.labelRAM = new System.Windows.Forms.Label();
             this.labelGPU = new System.Windows.Forms.Label();
-            this.pictureBoxProfile = new Bunifu.Framework.UI.BunifuImageButton();
             this.labelCPU = new System.Windows.Forms.Label();
-            this.pictureBoxProductBIN = new Bunifu.Framework.UI.BunifuImageButton();
             this.metroComboBoxCPUsort = new MetroFramework.Controls.MetroComboBox();
             this.metroComboBoxTYPEofPC = new MetroFramework.Controls.MetroComboBox();
             this.labelTYPEofPC = new System.Windows.Forms.Label();
             this.metroComboBoxGPUsort = new MetroFramework.Controls.MetroComboBox();
             this.metroComboBoxRAM = new MetroFramework.Controls.MetroComboBox();
-            this.bunifuImageButtonEXIT = new Bunifu.Framework.UI.BunifuImageButton();
-            this.panelHead = new System.Windows.Forms.Panel();
-            this.buttonHelp = new Guna.UI.WinForms.GunaGradientCircleButton();
-            ((System.ComponentModel.ISupportInitialize)(this.button_backToLoginForm)).BeginInit();
-            this.groupBoxHEAD.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.bunifuImageButtonSORT)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.bunifuImageButtonADMINPANEL)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxProfile)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxProductBIN)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.bunifuImageButtonEXIT)).BeginInit();
             this.panelHead.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.bunifuImageButtonEXIT)).BeginInit();
+            this.groupBoxHEAD.SuspendLayout();
             this.SuspendLayout();
             // 
             // ProgressBar
@@ -93,20 +90,70 @@
             this.EllipseForm.EffectedControl = this;
             this.EllipseForm.EffectedForm = this;
             // 
-            // button_backToLoginForm
+            // panelHead
             // 
-            this.button_backToLoginForm.BackColor = System.Drawing.Color.Transparent;
-            this.button_backToLoginForm.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.button_backToLoginForm.Image = global::TRPO_Project.Properties.Resources.exit_sign_64px;
-            this.button_backToLoginForm.ImageActive = null;
-            this.button_backToLoginForm.Location = new System.Drawing.Point(751, 11);
-            this.button_backToLoginForm.Name = "button_backToLoginForm";
-            this.button_backToLoginForm.Size = new System.Drawing.Size(40, 40);
-            this.button_backToLoginForm.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.button_backToLoginForm.TabIndex = 16;
-            this.button_backToLoginForm.TabStop = false;
-            this.button_backToLoginForm.Zoom = 5;
-            this.button_backToLoginForm.Click += new System.EventHandler(this.button_backToLoginForm_Click);
+            this.panelHead.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.panelHead.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.panelHead.Controls.Add(this.buttonHelp);
+            this.panelHead.Location = new System.Drawing.Point(-6, 5);
+            this.panelHead.Name = "panelHead";
+            this.panelHead.Size = new System.Drawing.Size(796, 28);
+            this.panelHead.TabIndex = 16;
+            this.panelHead.MouseDown += new System.Windows.Forms.MouseEventHandler(this.panelHead_MouseDown);
+            this.panelHead.MouseMove += new System.Windows.Forms.MouseEventHandler(this.panelHead_MouseMove);
+            // 
+            // buttonHelp
+            // 
+            this.buttonHelp.AnimationHoverSpeed = 0.15F;
+            this.buttonHelp.AnimationSpeed = 0.03F;
+            this.buttonHelp.BaseColor1 = System.Drawing.Color.DarkBlue;
+            this.buttonHelp.BaseColor2 = System.Drawing.Color.Indigo;
+            this.buttonHelp.BorderColor = System.Drawing.Color.Red;
+            this.buttonHelp.BorderSize = 1;
+            this.buttonHelp.DialogResult = System.Windows.Forms.DialogResult.None;
+            this.buttonHelp.FocusedColor = System.Drawing.Color.Empty;
+            this.buttonHelp.Font = new System.Drawing.Font("Segoe UI", 9F);
+            this.buttonHelp.ForeColor = System.Drawing.Color.White;
+            this.buttonHelp.Image = global::TRPO_Project.Properties.Resources.help_64px;
+            this.buttonHelp.ImageSize = new System.Drawing.Size(30, 30);
+            this.buttonHelp.Location = new System.Drawing.Point(12, 2);
+            this.buttonHelp.Name = "buttonHelp";
+            this.buttonHelp.OnHoverBaseColor1 = System.Drawing.Color.Orchid;
+            this.buttonHelp.OnHoverBaseColor2 = System.Drawing.Color.DarkSlateBlue;
+            this.buttonHelp.OnHoverBorderColor = System.Drawing.Color.Gold;
+            this.buttonHelp.OnHoverForeColor = System.Drawing.Color.White;
+            this.buttonHelp.OnHoverImage = null;
+            this.buttonHelp.OnPressedColor = System.Drawing.Color.OrangeRed;
+            this.buttonHelp.Size = new System.Drawing.Size(20, 20);
+            this.buttonHelp.TabIndex = 17;
+            this.buttonHelp.TabStop = false;
+            this.buttonHelp.Click += new System.EventHandler(this.buttonHelp_Click);
+            // 
+            // gunaColorTransition1
+            // 
+            this.gunaColorTransition1.ColorArray = new System.Drawing.Color[] {
+        System.Drawing.Color.Red,
+        System.Drawing.Color.Blue,
+        System.Drawing.Color.Orange};
+            this.gunaColorTransition1.EndColor = System.Drawing.Color.Blue;
+            this.gunaColorTransition1.StartColor = System.Drawing.Color.Red;
+            // 
+            // bunifuImageButtonEXIT
+            // 
+            this.bunifuImageButtonEXIT.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.bunifuImageButtonEXIT.BackColor = System.Drawing.Color.Crimson;
+            this.bunifuImageButtonEXIT.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.bunifuImageButtonEXIT.Image = global::TRPO_Project.Properties.Resources.X;
+            this.bunifuImageButtonEXIT.ImageActive = null;
+            this.bunifuImageButtonEXIT.InitialImage = global::TRPO_Project.Properties.Resources.X;
+            this.bunifuImageButtonEXIT.Location = new System.Drawing.Point(762, 8);
+            this.bunifuImageButtonEXIT.Name = "bunifuImageButtonEXIT";
+            this.bunifuImageButtonEXIT.Size = new System.Drawing.Size(20, 20);
+            this.bunifuImageButtonEXIT.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.bunifuImageButtonEXIT.TabIndex = 2;
+            this.bunifuImageButtonEXIT.TabStop = false;
+            this.bunifuImageButtonEXIT.Zoom = 10;
+            this.bunifuImageButtonEXIT.Click += new System.EventHandler(this.bunifuImageButtonEXIT_Click);
             // 
             // groupBoxHEAD
             // 
@@ -115,16 +162,16 @@
             this.groupBoxHEAD.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("groupBoxHEAD.BackgroundImage")));
             this.groupBoxHEAD.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.groupBoxHEAD.CausesValidation = false;
-            this.groupBoxHEAD.Controls.Add(this.labelPRICE);
             this.groupBoxHEAD.Controls.Add(this.button_backToLoginForm);
-            this.groupBoxHEAD.Controls.Add(this.bunifuImageButtonSORT);
-            this.groupBoxHEAD.Controls.Add(this.textBox_PRICE);
             this.groupBoxHEAD.Controls.Add(this.bunifuImageButtonADMINPANEL);
+            this.groupBoxHEAD.Controls.Add(this.pictureBoxProfile);
+            this.groupBoxHEAD.Controls.Add(this.pictureBoxProductBIN);
+            this.groupBoxHEAD.Controls.Add(this.bunifuImageButtonSORT);
+            this.groupBoxHEAD.Controls.Add(this.labelPRICE);
+            this.groupBoxHEAD.Controls.Add(this.textBox_PRICE);
             this.groupBoxHEAD.Controls.Add(this.labelRAM);
             this.groupBoxHEAD.Controls.Add(this.labelGPU);
-            this.groupBoxHEAD.Controls.Add(this.pictureBoxProfile);
             this.groupBoxHEAD.Controls.Add(this.labelCPU);
-            this.groupBoxHEAD.Controls.Add(this.pictureBoxProductBIN);
             this.groupBoxHEAD.Controls.Add(this.metroComboBoxCPUsort);
             this.groupBoxHEAD.Controls.Add(this.metroComboBoxTYPEofPC);
             this.groupBoxHEAD.Controls.Add(this.labelTYPEofPC);
@@ -135,11 +182,151 @@
             this.groupBoxHEAD.GradientBottomRight = System.Drawing.Color.Magenta;
             this.groupBoxHEAD.GradientTopLeft = System.Drawing.Color.Plum;
             this.groupBoxHEAD.GradientTopRight = System.Drawing.Color.Aqua;
-            this.groupBoxHEAD.Location = new System.Drawing.Point(0, 32);
+            this.groupBoxHEAD.Location = new System.Drawing.Point(-6, 32);
             this.groupBoxHEAD.Name = "groupBoxHEAD";
             this.groupBoxHEAD.Quality = 100;
             this.groupBoxHEAD.Size = new System.Drawing.Size(796, 56);
             this.groupBoxHEAD.TabIndex = 15;
+            // 
+            // button_backToLoginForm
+            // 
+            this.button_backToLoginForm.Animated = true;
+            this.button_backToLoginForm.AnimationHoverSpeed = 0.07F;
+            this.button_backToLoginForm.AnimationSpeed = 0.03F;
+            this.button_backToLoginForm.BackColor = System.Drawing.Color.Transparent;
+            this.button_backToLoginForm.BaseColor1 = System.Drawing.Color.Transparent;
+            this.button_backToLoginForm.BaseColor2 = System.Drawing.Color.Transparent;
+            this.button_backToLoginForm.BorderColor = System.Drawing.Color.Black;
+            this.button_backToLoginForm.DialogResult = System.Windows.Forms.DialogResult.None;
+            this.button_backToLoginForm.FocusedColor = System.Drawing.Color.Empty;
+            this.button_backToLoginForm.Font = new System.Drawing.Font("Segoe UI", 9F);
+            this.button_backToLoginForm.ForeColor = System.Drawing.Color.White;
+            this.button_backToLoginForm.Image = global::TRPO_Project.Properties.Resources.exit_sign_64px;
+            this.button_backToLoginForm.ImageSize = new System.Drawing.Size(40, 40);
+            this.button_backToLoginForm.Location = new System.Drawing.Point(752, 11);
+            this.button_backToLoginForm.Name = "button_backToLoginForm";
+            this.button_backToLoginForm.OnHoverBaseColor1 = System.Drawing.Color.Honeydew;
+            this.button_backToLoginForm.OnHoverBaseColor2 = System.Drawing.Color.Ivory;
+            this.button_backToLoginForm.OnHoverBorderColor = System.Drawing.Color.Black;
+            this.button_backToLoginForm.OnHoverForeColor = System.Drawing.Color.White;
+            this.button_backToLoginForm.OnHoverImage = null;
+            this.button_backToLoginForm.OnPressedColor = System.Drawing.Color.Black;
+            this.button_backToLoginForm.OnPressedDepth = 50;
+            this.button_backToLoginForm.Size = new System.Drawing.Size(40, 40);
+            this.button_backToLoginForm.TabIndex = 24;
+            this.button_backToLoginForm.Click += new System.EventHandler(this.button_backToLoginForm_Click);
+            // 
+            // bunifuImageButtonADMINPANEL
+            // 
+            this.bunifuImageButtonADMINPANEL.Animated = true;
+            this.bunifuImageButtonADMINPANEL.AnimationHoverSpeed = 0.07F;
+            this.bunifuImageButtonADMINPANEL.AnimationSpeed = 0.03F;
+            this.bunifuImageButtonADMINPANEL.BackColor = System.Drawing.Color.Transparent;
+            this.bunifuImageButtonADMINPANEL.BaseColor1 = System.Drawing.Color.Transparent;
+            this.bunifuImageButtonADMINPANEL.BaseColor2 = System.Drawing.Color.Transparent;
+            this.bunifuImageButtonADMINPANEL.BorderColor = System.Drawing.Color.Black;
+            this.bunifuImageButtonADMINPANEL.DialogResult = System.Windows.Forms.DialogResult.None;
+            this.bunifuImageButtonADMINPANEL.FocusedColor = System.Drawing.Color.Empty;
+            this.bunifuImageButtonADMINPANEL.Font = new System.Drawing.Font("Segoe UI", 9F);
+            this.bunifuImageButtonADMINPANEL.ForeColor = System.Drawing.Color.White;
+            this.bunifuImageButtonADMINPANEL.Image = global::TRPO_Project.Properties.Resources.admin_settings_male_64px;
+            this.bunifuImageButtonADMINPANEL.ImageSize = new System.Drawing.Size(40, 40);
+            this.bunifuImageButtonADMINPANEL.Location = new System.Drawing.Point(700, 11);
+            this.bunifuImageButtonADMINPANEL.Name = "bunifuImageButtonADMINPANEL";
+            this.bunifuImageButtonADMINPANEL.OnHoverBaseColor1 = System.Drawing.Color.Honeydew;
+            this.bunifuImageButtonADMINPANEL.OnHoverBaseColor2 = System.Drawing.Color.Ivory;
+            this.bunifuImageButtonADMINPANEL.OnHoverBorderColor = System.Drawing.Color.Black;
+            this.bunifuImageButtonADMINPANEL.OnHoverForeColor = System.Drawing.Color.White;
+            this.bunifuImageButtonADMINPANEL.OnHoverImage = null;
+            this.bunifuImageButtonADMINPANEL.OnPressedColor = System.Drawing.Color.Black;
+            this.bunifuImageButtonADMINPANEL.OnPressedDepth = 50;
+            this.bunifuImageButtonADMINPANEL.Size = new System.Drawing.Size(40, 40);
+            this.bunifuImageButtonADMINPANEL.TabIndex = 23;
+            this.bunifuImageButtonADMINPANEL.Click += new System.EventHandler(this.bunifuImageButtonADMINPANEL_Click);
+            // 
+            // pictureBoxProfile
+            // 
+            this.pictureBoxProfile.Animated = true;
+            this.pictureBoxProfile.AnimationHoverSpeed = 0.07F;
+            this.pictureBoxProfile.AnimationSpeed = 0.03F;
+            this.pictureBoxProfile.BackColor = System.Drawing.Color.Transparent;
+            this.pictureBoxProfile.BaseColor1 = System.Drawing.Color.Transparent;
+            this.pictureBoxProfile.BaseColor2 = System.Drawing.Color.Transparent;
+            this.pictureBoxProfile.BorderColor = System.Drawing.Color.Black;
+            this.pictureBoxProfile.DialogResult = System.Windows.Forms.DialogResult.None;
+            this.pictureBoxProfile.FocusedColor = System.Drawing.Color.Empty;
+            this.pictureBoxProfile.Font = new System.Drawing.Font("Segoe UI", 9F);
+            this.pictureBoxProfile.ForeColor = System.Drawing.Color.White;
+            this.pictureBoxProfile.Image = global::TRPO_Project.Properties.Resources.account_64px;
+            this.pictureBoxProfile.ImageSize = new System.Drawing.Size(40, 40);
+            this.pictureBoxProfile.Location = new System.Drawing.Point(648, 11);
+            this.pictureBoxProfile.Name = "pictureBoxProfile";
+            this.pictureBoxProfile.OnHoverBaseColor1 = System.Drawing.Color.Honeydew;
+            this.pictureBoxProfile.OnHoverBaseColor2 = System.Drawing.Color.Ivory;
+            this.pictureBoxProfile.OnHoverBorderColor = System.Drawing.Color.Black;
+            this.pictureBoxProfile.OnHoverForeColor = System.Drawing.Color.White;
+            this.pictureBoxProfile.OnHoverImage = null;
+            this.pictureBoxProfile.OnPressedColor = System.Drawing.Color.Black;
+            this.pictureBoxProfile.OnPressedDepth = 50;
+            this.pictureBoxProfile.Size = new System.Drawing.Size(40, 40);
+            this.pictureBoxProfile.TabIndex = 22;
+            this.pictureBoxProfile.Click += new System.EventHandler(this.pictureBoxProfile_Click);
+            // 
+            // pictureBoxProductBIN
+            // 
+            this.pictureBoxProductBIN.Animated = true;
+            this.pictureBoxProductBIN.AnimationHoverSpeed = 0.07F;
+            this.pictureBoxProductBIN.AnimationSpeed = 0.03F;
+            this.pictureBoxProductBIN.BackColor = System.Drawing.Color.Transparent;
+            this.pictureBoxProductBIN.BaseColor1 = System.Drawing.Color.Transparent;
+            this.pictureBoxProductBIN.BaseColor2 = System.Drawing.Color.Transparent;
+            this.pictureBoxProductBIN.BorderColor = System.Drawing.Color.Black;
+            this.pictureBoxProductBIN.DialogResult = System.Windows.Forms.DialogResult.None;
+            this.pictureBoxProductBIN.FocusedColor = System.Drawing.Color.Empty;
+            this.pictureBoxProductBIN.Font = new System.Drawing.Font("Segoe UI", 9F);
+            this.pictureBoxProductBIN.ForeColor = System.Drawing.Color.White;
+            this.pictureBoxProductBIN.Image = global::TRPO_Project.Properties.Resources.shopping_cart_64px;
+            this.pictureBoxProductBIN.ImageSize = new System.Drawing.Size(40, 40);
+            this.pictureBoxProductBIN.Location = new System.Drawing.Point(596, 11);
+            this.pictureBoxProductBIN.Name = "pictureBoxProductBIN";
+            this.pictureBoxProductBIN.OnHoverBaseColor1 = System.Drawing.Color.Honeydew;
+            this.pictureBoxProductBIN.OnHoverBaseColor2 = System.Drawing.Color.Ivory;
+            this.pictureBoxProductBIN.OnHoverBorderColor = System.Drawing.Color.Black;
+            this.pictureBoxProductBIN.OnHoverForeColor = System.Drawing.Color.White;
+            this.pictureBoxProductBIN.OnHoverImage = null;
+            this.pictureBoxProductBIN.OnPressedColor = System.Drawing.Color.Black;
+            this.pictureBoxProductBIN.OnPressedDepth = 50;
+            this.pictureBoxProductBIN.Size = new System.Drawing.Size(40, 40);
+            this.pictureBoxProductBIN.TabIndex = 21;
+            this.pictureBoxProductBIN.Click += new System.EventHandler(this.pictureBoxProductBIN_Click);
+            // 
+            // bunifuImageButtonSORT
+            // 
+            this.bunifuImageButtonSORT.Animated = true;
+            this.bunifuImageButtonSORT.AnimationHoverSpeed = 0.07F;
+            this.bunifuImageButtonSORT.AnimationSpeed = 0.03F;
+            this.bunifuImageButtonSORT.BackColor = System.Drawing.Color.Transparent;
+            this.bunifuImageButtonSORT.BaseColor1 = System.Drawing.Color.Transparent;
+            this.bunifuImageButtonSORT.BaseColor2 = System.Drawing.Color.Transparent;
+            this.bunifuImageButtonSORT.BorderColor = System.Drawing.Color.Black;
+            this.bunifuImageButtonSORT.DialogResult = System.Windows.Forms.DialogResult.None;
+            this.bunifuImageButtonSORT.FocusedColor = System.Drawing.Color.Empty;
+            this.bunifuImageButtonSORT.Font = new System.Drawing.Font("Segoe UI", 9F);
+            this.bunifuImageButtonSORT.ForeColor = System.Drawing.Color.White;
+            this.bunifuImageButtonSORT.Image = global::TRPO_Project.Properties.Resources.sort;
+            this.bunifuImageButtonSORT.ImageSize = new System.Drawing.Size(40, 40);
+            this.bunifuImageButtonSORT.Location = new System.Drawing.Point(544, 11);
+            this.bunifuImageButtonSORT.Name = "bunifuImageButtonSORT";
+            this.bunifuImageButtonSORT.OnHoverBaseColor1 = System.Drawing.Color.Honeydew;
+            this.bunifuImageButtonSORT.OnHoverBaseColor2 = System.Drawing.Color.Ivory;
+            this.bunifuImageButtonSORT.OnHoverBorderColor = System.Drawing.Color.Black;
+            this.bunifuImageButtonSORT.OnHoverForeColor = System.Drawing.Color.White;
+            this.bunifuImageButtonSORT.OnHoverImage = null;
+            this.bunifuImageButtonSORT.OnPressedColor = System.Drawing.Color.Black;
+            this.bunifuImageButtonSORT.OnPressedDepth = 50;
+            this.bunifuImageButtonSORT.Size = new System.Drawing.Size(40, 40);
+            this.bunifuImageButtonSORT.TabIndex = 20;
+            this.bunifuImageButtonSORT.Click += new System.EventHandler(this.bunifuImageButtonSORT_Click);
             // 
             // labelPRICE
             // 
@@ -151,22 +338,6 @@
             this.labelPRICE.Size = new System.Drawing.Size(47, 15);
             this.labelPRICE.TabIndex = 19;
             this.labelPRICE.Text = "PRICE";
-            // 
-            // bunifuImageButtonSORT
-            // 
-            this.bunifuImageButtonSORT.BackColor = System.Drawing.Color.Transparent;
-            this.bunifuImageButtonSORT.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.bunifuImageButtonSORT.Image = global::TRPO_Project.Properties.Resources.sort;
-            this.bunifuImageButtonSORT.ImageActive = null;
-            this.bunifuImageButtonSORT.Location = new System.Drawing.Point(547, 11);
-            this.bunifuImageButtonSORT.Name = "bunifuImageButtonSORT";
-            this.bunifuImageButtonSORT.Size = new System.Drawing.Size(40, 40);
-            this.bunifuImageButtonSORT.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.bunifuImageButtonSORT.TabIndex = 16;
-            this.bunifuImageButtonSORT.TabStop = false;
-            this.bunifuImageButtonSORT.WaitOnLoad = true;
-            this.bunifuImageButtonSORT.Zoom = 10;
-            this.bunifuImageButtonSORT.Click += new System.EventHandler(this.bunifuImageButtonSORT_Click);
             // 
             // textBox_PRICE
             // 
@@ -193,21 +364,6 @@
             this.textBox_PRICE.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textBox_PRICE_KeyPress);
             this.textBox_PRICE.Leave += new System.EventHandler(this.textBox_PRICE_Leave);
             // 
-            // bunifuImageButtonADMINPANEL
-            // 
-            this.bunifuImageButtonADMINPANEL.BackColor = System.Drawing.Color.Transparent;
-            this.bunifuImageButtonADMINPANEL.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.bunifuImageButtonADMINPANEL.Image = global::TRPO_Project.Properties.Resources.w400h4001341689813administrator;
-            this.bunifuImageButtonADMINPANEL.ImageActive = null;
-            this.bunifuImageButtonADMINPANEL.Location = new System.Drawing.Point(703, 11);
-            this.bunifuImageButtonADMINPANEL.Name = "bunifuImageButtonADMINPANEL";
-            this.bunifuImageButtonADMINPANEL.Size = new System.Drawing.Size(40, 40);
-            this.bunifuImageButtonADMINPANEL.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.bunifuImageButtonADMINPANEL.TabIndex = 14;
-            this.bunifuImageButtonADMINPANEL.TabStop = false;
-            this.bunifuImageButtonADMINPANEL.Zoom = 5;
-            this.bunifuImageButtonADMINPANEL.Click += new System.EventHandler(this.bunifuImageButtonADMINPANEL_Click);
-            // 
             // labelRAM
             // 
             this.labelRAM.AutoSize = true;
@@ -230,21 +386,6 @@
             this.labelGPU.TabIndex = 9;
             this.labelGPU.Text = "GPU";
             // 
-            // pictureBoxProfile
-            // 
-            this.pictureBoxProfile.BackColor = System.Drawing.Color.Transparent;
-            this.pictureBoxProfile.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.pictureBoxProfile.Image = global::TRPO_Project.Properties.Resources.profile_default;
-            this.pictureBoxProfile.ImageActive = null;
-            this.pictureBoxProfile.Location = new System.Drawing.Point(654, 11);
-            this.pictureBoxProfile.Name = "pictureBoxProfile";
-            this.pictureBoxProfile.Size = new System.Drawing.Size(40, 40);
-            this.pictureBoxProfile.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.pictureBoxProfile.TabIndex = 2;
-            this.pictureBoxProfile.TabStop = false;
-            this.pictureBoxProfile.Zoom = 5;
-            this.pictureBoxProfile.Click += new System.EventHandler(this.pictureBoxProfile_Click);
-            // 
             // labelCPU
             // 
             this.labelCPU.AutoSize = true;
@@ -255,21 +396,6 @@
             this.labelCPU.Size = new System.Drawing.Size(31, 15);
             this.labelCPU.TabIndex = 8;
             this.labelCPU.Text = "CPU";
-            // 
-            // pictureBoxProductBIN
-            // 
-            this.pictureBoxProductBIN.BackColor = System.Drawing.Color.Transparent;
-            this.pictureBoxProductBIN.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.pictureBoxProductBIN.Image = global::TRPO_Project.Properties.Resources.shopping_cart;
-            this.pictureBoxProductBIN.ImageActive = null;
-            this.pictureBoxProductBIN.Location = new System.Drawing.Point(598, 11);
-            this.pictureBoxProductBIN.Name = "pictureBoxProductBIN";
-            this.pictureBoxProductBIN.Size = new System.Drawing.Size(40, 40);
-            this.pictureBoxProductBIN.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.pictureBoxProductBIN.TabIndex = 3;
-            this.pictureBoxProductBIN.TabStop = false;
-            this.pictureBoxProductBIN.Zoom = 5;
-            this.pictureBoxProductBIN.Click += new System.EventHandler(this.pictureBoxProductBIN_Click);
             // 
             // metroComboBoxCPUsort
             // 
@@ -362,62 +488,6 @@
             this.metroComboBoxRAM.UseCustomForeColor = true;
             this.metroComboBoxRAM.UseSelectable = true;
             // 
-            // bunifuImageButtonEXIT
-            // 
-            this.bunifuImageButtonEXIT.Anchor = System.Windows.Forms.AnchorStyles.Top;
-            this.bunifuImageButtonEXIT.BackColor = System.Drawing.Color.Crimson;
-            this.bunifuImageButtonEXIT.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.bunifuImageButtonEXIT.Image = global::TRPO_Project.Properties.Resources.X;
-            this.bunifuImageButtonEXIT.ImageActive = null;
-            this.bunifuImageButtonEXIT.InitialImage = global::TRPO_Project.Properties.Resources.X;
-            this.bunifuImageButtonEXIT.Location = new System.Drawing.Point(768, 8);
-            this.bunifuImageButtonEXIT.Name = "bunifuImageButtonEXIT";
-            this.bunifuImageButtonEXIT.Size = new System.Drawing.Size(20, 20);
-            this.bunifuImageButtonEXIT.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.bunifuImageButtonEXIT.TabIndex = 2;
-            this.bunifuImageButtonEXIT.TabStop = false;
-            this.bunifuImageButtonEXIT.Zoom = 10;
-            this.bunifuImageButtonEXIT.Click += new System.EventHandler(this.bunifuImageButtonEXIT_Click);
-            // 
-            // panelHead
-            // 
-            this.panelHead.Anchor = System.Windows.Forms.AnchorStyles.Top;
-            this.panelHead.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.panelHead.Controls.Add(this.buttonHelp);
-            this.panelHead.Location = new System.Drawing.Point(0, 5);
-            this.panelHead.Name = "panelHead";
-            this.panelHead.Size = new System.Drawing.Size(796, 28);
-            this.panelHead.TabIndex = 16;
-            this.panelHead.MouseDown += new System.Windows.Forms.MouseEventHandler(this.panelHead_MouseDown);
-            this.panelHead.MouseMove += new System.Windows.Forms.MouseEventHandler(this.panelHead_MouseMove);
-            // 
-            // buttonHelp
-            // 
-            this.buttonHelp.AnimationHoverSpeed = 0.15F;
-            this.buttonHelp.AnimationSpeed = 0.03F;
-            this.buttonHelp.BaseColor1 = System.Drawing.Color.DarkBlue;
-            this.buttonHelp.BaseColor2 = System.Drawing.Color.Indigo;
-            this.buttonHelp.BorderColor = System.Drawing.Color.Red;
-            this.buttonHelp.BorderSize = 1;
-            this.buttonHelp.DialogResult = System.Windows.Forms.DialogResult.None;
-            this.buttonHelp.FocusedColor = System.Drawing.Color.Empty;
-            this.buttonHelp.Font = new System.Drawing.Font("Segoe UI", 9F);
-            this.buttonHelp.ForeColor = System.Drawing.Color.White;
-            this.buttonHelp.Image = global::TRPO_Project.Properties.Resources.help_64px;
-            this.buttonHelp.ImageSize = new System.Drawing.Size(30, 30);
-            this.buttonHelp.Location = new System.Drawing.Point(12, 2);
-            this.buttonHelp.Name = "buttonHelp";
-            this.buttonHelp.OnHoverBaseColor1 = System.Drawing.Color.Orchid;
-            this.buttonHelp.OnHoverBaseColor2 = System.Drawing.Color.DarkSlateBlue;
-            this.buttonHelp.OnHoverBorderColor = System.Drawing.Color.Gold;
-            this.buttonHelp.OnHoverForeColor = System.Drawing.Color.White;
-            this.buttonHelp.OnHoverImage = null;
-            this.buttonHelp.OnPressedColor = System.Drawing.Color.OrangeRed;
-            this.buttonHelp.Size = new System.Drawing.Size(20, 20);
-            this.buttonHelp.TabIndex = 17;
-            this.buttonHelp.TabStop = false;
-            this.buttonHelp.Click += new System.EventHandler(this.buttonHelp_Click);
-            // 
             // formADMIN
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(96F, 96F);
@@ -444,30 +514,22 @@
             this.SizeGripStyle = System.Windows.Forms.SizeGripStyle.Hide;
             this.Theme = MetroFramework.MetroThemeStyle.Dark;
             this.TransparencyKey = System.Drawing.Color.Empty;
-            ((System.ComponentModel.ISupportInitialize)(this.button_backToLoginForm)).EndInit();
+            this.panelHead.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.bunifuImageButtonEXIT)).EndInit();
             this.groupBoxHEAD.ResumeLayout(false);
             this.groupBoxHEAD.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.bunifuImageButtonSORT)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.bunifuImageButtonADMINPANEL)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxProfile)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxProductBIN)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.bunifuImageButtonEXIT)).EndInit();
-            this.panelHead.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
 
         #endregion
         private XanderUI.XUICircleProgressBar ProgressBar;
-        private Bunifu.Framework.UI.BunifuImageButton bunifuImageButtonADMINPANEL;
         private Bunifu.Framework.UI.BunifuFormFadeTransition FormStartTransition;
         private Bunifu.Framework.UI.BunifuImageButton bunifuImageButtonEXIT;
         private Bunifu.Framework.UI.BunifuGradientPanel groupBoxHEAD;
         private System.Windows.Forms.Label labelRAM;
         private System.Windows.Forms.Label labelGPU;
-        private Bunifu.Framework.UI.BunifuImageButton pictureBoxProfile;
         private System.Windows.Forms.Label labelCPU;
-        private Bunifu.Framework.UI.BunifuImageButton pictureBoxProductBIN;
         private MetroFramework.Controls.MetroComboBox metroComboBoxCPUsort;
         private MetroFramework.Controls.MetroComboBox metroComboBoxTYPEofPC;
         private System.Windows.Forms.Label labelTYPEofPC;
@@ -475,10 +537,15 @@
         private MetroFramework.Controls.MetroComboBox metroComboBoxRAM;
         private XanderUI.XUIObjectEllipse EllipseForm;
         private Bunifu.Framework.UI.BunifuMaterialTextbox textBox_PRICE;
-        private Bunifu.Framework.UI.BunifuImageButton bunifuImageButtonSORT;
-        private Bunifu.Framework.UI.BunifuImageButton button_backToLoginForm;
         private System.Windows.Forms.Label labelPRICE;
         private System.Windows.Forms.Panel panelHead;
         private Guna.UI.WinForms.GunaGradientCircleButton buttonHelp;
+        private XanderUI.XUIObjectAnimator buttonAnimator;
+        private Guna.UI.WinForms.GunaColorTransition gunaColorTransition1;
+        private Guna.UI.WinForms.GunaGradientCircleButton bunifuImageButtonSORT;
+        private Guna.UI.WinForms.GunaGradientCircleButton pictureBoxProductBIN;
+        private Guna.UI.WinForms.GunaGradientCircleButton button_backToLoginForm;
+        private Guna.UI.WinForms.GunaGradientCircleButton bunifuImageButtonADMINPANEL;
+        private Guna.UI.WinForms.GunaGradientCircleButton pictureBoxProfile;
     }
 }

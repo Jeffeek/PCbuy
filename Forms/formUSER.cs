@@ -45,14 +45,6 @@ namespace TRPO_Project
             metroComboBoxGPUsort.SelectedIndex = 0;
             metroComboBoxRAM.SelectedIndex = 0;
         }
-
-        public PC PC
-        {
-            get => default;
-            set
-            {
-            }
-        }
         #endregion
 
         #region PictureBOXclick
@@ -351,6 +343,7 @@ namespace TRPO_Project
             groupBoxHEAD.GradientBottomRight = OBJ.BottomRight;
             groupBoxHEAD.GradientTopLeft = OBJ.TopLeft;
             groupBoxHEAD.GradientTopRight = OBJ.TopRight;
+            CircleProgressBar.BackColor = OBJ.Theme == ETheme.Dark ? Color.FromArgb(17, 17, 17) : Color.LightGray;
             groupBoxHEAD.Controls.OfType<Label>().Select(x => x.ForeColor = OBJ.FontColor).ToList();
             groupBoxHEAD.Refresh();
         }

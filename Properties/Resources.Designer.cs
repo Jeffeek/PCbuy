@@ -73,6 +73,26 @@ namespace TRPO_Project.Properties {
         /// <summary>
         ///   Поиск локализованного ресурса типа System.Drawing.Bitmap.
         /// </summary>
+        public static System.Drawing.Bitmap account_64px {
+            get {
+                object obj = ResourceManager.GetObject("account_64px", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Поиск локализованного ресурса типа System.Drawing.Bitmap.
+        /// </summary>
+        public static System.Drawing.Bitmap admin_settings_male_64px {
+            get {
+                object obj = ResourceManager.GetObject("admin_settings_male_64px", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Поиск локализованного ресурса типа System.Drawing.Bitmap.
+        /// </summary>
         public static System.Drawing.Bitmap amd {
             get {
                 object obj = ResourceManager.GetObject("amd", resourceCulture);
@@ -423,9 +443,9 @@ namespace TRPO_Project.Properties {
         /// <summary>
         ///   Поиск локализованного ресурса типа System.Drawing.Bitmap.
         /// </summary>
-        public static System.Drawing.Bitmap shopping_cart {
+        public static System.Drawing.Bitmap shopping_cart_64px {
             get {
-                object obj = ResourceManager.GetObject("shopping_cart", resourceCulture);
+                object obj = ResourceManager.GetObject("shopping_cart_64px", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -456,16 +476,6 @@ namespace TRPO_Project.Properties {
         public static System.Drawing.Bitmap unavailable_64px {
             get {
                 object obj = ResourceManager.GetObject("unavailable_64px", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Поиск локализованного ресурса типа System.Drawing.Bitmap.
-        /// </summary>
-        public static System.Drawing.Bitmap w400h4001341689813administrator {
-            get {
-                object obj = ResourceManager.GetObject("w400h4001341689813administrator", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

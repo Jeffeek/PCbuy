@@ -289,6 +289,8 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="ThemeModel\ETheme.cs" />
     <None Include="ClassDiagram1.cd" />
+    <None Include="account_64px.png" />
+    <None Include="admin_settings_male_64px.png" />
     <Content Include="computer.ico" />
     <Content Include="MessageOrder.html">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
@@ -303,6 +305,7 @@
     <None Include="Resources\basket3.png" />
     <None Include="Resources\unavailable_64px.png" />
     <None Include="Resources\restart_64px.png" />
+    <None Include="shopping_cart_64px.png" />
     <Content Include="USERsPIC\id1_Admin.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>

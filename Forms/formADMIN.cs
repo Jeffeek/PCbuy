@@ -9,6 +9,7 @@ using System.Data.SQLite;
 using MetroFramework;
 using MetroFramework.Forms;
 using System.Runtime.Serialization.Json;
+using XanderUI;
 
 namespace TRPO_Project
 {
@@ -444,6 +445,7 @@ namespace TRPO_Project
             groupBoxHEAD.GradientBottomRight = OBJ.BottomRight;
             groupBoxHEAD.GradientTopLeft = OBJ.TopLeft;
             groupBoxHEAD.GradientTopRight = OBJ.TopRight;
+            ProgressBar.BackColor = OBJ.Theme == ETheme.Dark ? Color.FromArgb(17, 17, 17) : Color.LightGray;
             groupBoxHEAD.Controls.OfType<Label>().Select(x => x.ForeColor = OBJ.FontColor).ToList();
             groupBoxHEAD.Refresh();
         }
