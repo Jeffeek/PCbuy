@@ -32,7 +32,6 @@ namespace TRPO_Project
             ScaleControls.SetScalingFactor(this.Handle);
             InitializeComponent();
             SetScaling();
-            FormStartTransition.ShowAsyc(this);
             //TODO: убери автолог
             textboxEMAILlogin.text = "mishamine26@gmail.com";
             textboxPASSlogin.text = "123456";
@@ -283,6 +282,8 @@ namespace TRPO_Project
         #region Load&CloseFORM
         private void formLogIn_Load(object sender, EventArgs e)
         {
+            SpeedUpPanel();
+            FormStartTransition.ShowAsyc(this);
             this.textboxPASSlogin._TextBox.PasswordChar = '*';
             this.xuiSlidingPanelForgotPass.CollapseControl = this.bunifuImageButtonBACK;
             this.xuiSlidingPanelREGISTRATION.CollapseControl = this.bunifuImageButtonBACK_Reg;
@@ -291,6 +292,14 @@ namespace TRPO_Project
         private void bunifuImageButtonEXIT_Click(object sender, EventArgs e)
         {
             Application.Exit();
+        }
+
+        private void SpeedUpPanel()
+        {
+            xuiSlidingPanelForgotPass.Collapsed = false;
+            xuiSlidingPanelForgotPass.Collapsed = true;
+            xuiSlidingPanelREGISTRATION.Collapsed = false;
+            xuiSlidingPanelREGISTRATION.Collapsed = true;
         }
         #endregion
 

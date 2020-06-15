@@ -32,7 +32,6 @@ namespace TRPO_Project
         public formProfile(formUSER formF,int ID)
         {
             InitializeComponent();
-            StartTransation.ShowAsyc(this);
             SetScaling();
             mainForm = formF;
             userID = ID;
@@ -46,7 +45,6 @@ namespace TRPO_Project
         public formProfile(formADMIN formF, int ID)
         {
             InitializeComponent();
-            StartTransation.ShowAsyc(this);
             SetScaling();
             mainForm = formF;
             userID = ID;
@@ -390,6 +388,24 @@ namespace TRPO_Project
 
         #region Settings
 
+        private void buttonReloadTheme_Click(object sender, EventArgs e)
+        {
+            switchTheme.Checked = true;
+            labelFontColor.LinkColor = Color.Cyan;
+            circlePictureBoxBL.BackColor = Color.Black;
+            circlePictureBoxBR.BackColor = Color.MediumTurquoise;
+            circlePictureBoxTL.BackColor = Color.DarkOrchid;
+            circlePictureBoxTR.BackColor = Color.MediumSlateBlue;
+        }
+
+        private void labelFontColor_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        {
+            if (fontColorDialog.ShowDialog(this) == DialogResult.OK)
+            {
+                labelFontColor.LinkColor = fontColorDialog.Color;
+            }
+        }
+
         private void ChangeColorPalette_labels(string choosed)
         {
             labelPaletteBL.ForeColor = Color.MintCream;
@@ -510,6 +526,8 @@ namespace TRPO_Project
 
         private void formProfile_Load(object sender, EventArgs e)
         {
+            SpeedUpPanel();
+            StartTransation.ShowAsyc(this);
             switchTheme.CheckedChanged += (a, b) =>
             {
                 labelChangeTheme.ForeColor = switchTheme.Checked ? Color.Black : Color.White;
@@ -535,7 +553,15 @@ namespace TRPO_Project
                 ChoosedPalette = circlePictureBoxTR;
                 ChangeColorPalette_labels("TR");
             };
+            
         }
+
+        private void SpeedUpPanel()
+        {
+            xuiSlidingPanelSettings.Collapsed = false;
+            xuiSlidingPanelSettings.Collapsed = true;
+        }
+
 
         private void bunifuImageButtonEXIT_Click(object sender, EventArgs e)
         {
@@ -552,22 +578,5 @@ namespace TRPO_Project
 
         #endregion
 
-        private void labelFontColor_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
-        {
-            if (fontColorDialog.ShowDialog(this) == DialogResult.OK)
-            {
-                labelFontColor.LinkColor = fontColorDialog.Color;
-            }
-        }
-
-        private void buttonReloadTheme_Click(object sender, EventArgs e)
-        {
-            switchTheme.Checked = true;
-            labelFontColor.LinkColor = Color.Cyan;
-            circlePictureBoxBL.BackColor = Color.Black;
-            circlePictureBoxBR.BackColor = Color.MediumTurquoise;
-            circlePictureBoxTL.BackColor = Color.DarkOrchid;
-            circlePictureBoxTR.BackColor = Color.MediumSlateBlue;
-        }
     }
 }

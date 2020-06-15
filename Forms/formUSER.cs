@@ -112,7 +112,7 @@ namespace TRPO_Project
         private void bunifuImageButtonSORT_Click(object sender, EventArgs e)
         {
             bunifuImageButtonSORT.Focus();
-            CircleProgressBar.Visible = true;
+            ProgressBar.Visible = true;
 
             #region ParseInputPrice
             List<int> priceReaderInt = textBox_PRICE.Text.Split('$', '-').ToList().Where(x => x != string.Empty).ToList().ConvertAll(x => Convert.ToInt32(x));
@@ -128,8 +128,8 @@ namespace TRPO_Project
                 {
                     MetroMessageBox.Show(this, "Second filter num bigger than first!", "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                     textBox_PRICE.Focus();
-                    CircleProgressBar.percentage = 0;
-                    CircleProgressBar.Visible = false;
+                    ProgressBar.percentage = 0;
+                    ProgressBar.Visible = false;
                     return;
                 }
             }
@@ -156,7 +156,7 @@ namespace TRPO_Project
 
             if (ToDisplay.Count == 0)
             {
-                CircleProgressBar.Visible = false;
+                ProgressBar.Visible = false;
                 MetroMessageBox.Show(this, "NO PC MATCHES", "ERROR!", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
@@ -176,8 +176,8 @@ namespace TRPO_Project
             }
             int Y = (int)(88*ScaleControls.Scale);
             this.Refresh();
-            CircleProgressBar.percentage = 0;
-            CircleProgressBar.Enabled = true;
+            ProgressBar.Value = 0;
+            ProgressBar.Enabled = true;
             int oneElementPercentage = 100 / Listed.Count;
             int deltaY = (int) (230 * ScaleControls.Scale);
             foreach (var pc in Listed)
@@ -186,7 +186,7 @@ namespace TRPO_Project
                 await Task.Delay(30);
                 while (_percentage != oneElementPercentage)
                 {
-                    CircleProgressBar.Percentage++;
+                    ProgressBar.Value++;
                     _percentage++;
                 }
                 PCinfo OBJ = new PCinfo(pc) { isAdmin = false };
@@ -197,8 +197,8 @@ namespace TRPO_Project
                 OBJ.Anchor = AnchorStyles.Top;
                 this.Controls.Add(OBJ);
             }
-            CircleProgressBar.Enabled = false;
-            CircleProgressBar.Visible = false;
+            ProgressBar.Enabled = false;
+            ProgressBar.Visible = false;
         }
         #endregion 
 
@@ -343,7 +343,6 @@ namespace TRPO_Project
             groupBoxHEAD.GradientBottomRight = OBJ.BottomRight;
             groupBoxHEAD.GradientTopLeft = OBJ.TopLeft;
             groupBoxHEAD.GradientTopRight = OBJ.TopRight;
-            CircleProgressBar.BackColor = OBJ.Theme == ETheme.Dark ? Color.FromArgb(17, 17, 17) : Color.LightGray;
             groupBoxHEAD.Controls.OfType<Label>().Select(x => x.ForeColor = OBJ.FontColor).ToList();
             groupBoxHEAD.Refresh();
         }

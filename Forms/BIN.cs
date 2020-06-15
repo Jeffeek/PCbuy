@@ -230,7 +230,7 @@ namespace TRPO_Project
             }
         }
 
-        private async Task<string> MakeHTMLMessage(int SummOfOrder, string ID, string Date)
+        private string MakeHTMLMessage(int SummOfOrder, string ID, string Date)
         {
             string HTMLfile = "";
             string OrderList = "";
@@ -265,7 +265,7 @@ namespace TRPO_Project
             MailMessage Message = new MailMessage(SMTPfrom, toUser)
             {
                 Subject = "New order was confirmed",
-                Body = $"{await MakeHTMLMessage(SumOfOrder, id, Date)}",
+                Body = $"{MakeHTMLMessage(SumOfOrder, id, Date)}",
                 IsBodyHtml = true,
             };
 

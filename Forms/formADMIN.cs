@@ -154,7 +154,6 @@ namespace TRPO_Project
         private void bunifuImageButtonSORT_Click(object sender, EventArgs e)
         {
             bunifuImageButtonSORT.Focus();
-            ProgressBar.Visible = true;
 
             #region ParseInputPrice
 
@@ -173,7 +172,7 @@ namespace TRPO_Project
                 {
                     MetroMessageBox.Show(this, "Second filter num bigger than first!", "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                     textBox_PRICE.Focus();
-                    ProgressBar.percentage = 0;
+                    ProgressBar.Value = 0;
                     ProgressBar.Visible = false;
                     return;
                 }
@@ -227,8 +226,8 @@ namespace TRPO_Project
 
             var Y = (int)(88*ScaleControls.Scale);
             this.Refresh();
-            ProgressBar.percentage = 0;
-            ProgressBar.Enabled = true;
+            ProgressBar.Value = 0;
+            ProgressBar.Visible = true;
             int oneElementPercentage = 100 / Listed.Count;
             int deltaY = (int)(230 * ScaleControls.Scale);
             foreach (var pc in Listed)
@@ -237,8 +236,8 @@ namespace TRPO_Project
                 await Task.Delay(15);
                 while (_percentage != oneElementPercentage)
                 {
-                    ProgressBar.Percentage++;
                     _percentage++;
+                    ProgressBar.Value++;
                 }
 
                 PCinfo OBJ = new PCinfo(pc) {isAdmin = true};
@@ -248,6 +247,7 @@ namespace TRPO_Project
                 OBJ.BackColor = Theme == MetroThemeStyle.Dark ? Color.FromArgb(23, 23, 26) : Color.White;
                 OBJ.Anchor = AnchorStyles.Top;
                 this.Controls.Add(OBJ);
+                ProgressBar.BringToFront();
             }
             ProgressBar.Enabled = false;
             ProgressBar.Visible = false;
@@ -445,7 +445,6 @@ namespace TRPO_Project
             groupBoxHEAD.GradientBottomRight = OBJ.BottomRight;
             groupBoxHEAD.GradientTopLeft = OBJ.TopLeft;
             groupBoxHEAD.GradientTopRight = OBJ.TopRight;
-            ProgressBar.BackColor = OBJ.Theme == ETheme.Dark ? Color.FromArgb(17, 17, 17) : Color.LightGray;
             groupBoxHEAD.Controls.OfType<Label>().Select(x => x.ForeColor = OBJ.FontColor).ToList();
             groupBoxHEAD.Refresh();
         }

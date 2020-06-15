@@ -30,7 +30,6 @@
         {
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(formADMIN));
-            this.ProgressBar = new XanderUI.XUICircleProgressBar();
             this.FormStartTransition = new Bunifu.Framework.UI.BunifuFormFadeTransition(this.components);
             this.EllipseForm = new XanderUI.XUIObjectEllipse();
             this.panelHead = new System.Windows.Forms.Panel();
@@ -54,31 +53,11 @@
             this.labelTYPEofPC = new System.Windows.Forms.Label();
             this.metroComboBoxGPUsort = new MetroFramework.Controls.MetroComboBox();
             this.metroComboBoxRAM = new MetroFramework.Controls.MetroComboBox();
+            this.ProgressBar = new Guna.UI.WinForms.GunaCircleProgressBar();
             this.panelHead.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.bunifuImageButtonEXIT)).BeginInit();
             this.groupBoxHEAD.SuspendLayout();
             this.SuspendLayout();
-            // 
-            // ProgressBar
-            // 
-            this.ProgressBar.AnimationSpeed = 10;
-            this.ProgressBar.FilledColor = System.Drawing.Color.LightBlue;
-            this.ProgressBar.FilledColorAlpha = 90;
-            this.ProgressBar.FilledThickness = 40;
-            this.ProgressBar.Font = new System.Drawing.Font("Modern No. 20", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.ProgressBar.IsAnimated = false;
-            this.ProgressBar.Location = new System.Drawing.Point(540, 240);
-            this.ProgressBar.Name = "ProgressBar";
-            this.ProgressBar.Percentage = 0;
-            this.ProgressBar.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.ProgressBar.ShowText = true;
-            this.ProgressBar.Size = new System.Drawing.Size(225, 225);
-            this.ProgressBar.TabIndex = 0;
-            this.ProgressBar.TextColor = System.Drawing.Color.LightSeaGreen;
-            this.ProgressBar.TextSize = 30;
-            this.ProgressBar.UnFilledColor = System.Drawing.Color.PaleGreen;
-            this.ProgressBar.UnfilledThickness = 24;
-            this.ProgressBar.Visible = false;
             // 
             // FormStartTransition
             // 
@@ -488,6 +467,30 @@
             this.metroComboBoxRAM.UseCustomForeColor = true;
             this.metroComboBoxRAM.UseSelectable = true;
             // 
+            // ProgressBar
+            // 
+            this.ProgressBar.Animated = true;
+            this.ProgressBar.AnimationSpeed = 0.6F;
+            this.ProgressBar.BackColor = System.Drawing.Color.Transparent;
+            this.ProgressBar.BaseColor = System.Drawing.Color.Transparent;
+            this.ProgressBar.ColorStyle = Guna.UI.WinForms.ColorStyle.Transition;
+            this.ProgressBar.ForeColor = System.Drawing.Color.Transparent;
+            this.ProgressBar.IdleColor = System.Drawing.Color.Transparent;
+            this.ProgressBar.IdleOffset = 20;
+            this.ProgressBar.Image = null;
+            this.ProgressBar.ImageSize = new System.Drawing.Size(52, 52);
+            this.ProgressBar.LineEndCap = System.Drawing.Drawing2D.LineCap.Round;
+            this.ProgressBar.Location = new System.Drawing.Point(557, 232);
+            this.ProgressBar.Name = "ProgressBar";
+            this.ProgressBar.ProgressMaxColor = System.Drawing.Color.MediumBlue;
+            this.ProgressBar.ProgressMinColor = System.Drawing.Color.MediumOrchid;
+            this.ProgressBar.ProgressOffset = 15;
+            this.ProgressBar.ProgressThickness = 20;
+            this.ProgressBar.RightToLeft = System.Windows.Forms.RightToLeft.No;
+            this.ProgressBar.Size = new System.Drawing.Size(225, 225);
+            this.ProgressBar.TabIndex = 17;
+            this.ProgressBar.Visible = false;
+            // 
             // formADMIN
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(96F, 96F);
@@ -498,9 +501,9 @@
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
             this.ClientSize = new System.Drawing.Size(796, 470);
             this.ControlBox = false;
+            this.Controls.Add(this.ProgressBar);
             this.Controls.Add(this.bunifuImageButtonEXIT);
             this.Controls.Add(this.panelHead);
-            this.Controls.Add(this.ProgressBar);
             this.Controls.Add(this.groupBoxHEAD);
             this.DoubleBuffered = false;
             this.Font = new System.Drawing.Font("Unispace", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -523,7 +526,6 @@
         }
 
         #endregion
-        private XanderUI.XUICircleProgressBar ProgressBar;
         private Bunifu.Framework.UI.BunifuFormFadeTransition FormStartTransition;
         private Bunifu.Framework.UI.BunifuImageButton bunifuImageButtonEXIT;
         private Bunifu.Framework.UI.BunifuGradientPanel groupBoxHEAD;
@@ -547,5 +549,6 @@
         private Guna.UI.WinForms.GunaGradientCircleButton button_backToLoginForm;
         private Guna.UI.WinForms.GunaGradientCircleButton bunifuImageButtonADMINPANEL;
         private Guna.UI.WinForms.GunaGradientCircleButton pictureBoxProfile;
+        private Guna.UI.WinForms.GunaCircleProgressBar ProgressBar;
     }
 }
