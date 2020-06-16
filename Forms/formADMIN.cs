@@ -156,10 +156,12 @@ namespace TRPO_Project
             bunifuImageButtonSORT.Focus();
 
             #region ParseInputPrice
-
-            // ReSharper disable once ConvertClosureToMethodGroup
-            // ReSharper disable once TooManyChainedReferences
-            List<int> priceReaderInt = textBox_PRICE.Text.Split('$', '-').ToList().Where(x => x != string.Empty).ToList().ConvertAll(x => Convert.ToInt32(x));
+            List<int> priceReaderInt = textBox_PRICE.Text
+                                                        .Split('$', '-')
+                                                        .ToList()
+                                                        .Where(x => x != string.Empty)
+                                                        .ToList()
+                                                        .ConvertAll(x => Convert.ToInt32(x));
 
             if (!textBox_PRICE.Text.Contains("-"))
             {
@@ -181,22 +183,22 @@ namespace TRPO_Project
             #endregion
 
             var ToDisplay = new List<PC>(AllPCList.Where(x => x.COST >= priceReaderInt[0] && x.COST <= priceReaderInt[1]));
-            if (metroComboBoxTYPEofPC.Text != "<не выбрано>")
+            if (metroComboBoxTYPEofPC.Text != "TYPE")
             {
                 ToDisplay = ToDisplay.Where(x => x.TYPE == metroComboBoxTYPEofPC.Text)?.ToList();
             }
 
-            if (metroComboBoxCPUsort.Text != "<не выбрано>")
+            if (metroComboBoxCPUsort.Text != "CPU")
             {
                 ToDisplay = ToDisplay.Where(x => x.CPU == metroComboBoxCPUsort.Text)?.ToList();
             }
 
-            if (metroComboBoxGPUsort.Text != "<не выбрано>")
+            if (metroComboBoxGPUsort.Text != "GPU")
             {
                 ToDisplay = ToDisplay.Where(x => x.GPU == metroComboBoxGPUsort.Text)?.ToList();
             }
 
-            if (metroComboBoxRAM.Text != "<не выбрано>")
+            if (metroComboBoxRAM.Text != "RAM")
             {
                 ToDisplay = ToDisplay.Where(x => x.RAM == int.Parse(metroComboBoxRAM.Text.Replace(" GB", "")))?.ToList();
             }
@@ -311,10 +313,10 @@ namespace TRPO_Project
             metroComboBoxGPUsort.Items.Clear();
             metroComboBoxRAM.Items.Clear();
             metroComboBoxTYPEofPC.Items.Clear();
-            metroComboBoxCPUsort.Items.Add("<не выбрано>");
-            metroComboBoxGPUsort.Items.Add("<не выбрано>");
-            metroComboBoxRAM.Items.Add("<не выбрано>");
-            metroComboBoxTYPEofPC.Items.Add("<не выбрано>");
+            metroComboBoxCPUsort.Items.Add("CPU");
+            metroComboBoxGPUsort.Items.Add("GPU");
+            metroComboBoxRAM.Items.Add("RAM");
+            metroComboBoxTYPEofPC.Items.Add("TYPE");
             using (sql_con = new SQLiteConnection($"Data Source={Directory.GetCurrentDirectory()}\\DataBases\\TRPO.db"))
             {
                 sql_con.Open();

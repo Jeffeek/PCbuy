@@ -115,7 +115,12 @@ namespace TRPO_Project
             ProgressBar.Visible = true;
 
             #region ParseInputPrice
-            List<int> priceReaderInt = textBox_PRICE.Text.Split('$', '-').ToList().Where(x => x != string.Empty).ToList().ConvertAll(x => Convert.ToInt32(x));
+            List<int> priceReaderInt = textBox_PRICE.Text
+                                                        .Split('$', '-')
+                                                        .ToList()
+                                                        .Where(x => x != string.Empty)
+                                                        .ToList()
+                                                        .ConvertAll(x => Convert.ToInt32(x));
 
             if (!textBox_PRICE.Text.Contains("-"))
             {
@@ -128,7 +133,7 @@ namespace TRPO_Project
                 {
                     MetroMessageBox.Show(this, "Second filter num bigger than first!", "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                     textBox_PRICE.Focus();
-                    ProgressBar.percentage = 0;
+                    ProgressBar.Value = 0;
                     ProgressBar.Visible = false;
                     return;
                 }
@@ -137,21 +142,22 @@ namespace TRPO_Project
 
             var ToDisplay = new List<PC>(AllPCList.Where(x => x.COST >= priceReaderInt[0] && x.COST <= priceReaderInt[1]));
 
-            if (metroComboBoxTYPEofPC.Text != "<не выбрано>")
+            if (metroComboBoxTYPEofPC.Text != "TYPE")
             {
-                ToDisplay = ToDisplay.Where(x => x.TYPE == metroComboBoxTYPEofPC.Text).ToList();
+                ToDisplay = ToDisplay.Where(x => x.TYPE == metroComboBoxTYPEofPC.Text)?.ToList();
             }
-            if (metroComboBoxCPUsort.Text != "<не выбрано>")
+            if (metroComboBoxCPUsort.Text != "CPU")
             {
-                ToDisplay = ToDisplay.Where(x => x.CPU == metroComboBoxCPUsort.Text).ToList();
+                ToDisplay = ToDisplay.Where(x => x.CPU == metroComboBoxCPUsort.Text)?.ToList();
             }
-            if (metroComboBoxGPUsort.Text != "<не выбрано>")
+            if (metroComboBoxGPUsort.Text != "GPU")
             {
-                ToDisplay = ToDisplay.Where(x => x.GPU == metroComboBoxGPUsort.Text).ToList();
+                ToDisplay = ToDisplay.Where(x => x.GPU == metroComboBoxGPUsort.Text)?.ToList();
             }
-            if (metroComboBoxRAM.Text != "<не выбрано>")
+            if (metroComboBoxRAM.Text != "RAM")
             {
-                ToDisplay = ToDisplay.Where(x => x.RAM == int.Parse(metroComboBoxRAM.Text.Replace(" GB", ""))).ToList();
+
+                ToDisplay = ToDisplay.Where(x => x.RAM == int.Parse(metroComboBoxRAM.Text.Replace(" GB", "")))?.ToList();
             }
 
             if (ToDisplay.Count == 0)
@@ -205,6 +211,7 @@ namespace TRPO_Project
         #region ComboBOXfill&textCHANGES
         private void GetInfoIntoComboBoxes()
         {
+
             using (sql_con = new SQLiteConnection($"Data Source={Directory.GetCurrentDirectory()}\\DataBases\\TRPO.db"))
             {
                 sql_con.Open();
@@ -347,7 +354,7 @@ namespace TRPO_Project
             groupBoxHEAD.Refresh();
         }
 
-        public async void ReadThemeAsync()
+        public void ReadThemeAsync()
         {
             try
             {
@@ -364,8 +371,8 @@ namespace TRPO_Project
                 if (themes.Count(x => x.UserID == userID) > 0)
                 {
                     ProgramTheme ThemeOBJ = themes.Find(x => x.UserID == userID);
-                    await Task.Run(() => ChangeNonMetroControls(ThemeOBJ));
-                    await Task.Run(() => ChangeMetroControls(ThemeOBJ));
+                    ChangeNonMetroControls(ThemeOBJ);
+                    ChangeMetroControls(ThemeOBJ);
                     Refresh();
                 }
             }

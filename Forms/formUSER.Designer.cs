@@ -31,16 +31,16 @@ namespace TRPO_Project
             this.FormEllipse = new XanderUI.XUIObjectEllipse();
             this.FormStartTransition = new Bunifu.Framework.UI.BunifuFormFadeTransition(this.components);
             this.groupBoxHEAD = new Bunifu.Framework.UI.BunifuGradientPanel();
+            this.button_backToLoginForm = new Guna.UI.WinForms.GunaGradientCircleButton();
+            this.pictureBoxProfile = new Guna.UI.WinForms.GunaGradientCircleButton();
+            this.pictureBoxProductBIN = new Guna.UI.WinForms.GunaGradientCircleButton();
+            this.bunifuImageButtonSORT = new Guna.UI.WinForms.GunaGradientCircleButton();
             this.label1 = new System.Windows.Forms.Label();
-            this.button_backToLoginForm = new Bunifu.Framework.UI.BunifuImageButton();
             this.textBox_PRICE = new Bunifu.Framework.UI.BunifuMaterialTextbox();
             this.metroComboBoxTYPEofPC = new MetroFramework.Controls.MetroComboBox();
-            this.bunifuImageButtonSORT = new Bunifu.Framework.UI.BunifuImageButton();
             this.labelRAM = new System.Windows.Forms.Label();
             this.labelGPU = new System.Windows.Forms.Label();
-            this.pictureBoxProfile = new Bunifu.Framework.UI.BunifuImageButton();
             this.labelCPU = new System.Windows.Forms.Label();
-            this.pictureBoxProductBIN = new Bunifu.Framework.UI.BunifuImageButton();
             this.metroComboBoxCPUsort = new MetroFramework.Controls.MetroComboBox();
             this.labelTYPEofPC = new System.Windows.Forms.Label();
             this.metroComboBoxGPUsort = new MetroFramework.Controls.MetroComboBox();
@@ -50,10 +50,6 @@ namespace TRPO_Project
             this.buttonHelp = new Guna.UI.WinForms.GunaGradientCircleButton();
             this.ProgressBar = new Guna.UI.WinForms.GunaCircleProgressBar();
             this.groupBoxHEAD.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.button_backToLoginForm)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.bunifuImageButtonSORT)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxProfile)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxProductBIN)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.bunifuImageButtonEXIT)).BeginInit();
             this.panelHead.SuspendLayout();
             this.SuspendLayout();
@@ -75,16 +71,16 @@ namespace TRPO_Project
             this.groupBoxHEAD.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("groupBoxHEAD.BackgroundImage")));
             this.groupBoxHEAD.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.groupBoxHEAD.CausesValidation = false;
-            this.groupBoxHEAD.Controls.Add(this.label1);
             this.groupBoxHEAD.Controls.Add(this.button_backToLoginForm);
+            this.groupBoxHEAD.Controls.Add(this.pictureBoxProfile);
+            this.groupBoxHEAD.Controls.Add(this.pictureBoxProductBIN);
+            this.groupBoxHEAD.Controls.Add(this.bunifuImageButtonSORT);
+            this.groupBoxHEAD.Controls.Add(this.label1);
             this.groupBoxHEAD.Controls.Add(this.textBox_PRICE);
             this.groupBoxHEAD.Controls.Add(this.metroComboBoxTYPEofPC);
-            this.groupBoxHEAD.Controls.Add(this.bunifuImageButtonSORT);
             this.groupBoxHEAD.Controls.Add(this.labelRAM);
             this.groupBoxHEAD.Controls.Add(this.labelGPU);
-            this.groupBoxHEAD.Controls.Add(this.pictureBoxProfile);
             this.groupBoxHEAD.Controls.Add(this.labelCPU);
-            this.groupBoxHEAD.Controls.Add(this.pictureBoxProductBIN);
             this.groupBoxHEAD.Controls.Add(this.metroComboBoxCPUsort);
             this.groupBoxHEAD.Controls.Add(this.labelTYPEofPC);
             this.groupBoxHEAD.Controls.Add(this.metroComboBoxGPUsort);
@@ -100,6 +96,122 @@ namespace TRPO_Project
             this.groupBoxHEAD.Size = new System.Drawing.Size(796, 56);
             this.groupBoxHEAD.TabIndex = 3;
             // 
+            // button_backToLoginForm
+            // 
+            this.button_backToLoginForm.Animated = true;
+            this.button_backToLoginForm.AnimationHoverSpeed = 0.07F;
+            this.button_backToLoginForm.AnimationSpeed = 0.03F;
+            this.button_backToLoginForm.BackColor = System.Drawing.Color.Transparent;
+            this.button_backToLoginForm.BaseColor1 = System.Drawing.Color.Transparent;
+            this.button_backToLoginForm.BaseColor2 = System.Drawing.Color.Transparent;
+            this.button_backToLoginForm.BorderColor = System.Drawing.Color.Black;
+            this.button_backToLoginForm.DialogResult = System.Windows.Forms.DialogResult.None;
+            this.button_backToLoginForm.FocusedColor = System.Drawing.Color.Empty;
+            this.button_backToLoginForm.Font = new System.Drawing.Font("Segoe UI", 9F);
+            this.button_backToLoginForm.ForeColor = System.Drawing.Color.White;
+            this.button_backToLoginForm.Image = global::TRPO_Project.Properties.Resources.exit_sign_64px;
+            this.button_backToLoginForm.ImageSize = new System.Drawing.Size(40, 40);
+            this.button_backToLoginForm.Location = new System.Drawing.Point(751, 12);
+            this.button_backToLoginForm.Name = "button_backToLoginForm";
+            this.button_backToLoginForm.OnHoverBaseColor1 = System.Drawing.Color.Honeydew;
+            this.button_backToLoginForm.OnHoverBaseColor2 = System.Drawing.Color.Ivory;
+            this.button_backToLoginForm.OnHoverBorderColor = System.Drawing.Color.Black;
+            this.button_backToLoginForm.OnHoverForeColor = System.Drawing.Color.White;
+            this.button_backToLoginForm.OnHoverImage = null;
+            this.button_backToLoginForm.OnPressedColor = System.Drawing.Color.Black;
+            this.button_backToLoginForm.OnPressedDepth = 50;
+            this.button_backToLoginForm.Size = new System.Drawing.Size(40, 40);
+            this.button_backToLoginForm.TabIndex = 28;
+            this.button_backToLoginForm.TabStop = false;
+            this.button_backToLoginForm.Click += new System.EventHandler(this.button_backToLoginForm_Click);
+            // 
+            // pictureBoxProfile
+            // 
+            this.pictureBoxProfile.Animated = true;
+            this.pictureBoxProfile.AnimationHoverSpeed = 0.07F;
+            this.pictureBoxProfile.AnimationSpeed = 0.03F;
+            this.pictureBoxProfile.BackColor = System.Drawing.Color.Transparent;
+            this.pictureBoxProfile.BaseColor1 = System.Drawing.Color.Transparent;
+            this.pictureBoxProfile.BaseColor2 = System.Drawing.Color.Transparent;
+            this.pictureBoxProfile.BorderColor = System.Drawing.Color.Black;
+            this.pictureBoxProfile.DialogResult = System.Windows.Forms.DialogResult.None;
+            this.pictureBoxProfile.FocusedColor = System.Drawing.Color.Empty;
+            this.pictureBoxProfile.Font = new System.Drawing.Font("Segoe UI", 9F);
+            this.pictureBoxProfile.ForeColor = System.Drawing.Color.White;
+            this.pictureBoxProfile.Image = global::TRPO_Project.Properties.Resources.profile_default;
+            this.pictureBoxProfile.ImageSize = new System.Drawing.Size(40, 40);
+            this.pictureBoxProfile.Location = new System.Drawing.Point(705, 12);
+            this.pictureBoxProfile.Name = "pictureBoxProfile";
+            this.pictureBoxProfile.OnHoverBaseColor1 = System.Drawing.Color.Honeydew;
+            this.pictureBoxProfile.OnHoverBaseColor2 = System.Drawing.Color.Ivory;
+            this.pictureBoxProfile.OnHoverBorderColor = System.Drawing.Color.Black;
+            this.pictureBoxProfile.OnHoverForeColor = System.Drawing.Color.White;
+            this.pictureBoxProfile.OnHoverImage = null;
+            this.pictureBoxProfile.OnPressedColor = System.Drawing.Color.Black;
+            this.pictureBoxProfile.OnPressedDepth = 50;
+            this.pictureBoxProfile.Size = new System.Drawing.Size(40, 40);
+            this.pictureBoxProfile.TabIndex = 27;
+            this.pictureBoxProfile.TabStop = false;
+            this.pictureBoxProfile.Click += new System.EventHandler(this.pictureBoxProfile_Click);
+            // 
+            // pictureBoxProductBIN
+            // 
+            this.pictureBoxProductBIN.Animated = true;
+            this.pictureBoxProductBIN.AnimationHoverSpeed = 0.07F;
+            this.pictureBoxProductBIN.AnimationSpeed = 0.03F;
+            this.pictureBoxProductBIN.BackColor = System.Drawing.Color.Transparent;
+            this.pictureBoxProductBIN.BaseColor1 = System.Drawing.Color.Transparent;
+            this.pictureBoxProductBIN.BaseColor2 = System.Drawing.Color.Transparent;
+            this.pictureBoxProductBIN.BorderColor = System.Drawing.Color.Black;
+            this.pictureBoxProductBIN.DialogResult = System.Windows.Forms.DialogResult.None;
+            this.pictureBoxProductBIN.FocusedColor = System.Drawing.Color.Empty;
+            this.pictureBoxProductBIN.Font = new System.Drawing.Font("Segoe UI", 9F);
+            this.pictureBoxProductBIN.ForeColor = System.Drawing.Color.White;
+            this.pictureBoxProductBIN.Image = global::TRPO_Project.Properties.Resources.shopping_cart_64px;
+            this.pictureBoxProductBIN.ImageSize = new System.Drawing.Size(40, 40);
+            this.pictureBoxProductBIN.Location = new System.Drawing.Point(594, 12);
+            this.pictureBoxProductBIN.Name = "pictureBoxProductBIN";
+            this.pictureBoxProductBIN.OnHoverBaseColor1 = System.Drawing.Color.Honeydew;
+            this.pictureBoxProductBIN.OnHoverBaseColor2 = System.Drawing.Color.Ivory;
+            this.pictureBoxProductBIN.OnHoverBorderColor = System.Drawing.Color.Black;
+            this.pictureBoxProductBIN.OnHoverForeColor = System.Drawing.Color.White;
+            this.pictureBoxProductBIN.OnHoverImage = null;
+            this.pictureBoxProductBIN.OnPressedColor = System.Drawing.Color.Black;
+            this.pictureBoxProductBIN.OnPressedDepth = 50;
+            this.pictureBoxProductBIN.Size = new System.Drawing.Size(40, 40);
+            this.pictureBoxProductBIN.TabIndex = 26;
+            this.pictureBoxProductBIN.TabStop = false;
+            this.pictureBoxProductBIN.Click += new System.EventHandler(this.pictureBoxProductBIN_Click);
+            // 
+            // bunifuImageButtonSORT
+            // 
+            this.bunifuImageButtonSORT.Animated = true;
+            this.bunifuImageButtonSORT.AnimationHoverSpeed = 0.07F;
+            this.bunifuImageButtonSORT.AnimationSpeed = 0.03F;
+            this.bunifuImageButtonSORT.BackColor = System.Drawing.Color.Transparent;
+            this.bunifuImageButtonSORT.BaseColor1 = System.Drawing.Color.Transparent;
+            this.bunifuImageButtonSORT.BaseColor2 = System.Drawing.Color.Transparent;
+            this.bunifuImageButtonSORT.BorderColor = System.Drawing.Color.Black;
+            this.bunifuImageButtonSORT.DialogResult = System.Windows.Forms.DialogResult.None;
+            this.bunifuImageButtonSORT.FocusedColor = System.Drawing.Color.Empty;
+            this.bunifuImageButtonSORT.Font = new System.Drawing.Font("Segoe UI", 9F);
+            this.bunifuImageButtonSORT.ForeColor = System.Drawing.Color.White;
+            this.bunifuImageButtonSORT.Image = global::TRPO_Project.Properties.Resources.sort;
+            this.bunifuImageButtonSORT.ImageSize = new System.Drawing.Size(40, 40);
+            this.bunifuImageButtonSORT.Location = new System.Drawing.Point(548, 12);
+            this.bunifuImageButtonSORT.Name = "bunifuImageButtonSORT";
+            this.bunifuImageButtonSORT.OnHoverBaseColor1 = System.Drawing.Color.Honeydew;
+            this.bunifuImageButtonSORT.OnHoverBaseColor2 = System.Drawing.Color.Ivory;
+            this.bunifuImageButtonSORT.OnHoverBorderColor = System.Drawing.Color.Black;
+            this.bunifuImageButtonSORT.OnHoverForeColor = System.Drawing.Color.White;
+            this.bunifuImageButtonSORT.OnHoverImage = null;
+            this.bunifuImageButtonSORT.OnPressedColor = System.Drawing.Color.Black;
+            this.bunifuImageButtonSORT.OnPressedDepth = 50;
+            this.bunifuImageButtonSORT.Size = new System.Drawing.Size(40, 40);
+            this.bunifuImageButtonSORT.TabIndex = 25;
+            this.bunifuImageButtonSORT.TabStop = false;
+            this.bunifuImageButtonSORT.Click += new System.EventHandler(this.bunifuImageButtonSORT_Click);
+            // 
             // label1
             // 
             this.label1.AutoSize = true;
@@ -110,21 +222,6 @@ namespace TRPO_Project
             this.label1.Size = new System.Drawing.Size(47, 15);
             this.label1.TabIndex = 18;
             this.label1.Text = "PRICE";
-            // 
-            // button_backToLoginForm
-            // 
-            this.button_backToLoginForm.BackColor = System.Drawing.Color.Transparent;
-            this.button_backToLoginForm.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.button_backToLoginForm.Image = global::TRPO_Project.Properties.Resources.exit_sign_64px;
-            this.button_backToLoginForm.ImageActive = null;
-            this.button_backToLoginForm.Location = new System.Drawing.Point(748, 9);
-            this.button_backToLoginForm.Name = "button_backToLoginForm";
-            this.button_backToLoginForm.Size = new System.Drawing.Size(43, 43);
-            this.button_backToLoginForm.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.button_backToLoginForm.TabIndex = 17;
-            this.button_backToLoginForm.TabStop = false;
-            this.button_backToLoginForm.Zoom = 5;
-            this.button_backToLoginForm.Click += new System.EventHandler(this.button_backToLoginForm_Click);
             // 
             // textBox_PRICE
             // 
@@ -143,7 +240,7 @@ namespace TRPO_Project
             this.textBox_PRICE.Margin = new System.Windows.Forms.Padding(4);
             this.textBox_PRICE.Name = "textBox_PRICE";
             this.textBox_PRICE.Size = new System.Drawing.Size(83, 25);
-            this.textBox_PRICE.TabIndex = 4;
+            this.textBox_PRICE.TabIndex = 0;
             this.textBox_PRICE.TabStop = false;
             this.textBox_PRICE.Text = "$0-9999";
             this.textBox_PRICE.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
@@ -162,33 +259,16 @@ namespace TRPO_Project
             this.metroComboBoxTYPEofPC.FormattingEnabled = true;
             this.metroComboBoxTYPEofPC.ItemHeight = 19;
             this.metroComboBoxTYPEofPC.Items.AddRange(new object[] {
-            "<не выбрано>"});
+            "TYPE"});
             this.metroComboBoxTYPEofPC.Location = new System.Drawing.Point(104, 20);
             this.metroComboBoxTYPEofPC.Name = "metroComboBoxTYPEofPC";
             this.metroComboBoxTYPEofPC.Size = new System.Drawing.Size(105, 25);
-            this.metroComboBoxTYPEofPC.Style = MetroFramework.MetroColorStyle.Teal;
-            this.metroComboBoxTYPEofPC.TabIndex = 15;
-            this.metroComboBoxTYPEofPC.TabStop = false;
+            this.metroComboBoxTYPEofPC.Style = MetroFramework.MetroColorStyle.Silver;
+            this.metroComboBoxTYPEofPC.TabIndex = 0;
             this.metroComboBoxTYPEofPC.UseCustomBackColor = true;
             this.metroComboBoxTYPEofPC.UseCustomForeColor = true;
             this.metroComboBoxTYPEofPC.UseSelectable = true;
             this.metroComboBoxTYPEofPC.UseStyleColors = true;
-            // 
-            // bunifuImageButtonSORT
-            // 
-            this.bunifuImageButtonSORT.BackColor = System.Drawing.Color.Transparent;
-            this.bunifuImageButtonSORT.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.bunifuImageButtonSORT.Image = global::TRPO_Project.Properties.Resources.sort;
-            this.bunifuImageButtonSORT.ImageActive = null;
-            this.bunifuImageButtonSORT.Location = new System.Drawing.Point(560, 9);
-            this.bunifuImageButtonSORT.Name = "bunifuImageButtonSORT";
-            this.bunifuImageButtonSORT.Size = new System.Drawing.Size(43, 43);
-            this.bunifuImageButtonSORT.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.bunifuImageButtonSORT.TabIndex = 14;
-            this.bunifuImageButtonSORT.TabStop = false;
-            this.bunifuImageButtonSORT.WaitOnLoad = true;
-            this.bunifuImageButtonSORT.Zoom = 10;
-            this.bunifuImageButtonSORT.Click += new System.EventHandler(this.bunifuImageButtonSORT_Click);
             // 
             // labelRAM
             // 
@@ -212,21 +292,6 @@ namespace TRPO_Project
             this.labelGPU.TabIndex = 9;
             this.labelGPU.Text = "GPU";
             // 
-            // pictureBoxProfile
-            // 
-            this.pictureBoxProfile.BackColor = System.Drawing.Color.Transparent;
-            this.pictureBoxProfile.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.pictureBoxProfile.Image = global::TRPO_Project.Properties.Resources.profile_default;
-            this.pictureBoxProfile.ImageActive = null;
-            this.pictureBoxProfile.Location = new System.Drawing.Point(699, 9);
-            this.pictureBoxProfile.Name = "pictureBoxProfile";
-            this.pictureBoxProfile.Size = new System.Drawing.Size(43, 43);
-            this.pictureBoxProfile.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.pictureBoxProfile.TabIndex = 2;
-            this.pictureBoxProfile.TabStop = false;
-            this.pictureBoxProfile.Zoom = 10;
-            this.pictureBoxProfile.Click += new System.EventHandler(this.pictureBoxProfile_Click);
-            // 
             // labelCPU
             // 
             this.labelCPU.AutoSize = true;
@@ -238,37 +303,22 @@ namespace TRPO_Project
             this.labelCPU.TabIndex = 8;
             this.labelCPU.Text = "CPU";
             // 
-            // pictureBoxProductBIN
-            // 
-            this.pictureBoxProductBIN.BackColor = System.Drawing.Color.Transparent;
-            this.pictureBoxProductBIN.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.pictureBoxProductBIN.Image = global::TRPO_Project.Properties.Resources.shopping_cart_64px;
-            this.pictureBoxProductBIN.ImageActive = null;
-            this.pictureBoxProductBIN.Location = new System.Drawing.Point(618, 9);
-            this.pictureBoxProductBIN.Name = "pictureBoxProductBIN";
-            this.pictureBoxProductBIN.Size = new System.Drawing.Size(43, 43);
-            this.pictureBoxProductBIN.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.pictureBoxProductBIN.TabIndex = 3;
-            this.pictureBoxProductBIN.TabStop = false;
-            this.pictureBoxProductBIN.Zoom = 10;
-            this.pictureBoxProductBIN.Click += new System.EventHandler(this.pictureBoxProductBIN_Click);
-            // 
             // metroComboBoxCPUsort
             // 
-            this.metroComboBoxCPUsort.BackColor = System.Drawing.Color.Azure;
+            this.metroComboBoxCPUsort.BackColor = System.Drawing.Color.LightCyan;
             this.metroComboBoxCPUsort.Cursor = System.Windows.Forms.Cursors.Hand;
             this.metroComboBoxCPUsort.DropDownWidth = 140;
+            this.metroComboBoxCPUsort.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.metroComboBoxCPUsort.FontSize = MetroFramework.MetroComboBoxSize.Small;
             this.metroComboBoxCPUsort.ForeColor = System.Drawing.Color.SkyBlue;
             this.metroComboBoxCPUsort.ItemHeight = 19;
             this.metroComboBoxCPUsort.Items.AddRange(new object[] {
-            "<не выбрано>"});
+            "CPU"});
             this.metroComboBoxCPUsort.Location = new System.Drawing.Point(215, 20);
             this.metroComboBoxCPUsort.Name = "metroComboBoxCPUsort";
             this.metroComboBoxCPUsort.Size = new System.Drawing.Size(105, 25);
-            this.metroComboBoxCPUsort.Style = MetroFramework.MetroColorStyle.Teal;
-            this.metroComboBoxCPUsort.TabIndex = 11;
-            this.metroComboBoxCPUsort.TabStop = false;
+            this.metroComboBoxCPUsort.Style = MetroFramework.MetroColorStyle.Silver;
+            this.metroComboBoxCPUsort.TabIndex = 1;
             this.metroComboBoxCPUsort.UseCustomBackColor = true;
             this.metroComboBoxCPUsort.UseCustomForeColor = true;
             this.metroComboBoxCPUsort.UseSelectable = true;
@@ -287,7 +337,7 @@ namespace TRPO_Project
             // 
             // metroComboBoxGPUsort
             // 
-            this.metroComboBoxGPUsort.BackColor = System.Drawing.Color.Azure;
+            this.metroComboBoxGPUsort.BackColor = System.Drawing.Color.LightCyan;
             this.metroComboBoxGPUsort.Cursor = System.Windows.Forms.Cursors.Hand;
             this.metroComboBoxGPUsort.DropDownWidth = 140;
             this.metroComboBoxGPUsort.FontSize = MetroFramework.MetroComboBoxSize.Small;
@@ -295,13 +345,12 @@ namespace TRPO_Project
             this.metroComboBoxGPUsort.FormattingEnabled = true;
             this.metroComboBoxGPUsort.ItemHeight = 19;
             this.metroComboBoxGPUsort.Items.AddRange(new object[] {
-            "<не выбрано>"});
+            "GPU"});
             this.metroComboBoxGPUsort.Location = new System.Drawing.Point(326, 20);
             this.metroComboBoxGPUsort.Name = "metroComboBoxGPUsort";
             this.metroComboBoxGPUsort.Size = new System.Drawing.Size(105, 25);
-            this.metroComboBoxGPUsort.Style = MetroFramework.MetroColorStyle.Teal;
-            this.metroComboBoxGPUsort.TabIndex = 12;
-            this.metroComboBoxGPUsort.TabStop = false;
+            this.metroComboBoxGPUsort.Style = MetroFramework.MetroColorStyle.Silver;
+            this.metroComboBoxGPUsort.TabIndex = 2;
             this.metroComboBoxGPUsort.UseCustomBackColor = true;
             this.metroComboBoxGPUsort.UseCustomForeColor = true;
             this.metroComboBoxGPUsort.UseSelectable = true;
@@ -318,13 +367,12 @@ namespace TRPO_Project
             this.metroComboBoxRAM.FormattingEnabled = true;
             this.metroComboBoxRAM.ItemHeight = 19;
             this.metroComboBoxRAM.Items.AddRange(new object[] {
-            "<не выбрано>"});
+            "RAM"});
             this.metroComboBoxRAM.Location = new System.Drawing.Point(437, 20);
             this.metroComboBoxRAM.Name = "metroComboBoxRAM";
             this.metroComboBoxRAM.Size = new System.Drawing.Size(105, 25);
-            this.metroComboBoxRAM.Style = MetroFramework.MetroColorStyle.Teal;
-            this.metroComboBoxRAM.TabIndex = 13;
-            this.metroComboBoxRAM.TabStop = false;
+            this.metroComboBoxRAM.Style = MetroFramework.MetroColorStyle.Silver;
+            this.metroComboBoxRAM.TabIndex = 3;
             this.metroComboBoxRAM.UseCustomBackColor = true;
             this.metroComboBoxRAM.UseCustomForeColor = true;
             this.metroComboBoxRAM.UseSelectable = true;
@@ -373,7 +421,7 @@ namespace TRPO_Project
             this.buttonHelp.ForeColor = System.Drawing.Color.White;
             this.buttonHelp.Image = global::TRPO_Project.Properties.Resources.help_64px;
             this.buttonHelp.ImageSize = new System.Drawing.Size(30, 30);
-            this.buttonHelp.Location = new System.Drawing.Point(3, 3);
+            this.buttonHelp.Location = new System.Drawing.Point(12, 3);
             this.buttonHelp.Name = "buttonHelp";
             this.buttonHelp.OnHoverBaseColor1 = System.Drawing.Color.Orchid;
             this.buttonHelp.OnHoverBaseColor2 = System.Drawing.Color.DarkSlateBlue;
@@ -408,6 +456,7 @@ namespace TRPO_Project
             this.ProgressBar.RightToLeft = System.Windows.Forms.RightToLeft.No;
             this.ProgressBar.Size = new System.Drawing.Size(225, 225);
             this.ProgressBar.TabIndex = 18;
+            this.ProgressBar.TabStop = false;
             this.ProgressBar.Visible = false;
             // 
             // formUSER
@@ -437,10 +486,6 @@ namespace TRPO_Project
             this.TransparencyKey = System.Drawing.Color.Empty;
             this.groupBoxHEAD.ResumeLayout(false);
             this.groupBoxHEAD.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.button_backToLoginForm)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.bunifuImageButtonSORT)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxProfile)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxProductBIN)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.bunifuImageButtonEXIT)).EndInit();
             this.panelHead.ResumeLayout(false);
             this.ResumeLayout(false);
@@ -452,23 +497,23 @@ namespace TRPO_Project
         protected System.Windows.Forms.Label labelGPU;
         protected System.Windows.Forms.Label labelCPU;
         protected System.Windows.Forms.Label labelTYPEofPC;
-        protected MetroFramework.Controls.MetroComboBox metroComboBoxRAM;
-        protected MetroFramework.Controls.MetroComboBox metroComboBoxGPUsort;
-        protected MetroFramework.Controls.MetroComboBox metroComboBoxCPUsort;
         protected Bunifu.Framework.UI.BunifuImageButton bunifuImageButtonEXIT;
         private System.ComponentModel.IContainer components;
-        protected Bunifu.Framework.UI.BunifuImageButton pictureBoxProductBIN;
-        protected Bunifu.Framework.UI.BunifuImageButton pictureBoxProfile;
         private XanderUI.XUIObjectEllipse FormEllipse;
         private Bunifu.Framework.UI.BunifuFormFadeTransition FormStartTransition;
         private Bunifu.Framework.UI.BunifuGradientPanel groupBoxHEAD;
-        private Bunifu.Framework.UI.BunifuImageButton bunifuImageButtonSORT;
-        protected MetroFramework.Controls.MetroComboBox metroComboBoxTYPEofPC;
         private Bunifu.Framework.UI.BunifuMaterialTextbox textBox_PRICE;
-        private Bunifu.Framework.UI.BunifuImageButton button_backToLoginForm;
         protected System.Windows.Forms.Label label1;
         private System.Windows.Forms.Panel panelHead;
         private Guna.UI.WinForms.GunaGradientCircleButton buttonHelp;
         private Guna.UI.WinForms.GunaCircleProgressBar ProgressBar;
+        private MetroFramework.Controls.MetroComboBox metroComboBoxRAM;
+        private MetroFramework.Controls.MetroComboBox metroComboBoxGPUsort;
+        private MetroFramework.Controls.MetroComboBox metroComboBoxCPUsort;
+        private MetroFramework.Controls.MetroComboBox metroComboBoxTYPEofPC;
+        private Guna.UI.WinForms.GunaGradientCircleButton button_backToLoginForm;
+        private Guna.UI.WinForms.GunaGradientCircleButton pictureBoxProfile;
+        private Guna.UI.WinForms.GunaGradientCircleButton pictureBoxProductBIN;
+        private Guna.UI.WinForms.GunaGradientCircleButton bunifuImageButtonSORT;
     }
 }

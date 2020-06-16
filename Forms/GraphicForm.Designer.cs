@@ -49,7 +49,7 @@
             // Graphic
             // 
             this.Graphic.BackColor = System.Drawing.Color.Black;
-            this.Graphic.BackGroundColor = System.Drawing.Color.Black;
+            this.Graphic.BackGroundColor = System.Drawing.Color.Transparent;
             this.Graphic.BelowLineColor = System.Drawing.Color.Black;
             this.Graphic.BorderColor = System.Drawing.Color.Transparent;
             this.Graphic.ForeColor = System.Drawing.Color.Black;
@@ -68,7 +68,6 @@
             this.Graphic.Size = new System.Drawing.Size(780, 416);
             this.Graphic.TabIndex = 0;
             this.Graphic.TabStop = false;
-            this.Graphic.Text = "xuiLineGraph1";
             this.Graphic.TitleAlignment = System.Drawing.StringAlignment.Center;
             this.Graphic.VerticalLineColor = System.Drawing.Color.Black;
             // 

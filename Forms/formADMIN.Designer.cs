@@ -74,7 +74,7 @@
             this.panelHead.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.panelHead.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.panelHead.Controls.Add(this.buttonHelp);
-            this.panelHead.Location = new System.Drawing.Point(-6, 5);
+            this.panelHead.Location = new System.Drawing.Point(0, 5);
             this.panelHead.Name = "panelHead";
             this.panelHead.Size = new System.Drawing.Size(796, 28);
             this.panelHead.TabIndex = 16;
@@ -161,7 +161,7 @@
             this.groupBoxHEAD.GradientBottomRight = System.Drawing.Color.Magenta;
             this.groupBoxHEAD.GradientTopLeft = System.Drawing.Color.Plum;
             this.groupBoxHEAD.GradientTopRight = System.Drawing.Color.Aqua;
-            this.groupBoxHEAD.Location = new System.Drawing.Point(-6, 32);
+            this.groupBoxHEAD.Location = new System.Drawing.Point(0, 32);
             this.groupBoxHEAD.Name = "groupBoxHEAD";
             this.groupBoxHEAD.Quality = 100;
             this.groupBoxHEAD.Size = new System.Drawing.Size(796, 56);
@@ -193,6 +193,7 @@
             this.button_backToLoginForm.OnPressedDepth = 50;
             this.button_backToLoginForm.Size = new System.Drawing.Size(40, 40);
             this.button_backToLoginForm.TabIndex = 24;
+            this.button_backToLoginForm.TabStop = false;
             this.button_backToLoginForm.Click += new System.EventHandler(this.button_backToLoginForm_Click);
             // 
             // bunifuImageButtonADMINPANEL
@@ -221,6 +222,7 @@
             this.bunifuImageButtonADMINPANEL.OnPressedDepth = 50;
             this.bunifuImageButtonADMINPANEL.Size = new System.Drawing.Size(40, 40);
             this.bunifuImageButtonADMINPANEL.TabIndex = 23;
+            this.bunifuImageButtonADMINPANEL.TabStop = false;
             this.bunifuImageButtonADMINPANEL.Click += new System.EventHandler(this.bunifuImageButtonADMINPANEL_Click);
             // 
             // pictureBoxProfile
@@ -249,6 +251,7 @@
             this.pictureBoxProfile.OnPressedDepth = 50;
             this.pictureBoxProfile.Size = new System.Drawing.Size(40, 40);
             this.pictureBoxProfile.TabIndex = 22;
+            this.pictureBoxProfile.TabStop = false;
             this.pictureBoxProfile.Click += new System.EventHandler(this.pictureBoxProfile_Click);
             // 
             // pictureBoxProductBIN
@@ -277,6 +280,7 @@
             this.pictureBoxProductBIN.OnPressedDepth = 50;
             this.pictureBoxProductBIN.Size = new System.Drawing.Size(40, 40);
             this.pictureBoxProductBIN.TabIndex = 21;
+            this.pictureBoxProductBIN.TabStop = false;
             this.pictureBoxProductBIN.Click += new System.EventHandler(this.pictureBoxProductBIN_Click);
             // 
             // bunifuImageButtonSORT
@@ -305,6 +309,7 @@
             this.bunifuImageButtonSORT.OnPressedDepth = 50;
             this.bunifuImageButtonSORT.Size = new System.Drawing.Size(40, 40);
             this.bunifuImageButtonSORT.TabIndex = 20;
+            this.bunifuImageButtonSORT.TabStop = false;
             this.bunifuImageButtonSORT.Click += new System.EventHandler(this.bunifuImageButtonSORT_Click);
             // 
             // labelPRICE
@@ -389,11 +394,12 @@
             this.metroComboBoxCPUsort.Location = new System.Drawing.Point(211, 20);
             this.metroComboBoxCPUsort.Name = "metroComboBoxCPUsort";
             this.metroComboBoxCPUsort.Size = new System.Drawing.Size(105, 25);
-            this.metroComboBoxCPUsort.Style = MetroFramework.MetroColorStyle.Teal;
+            this.metroComboBoxCPUsort.Style = MetroFramework.MetroColorStyle.Silver;
             this.metroComboBoxCPUsort.TabIndex = 3;
             this.metroComboBoxCPUsort.UseCustomBackColor = true;
             this.metroComboBoxCPUsort.UseCustomForeColor = true;
             this.metroComboBoxCPUsort.UseSelectable = true;
+            this.metroComboBoxCPUsort.UseStyleColors = true;
             // 
             // metroComboBoxTYPEofPC
             // 
@@ -409,11 +415,12 @@
             this.metroComboBoxTYPEofPC.Location = new System.Drawing.Point(100, 20);
             this.metroComboBoxTYPEofPC.Name = "metroComboBoxTYPEofPC";
             this.metroComboBoxTYPEofPC.Size = new System.Drawing.Size(105, 25);
-            this.metroComboBoxTYPEofPC.Style = MetroFramework.MetroColorStyle.Blue;
+            this.metroComboBoxTYPEofPC.Style = MetroFramework.MetroColorStyle.Silver;
             this.metroComboBoxTYPEofPC.TabIndex = 2;
             this.metroComboBoxTYPEofPC.UseCustomBackColor = true;
             this.metroComboBoxTYPEofPC.UseCustomForeColor = true;
             this.metroComboBoxTYPEofPC.UseSelectable = true;
+            this.metroComboBoxTYPEofPC.UseStyleColors = true;
             // 
             // labelTYPEofPC
             // 
@@ -440,11 +447,12 @@
             this.metroComboBoxGPUsort.Location = new System.Drawing.Point(322, 20);
             this.metroComboBoxGPUsort.Name = "metroComboBoxGPUsort";
             this.metroComboBoxGPUsort.Size = new System.Drawing.Size(105, 25);
-            this.metroComboBoxGPUsort.Style = MetroFramework.MetroColorStyle.Teal;
+            this.metroComboBoxGPUsort.Style = MetroFramework.MetroColorStyle.Silver;
             this.metroComboBoxGPUsort.TabIndex = 4;
             this.metroComboBoxGPUsort.UseCustomBackColor = true;
             this.metroComboBoxGPUsort.UseCustomForeColor = true;
             this.metroComboBoxGPUsort.UseSelectable = true;
+            this.metroComboBoxGPUsort.UseStyleColors = true;
             // 
             // metroComboBoxRAM
             // 
@@ -461,7 +469,7 @@
             this.metroComboBoxRAM.Location = new System.Drawing.Point(433, 20);
             this.metroComboBoxRAM.Name = "metroComboBoxRAM";
             this.metroComboBoxRAM.Size = new System.Drawing.Size(105, 25);
-            this.metroComboBoxRAM.Style = MetroFramework.MetroColorStyle.Blue;
+            this.metroComboBoxRAM.Style = MetroFramework.MetroColorStyle.Silver;
             this.metroComboBoxRAM.TabIndex = 5;
             this.metroComboBoxRAM.UseCustomBackColor = true;
             this.metroComboBoxRAM.UseCustomForeColor = true;
@@ -489,6 +497,7 @@
             this.ProgressBar.RightToLeft = System.Windows.Forms.RightToLeft.No;
             this.ProgressBar.Size = new System.Drawing.Size(225, 225);
             this.ProgressBar.TabIndex = 17;
+            this.ProgressBar.TabStop = false;
             this.ProgressBar.Visible = false;
             // 
             // formADMIN
