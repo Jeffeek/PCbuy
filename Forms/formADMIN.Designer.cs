@@ -48,12 +48,12 @@
             this.labelRAM = new System.Windows.Forms.Label();
             this.labelGPU = new System.Windows.Forms.Label();
             this.labelCPU = new System.Windows.Forms.Label();
-            this.metroComboBoxCPUsort = new MetroFramework.Controls.MetroComboBox();
-            this.metroComboBoxTYPEofPC = new MetroFramework.Controls.MetroComboBox();
             this.labelTYPEofPC = new System.Windows.Forms.Label();
-            this.metroComboBoxGPUsort = new MetroFramework.Controls.MetroComboBox();
-            this.metroComboBoxRAM = new MetroFramework.Controls.MetroComboBox();
             this.ProgressBar = new Guna.UI.WinForms.GunaCircleProgressBar();
+            this.metroComboBoxTYPEofPC = new Guna.UI.WinForms.GunaComboBox();
+            this.metroComboBoxCPUsort = new Guna.UI.WinForms.GunaComboBox();
+            this.metroComboBoxRAM = new Guna.UI.WinForms.GunaComboBox();
+            this.metroComboBoxGPUsort = new Guna.UI.WinForms.GunaComboBox();
             this.panelHead.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.bunifuImageButtonEXIT)).BeginInit();
             this.groupBoxHEAD.SuspendLayout();
@@ -141,6 +141,10 @@
             this.groupBoxHEAD.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("groupBoxHEAD.BackgroundImage")));
             this.groupBoxHEAD.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.groupBoxHEAD.CausesValidation = false;
+            this.groupBoxHEAD.Controls.Add(this.metroComboBoxRAM);
+            this.groupBoxHEAD.Controls.Add(this.metroComboBoxGPUsort);
+            this.groupBoxHEAD.Controls.Add(this.metroComboBoxCPUsort);
+            this.groupBoxHEAD.Controls.Add(this.metroComboBoxTYPEofPC);
             this.groupBoxHEAD.Controls.Add(this.button_backToLoginForm);
             this.groupBoxHEAD.Controls.Add(this.bunifuImageButtonADMINPANEL);
             this.groupBoxHEAD.Controls.Add(this.pictureBoxProfile);
@@ -151,11 +155,7 @@
             this.groupBoxHEAD.Controls.Add(this.labelRAM);
             this.groupBoxHEAD.Controls.Add(this.labelGPU);
             this.groupBoxHEAD.Controls.Add(this.labelCPU);
-            this.groupBoxHEAD.Controls.Add(this.metroComboBoxCPUsort);
-            this.groupBoxHEAD.Controls.Add(this.metroComboBoxTYPEofPC);
             this.groupBoxHEAD.Controls.Add(this.labelTYPEofPC);
-            this.groupBoxHEAD.Controls.Add(this.metroComboBoxGPUsort);
-            this.groupBoxHEAD.Controls.Add(this.metroComboBoxRAM);
             this.groupBoxHEAD.Font = new System.Drawing.Font("Unispace", 9.749999F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.groupBoxHEAD.GradientBottomLeft = System.Drawing.Color.Blue;
             this.groupBoxHEAD.GradientBottomRight = System.Drawing.Color.Magenta;
@@ -333,7 +333,7 @@
             this.textBox_PRICE.HintText = "";
             this.textBox_PRICE.isPassword = false;
             this.textBox_PRICE.LineFocusedColor = System.Drawing.Color.DodgerBlue;
-            this.textBox_PRICE.LineIdleColor = System.Drawing.Color.MediumBlue;
+            this.textBox_PRICE.LineIdleColor = System.Drawing.Color.DarkTurquoise;
             this.textBox_PRICE.LineMouseHoverColor = System.Drawing.Color.Magenta;
             this.textBox_PRICE.LineThickness = 3;
             this.textBox_PRICE.Location = new System.Drawing.Point(13, 21);
@@ -381,47 +381,6 @@
             this.labelCPU.TabIndex = 8;
             this.labelCPU.Text = "CPU";
             // 
-            // metroComboBoxCPUsort
-            // 
-            this.metroComboBoxCPUsort.BackColor = System.Drawing.Color.LightCyan;
-            this.metroComboBoxCPUsort.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.metroComboBoxCPUsort.DisplayFocus = true;
-            this.metroComboBoxCPUsort.DropDownWidth = 150;
-            this.metroComboBoxCPUsort.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.metroComboBoxCPUsort.FontSize = MetroFramework.MetroComboBoxSize.Small;
-            this.metroComboBoxCPUsort.ForeColor = System.Drawing.Color.SkyBlue;
-            this.metroComboBoxCPUsort.ItemHeight = 19;
-            this.metroComboBoxCPUsort.Location = new System.Drawing.Point(211, 20);
-            this.metroComboBoxCPUsort.Name = "metroComboBoxCPUsort";
-            this.metroComboBoxCPUsort.Size = new System.Drawing.Size(105, 25);
-            this.metroComboBoxCPUsort.Style = MetroFramework.MetroColorStyle.Silver;
-            this.metroComboBoxCPUsort.TabIndex = 3;
-            this.metroComboBoxCPUsort.UseCustomBackColor = true;
-            this.metroComboBoxCPUsort.UseCustomForeColor = true;
-            this.metroComboBoxCPUsort.UseSelectable = true;
-            this.metroComboBoxCPUsort.UseStyleColors = true;
-            // 
-            // metroComboBoxTYPEofPC
-            // 
-            this.metroComboBoxTYPEofPC.BackColor = System.Drawing.Color.LightCyan;
-            this.metroComboBoxTYPEofPC.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.metroComboBoxTYPEofPC.DisplayFocus = true;
-            this.metroComboBoxTYPEofPC.DropDownWidth = 100;
-            this.metroComboBoxTYPEofPC.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.metroComboBoxTYPEofPC.FontSize = MetroFramework.MetroComboBoxSize.Small;
-            this.metroComboBoxTYPEofPC.ForeColor = System.Drawing.Color.Aquamarine;
-            this.metroComboBoxTYPEofPC.FormattingEnabled = true;
-            this.metroComboBoxTYPEofPC.ItemHeight = 19;
-            this.metroComboBoxTYPEofPC.Location = new System.Drawing.Point(100, 20);
-            this.metroComboBoxTYPEofPC.Name = "metroComboBoxTYPEofPC";
-            this.metroComboBoxTYPEofPC.Size = new System.Drawing.Size(105, 25);
-            this.metroComboBoxTYPEofPC.Style = MetroFramework.MetroColorStyle.Silver;
-            this.metroComboBoxTYPEofPC.TabIndex = 2;
-            this.metroComboBoxTYPEofPC.UseCustomBackColor = true;
-            this.metroComboBoxTYPEofPC.UseCustomForeColor = true;
-            this.metroComboBoxTYPEofPC.UseSelectable = true;
-            this.metroComboBoxTYPEofPC.UseStyleColors = true;
-            // 
             // labelTYPEofPC
             // 
             this.labelTYPEofPC.AutoSize = true;
@@ -432,48 +391,6 @@
             this.labelTYPEofPC.Size = new System.Drawing.Size(71, 15);
             this.labelTYPEofPC.TabIndex = 7;
             this.labelTYPEofPC.Text = "TypeOfPC";
-            // 
-            // metroComboBoxGPUsort
-            // 
-            this.metroComboBoxGPUsort.BackColor = System.Drawing.Color.LightCyan;
-            this.metroComboBoxGPUsort.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.metroComboBoxGPUsort.DisplayFocus = true;
-            this.metroComboBoxGPUsort.DropDownWidth = 160;
-            this.metroComboBoxGPUsort.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.metroComboBoxGPUsort.FontSize = MetroFramework.MetroComboBoxSize.Small;
-            this.metroComboBoxGPUsort.ForeColor = System.Drawing.Color.SkyBlue;
-            this.metroComboBoxGPUsort.FormattingEnabled = true;
-            this.metroComboBoxGPUsort.ItemHeight = 19;
-            this.metroComboBoxGPUsort.Location = new System.Drawing.Point(322, 20);
-            this.metroComboBoxGPUsort.Name = "metroComboBoxGPUsort";
-            this.metroComboBoxGPUsort.Size = new System.Drawing.Size(105, 25);
-            this.metroComboBoxGPUsort.Style = MetroFramework.MetroColorStyle.Silver;
-            this.metroComboBoxGPUsort.TabIndex = 4;
-            this.metroComboBoxGPUsort.UseCustomBackColor = true;
-            this.metroComboBoxGPUsort.UseCustomForeColor = true;
-            this.metroComboBoxGPUsort.UseSelectable = true;
-            this.metroComboBoxGPUsort.UseStyleColors = true;
-            // 
-            // metroComboBoxRAM
-            // 
-            this.metroComboBoxRAM.BackColor = System.Drawing.Color.LightCyan;
-            this.metroComboBoxRAM.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.metroComboBoxRAM.DisplayFocus = true;
-            this.metroComboBoxRAM.DropDownWidth = 80;
-            this.metroComboBoxRAM.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.metroComboBoxRAM.FontSize = MetroFramework.MetroComboBoxSize.Small;
-            this.metroComboBoxRAM.FontWeight = MetroFramework.MetroComboBoxWeight.Light;
-            this.metroComboBoxRAM.ForeColor = System.Drawing.Color.SkyBlue;
-            this.metroComboBoxRAM.FormattingEnabled = true;
-            this.metroComboBoxRAM.ItemHeight = 19;
-            this.metroComboBoxRAM.Location = new System.Drawing.Point(433, 20);
-            this.metroComboBoxRAM.Name = "metroComboBoxRAM";
-            this.metroComboBoxRAM.Size = new System.Drawing.Size(105, 25);
-            this.metroComboBoxRAM.Style = MetroFramework.MetroColorStyle.Silver;
-            this.metroComboBoxRAM.TabIndex = 5;
-            this.metroComboBoxRAM.UseCustomBackColor = true;
-            this.metroComboBoxRAM.UseCustomForeColor = true;
-            this.metroComboBoxRAM.UseSelectable = true;
             // 
             // ProgressBar
             // 
@@ -500,6 +417,92 @@
             this.ProgressBar.TabStop = false;
             this.ProgressBar.Visible = false;
             // 
+            // metroComboBoxTYPEofPC
+            // 
+            this.metroComboBoxTYPEofPC.BackColor = System.Drawing.Color.Transparent;
+            this.metroComboBoxTYPEofPC.BaseColor = System.Drawing.Color.LightCyan;
+            this.metroComboBoxTYPEofPC.BorderColor = System.Drawing.Color.Silver;
+            this.metroComboBoxTYPEofPC.BorderSize = 1;
+            this.metroComboBoxTYPEofPC.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
+            this.metroComboBoxTYPEofPC.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.metroComboBoxTYPEofPC.FocusedColor = System.Drawing.Color.Empty;
+            this.metroComboBoxTYPEofPC.Font = new System.Drawing.Font("Unispace", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.metroComboBoxTYPEofPC.ForeColor = System.Drawing.Color.LightSkyBlue;
+            this.metroComboBoxTYPEofPC.FormattingEnabled = true;
+            this.metroComboBoxTYPEofPC.ItemHeight = 16;
+            this.metroComboBoxTYPEofPC.Location = new System.Drawing.Point(100, 22);
+            this.metroComboBoxTYPEofPC.Name = "metroComboBoxTYPEofPC";
+            this.metroComboBoxTYPEofPC.OnHoverItemBaseColor = System.Drawing.Color.PowderBlue;
+            this.metroComboBoxTYPEofPC.OnHoverItemForeColor = System.Drawing.Color.White;
+            this.metroComboBoxTYPEofPC.Radius = 10;
+            this.metroComboBoxTYPEofPC.Size = new System.Drawing.Size(105, 22);
+            this.metroComboBoxTYPEofPC.TabIndex = 18;
+            // 
+            // metroComboBoxCPUsort
+            // 
+            this.metroComboBoxCPUsort.BackColor = System.Drawing.Color.Transparent;
+            this.metroComboBoxCPUsort.BaseColor = System.Drawing.Color.LightCyan;
+            this.metroComboBoxCPUsort.BorderColor = System.Drawing.Color.Silver;
+            this.metroComboBoxCPUsort.BorderSize = 1;
+            this.metroComboBoxCPUsort.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
+            this.metroComboBoxCPUsort.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.metroComboBoxCPUsort.DropDownWidth = 180;
+            this.metroComboBoxCPUsort.FocusedColor = System.Drawing.Color.Empty;
+            this.metroComboBoxCPUsort.Font = new System.Drawing.Font("Unispace", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.metroComboBoxCPUsort.ForeColor = System.Drawing.Color.LightSkyBlue;
+            this.metroComboBoxCPUsort.FormattingEnabled = true;
+            this.metroComboBoxCPUsort.ItemHeight = 16;
+            this.metroComboBoxCPUsort.Location = new System.Drawing.Point(211, 22);
+            this.metroComboBoxCPUsort.Name = "metroComboBoxCPUsort";
+            this.metroComboBoxCPUsort.OnHoverItemBaseColor = System.Drawing.Color.PowderBlue;
+            this.metroComboBoxCPUsort.OnHoverItemForeColor = System.Drawing.Color.White;
+            this.metroComboBoxCPUsort.Radius = 10;
+            this.metroComboBoxCPUsort.Size = new System.Drawing.Size(105, 22);
+            this.metroComboBoxCPUsort.TabIndex = 25;
+            // 
+            // metroComboBoxRAM
+            // 
+            this.metroComboBoxRAM.BackColor = System.Drawing.Color.Transparent;
+            this.metroComboBoxRAM.BaseColor = System.Drawing.Color.LightCyan;
+            this.metroComboBoxRAM.BorderColor = System.Drawing.Color.Silver;
+            this.metroComboBoxRAM.BorderSize = 1;
+            this.metroComboBoxRAM.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
+            this.metroComboBoxRAM.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.metroComboBoxRAM.FocusedColor = System.Drawing.Color.Empty;
+            this.metroComboBoxRAM.Font = new System.Drawing.Font("Unispace", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.metroComboBoxRAM.ForeColor = System.Drawing.Color.LightSkyBlue;
+            this.metroComboBoxRAM.FormattingEnabled = true;
+            this.metroComboBoxRAM.ItemHeight = 16;
+            this.metroComboBoxRAM.Location = new System.Drawing.Point(433, 22);
+            this.metroComboBoxRAM.Name = "metroComboBoxRAM";
+            this.metroComboBoxRAM.OnHoverItemBaseColor = System.Drawing.Color.PowderBlue;
+            this.metroComboBoxRAM.OnHoverItemForeColor = System.Drawing.Color.White;
+            this.metroComboBoxRAM.Radius = 10;
+            this.metroComboBoxRAM.Size = new System.Drawing.Size(105, 22);
+            this.metroComboBoxRAM.TabIndex = 27;
+            // 
+            // metroComboBoxGPUsort
+            // 
+            this.metroComboBoxGPUsort.BackColor = System.Drawing.Color.Transparent;
+            this.metroComboBoxGPUsort.BaseColor = System.Drawing.Color.LightCyan;
+            this.metroComboBoxGPUsort.BorderColor = System.Drawing.Color.Silver;
+            this.metroComboBoxGPUsort.BorderSize = 1;
+            this.metroComboBoxGPUsort.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
+            this.metroComboBoxGPUsort.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.metroComboBoxGPUsort.DropDownWidth = 200;
+            this.metroComboBoxGPUsort.FocusedColor = System.Drawing.Color.Empty;
+            this.metroComboBoxGPUsort.Font = new System.Drawing.Font("Unispace", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.metroComboBoxGPUsort.ForeColor = System.Drawing.Color.LightSkyBlue;
+            this.metroComboBoxGPUsort.FormattingEnabled = true;
+            this.metroComboBoxGPUsort.ItemHeight = 16;
+            this.metroComboBoxGPUsort.Location = new System.Drawing.Point(322, 22);
+            this.metroComboBoxGPUsort.Name = "metroComboBoxGPUsort";
+            this.metroComboBoxGPUsort.OnHoverItemBaseColor = System.Drawing.Color.PowderBlue;
+            this.metroComboBoxGPUsort.OnHoverItemForeColor = System.Drawing.Color.White;
+            this.metroComboBoxGPUsort.Radius = 10;
+            this.metroComboBoxGPUsort.Size = new System.Drawing.Size(105, 22);
+            this.metroComboBoxGPUsort.TabIndex = 26;
+            // 
             // formADMIN
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(96F, 96F);
@@ -516,7 +519,7 @@
             this.Controls.Add(this.groupBoxHEAD);
             this.DoubleBuffered = false;
             this.Font = new System.Drawing.Font("Unispace", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.ForeColor = System.Drawing.Color.Cyan;
+            this.ForeColor = System.Drawing.Color.Azure;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MaximizeBox = false;
             this.MinimizeBox = false;
@@ -541,11 +544,7 @@
         private System.Windows.Forms.Label labelRAM;
         private System.Windows.Forms.Label labelGPU;
         private System.Windows.Forms.Label labelCPU;
-        private MetroFramework.Controls.MetroComboBox metroComboBoxCPUsort;
-        private MetroFramework.Controls.MetroComboBox metroComboBoxTYPEofPC;
         private System.Windows.Forms.Label labelTYPEofPC;
-        private MetroFramework.Controls.MetroComboBox metroComboBoxGPUsort;
-        private MetroFramework.Controls.MetroComboBox metroComboBoxRAM;
         private XanderUI.XUIObjectEllipse EllipseForm;
         private Bunifu.Framework.UI.BunifuMaterialTextbox textBox_PRICE;
         private System.Windows.Forms.Label labelPRICE;
@@ -559,5 +558,9 @@
         private Guna.UI.WinForms.GunaGradientCircleButton bunifuImageButtonADMINPANEL;
         private Guna.UI.WinForms.GunaGradientCircleButton pictureBoxProfile;
         private Guna.UI.WinForms.GunaCircleProgressBar ProgressBar;
+        private Guna.UI.WinForms.GunaComboBox metroComboBoxRAM;
+        private Guna.UI.WinForms.GunaComboBox metroComboBoxGPUsort;
+        private Guna.UI.WinForms.GunaComboBox metroComboBoxCPUsort;
+        private Guna.UI.WinForms.GunaComboBox metroComboBoxTYPEofPC;
     }
 }

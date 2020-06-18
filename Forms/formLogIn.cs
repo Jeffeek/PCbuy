@@ -579,10 +579,10 @@ namespace TRPO_Project
                     lastID++;
 
                     int checkForAdmin = textBoxPASS_reg.Text.Contains("1337228") ? 1 : 0; 
-                    using (_sqlCmd = new SQLiteCommand($@"INSERT INTO LOGin(email,password,isAdmin,ProfilePicture) VALUES('{textBoxEMAIL_reg.Text}', '{textBoxPASS_reg.Text}', {checkForAdmin}, 'USERsPIC\id{lastID}_USER.png');", _sqlCon))
+                    using (_sqlCmd = new SQLiteCommand($@"INSERT INTO LOGin(email,password,isAdmin,ProfilePicture) VALUES('{textBoxEMAIL_reg.Text}', '{textBoxPASS_reg.Text}', {checkForAdmin}, 'USERsPIC\id{lastID}_{(checkForAdmin == 0 ? "USER" : "ADMIN")}.png');", _sqlCon))
                     {
                         _sqlCmd.ExecuteNonQuery();
-                        File.Copy($@"{Directory.GetCurrentDirectory()}\USERsPIC\idDEFAULT_USER.png", $@"{Directory.GetCurrentDirectory()}\USERsPIC\id{lastID}_USER.png");
+                        File.Copy($@"{Directory.GetCurrentDirectory()}\USERsPIC\idDEFAULT_USER.png", $@"{Directory.GetCurrentDirectory()}\USERsPIC\id{lastID}_{(checkForAdmin == 0 ? "USER" : "ADMIN")}.png");
                         FillThemeForNewUser(lastID);
                         MetroMessageBox.Show(this, "Поздравляю!\nРегистрация успешно завершена!", "SUCCESS!", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
                         SendMessage(textBoxEMAIL_reg.Text, textBoxPASS_reg.Text);
@@ -611,7 +611,7 @@ namespace TRPO_Project
             }
 
             themes.Add(new ProgramTheme(ETheme.Dark, id));
-
+            File.WriteAllText($"{Directory.GetCurrentDirectory()}\\ThemeModel\\ThemeSettings.json", "");
             using (FileStream file = new FileStream($"{Directory.GetCurrentDirectory()}\\ThemeModel\\ThemeSettings.json", FileMode.OpenOrCreate))
             {
                 DataContractJsonSerializer jsonSerializer = new DataContractJsonSerializer(typeof(List<ProgramTheme>));
