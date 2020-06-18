@@ -3,12 +3,9 @@
   <Class Name="TRPO_Project.formUSER" Collapsed="true">
     <Position X="2.5" Y="0.5" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>BERAAESCCC8FoBGICICAogBCAGIAIAAgQCBgIACBIRQ=</HashCode>
+      <HashCode>BERAAESCCC8FoBGICICAogBCAGIAIAAgQCAgIACBIRQ=</HashCode>
       <FileName>Forms\formUSER.cs</FileName>
     </TypeIdentifier>
-    <ShowAsAssociation>
-      <Property Name="PC" />
-    </ShowAsAssociation>
     <Lollipop Position="0.2" />
   </Class>
   <Class Name="TRPO_Project.AdminPanelForm" Collapsed="true">
@@ -22,7 +19,7 @@
   <Class Name="TRPO_Project.BIN" Collapsed="true">
     <Position X="5.25" Y="1.5" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>hAAgIAAAICQDABAAKACAIAADCGAAAJAgAAAgBAAAAAQ=</HashCode>
+      <HashCode>hAAgIAAAICQDABAAAACAIAADAGAAAJAIAAAgBgAAAAQ=</HashCode>
       <FileName>Forms\BIN.cs</FileName>
     </TypeIdentifier>
     <Lollipop Position="0.2" />
@@ -30,12 +27,9 @@
   <Class Name="TRPO_Project.formADMIN" Collapsed="true">
     <Position X="2.5" Y="1.75" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>BERAAESCCC8FsAGICICAowBCAGIBIAAgQDBgIACBYRQ=</HashCode>
+      <HashCode>BERAAESCCC8FsAGICICAowBCAGIBIAAgQDAgIACBYRQ=</HashCode>
       <FileName>Forms\formADMIN.cs</FileName>
     </TypeIdentifier>
-    <ShowAsAssociation>
-      <Property Name="PC" />
-    </ShowAsAssociation>
     <Lollipop Position="0.2" />
   </Class>
   <Class Name="TRPO_Project.FormLogIn" Collapsed="true">
@@ -92,7 +86,7 @@
     </TypeIdentifier>
   </Class>
   <Class Name="TRPO_Project.PC" Collapsed="true">
-    <Position X="0.5" Y="3.25" Width="1.5" />
+    <Position X="0.5" Y="3" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAgAAAAAAARgAAAAAAQAACIAAAAAAAAAAAAAAAAAAA=</HashCode>
       <FileName>Model\PC.cs</FileName>
@@ -101,7 +95,7 @@
   <Class Name="TRPO_Project.PCinfo" Collapsed="true">
     <Position X="0.5" Y="4" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAAhIMgAACARgAAAAACQAACKAAAAIAgACAQAAAAgAAA=</HashCode>
+      <HashCode>AAABIMgAACAAIAAAAACAAAACAAAAIAgACAQAAAAgAAA=</HashCode>
       <FileName>CustomControls\PCinfo.cs</FileName>
     </TypeIdentifier>
   </Class>

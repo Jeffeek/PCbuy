@@ -9,6 +9,7 @@ using System.Data.SQLite;
 using MetroFramework;
 using MetroFramework.Forms;
 using System.Runtime.Serialization.Json;
+using XanderUI;
 
 namespace TRPO_Project
 {
@@ -153,13 +154,14 @@ namespace TRPO_Project
         private void bunifuImageButtonSORT_Click(object sender, EventArgs e)
         {
             bunifuImageButtonSORT.Focus();
-            ProgressBar.Visible = true;
 
             #region ParseInputPrice
-
-            // ReSharper disable once ConvertClosureToMethodGroup
-            // ReSharper disable once TooManyChainedReferences
-            List<int> priceReaderInt = textBox_PRICE.Text.Split('$', '-').ToList().Where(x => x != string.Empty).ToList().ConvertAll(x => Convert.ToInt32(x));
+            List<int> priceReaderInt = textBox_PRICE.Text
+                                                        .Split('$', '-')
+                                                        .ToList()
+                                                        .Where(x => x != string.Empty)
+                                                        .ToList()
+                                                        .ConvertAll(x => Convert.ToInt32(x));
 
             if (!textBox_PRICE.Text.Contains("-"))
             {
@@ -172,7 +174,7 @@ namespace TRPO_Project
                 {
                     MetroMessageBox.Show(this, "Second filter num bigger than first!", "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                     textBox_PRICE.Focus();
-                    ProgressBar.percentage = 0;
+                    ProgressBar.Value = 0;
                     ProgressBar.Visible = false;
                     return;
                 }
@@ -181,22 +183,22 @@ namespace TRPO_Project
             #endregion
 
             var ToDisplay = new List<PC>(AllPCList.Where(x => x.COST >= priceReaderInt[0] && x.COST <= priceReaderInt[1]));
-            if (metroComboBoxTYPEofPC.Text != "<не выбрано>")
+            if (metroComboBoxTYPEofPC.Text != "TYPE")
             {
                 ToDisplay = ToDisplay.Where(x => x.TYPE == metroComboBoxTYPEofPC.Text)?.ToList();
             }
 
-            if (metroComboBoxCPUsort.Text != "<не выбрано>")
+            if (metroComboBoxCPUsort.Text != "CPU")
             {
                 ToDisplay = ToDisplay.Where(x => x.CPU == metroComboBoxCPUsort.Text)?.ToList();
             }
 
-            if (metroComboBoxGPUsort.Text != "<не выбрано>")
+            if (metroComboBoxGPUsort.Text != "GPU")
             {
                 ToDisplay = ToDisplay.Where(x => x.GPU == metroComboBoxGPUsort.Text)?.ToList();
             }
 
-            if (metroComboBoxRAM.Text != "<не выбрано>")
+            if (metroComboBoxRAM.Text != "RAM")
             {
                 ToDisplay = ToDisplay.Where(x => x.RAM == int.Parse(metroComboBoxRAM.Text.Replace(" GB", "")))?.ToList();
             }
@@ -226,8 +228,8 @@ namespace TRPO_Project
 
             var Y = (int)(88*ScaleControls.Scale);
             this.Refresh();
-            ProgressBar.percentage = 0;
-            ProgressBar.Enabled = true;
+            ProgressBar.Value = 0;
+            ProgressBar.Visible = true;
             int oneElementPercentage = 100 / Listed.Count;
             int deltaY = (int)(230 * ScaleControls.Scale);
             foreach (var pc in Listed)
@@ -236,17 +238,18 @@ namespace TRPO_Project
                 await Task.Delay(15);
                 while (_percentage != oneElementPercentage)
                 {
-                    ProgressBar.Percentage++;
                     _percentage++;
+                    ProgressBar.Value++;
                 }
 
                 PCinfo OBJ = new PCinfo(pc) {isAdmin = true};
                 OBJects.Add(OBJ);
                 OBJ.Location = new Point(0, Y);
                 Y += deltaY;
-                OBJ.BackColor = Theme == MetroThemeStyle.Dark ? Color.FromArgb(17, 17, 17) : Color.White;
+                OBJ.BackColor = Theme == MetroThemeStyle.Dark ? Color.FromArgb(23, 23, 26) : Color.White;
                 OBJ.Anchor = AnchorStyles.Top;
                 this.Controls.Add(OBJ);
+                ProgressBar.BringToFront();
             }
             ProgressBar.Enabled = false;
             ProgressBar.Visible = false;
@@ -310,10 +313,10 @@ namespace TRPO_Project
             metroComboBoxGPUsort.Items.Clear();
             metroComboBoxRAM.Items.Clear();
             metroComboBoxTYPEofPC.Items.Clear();
-            metroComboBoxCPUsort.Items.Add("<не выбрано>");
-            metroComboBoxGPUsort.Items.Add("<не выбрано>");
-            metroComboBoxRAM.Items.Add("<не выбрано>");
-            metroComboBoxTYPEofPC.Items.Add("<не выбрано>");
+            metroComboBoxCPUsort.Items.Add("CPU");
+            metroComboBoxGPUsort.Items.Add("GPU");
+            metroComboBoxRAM.Items.Add("RAM");
+            metroComboBoxTYPEofPC.Items.Add("TYPE");
             using (sql_con = new SQLiteConnection($"Data Source={Directory.GetCurrentDirectory()}\\DataBases\\TRPO.db"))
             {
                 sql_con.Open();
@@ -367,16 +370,24 @@ namespace TRPO_Project
 
         public void SetPictureProfile()
         {
-            using (sql_con = new SQLiteConnection($"Data Source={Directory.GetCurrentDirectory()}\\DataBases\\TRPO.db"))
+            try
             {
-                sql_con.Open();
-                using (sql_cmd = new SQLiteCommand($"SELECT ProfilePicture FROM LOGin WHERE id={userID}", sql_con))
+                using (sql_con =
+                    new SQLiteConnection($"Data Source={Directory.GetCurrentDirectory()}\\DataBases\\TRPO.db"))
                 {
-                    using (FileStream fs = new FileStream(sql_cmd.ExecuteScalar().ToString(), FileMode.Open))
+                    sql_con.Open();
+                    using (sql_cmd = new SQLiteCommand($"SELECT ProfilePicture FROM LOGin WHERE id={userID}", sql_con))
                     {
-                        pictureBoxProfile.Image = Image.FromStream(fs);
+                        using (FileStream fs = new FileStream(sql_cmd.ExecuteScalar().ToString(), FileMode.Open))
+                        {
+                            pictureBoxProfile.Image = Image.FromStream(fs);
+                        }
                     }
                 }
+            }
+            catch
+            {
+                pictureBoxProfile.Image = Properties.Resources.profile_default;
             }
         }
 

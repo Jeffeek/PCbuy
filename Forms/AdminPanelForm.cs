@@ -111,7 +111,7 @@ namespace TRPO_Project
                 File.Copy(openFileDialogADDproduct.FileName, _newPicPath);
                 FillPcDataGrid();
                 MetroMessageBox.Show(this, "PC was successfully added", "Success", MessageBoxButtons.OK, MessageBoxIcon.Asterisk);
-                comboBoxSELECT_id_product.AddItem(Convert.ToString(LASTid));
+                comboBoxSELECT_id_product.Items.Add(Convert.ToString(LASTid));
                 tabControlAdmin.TabPages[0].Controls
                                                     .OfType<BunifuMaterialTextbox>()
                                                     .ToList()
@@ -186,7 +186,7 @@ namespace TRPO_Project
                 using (sql_con = new SQLiteConnection($"Data Source={Directory.GetCurrentDirectory()}\\DataBases\\TRPO.db"))
                 {
                     sql_con.Open();
-                    using (sql_cmd = new SQLiteCommand($"DELETE FROM PCdb WHERE id={comboBoxSELECT_id_product.selectedValue}", sql_con))
+                    using (sql_cmd = new SQLiteCommand($"DELETE FROM PCdb WHERE id={comboBoxSELECT_id_product.SelectedValue}", sql_con))
                     {
                         sql_cmd.ExecuteNonQuery();
                     }
@@ -195,16 +195,16 @@ namespace TRPO_Project
 
                 try
                 {
-                    File.Delete($"{Directory.GetCurrentDirectory()}\\PCsIMAGES\\id{comboBoxSELECT_id_product.selectedValue}.png");
+                    File.Delete($"{Directory.GetCurrentDirectory()}\\PCsIMAGES\\id{comboBoxSELECT_id_product.SelectedValue}.png");
                 }
                 catch (Exception exception)
                 {
                     MetroMessageBox.Show(this, "ERROR!", $"SMTH WENT WRONG \n {exception.Message}", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
                 MetroMessageBox.Show(this, "SUCCESS!", "THE PRODUCT WAS DELETED!", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                formADMIN.ChangeInfoList(Convert.ToInt32(comboBoxSELECT_id_product.selectedValue), EPCChange.Remove, null);
-                comboBoxSELECT_id_product.selectedIndex = 0;
-                comboBoxSELECT_id_product.RemoveItem(comboBoxSELECT_id_product.selectedValue);
+                formADMIN.ChangeInfoList(Convert.ToInt32(comboBoxSELECT_id_product.SelectedValue), EPCChange.Remove, null);
+                comboBoxSELECT_id_product.SelectedIndex = 0;
+                comboBoxSELECT_id_product.Items.Remove(comboBoxSELECT_id_product.SelectedValue);
             }
         }
 
@@ -218,12 +218,12 @@ namespace TRPO_Project
 
         private void btnApplyChangesPC_Click(object sender, EventArgs e)
         {
-            if (comboBoxCHANGEVALUE_byid_product.selectedValue != "IMAGE")
+            if (comboBoxCHANGEVALUE_byid_product.Text != "IMAGE")
             {
                 using (sql_con = new SQLiteConnection($"Data Source={Directory.GetCurrentDirectory()}\\DataBases\\TRPO.db"))
                 {
                     sql_con.Open();
-                    using (sql_cmd = new SQLiteCommand($"UPDATE PCdb SET {comboBoxCHANGEVALUE_byid_product.selectedValue}='{gunaLineTextBoxNEWvalue.Text}' WHERE id={bunifuCustomDataGridVIEWinfoAboutONEprod[0, 0].Value}", sql_con))
+                    using (sql_cmd = new SQLiteCommand($"UPDATE PCdb SET {comboBoxCHANGEVALUE_byid_product.Text}='{gunaLineTextBoxNEWvalue.Text}' WHERE id={bunifuCustomDataGridVIEWinfoAboutONEprod[0, 0].Value}", sql_con))
                     {
                         sql_cmd.ExecuteNonQuery();
                     }
@@ -259,7 +259,7 @@ namespace TRPO_Project
 
         private void gunaLineTextBoxNEWvalue_KeyPress(object sender, KeyPressEventArgs e)
         {
-            if (comboBoxCHANGEVALUE_byid_product.selectedValue == "RAM" || comboBoxCHANGEVALUE_byid_product.selectedValue == "PRICE")
+            if (comboBoxCHANGEVALUE_byid_product.Text == "RAM" || comboBoxCHANGEVALUE_byid_product.Text == "PRICE")
             {
                 if (!char.IsDigit(e.KeyChar) && !char.IsControl(e.KeyChar))
                 {
@@ -288,19 +288,19 @@ namespace TRPO_Project
 
         private void FillIdInComboBoxes()
         {
-            comboBoxSELECT_id_product.Clear();
+            comboBoxSELECT_id_product.Items.Clear();
             using (sql_cmd = new SQLiteCommand("SELECT id FROM PCdb", sql_con))
             {
                 using (SQLiteDataReader reader = sql_cmd.ExecuteReader())
                 {
                     while (reader.Read())
                     {
-                        comboBoxSELECT_id_product.AddItem(Convert.ToString(reader.GetInt32(0)));
+                        comboBoxSELECT_id_product.Items.Add(Convert.ToString(reader.GetInt32(0)));
                     }
                 }
             }
 
-            comboBoxSELECT_id_product.selectedIndex = 0;
+            comboBoxSELECT_id_product.SelectedIndex = 0;
         }
 
         private void comboBoxSELECT_id_product_onItemSelected(object sender, EventArgs e)
@@ -312,7 +312,7 @@ namespace TRPO_Project
             using (sql_con = new SQLiteConnection($"Data Source={Directory.GetCurrentDirectory()}\\DataBases\\TRPO.db"))
             {
                 sql_con.Open();
-                SQLiteDataAdapter adapter = new SQLiteDataAdapter($"SELECT * FROM PCdb WHERE id={comboBoxSELECT_id_product.selectedValue}", sql_con);
+                SQLiteDataAdapter adapter = new SQLiteDataAdapter($"SELECT * FROM PCdb WHERE id={comboBoxSELECT_id_product.Text}", sql_con);
                 DataTable table = new DataTable();
                 adapter.Fill(table);
                 bunifuCustomDataGridVIEWinfoAboutONEprod.DataSource = table;
@@ -327,7 +327,7 @@ namespace TRPO_Project
         {
             gunaLineTextBoxNEWvalue.Enabled = true;
             gunaLineTextBoxNEWvalue.Text = string.Empty;
-            if (comboBoxCHANGEVALUE_byid_product.selectedValue == "IMAGE")
+            if (comboBoxCHANGEVALUE_byid_product.Text == "IMAGE")
             {
                 gunaLabelNEWvalue.Visible = false;
                 gunaLineTextBoxNEWvalue.Visible = false;
@@ -348,7 +348,7 @@ namespace TRPO_Project
                 bunifuImageButtonNEWpcIMG.Visible = false;
                 gunaLabelNEWpcPIC.Visible = false;
                 
-                switch (comboBoxCHANGEVALUE_byid_product.selectedValue)
+                switch (comboBoxCHANGEVALUE_byid_product.Text)
                 {
                     case "CPU":
                     {
@@ -429,8 +429,15 @@ namespace TRPO_Project
         {
             if (e.RowIndex != -1)
             {
-                using (var IMGstream = new FileStream(Convert.ToString(UsersDataGrid[4, e.RowIndex].Value), FileMode.Open))
-                    CirclePictureBoxUSER.Image = Image.FromStream(IMGstream);
+                try
+                {
+                    using (var IMGstream = new FileStream(Convert.ToString(UsersDataGrid[4, e.RowIndex].Value), FileMode.Open))
+                        CirclePictureBoxUSER.Image = Image.FromStream(IMGstream);
+                }
+                catch
+                {
+                    CirclePictureBoxUSER.Image = Resources.profile_default;
+                }
             }
         }
 
@@ -459,32 +466,32 @@ namespace TRPO_Project
             {
                 case 1:
                     {
-                        comboBoxCHANGEVALUE_byid_product.selectedIndex = 0;
+                        comboBoxCHANGEVALUE_byid_product.SelectedIndex = 0;
                         break;
                     }
                 case 2:
                     {
-                        comboBoxCHANGEVALUE_byid_product.selectedIndex = 1;
+                        comboBoxCHANGEVALUE_byid_product.SelectedIndex = 1;
                         break;
                     }
                 case 3:
                     {
-                        comboBoxCHANGEVALUE_byid_product.selectedIndex = 2;
+                        comboBoxCHANGEVALUE_byid_product.SelectedIndex = 2;
                         break;
                     }
                 case 4:
                     {
-                        comboBoxCHANGEVALUE_byid_product.selectedIndex = 3;
+                        comboBoxCHANGEVALUE_byid_product.SelectedIndex = 3;
                         break;
                     }
                 case 5:
                     {
-                        comboBoxCHANGEVALUE_byid_product.selectedIndex = 4;
+                        comboBoxCHANGEVALUE_byid_product.SelectedIndex = 4;
                         break;
                     }
                 case 6:
                     {
-                        comboBoxCHANGEVALUE_byid_product.selectedIndex = 5;
+                        comboBoxCHANGEVALUE_byid_product.SelectedIndex = 5;
                         break;
                     }
             }
@@ -500,7 +507,7 @@ namespace TRPO_Project
                 FillInquiryDataGrid();
                 FillUsersDataGrid();
             }
-            comboBoxSELECT_id_product.selectedIndex = 0;
+            comboBoxSELECT_id_product.SelectedIndex = 0;
         }
 
         private void AdminPanelForm_Load(object sender, EventArgs e)

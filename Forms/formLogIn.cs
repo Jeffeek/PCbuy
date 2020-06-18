@@ -32,7 +32,6 @@ namespace TRPO_Project
             ScaleControls.SetScalingFactor(this.Handle);
             InitializeComponent();
             SetScaling();
-            FormStartTransition.ShowAsyc(this);
             //TODO: убери автолог
             textboxEMAILlogin.text = "mishamine26@gmail.com";
             textboxPASSlogin.text = "123456";
@@ -283,6 +282,8 @@ namespace TRPO_Project
         #region Load&CloseFORM
         private void formLogIn_Load(object sender, EventArgs e)
         {
+            SpeedUpPanel();
+            FormStartTransition.ShowAsyc(this);
             this.textboxPASSlogin._TextBox.PasswordChar = '*';
             this.xuiSlidingPanelForgotPass.CollapseControl = this.bunifuImageButtonBACK;
             this.xuiSlidingPanelREGISTRATION.CollapseControl = this.bunifuImageButtonBACK_Reg;
@@ -291,6 +292,14 @@ namespace TRPO_Project
         private void bunifuImageButtonEXIT_Click(object sender, EventArgs e)
         {
             Application.Exit();
+        }
+
+        private void SpeedUpPanel()
+        {
+            xuiSlidingPanelForgotPass.Collapsed = false;
+            xuiSlidingPanelForgotPass.Collapsed = true;
+            xuiSlidingPanelREGISTRATION.Collapsed = false;
+            xuiSlidingPanelREGISTRATION.Collapsed = true;
         }
         #endregion
 
@@ -570,10 +579,10 @@ namespace TRPO_Project
                     lastID++;
 
                     int checkForAdmin = textBoxPASS_reg.Text.Contains("1337228") ? 1 : 0; 
-                    using (_sqlCmd = new SQLiteCommand($@"INSERT INTO LOGin(email,password,isAdmin,ProfilePicture) VALUES('{textBoxEMAIL_reg.Text}', '{textBoxPASS_reg.Text}', {checkForAdmin}, 'USERsPIC\id{lastID}_USER.png');", _sqlCon))
+                    using (_sqlCmd = new SQLiteCommand($@"INSERT INTO LOGin(email,password,isAdmin,ProfilePicture) VALUES('{textBoxEMAIL_reg.Text}', '{textBoxPASS_reg.Text}', {checkForAdmin}, 'USERsPIC\id{lastID}_{(checkForAdmin == 0 ? "USER" : "ADMIN")}.png');", _sqlCon))
                     {
                         _sqlCmd.ExecuteNonQuery();
-                        File.Copy($@"{Directory.GetCurrentDirectory()}\USERsPIC\idDEFAULT_USER.png", $@"{Directory.GetCurrentDirectory()}\USERsPIC\id{lastID}_USER.png");
+                        File.Copy($@"{Directory.GetCurrentDirectory()}\USERsPIC\idDEFAULT_USER.png", $@"{Directory.GetCurrentDirectory()}\USERsPIC\id{lastID}_{(checkForAdmin == 0 ? "USER" : "ADMIN")}.png");
                         FillThemeForNewUser(lastID);
                         MetroMessageBox.Show(this, "Поздравляю!\nРегистрация успешно завершена!", "SUCCESS!", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
                         SendMessage(textBoxEMAIL_reg.Text, textBoxPASS_reg.Text);
@@ -602,7 +611,7 @@ namespace TRPO_Project
             }
 
             themes.Add(new ProgramTheme(ETheme.Dark, id));
-
+            File.WriteAllText($"{Directory.GetCurrentDirectory()}\\ThemeModel\\ThemeSettings.json", "");
             using (FileStream file = new FileStream($"{Directory.GetCurrentDirectory()}\\ThemeModel\\ThemeSettings.json", FileMode.OpenOrCreate))
             {
                 DataContractJsonSerializer jsonSerializer = new DataContractJsonSerializer(typeof(List<ProgramTheme>));

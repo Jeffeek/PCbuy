@@ -25,7 +25,7 @@ namespace TRPO_Project
         private SQLiteConnection sql_con; // connection
         private SQLiteCommand sql_cmd;
         private Point lastPoint;
-        private List<PCinfo> OBJects = new List<PCinfo>(); // объекты главной формы
+        private List<PCinfo> LObjects = new List<PCinfo>(); // объекты главной формы
         private List<PC> AllPCList = new List<PC>();
         private int userID;
         #endregion
@@ -44,14 +44,6 @@ namespace TRPO_Project
             metroComboBoxCPUsort.SelectedIndex = 0;
             metroComboBoxGPUsort.SelectedIndex = 0;
             metroComboBoxRAM.SelectedIndex = 0;
-        }
-
-        public PC PC
-        {
-            get => default;
-            set
-            {
-            }
         }
         #endregion
 
@@ -120,10 +112,15 @@ namespace TRPO_Project
         private void bunifuImageButtonSORT_Click(object sender, EventArgs e)
         {
             bunifuImageButtonSORT.Focus();
-            CircleProgressBar.Visible = true;
+            ProgressBar.Visible = true;
 
             #region ParseInputPrice
-            List<int> priceReaderInt = textBox_PRICE.Text.Split('$', '-').ToList().Where(x => x != string.Empty).ToList().ConvertAll(x => Convert.ToInt32(x));
+            List<int> priceReaderInt = textBox_PRICE.Text
+                                                        .Split('$', '-')
+                                                        .ToList()
+                                                        .Where(x => x != string.Empty)
+                                                        .ToList()
+                                                        .ConvertAll(x => Convert.ToInt32(x));
 
             if (!textBox_PRICE.Text.Contains("-"))
             {
@@ -136,8 +133,8 @@ namespace TRPO_Project
                 {
                     MetroMessageBox.Show(this, "Second filter num bigger than first!", "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                     textBox_PRICE.Focus();
-                    CircleProgressBar.percentage = 0;
-                    CircleProgressBar.Visible = false;
+                    ProgressBar.Value = 0;
+                    ProgressBar.Visible = false;
                     return;
                 }
             }
@@ -145,26 +142,27 @@ namespace TRPO_Project
 
             var ToDisplay = new List<PC>(AllPCList.Where(x => x.COST >= priceReaderInt[0] && x.COST <= priceReaderInt[1]));
 
-            if (metroComboBoxTYPEofPC.Text != "<не выбрано>")
+            if (metroComboBoxTYPEofPC.Text != "TYPE")
             {
-                ToDisplay = ToDisplay.Where(x => x.TYPE == metroComboBoxTYPEofPC.Text).ToList();
+                ToDisplay = ToDisplay.Where(x => x.TYPE == metroComboBoxTYPEofPC.Text)?.ToList();
             }
-            if (metroComboBoxCPUsort.Text != "<не выбрано>")
+            if (metroComboBoxCPUsort.Text != "CPU")
             {
-                ToDisplay = ToDisplay.Where(x => x.CPU == metroComboBoxCPUsort.Text).ToList();
+                ToDisplay = ToDisplay.Where(x => x.CPU == metroComboBoxCPUsort.Text)?.ToList();
             }
-            if (metroComboBoxGPUsort.Text != "<не выбрано>")
+            if (metroComboBoxGPUsort.Text != "GPU")
             {
-                ToDisplay = ToDisplay.Where(x => x.GPU == metroComboBoxGPUsort.Text).ToList();
+                ToDisplay = ToDisplay.Where(x => x.GPU == metroComboBoxGPUsort.Text)?.ToList();
             }
-            if (metroComboBoxRAM.Text != "<не выбрано>")
+            if (metroComboBoxRAM.Text != "RAM")
             {
-                ToDisplay = ToDisplay.Where(x => x.RAM == int.Parse(metroComboBoxRAM.Text.Replace(" GB", ""))).ToList();
+
+                ToDisplay = ToDisplay.Where(x => x.RAM == int.Parse(metroComboBoxRAM.Text.Replace(" GB", "")))?.ToList();
             }
 
             if (ToDisplay.Count == 0)
             {
-                CircleProgressBar.Visible = false;
+                ProgressBar.Visible = false;
                 MetroMessageBox.Show(this, "NO PC MATCHES", "ERROR!", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
@@ -173,19 +171,19 @@ namespace TRPO_Project
 
         private async void DisplayListAsync(List<PC> Listed)
         {
-            if (OBJects.Count > 0)
+            if (LObjects.Count > 0)
             {
-                foreach (var elem in OBJects)
+                foreach (var elem in LObjects)
                 {
                     this.Controls.Remove(elem);
                     elem.Dispose();
                 }
-                OBJects.Clear();
+                LObjects.Clear();
             }
             int Y = (int)(88*ScaleControls.Scale);
             this.Refresh();
-            CircleProgressBar.percentage = 0;
-            CircleProgressBar.Enabled = true;
+            ProgressBar.Value = 0;
+            ProgressBar.Enabled = true;
             int oneElementPercentage = 100 / Listed.Count;
             int deltaY = (int) (230 * ScaleControls.Scale);
             foreach (var pc in Listed)
@@ -194,19 +192,19 @@ namespace TRPO_Project
                 await Task.Delay(30);
                 while (_percentage != oneElementPercentage)
                 {
-                    CircleProgressBar.Percentage++;
+                    ProgressBar.Value++;
                     _percentage++;
                 }
                 PCinfo OBJ = new PCinfo(pc) { isAdmin = false };
-                OBJects.Add(OBJ);
+                LObjects.Add(OBJ);
                 OBJ.Location = new Point(0, Y);
                 Y += deltaY;
                 OBJ.BackColor = Theme == MetroThemeStyle.Dark ? Color.FromArgb(17, 17, 17) : Color.White;
                 OBJ.Anchor = AnchorStyles.Top;
                 this.Controls.Add(OBJ);
             }
-            CircleProgressBar.Enabled = false;
-            CircleProgressBar.Visible = false;
+            ProgressBar.Enabled = false;
+            ProgressBar.Visible = false;
         }
         #endregion 
 
@@ -258,16 +256,24 @@ namespace TRPO_Project
         #region SetPicture
         public void SetPictureProfile()
         {
-            using (sql_con = new SQLiteConnection($"Data Source={Directory.GetCurrentDirectory()}\\DataBases\\TRPO.db"))
+            try
             {
-                sql_con.Open();
-                using (sql_cmd = new SQLiteCommand($"SELECT ProfilePicture FROM LOGin WHERE id={userID}", sql_con))
+                using (sql_con =
+                    new SQLiteConnection($"Data Source={Directory.GetCurrentDirectory()}\\DataBases\\TRPO.db"))
                 {
-                    using (FileStream fs = new FileStream(sql_cmd.ExecuteScalar().ToString(), FileMode.Open))
+                    sql_con.Open();
+                    using (sql_cmd = new SQLiteCommand($"SELECT ProfilePicture FROM LOGin WHERE id={userID}", sql_con))
                     {
-                        pictureBoxProfile.Image = Image.FromStream(fs);
+                        using (FileStream fs = new FileStream(sql_cmd.ExecuteScalar().ToString(), FileMode.Open))
+                        {
+                            pictureBoxProfile.Image = Image.FromStream(fs);
+                        }
                     }
                 }
+            }
+            catch
+            {
+                pictureBoxProfile.Image = Properties.Resources.profile_default;
             }
         }
         public void SetNewProfilePicture(Image IMG)
@@ -355,7 +361,7 @@ namespace TRPO_Project
             groupBoxHEAD.Refresh();
         }
 
-        public async void ReadThemeAsync()
+        public void ReadThemeAsync()
         {
             try
             {
@@ -372,8 +378,8 @@ namespace TRPO_Project
                 if (themes.Count(x => x.UserID == userID) > 0)
                 {
                     ProgramTheme ThemeOBJ = themes.Find(x => x.UserID == userID);
-                    await Task.Run(() => ChangeNonMetroControls(ThemeOBJ));
-                    await Task.Run(() => ChangeMetroControls(ThemeOBJ));
+                    ChangeNonMetroControls(ThemeOBJ);
+                    ChangeMetroControls(ThemeOBJ);
                     Refresh();
                 }
             }
