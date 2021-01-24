@@ -211,6 +211,7 @@ namespace TRPO_Project
         #region ComboBOXfill&textCHANGES
         private void GetInfoIntoComboBoxes()
         {
+
             using (sql_con = new SQLiteConnection($"Data Source={Directory.GetCurrentDirectory()}\\DataBases\\TRPO.db"))
             {
                 sql_con.Open();
