@@ -179,8 +179,8 @@ namespace TRPO_Project
         //проверка высыланием рандомного номера на почту(для регистрации и для случая того, если пользователь забыл пароль)
         private void SendMessage(string emailTo)
         {
-            string smtpEmail = "smtp.jeffeekpcbuy@gmail.com";
-            string smtpPassword = "9Pocan1337";
+            string smtpEmail = "smtp.*********pcbuy@gmail.com";
+            string smtpPassword = "*********";
             MailAddress SMTPfrom = new MailAddress(smtpEmail, "Jeffeek inc.");
             MailAddress toUser = new MailAddress(emailTo);
             MailMessage message = new MailMessage(SMTPfrom, toUser)
@@ -200,8 +200,8 @@ namespace TRPO_Project
         //отсылка сообщения об успешной регистрации
         private void SendMessage(string emailTo, string password)
         {
-            string smtpEmail = "smtp.jeffeekpcbuy@gmail.com";
-            string smtpPassword = "9Pocan1337";
+            string smtpEmail = "smtp.*********pcbuy@gmail.com";
+            string smtpPassword = "*********";
             MailAddress SMTPfrom = new MailAddress(smtpEmail, "Jeffeek inc.");
             MailAddress toUser = new MailAddress(emailTo);
             MailMessage message = new MailMessage(SMTPfrom, toUser)

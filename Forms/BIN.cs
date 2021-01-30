@@ -257,8 +257,8 @@ namespace TRPO_Project
 
         private async void SendEmailOrder(int SumOfOrder, string id, string Date)
         {
-            string smtpEmail = "smtp.jeffeekpcbuy@gmail.com";
-            string smtpPassword = "9Pocan1337";
+            string smtpEmail = "smtp.*********pcbuy@gmail.com";
+            string smtpPassword = "*********";
 
             MailAddress SMTPfrom = new MailAddress(smtpEmail, "Jeffeek inc.");
             MailAddress toUser = new MailAddress(GetUserEmail());
